@@ -4,6 +4,7 @@ layout: col-sidebar
 title: OWASP vulnerable web applications directory
 tags: example-tag
 level: 4
+type: documentation
 
 ---
 
