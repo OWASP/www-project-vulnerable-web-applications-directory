@@ -10,7 +10,7 @@ tags: vwad
 
 ## Presentation(s)
 
-* I[nterview with Simon Bennetts – The OWASP Web Applications Vulnerability Project](https://soundcloud.com/trustedsoftwarealliance/simon-bennetts-web)
+* [Interview with Simon Bennetts – The OWASP Web Applications Vulnerability Project](https://soundcloud.com/trustedsoftwarealliance/simon-bennetts-web)
 
 ## On-line Resources Used
 
