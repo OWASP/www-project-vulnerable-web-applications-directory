@@ -1,4 +1,3 @@
 ### Leaders
-* [Leader Name](mailto://leader.email@owasp.org)
-* [Leader Name](mailto://leader.email@owasp.org)
-* [Leader Name](mailto://leader.email@owasp.org)
+* [Simon Bennetts (psiinon)](mailto:psiinon@gmail.com)
+* [Raul Siles](mailto:raul@raulsiles.com)
