@@ -1,8 +1,8 @@
 ### Project Classification
 
-![Builders](assets/images/owasp_builders_small.png)
-![Breakers](assets/images/owasp_breakers_small.png)
-![Defenders](assets/images/owasp_defenders_small.png)
+![Builders](assets/images/common/owasp_builders.svg)
+![Breakers](assets/images/common/owasp_dreakers.svg)
+![Defenders](assets/images/common/owasp_defenders.svg)
 
 ### Downloads
 
@@ -10,6 +10,4 @@
 
 ### Code Repository
 
-* [repo](https://github.com/OWASP/OWASP-VWAD)
-
-
+* [Repo](https://github.com/OWASP/OWASP-VWAD)
