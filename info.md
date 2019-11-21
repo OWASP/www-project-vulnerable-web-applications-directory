@@ -1,17 +1,15 @@
-### vulnerable web applications directory Information
-* [Flagship Project](#)
-* [Tool Project](#)
-* [Version 2.8.0](#)
-* [Builder](#)
-* [Breaker](#)
+### Project Classification
 
-### Downloads or Social Links
-* [Download](#)
-* [Meetup](#)
+![Builders](assets/images/owasp_builders_small.png)
+![Breakers](assets/images/owasp_breakers_small.png)
+![Defenders](assets/images/owasp_defenders_small.png)
+
+### Downloads
+
+* [Download](https://github.com/OWASP/OWASP-VWAD)
 
 ### Code Repository
-* [repo](#)
 
-### Change Log
-* [changes](#)
+* [repo](https://github.com/OWASP/OWASP-VWAD)
+
 

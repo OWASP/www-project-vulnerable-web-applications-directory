@@ -1,20 +1,23 @@
 ---
 
 layout: col-sidebar
-title: OWASP vulnerable web applications directory
-tags: example-tag
-level: 4
+title: OWASP Vulnerable Web Applications Directory
+tags: vwad
+level: 3
 type: documentation
-
+pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable web applications currently available for legal security and vulnerability testing of various kinds.
 ---
 
-This is an example of a Project or Chapter Page.  Please change these items to indicate the actual information you wish to present.  In addition to this information, the 'front-matter' above this text should be modified to reflect your actual information.  An explanation of each of the front-matter items is below:
+The OWASP Vulnerable Web Applications Directory (VWAD) Project is a comprehensive and well maintained registry of all known vulnerable web applications currently available. These vulnerable web applications can be used by web developers, security auditors and penetration testers to put in practice their knowledge and skills during training sessions (and especially afterwards), as well as to test at any time the multiple hacking tools and offensive techniques available, in preparation for their next real-world engagement.
 
-layout: This is the layout used by project and chapter pages.  You should leave this value as col-sidebar
+The main goal of VWAD is to provide a list of vulnerable web applications available to security professionals for hacking and offensive activities, so that they can attack realistic web environments... without going to jail :)
 
-title: This is the title of your project or chapter page, usually the name.  For example, OWASP Zed Attack Proxy or OWASP Baltimore
+The vulnerable web applications have been classified in three categories: On-Line, Off-Line, and VMs/ISOs. Each list has been ordered alphabetically.
 
-tags: This is a space-delimited list of tags you associate with your project or chapter.  If you are using tabs, at least one of these tags should be unique in order to be used in the tabs files (an example tab is included in this repo) 
+An initial list that inspired this project was maintained till October 2013 [here](http://blog.taddong.com/2011/10/hacking-vulnerable-web-applications.html).
 
-level: For projects, this is your project level (2 - Incubator, 3 - Lab, 4 - Flagship)
+A brief description of the OWASP VWAD project is available [here](http://blog.dinosec.com/2013/11/owasp-vulnerable-web-applications.html).
 
+The associated GitHub repository is available [here](https://github.com/OWASP/OWASP-VWAD). 
+
+[Open Hub Stats](https://www.openhub.net/p/OWASP-VWAD)
