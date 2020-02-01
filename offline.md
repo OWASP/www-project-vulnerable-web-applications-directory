@@ -17,7 +17,9 @@ Click the triangle to the left of each entry to expand its details:
 <details>
   <summary> {{ app.name }} </summary>
   <a href="{{ app.url }}"> {{ app.name }} </a> <br>
-  Author: {{ app.author }} <br>
+  {% if app.author != "" and app.author != nill %}
+    Author: {{ app.author }} <br>
+  {% endif %}
   {% if app.notes != "" and app.notes != nil %}
     Notes: {{ app.notes }} <br>
   {% endif %}
