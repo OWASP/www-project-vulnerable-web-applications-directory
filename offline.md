@@ -26,16 +26,14 @@ Click the triangle to the left of each entry to expand its details:
   {% if app.references != empty and app.references != nil %} 
     Reference(s): <br>
     {% for ref in app.references %}
-      * <a href="{{ ref.url }}">{{ ref.name }}</a>
+      * <a href="{{ ref.url }}">{{ ref.name }}</a> <br>
     {% endfor %}
-    <br>
   {% endif %}
   {% if app.technology != empty and app.technology != nil %}
     Technology(ies): <br>
     {% for tech in app.technology %}
       * {{ tech }} <br>
     {% endfor %}
-    <br>
   {% endif %}
 </details>
 
