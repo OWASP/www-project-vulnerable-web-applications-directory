@@ -21,7 +21,7 @@ Click the triangle to the left of each entry to expand its details:
   Notes: {{ app.notes | strip }} <br>
   References: <br>
   {% for ref in app.references %}
-    * {{ ref }}
+    * <a href="{{ ref.url }}">{{ ref.name }}</a>
   {% endfor %}
 </details>
 
