@@ -21,11 +21,12 @@ Click the triangle to the left of each entry to expand its details:
   Notes: {{ app.notes | strip }} <br>
   Reference(s) (if any): <br>
   {% for ref in app.references %}
-    * <a href="{{ ref.url }}">{{ ref.name }}</a>
+    * <a href="{{ ref.url }}">{{ ref.name }}</a> <br>
   {% endfor %}
+  <br>
   Technology(ies) (if known): <br>
   {% for tech in app.technology %}
-    * {{ tech }}
+    * {{ tech }} <br>
   {% endfor %}
 </details>
 
