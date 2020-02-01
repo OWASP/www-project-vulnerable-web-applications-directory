@@ -11,9 +11,9 @@ type: documentation
 ### Offline
 {% assign apps = site.data.offline | uniq %}
 {% for app in apps %}
-<detail>
+<details>
   <summary> {{ app.name | strip }} </summary>
   URL: <a href="{{ app.url | strip }}"> {{ app.name | strip }} </a>
-</detail>
+</details>
 
 {% endfor %}
