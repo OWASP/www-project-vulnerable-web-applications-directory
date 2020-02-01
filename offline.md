@@ -19,9 +19,13 @@ Click the triangle to the left of each entry to expand its details:
   <a href="{{ app.url | strip }}"> {{ app.name | strip }} </a> <br>
   Author: {{ app.author | strip }} <br>
   Notes: {{ app.notes | strip }} <br>
-  References: <br>
+  Reference(s) (if any): <br>
   {% for ref in app.references %}
     * <a href="{{ ref.url }}">{{ ref.name }}</a>
+  {% endfor %}
+  Technology(ies) (if known): <br>
+  {% for tech in app.technology %}
+    * {{ tech }}
   {% endfor %}
 </details>
 
