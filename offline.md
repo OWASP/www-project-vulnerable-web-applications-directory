@@ -16,7 +16,7 @@ Click the triangle to the left of each entry to expand its details:
 {% for app in apps %}
 <details>
   <summary> {{ app.name }} </summary>
-  <div style="margin-left:20">
+  <div style="padding-left: 20px">
   <a href="{{ app.url }}"> {{ app.name }} </a> <br>
   {% if app.author != "" and app.author != nil %}
     Author: {{ app.author }} <br>
