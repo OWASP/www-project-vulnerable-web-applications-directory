@@ -16,6 +16,7 @@ Click the triangle to the left of each entry to expand its details:
 {% for app in apps %}
 <details>
   <summary> {{ app.name }} </summary>
+  <div style="margin-left:20">
   <a href="{{ app.url }}"> {{ app.name }} </a> <br>
   {% if app.author != "" and app.author != nil %}
     Author: {{ app.author }} <br>
@@ -35,6 +36,7 @@ Click the triangle to the left of each entry to expand its details:
       * {{ tech }} <br>
     {% endfor %}
   {% endif %}
+  </div>
 </details>
 
 {% endfor %}
