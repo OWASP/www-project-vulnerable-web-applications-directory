@@ -404,31 +404,6 @@
 		"notes": null
 	},
 	{
-		"url": "https://owasp-juice.shop",
-		"name": "OWASP Juice Shop",
-		"technology": [
-			"Javascript",
-			"Angular",
-			"Node.js"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/bkimminich/juice-shop"
-			},
-			{
-				"name": "docker",
-				"url": "https://hub.docker.com/r/bkimminich/juice-shop/"
-			},
-			{
-				"name": "guide",
-				"url": "https://pwning.owasp-juice.shop/"
-			}
-		],
-		"author": "OWASP",
-		"notes": null
-	},
-	{
 		"url": "http://sourceforge.net/projects/lampsecurity/",
 		"name": "LampSecurity",
 		"technology": [
@@ -495,6 +470,31 @@
 		],
 		"references": [],
 		"author": "cr0hn",
+		"notes": null
+	},
+	{
+		"url": "https://owasp-juice.shop",
+		"name": "OWASP Juice Shop",
+		"technology": [
+			"Javascript",
+			"Angular",
+			"Node.js"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/bkimminich/juice-shop"
+			},
+			{
+				"name": "docker",
+				"url": "https://hub.docker.com/r/bkimminich/juice-shop/"
+			},
+			{
+				"name": "guide",
+				"url": "https://pwning.owasp-juice.shop/"
+			}
+		],
+		"author": "OWASP",
 		"notes": null
 	},
 	{
