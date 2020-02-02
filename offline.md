@@ -12,7 +12,7 @@ type: documentation
 
 ### Offline
 
-Click the triangle to the left of each entry to expand its details.
+Click the name or triangle to the left of each entry to expand its details.
 <p>
 <button id="expandButton" onclick="openAll()">Expand All +</button>
 
