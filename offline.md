@@ -9,22 +9,6 @@ type: documentation
 ---
 
 <link href="assets/vwad.css" rel="stylesheet" type="text/css">
-<script>
-  // Fetch all the details element.
-  const details = document.querySelectorAll("details");
-  
-  // Add the onclick listeners.
-  details.forEach((targetDetail) => {
-    targetDetail.addEventListener("click", () => {
-      // Close all the details that are not targetDetail.
-      details.forEach((detail) => {
-        if (detail !== targetDetail) {
-          detail.removeAttribute("open");
-        }
-      });
-    });
-  });
-</script>
 
 ### Offline
 
@@ -60,5 +44,21 @@ Click the triangle to the left of each entry to expand its details:
     {% endif %}
   </div>
 </details>
-
 {% endfor %}
+
+<script type='text/javascript'>
+  // Fetch all the details element.
+  const details = document.querySelectorAll("details");
+  
+  // Add the onclick listeners.
+  details.forEach((targetDetail) => {
+    targetDetail.addEventListener("click", () => {
+      // Close all the details that are not targetDetail.
+      details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute("open");
+        }
+      });
+    });
+  });
+</script>
