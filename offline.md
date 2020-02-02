@@ -14,7 +14,7 @@ type: documentation
 
 Click the triangle to the left of each entry to expand its details.
 <p>
-<button id="expand" onclick="openAll()">Expand All +</button>
+<button id="expandButton" onclick="openAll()">Expand All +</button>
 
 {% assign apps = site.data.offline | uniq %}
 {% for app in apps %}
@@ -51,7 +51,7 @@ Click the triangle to the left of each entry to expand its details.
 <script type='text/javascript'>
   // Fetch all the details element.
   var details = document.querySelectorAll("details");
-  
+
   // Add the onclick listeners.
   details.forEach((targetDetail) => {
     targetDetail.addEventListener("click", () => {
@@ -68,19 +68,15 @@ Click the triangle to the left of each entry to expand its details.
 <script>
   var elems = document.getElementsByTagName("details");
 
-function openAll() {
-  for (var i = 0; i <= elems.length; i++){
-    elems[i].setAttribute("open", "true");
+  function openAll() {
+    details.forEach((detail) => {detail.setAttribute("open", "true")});
+    document.getElementById("expandButton").setAttribute( "onClick", "javascript: closeAll();" );
+    document.getElementById("expandButton").innerHTML = "Collapse All -";
   }
-  document.getElementById("expand").setAttribute( "onClick", "javascript: closeAll();" );
-  document.getElementById("expand").innerHTML = "Collapse All -";
-}
 
-function closeAll() {
-  for (var i = 0; i <= elems.length; i++){
-    elems[i].removeAttribute("open");
+  function closeAll() {
+    details.forEach((detail) => {detail.removeAttribute("open")});
+    document.getElementById("expandButton").setAttribute( "onClick", "javascript: openAll();" );
+    document.getElementById("expandButton").innerHTML = "Expand All +";
   }
-  document.getElementById("expand").setAttribute( "onClick", "javascript: openAll();" );
-  document.getElementById("expand").innerHTML = "Expand All +";
-}
 </script>
