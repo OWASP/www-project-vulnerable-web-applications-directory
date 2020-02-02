@@ -48,7 +48,7 @@ Click the triangle to the left of each entry to expand its details:
 
 <script type='text/javascript'>
   // Fetch all the details element.
-  const details = document.querySelectorAll("details");
+  var details = document.querySelectorAll("details");
   
   // Add the onclick listeners.
   details.forEach((targetDetail) => {
