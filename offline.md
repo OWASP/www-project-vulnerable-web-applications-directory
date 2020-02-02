@@ -9,10 +9,20 @@ type: documentation
 ---
 
 <link href="assets/vwad.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-  $("details").click(function(event) {
-    $("details").not(this).removeAttr("open");
+  // Fetch all the details element.
+  const details = document.querySelectorAll("details");
+  
+  // Add the onclick listeners.
+  details.forEach((targetDetail) => {
+    targetDetail.addEventListener("click", () => {
+      // Close all the details that are not targetDetail.
+      details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute("open");
+        }
+      });
+    });
   });
 </script>
 
