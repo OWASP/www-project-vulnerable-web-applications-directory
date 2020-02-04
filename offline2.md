@@ -20,9 +20,12 @@ type: documentation
     <td> {{ app.name }} </td>
     <td> <a href="{{ app.url }}"> {{ app.name }} </a></td>
     <td> {{ app.author }} </td>
-    <td> {% for ref in app.references %}
-           * <a href="{{ ref.url }}">{{ ref.name }}</a> <br>
-         {% endfor %}
+    <td> {% if app.references != empty and app.references != nil %}
+           <ul> 
+             {% for ref in app.references %}
+               <li> <a href="{{ ref.url }}">{{ ref.name }}</a> </li>>
+             {% endfor %}
+           </ul>
     </td>
     <td> {% for tech in app.technology %}
            * {{ tech }} <br>
