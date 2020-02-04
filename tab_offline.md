@@ -1,16 +1,15 @@
 ---
 
 layout: col-sidebar
-title: VWAD - Offline List2
+title: VWAD - Offline List
 tags: vwad
-level: 3
+order: 2
+tab: true
 type: documentation
 
 ---
 
-<link href="assets/vwad.css" rel="stylesheet" type="text/css">
-
-### Offline2
+### Offline
 
 <table style="font-size: 16px">
   <tr><th>App. URL</th><th>Author</th><th nowrap="nowrap">Reference(s)</th><th nowrap="nowrap">Technology(ies)</th><th nowrap="nowrap">Note(s)</th></tr>
