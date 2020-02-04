@@ -1,7 +1,10 @@
 ---
 
-layout: col-sidebar
-title: VWAD - VM-ISO List
+title: vm-iso
+displaytext: VM-ISO
+layout: null
+order: 4
+tab: true
 tags: vwad
 
 ---

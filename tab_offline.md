@@ -1,7 +1,7 @@
 ---
 
 title: offline
-displaytext: VWAD - Offline List
+displaytext: Offline
 layout: null
 order: 2
 tab: true
