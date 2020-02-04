@@ -1,10 +1,11 @@
 ---
 
-title: VWAD - Offline List
+title: offline
+displaytext: VWAD - Offline List
 layout: null
-tags: vwad
 order: 2
 tab: true
+tags: vwad
 
 ---
 
