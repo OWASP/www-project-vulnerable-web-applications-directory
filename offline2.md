@@ -12,7 +12,7 @@ type: documentation
 
 ### Offline2
 
-<table style="font-size: 14px">
+<table style="font-size: 16px">
   <tr><th>App. URL</th><th>Author</th><th nowrap="nowrap">Reference(s)</th><th nowrap="nowrap">Technology(ies)</th><th nowrap="nowrap">Note(s)</th></tr>
   {% assign apps = site.data.offline | uniq %}
   {% for app in apps %}
