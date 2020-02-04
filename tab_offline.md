@@ -2,6 +2,8 @@
 
 layout: col-sidebar
 title: VWAD - Offline List
+order: 2
+tab: true
 tags: vwad
 
 ---
