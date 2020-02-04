@@ -25,6 +25,7 @@ type: documentation
                <li> <a href="{{ ref.url }}">{{ ref.name }}</a> </li>
              {% endfor %}
            </ul>
+         {% endif %}
     </td>
     <td> {% for tech in app.technology %}
            * {{ tech }} <br>
