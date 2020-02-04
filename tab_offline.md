@@ -1,8 +1,10 @@
 ---
 
-layout: col-sidebar
 title: VWAD - Offline List
+layout: null
 tags: vwad
+order: 2
+tab: true
 
 ---
 
