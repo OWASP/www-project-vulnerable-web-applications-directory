@@ -3,9 +3,6 @@
 layout: col-sidebar
 title: VWAD - Offline List
 tags: vwad
-order: 2
-tab: true
-type: documentation
 
 ---
 
