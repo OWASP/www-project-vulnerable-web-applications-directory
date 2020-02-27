@@ -16,7 +16,12 @@ tags: vwad
   {% assign apps = site.data.offline | uniq %}
   {% for app in apps %}
   <tr>
-    <td> <a href="{{ app.url }}"> {{ app.name }} </a></td>
+    <td>
+        <a href="{{ app.url }}"> {{ app.name }} </a>
+        {% if app.badge != nil %}
+            <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
+        {% endif %}
+    </td>
     <td> {{ app.author }} </td>
     <td nowrap="nowrap">
       {% if app.references != empty and app.references != nil %}

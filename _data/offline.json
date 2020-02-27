@@ -8,7 +8,8 @@
 		"references": [
 		],
 		"author": "OWASP",
-		"notes": "Original main repo: http://github.com/jerryhoff/WebGoat.NET. Others: https://github.com/rapPayne/WebGoat.Net , https://github.com/jowasp/WebGoat.NET."
+		"notes": "Original main repo: http://github.com/jerryhoff/WebGoat.NET. Others: https://github.com/rapPayne/WebGoat.Net , https://github.com/jowasp/WebGoat.NET.",
+		"badge": "jerryhoff/WebGoat.NET"
 	},
 	{
 		"url": "https://github.com/digininja/authlab",
@@ -23,7 +24,8 @@
 			}
 		],
 		"author": "digininja (Robin Wood)",
-		"notes": null
+		"notes": null,
+		"badge": "digininja/authlab"
 	},
 	{
 		"url": "http://www.badstore.net/",
@@ -52,7 +54,8 @@
 			}
 		],
 		"author": "Simon Bennetts (psiinon)",
-		"notes": null
+		"notes": null,
+		"badge": "psiinon/bodgeit"
 	},
 	{
 		"url": "http://sechow.com/bricks/index.html",
@@ -97,7 +100,8 @@
 			}
 		],
 		"author": "Rhino Security Labs",
-		"notes": null
+		"notes": null,
+		"badge": "RhinoSecurityLabs/cloudgoat"
 	},
 	{
 		"url": "https://github.com/SpiderLabs/CryptOMG",
@@ -111,7 +115,8 @@
 				"url": "http://isc.sans.edu/forums/diary/Modern+Web+Application+Penetration+Testing+Hash+Length+Extension+Attacks/22792/"
 			}
 		],
-		"author": "SpiderLabs"
+		"author": "SpiderLabs",
+		"badge": "SpiderLabs/CryptOMG"
 	},
 	{
 		"url": "https://github.com/fridaygoldsmith/bwa_cyclone_transfers",
@@ -120,7 +125,8 @@
 			"Ruby on Rails"
 		],
 		"references": [],
-		"author": null
+		"author": null,
+		"badge": "fridaygoldsmith/bwa_cyclone_transfers"
 	},
 	{
 		"url": "https://github.com/stamparm/DSVW",
@@ -130,7 +136,8 @@
 		],
 		"references": [],
 		"author": "Miroslav Stampar",
-		"notes": null
+		"notes": null,
+		"badge": "stamparm/DSVW"
 	},
 	{
 		"url": "https://github.com/LunaM00n/File-Upload-Lab",
@@ -140,7 +147,8 @@
 		],
 		"references": [],
 		"author": "Thin Ba Shane (@art0flunam00n)",
-		"notes": null
+		"notes": null,
+		"badge": "LunaM00n/File-Upload-Lab"
 	},
 	{
 		"url": "https://github.com/we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service",
@@ -156,7 +164,8 @@
 			}
 		],
 		"author": "we45 (Abhay Bhargav)",
-		"notes": null
+		"notes": null,
+		"badge": "we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service"
 	},
 	{
 		"url": "https://github.com/isp1r0/DVNA",
@@ -166,7 +175,8 @@
 		],
 		"references": [],
 		"author": "Claudio Lacayo",
-		"notes": null
+		"notes": null,
+		"badge": "isp1r0/DVNA"
 	},
 	{
 		"url": "https://github.com/appsecco/dvna",
@@ -534,7 +544,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": "bkimminich/juice-shop"
 	},
 	{
 		"url": "http://peruggia.sourceforge.net/",
