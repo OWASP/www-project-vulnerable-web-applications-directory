@@ -6,3 +6,8 @@ env
 # -------
 *.project
 *.settings
+
+# IntelliJ
+# --------
+*.iml
+.idea/

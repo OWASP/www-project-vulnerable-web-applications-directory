@@ -35,7 +35,8 @@
 		],
 		"references": [],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/psiinon/bodgeit",
@@ -70,7 +71,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://sourceforge.net/projects/thebutterflytmp/files/ButterFly%20Project/",
@@ -85,7 +87,8 @@
 			}
 		],
 		"author": null,
-		"notes": "Last updated in 2008"
+		"notes": "Last updated in 2008",
+		"badge": null
 	},
 	{
 		"url": "https://github.com/RhinoSecurityLabs/cloudgoat",
@@ -186,7 +189,8 @@
 		],
 		"references": [],
 		"author": "@appsecco",
-		"notes": "Different project from the old DVNA"
+		"notes": "Different project from the old DVNA",
+		"badge": "appsecco/dvna"
 	},
 	{
 		"url": "https://github.com/OWASP/DVSA",
@@ -203,7 +207,8 @@
 			}
 		],
 		"author": "Protego Labs",
-		"notes": null
+		"notes": null,
+		"badge": "OWASP/DVSA"
 	},
 	{
 		"url": "https://github.com/silentsignal/damn-vulnerable-stateful-web-app",
@@ -218,7 +223,8 @@
 			}
 		],
 		"author": "dnet",
-		"notes": null
+		"notes": null,
+		"badge": "silentsignal/damn-vulnerable-stateful-web-app"
 	},
 	{
 		"url": "http://www.dvwa.co.uk/",
@@ -233,7 +239,8 @@
 			}
 		],
 		"author": "RandomStorm",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/snoopysecurity/dvws",
@@ -243,7 +250,8 @@
 		],
 		"references": [],
 		"author": "snoopysecurity",
-		"notes": null
+		"notes": null,
+		"badge": "snoopysecurity/dvws"
 	},
 	{
 		"url": "http://dvws.secureideas.net/",
@@ -258,7 +266,8 @@
 			}
 		],
 		"author": "Secure Ideas",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/interference-security/DVWS",
@@ -268,7 +277,8 @@
 		],
 		"references": [],
 		"author": "@appsecco",
-		"notes": null
+		"notes": null,
+		"badge": "interference-security/DVWS"
 	},
 	{
 		"url": "https://github.com/snsttr/diwa",
@@ -284,7 +294,8 @@
 			}
 		],
 		"author": "Tim Steufmehl",
-		"notes": "A Deliberately Insecure Web Application"
+		"notes": "A Deliberately Insecure Web Application",
+		"badge": "snsttr/diwa"
 	},
 	{
 		"url": "https://github.com/red-and-black/DjangoGoat",
@@ -295,7 +306,8 @@
 		],
 		"references": [],
 		"author": "Red and Black",
-		"notes": null
+		"notes": null,
+		"badge": "red-and-black/DjangoGoat"
 	},
 	{
 		"url": "https://github.com/vegabird/xvna",
@@ -310,7 +322,8 @@
 			}
 		],
 		"author": "vegabird",
-		"notes": null
+		"notes": null,
+		"badge": "vegabird/xvna"
 	},
 	{
 		"url": "http://google-gruyere.appspot.com/",
@@ -325,7 +338,8 @@
 			}
 		],
 		"author": "Google",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://www.owasp.org/index.php/OWASP_Hackademic_Challenges_Project",
@@ -340,7 +354,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-bank.aspx",
@@ -355,7 +370,8 @@
 			}
 		],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-bank-android.aspx",
@@ -363,7 +379,8 @@
 		"technology": [],
 		"references": [],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmebooks.aspx",
@@ -378,7 +395,8 @@
 			}
 		],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-casino.aspx",
@@ -393,7 +411,8 @@
 			}
 		],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": "null"
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmeshipping.aspx",
@@ -408,7 +427,8 @@
 			}
 		],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmetravel.aspx",
@@ -423,7 +443,8 @@
 			}
 		],
 		"author": "McAfee / Foundstone",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/omerlh/insecure-deserialisation-net-poc",
@@ -436,7 +457,8 @@
 		"references": [
 		],
 		"author": "Omer Levi Hevroni",
-		"notes": "A small webserver vulnerable to insecure deserialization"
+		"notes": "A small webserver vulnerable to insecure deserialization",
+		"badge": "omerlh/insecure-deserialisation-net-poc"
 	},
 	{
 		"url": "http://sourceforge.net/projects/lampsecurity/",
@@ -446,7 +468,8 @@
 		],
 		"references": [],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/SpiderLabs/MCIR",
@@ -456,7 +479,8 @@
 		],
 		"references": [],
 		"author": "SpiderLabs",
-		"notes": null
+		"notes": null,
+		"badge": "SpiderLabs/MCIR"
 	},
 	{
 		"url": "https://github.com/cschneider4711/Marathon",
@@ -468,7 +492,8 @@
 		"references": [
 		],
 		"author": "Christian Schneider",
-		"notes": "Vulnerable demo application"
+		"notes": "Vulnerable demo application",
+		"badge": "cschneider4711/Marathon"
 	},
 	{
 		"url": "http://www.irongeek.com/i.php?page=mutillidae/mutillidae-deliberately-vulnerable-php-owasp-top-10",
@@ -483,7 +508,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://digi.ninja/projects/nosqli_lab.php",
@@ -499,7 +525,8 @@
 			}
 		],
 		"author": "@digininja",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://www.owasp.org/index.php/OWASP_Node_js_Goat_Project",
@@ -509,7 +536,8 @@
 		],
 		"references": [],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/cr0hn/vulnerable-node",
@@ -519,7 +547,8 @@
 		],
 		"references": [],
 		"author": "cr0hn",
-		"notes": null
+		"notes": null,
+		"badge": "cr0hn/vulnerable-node"
 	},
 	{
 		"url": "https://owasp-juice.shop",
@@ -560,7 +589,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://devslop.co/Home/Pixi",
@@ -576,7 +606,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": "DevSlop/Pixi"
 	},
 	{
 		"url": "https://code.google.com/p/puzzlemall/",
@@ -591,7 +622,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://www.owasp.org/index.php/OWASP_Rails_Goat_Project",
@@ -610,7 +642,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": "OWASP/railsgoat"
 	},
 	{
 		"url": "https://github.com/sqlmapproject/testenv",
@@ -620,7 +653,8 @@
 		],
 		"references": [],
 		"author": null,
-		"notes": "SQLmap Project"
+		"notes": "SQLmap Project",
+		"badge": "sqlmapproject/testenv"
 	},
 	{
 		"url": "https://github.com/Audi-1/sqli-labs",
@@ -639,7 +673,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": "Audi-1/sqli-labs"
 	},
 	{
 		"url": "https://github.com/SpiderLabs/SQLol",
@@ -654,7 +689,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": "SpiderLabs/SQLol"
 	},
 	{
 		"url": "http://suif.stanford.edu/%7Elivshits/securibench/",
@@ -664,7 +700,8 @@
 		],
 		"references": [],
 		"author": "Stanford",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://suif.stanford.edu/%7Elivshits/work/securibench-micro/",
@@ -679,7 +716,8 @@
 			}
 		],
 		"author": "Stanford",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://www.owasp.org/index.php/OWASP_Security_Shepherd",
@@ -694,7 +732,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/dhatanian/ticketmagpie",
@@ -709,7 +748,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": "dhatanian/ticketmagpie"
 	},
 	{
 		"url": "https://github.com/payatu/Tiredful-API",
@@ -725,7 +765,8 @@
 			}
 		],
 		"author": "@payatu",
-		"notes": null
+		"notes": null,
+		"badge": "payatu/Tiredful-API"
 	},
 	{
 		"url": "http://www.nth-dimension.org.uk/blog.php?id=88",
@@ -744,7 +785,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/CSPF-Founder/JavaVulnerableLab/",
@@ -754,7 +796,8 @@
 		],
 		"references": [],
 		"author": "Cyber Security and Privacy Foundation",
-		"notes": null
+		"notes": null,
+		"badge": "CSPF-Founder/JavaVulnerableLab"
 	},
 	{
 		"url": "https://github.com/mddanish/Vulnerable-OTP-Application",
@@ -765,7 +808,8 @@
 		],
 		"references": [],
 		"author": "mddanish",
-		"notes": null
+		"notes": null,
+		"badge": "mddanish/Vulnerable-OTP-Application"
 	},
 	{
 		"url": "https://github.com/yogisec/VulnerableSAMLApp",
@@ -775,7 +819,8 @@
 		],
 		"references": [],
 		"author": "yogisec",
-		"notes": null
+		"notes": null,
+		"badge": "yogisec/VulnerableSAMLApp"
 	},
 	{
 		"url": "http://exploit.co.il/hacking/exploit-kb-vulnerable-web-app/",
@@ -783,7 +828,8 @@
 		"technology": [],
 		"references": [],
 		"author": "Exploit.co.il",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/sectooladdict/wavsep",
@@ -806,7 +852,8 @@
 			}
 		],
 		"author": "Shay Chen",
-		"notes": null
+		"notes": null,
+		"badge": "sectooladdict/wavsep"
 	},
 	{
 		"url": "https://code.google.com/p/wivet/",
@@ -823,7 +870,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://github.com/adamdoupe/WackoPicko",
@@ -842,7 +890,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": "adamdoupe/WackoPicko"
 	},
 	{
 		"url": "https://www.owasp.org/index.php/Category:OWASP_WebGoat_Project",
@@ -861,7 +910,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "https://www.owasp.org/index.php/WebGoatPHP",
@@ -880,7 +930,8 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null
+		"notes": null,
+		"badge": "OWASP/OWASPWebGoatPHP"
 	},
 	{
 		"url": "https://github.com/s4n7h0/xvwa",
@@ -896,7 +947,8 @@
 			}
 		],
 		"author": "@s4n7h0, @samanL33T",
-		"notes": null
+		"notes": null,
+		"badge": "s4n7h0/xvwa"
 	},
 	{
 		"url": "http://www.itsecgames.com/",
@@ -911,7 +963,8 @@
 			}
 		],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": null
 	},
 	{
 		"url": "http://hackxor.sourceforge.net/cgi-bin/index.pl",
@@ -919,7 +972,8 @@
 		"technology": [],
 		"references": [],
 		"author": null,
-		"notes": "First 2 levels online, rest offline"
+		"notes": "First 2 levels online, rest offline",
+		"badge": null
 	},
 	{
 		"url": "https://github.com/playframework/play-webgoat",
@@ -931,7 +985,8 @@
 		],
 		"references": [],
 		"author": null,
-		"notes": null
+		"notes": null,
+		"badge": "playframework/play-webgoat"
 	},
 	{
 		"url": "https://github.com/sakti/twitterlike",
@@ -945,7 +1000,8 @@
 				"url": "http://github.com/sakti/twitterlike"
 			}
 		],
-		"author": "Sakti Dwi Cahyono"
+		"author": "Sakti Dwi Cahyono",
+		"badge": "sakti/twitterlike"
 	},
 	{
 		"url": "https://github.com/mattvaldes/vulnerable-api",
@@ -960,6 +1016,7 @@
 			}
 		],
 		"author": "Matthew Valdes",
-		"notes": null
+		"notes": null,
+		"badge": "mattvaldes/vulnerable-api"
 	}
 ]
