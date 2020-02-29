@@ -2,7 +2,7 @@
 
 title: offline
 displaytext: Offline
-layout: null
+layout: full-width
 tags: vwad
 
 ---
