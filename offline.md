@@ -9,4 +9,4 @@ tags: vwad
 
 ### Offline
 
-{% include collection_table.html data="site.data.offline" %}
+{% include collection_table.html collection="site.data.offline" %}
