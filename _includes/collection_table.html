@@ -1,7 +1,6 @@
-Collection? {{include.collection}}
+{% assign apps = site.data[include.collection] | uniq %}
 
 <table style="font-size: 16px">
-  {% assign apps = site.data[include.collection] | uniq %}
   <tr>
     <th>App. URL</th>
     <th>Author</th>
@@ -14,13 +13,13 @@ Collection? {{include.collection}}
     <td>
         <a href="{{ app.url }}"> {{ app.name }} </a>
         {% if app.badge != nil %}
-            <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
+            <br><img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
         {% endif %}
     </td>
     <td>
         {{ app.author }}
         {% if app.badge != nil %}
-            <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
+            <br><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
     <td nowrap="nowrap">
@@ -44,7 +43,7 @@ Collection? {{include.collection}}
     <td>
         {{ app.notes }}
         {% if app.badge != nil %}
-            <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
+            <br><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
         {% endif %}
     </td>
   </tr>
