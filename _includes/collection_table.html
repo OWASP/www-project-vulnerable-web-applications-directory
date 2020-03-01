@@ -1,7 +1,7 @@
 Collection? {{include.collection}}
 
 <table style="font-size: 16px">
-  {% assign apps = site.data.{{include.collection}} | uniq %}
+  {% assign apps = site.data[include.collection] | uniq %}
   <tr>
     <th>App. URL</th>
     <th>Author</th>
