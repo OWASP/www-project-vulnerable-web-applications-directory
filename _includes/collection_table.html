@@ -11,15 +11,15 @@
   {% for app in apps %}
   <tr>
     <td>
-        <a href="{{ app.url }}"> {{ app.name }} </a>
+        <a href="{{ app.url }}">{{ app.name }}</a><br>
         {% if app.badge != nil %}
-            <br><img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
+            <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
         {% endif %}
     </td>
     <td>
-        {{ app.author }}
+        {{ app.author }}<br>
         {% if app.badge != nil %}
-            <br><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
+            <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
     <td nowrap="nowrap">
@@ -41,9 +41,9 @@
       {% endif %}
     </td>
     <td>
-        {{ app.notes }}
+        {{ app.notes }}<br>
         {% if app.badge != nil %}
-            <br><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
+            <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
         {% endif %}
     </td>
   </tr>
