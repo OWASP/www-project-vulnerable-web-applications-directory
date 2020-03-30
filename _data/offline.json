@@ -1030,7 +1030,7 @@
 	},
 	{
 		"url": "https://github.com/SasanLabs/VulnerableApp",
-		"name": "VulnerableAppi",
+		"name": "Owasp VulnerableApp",
 		"technology": [
 			"Java"
 		],
