@@ -12,18 +12,18 @@
   <tr>
     <td>
         <a href="{{ app.url }}">{{ app.name }}</a><br>
-        {% if app.badge != nil %}
+        {% if app.badge %}
             <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
         {% endif %}
     </td>
     <td>
         {{ app.author }}<br>
-        {% if app.badge != nil %}
+        {% if app.badge %}
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
     <td nowrap="nowrap">
-      {% if app.references != empty and app.references != nil %}
+      {% if app.references %}
         <ul> 
           {% for ref in app.references %}
             <li> <a href="{{ ref.url }}">{{ ref.name | capitalize }}</a> </li>
@@ -32,7 +32,7 @@
       {% endif %}
     </td>
     <td nowrap="nowrap"> 
-      {% if app.technology != empty and app.technology != nil %}
+      {% if app.technology %}
         <ul>
           {% for tech in app.technology %}
             <li> {{ tech }} </li>
@@ -42,7 +42,7 @@
     </td>
     <td>
         {{ app.notes }}<br>
-        {% if app.badge != nil %}
+        {% if app.badge %}
             <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
         {% endif %}
     </td>
