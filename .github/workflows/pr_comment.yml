@@ -1,0 +1,23 @@
+name: PR Comment
+
+on:
+  pull_request:
+    paths:
+    - '**.json'
+
+jobs:
+  PR-Comment:
+    if: github.actor != 'kingthorin' && github.actor != 'vwadbot' && github.actor != 'psiinon' && github.actor != 'raulsiles'  
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR Comment
+      uses: actions/github-script@v2
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.issues.createComment({
+            issue_number: ${{ github.event.number }},
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: ':warning: PRs adding apps should generally be made against the source repo `OWASP/OWASP-VWAD`.'
+          })
