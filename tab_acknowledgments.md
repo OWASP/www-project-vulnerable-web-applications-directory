@@ -8,10 +8,6 @@ tags: vwad
 
 ---
 
-## Presentation(s)
-
-* [Interview with Simon Bennetts – The OWASP Web Applications Vulnerability Project](https://soundcloud.com/trustedsoftwarealliance/simon-bennetts-web)
-
 ## On-line Resources Used
 
 * [Web Applications Without Going To Jail](http://blog.taddong.com/2011/10/hacking-vulnerable-web-applications.html Hacking Vulnerable)
