@@ -3,7 +3,7 @@
 layout: col-sidebar
 title: OWASP Vulnerable Web Applications Directory
 tags: vwad
-level: 2
+level: 3
 type: documentation
 pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable web applications currently available for legal security and vulnerability testing of various kinds.
 ---
