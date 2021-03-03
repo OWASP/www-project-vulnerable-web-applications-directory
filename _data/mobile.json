@@ -1,18 +1,18 @@
 [
 	{
-		"url": "https://www.example.org",
-		"name": "Example",
+		"url": "https://github.com/satishpatnayak/AndroGoat",
+		"name": "AndroGoat",
 		"technology": [
 			"SomeTech"
 		],
 		"references": [
 			{
 				"name": "download",
-				"url": "https://example.com/org/project/"
+				"url": "https://github.com/satishpatnayak/MyTest/blob/master/AndroGoat.apk"
 			}
 		],
-		"author": "Someone",
+		"author": "satishpatnayak",
 		"notes": null,
-		"badge": null
+		"badge": "satishpatnayak/AndroGoat"
 	}
 ]
