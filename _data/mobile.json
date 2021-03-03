@@ -1,0 +1,18 @@
+[
+	{
+		"url": "https://www.example.org",
+		"name": "Example",
+		"technology": [
+			"SomeTech"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://example.com/org/project/"
+			}
+		],
+		"author": "Someone",
+		"notes": null,
+		"badge": null
+	}
+]
