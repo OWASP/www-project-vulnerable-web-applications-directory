@@ -1,0 +1,15 @@
+name: Trigger Rebuild
+
+on:
+  schedule:
+  # 0:01 or 12:01 
+  - cron: "1 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    name: Rebuild
+    runs-on: ubuntu-latest
+    steps:
+    - name: DoRebuild
+      run: curl -u vwadbot:${{secrets.VWAD_REBUILD}} -X POST https://api.github.com/repos/OWASP/www-project-vulnerable-web-applications-directory/pages/builds
