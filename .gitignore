@@ -1,6 +1,7 @@
 __pycache__
 env
 .vscode
+Gemfile.lock
 
 # Eclipse
 # -------
