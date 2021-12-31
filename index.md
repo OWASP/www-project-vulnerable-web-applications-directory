@@ -14,11 +14,11 @@ pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a compr
 
 ## VWAD
 
-The OWASP Vulnerable Web Applications Directory (VWAD) Project is a comprehensive and well maintained registry of all known vulnerable web applications currently available. These vulnerable web applications can be used by web developers, security auditors and penetration testers to put in practice their knowledge and skills during training sessions (and especially afterwards), as well as to test at any time the multiple hacking tools and offensive techniques available, in preparation for their next real-world engagement.
+The OWASP Vulnerable Web Applications Directory (VWAD) Project is a comprehensive and well maintained registry of known vulnerable web and mobile applications currently available. These vulnerable web applications can be used by web developers, security auditors, and penetration testers to practice their knowledge and skills during training sessions (and especially afterwards), as well as to test at any time the multiple hacking tools and offensive techniques available, in preparation for their next real-world engagement.
 
-The main goal of VWAD is to provide a list of vulnerable web applications available to security professionals for hacking and offensive activities, so that they can attack realistic web environments... without going to jail :)
+The main goal of VWAD is to provide a list of vulnerable applications available to security professionals for hacking, offensive and defensive activities, so that they can manipulate realistic web environments... without going to jail :)
 
-The vulnerable web applications have been classified in three categories: Online, Offline, and VMs/ISOs. Each list has been ordered alphabetically.
+The vulnerable web applications have been classified in four categories: Online, Offline, Mobile, and VMs/ISOs. Each list has been ordered alphabetically.
 
 An initial list that inspired this project was maintained till October 2013 [here](http://blog.taddong.com/2011/10/hacking-vulnerable-web-applications.html).
 
