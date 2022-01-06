@@ -1,4 +1,11 @@
-{% assign apps = site.data[include.collection] | uniq | sort: "name" %}
+{% if include.collection == "aotd" %}
+  {% assign allapps = site.data["mobile"] | concat: site.data["offline"] | concat: site.data["online"] | concat: site.data["vm-iso"] | uniq | sort: "name" %}
+  {% assign random = site.time | date: "%s%N" | modulo: allapps.size %}
+  {% assign apps = "" | split: ',' %}
+  {% assign apps = apps | push: allapps[random] %}
+{% else %}
+  {% assign apps = site.data[include.collection] | uniq | sort: "name" %}
+{% endif %}
 
 <table style="font-size: 16px">
   <tr>
