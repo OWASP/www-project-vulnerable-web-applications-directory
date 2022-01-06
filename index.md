@@ -10,7 +10,7 @@ pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a compr
 
 ## Random App of the Day
 
-{% include aotd.html %}
+{% include collection_table.html collection="aotd" %}
 
 ## VWAD
 
