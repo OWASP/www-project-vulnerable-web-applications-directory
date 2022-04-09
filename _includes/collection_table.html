@@ -7,6 +7,9 @@
   {% assign apps = site.data["collection"] | where_exp:"app",
 "app.collection contains include.collection" | uniq | sort: "name" %}
 {% endif %}
+<style>
+    ul { padding: 5px; }
+</style>
 
 <table style="font-size: 16px">
   <tr>
