@@ -16,7 +16,7 @@ pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a compr
 
 The OWASP Vulnerable Web Applications Directory (VWAD) Project is a comprehensive and well maintained registry of known vulnerable web and mobile applications currently available. These vulnerable web applications can be used by web developers, security auditors, and penetration testers to practice their knowledge and skills during training sessions (and especially afterwards), as well as to test at any time the multiple hacking tools and offensive techniques available, in preparation for their next real-world engagement.
 
-The main goal of VWAD is to provide a list of vulnerable applications available to security professionals for hacking, offensive and defensive activities, so that they can manipulate realistic web environments... without going to jail :)
+The main goal of VWAD is to provide a list of vulnerable applications available to security professionals for hacking, offensive and defensive activities, so that they can manipulate realistic web environments... without going to jail :grinning:
 
 The vulnerable web applications have been classified in four categories: Online, Offline, Mobile, and VMs/ISOs. Each list has been ordered alphabetically.
 
