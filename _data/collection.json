@@ -2839,7 +2839,7 @@
 		"url": "https://yrprey.com",
 		"name": "Yrprey",
 		"collection": ["offline"],
-		"technology": ["PHP", "TypeScript", "NextJs"],
+		"technology": ["PHP", "TypeScript", "NextJs", "Docker"],
 		"references": [
 		  {
 			"name": "Backend",
