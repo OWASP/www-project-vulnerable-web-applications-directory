@@ -9,6 +9,9 @@
 {% endif %}
 <style>
     ul { padding: 5px; }
+    td { word-wrap: break-word; }
+    .refnote { font-size: smaller; }
+}
 </style>
 
 <table style="font-size: 16px">
@@ -33,11 +36,14 @@
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
-    <td nowrap="nowrap">
+    <td>
       {% if app.references %}
         <ul> 
           {% for ref in app.references %}
-            <li> <a href="{{ ref.url }}">{{ ref.name | capitalize }}</a> </li>
+            <li> <a href="{{ ref.url }}">{{ ref.name | capitalize }} - {{ref.summary}}</a> </li>
+            {% if ref.note %}
+                <span class="refnote">{{ ref.note }}</span>
+            {% endif %}
           {% endfor %}
         </ul>
       {% endif %}
