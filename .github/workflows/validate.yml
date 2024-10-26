@@ -3,7 +3,7 @@ name: Validate JSONs
 on: 
   pull_request_target:
     paths:
-    - '/_data/collection.json'
+    - '_data/collection.json'
   workflow_dispatch:
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
          npm install -g ajv-cli
     - name: Run schema check
       run: |
-        ajv validate -s schema.json -d /_data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
+        ajv validate -s schema.json -d _data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
     - name: Show Validation Issues
       if: failure()
       run: cat log.txt
