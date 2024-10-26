@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   schema-check:
@@ -19,6 +18,10 @@ jobs:
       with:
         ref: ${{github.event.pull_request.head.ref}}
         repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Save PR number
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+      run: echo $PR_NUMBER > pr_number
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
@@ -39,18 +42,17 @@ jobs:
       with:
         name: JSONValidationLog
         path: log.txt
-    - name: Comment Validation Issues
+    - name: Create artifact for comment
       if: failure()
-      uses: actions/github-script@v7
+      run: |
+        echo "**The following issues were identified:**" > artifact.txt
+        # Copy to generic name for commenting
+        cat log.txt | tee -a artifact.txt
+    - name: Upload list of issues
+      if: failure()
+      uses: actions/upload-artifact@v4
       with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          const fs = require("fs");
-          const logPath = `${process.env.GITHUB_WORKSPACE}/log.txt`;
-          const logString = fs.readFileSync(logPath).toString().trimEnd();
-          github.issues.createComment({
-            issue_number: ${{ github.event.number }},
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `**The following issues were identified:**\n\n<details><summary>Summary</summary>\n\n\`\`\`\n${logString}\n\`\`\`\n\n</details>`
-          })
+        name: artifact
+        path: |
+          artifact.txt
+          pr_number
