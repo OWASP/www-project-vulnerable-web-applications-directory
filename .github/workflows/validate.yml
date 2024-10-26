@@ -1,0 +1,56 @@
+name: Validate JSONs
+
+on: 
+  pull_request_target:
+    paths:
+    - '/_data/collection.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  schema-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - name: Install dependencies
+      run: |
+         npm install -g ajv-formats
+         npm install -g ajv-cli
+    - name: Run schema check
+      run: |
+        ajv validate -s schema.json -d src/data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
+    - name: Show Validation Issues
+      if: failure()
+      run: cat log.txt
+    - name: Attach Log
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: JSONValidationLog
+        path: log.txt
+    - name: Comment Validation Issues
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const fs = require("fs");
+          const logPath = `${process.env.GITHUB_WORKSPACE}/log.txt`;
+          const logString = fs.readFileSync(logPath).toString().trimEnd();
+          github.issues.createComment({
+            issue_number: ${{ github.event.number }},
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `**The following issues were identified:**\n\n<details><summary>Summary</summary>\n\n\`\`\`\n${logString}\n\`\`\`\n\n</details>`
+          })
