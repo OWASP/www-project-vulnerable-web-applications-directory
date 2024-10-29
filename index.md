@@ -24,6 +24,4 @@ An initial list that inspired this project was maintained till October 2013 [her
 
 A brief description of the OWASP VWAD project is available [here](http://blog.dinosec.com/2013/11/owasp-vulnerable-web-applications.html).
 
-The associated GitHub repository is available [here](https://github.com/OWASP/OWASP-VWAD). 
-
 [Open Hub Stats](https://www.openhub.net/p/OWASP-VWAD)
