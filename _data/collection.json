@@ -3080,6 +3080,34 @@
 		"badge": "roottusk/vapi"
 	},
 	{
+		"url": "https://github.com/SirAppSec/vuln-node.js-express.js-app",
+		"name": "vuln-node.js-express.js-app",
+		"author": "SirAppSec",
+		"badge": "SirAppSec/vuln-node.js-express.js-app",
+		"collection": [
+			"container",
+			"offline"
+		],
+		"notes": "A Very Vulnerable Node.js Express.js Web Application and API. Used for testing Security tools, Application security and penetration testing. Using Swagger, Sqlite, Sequelize. ",
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/SirAppSec/vuln-node.js-express.js-app"
+			},
+			{
+				"name": "docker",
+				"url": "https://hub.docker.com/r/sirappsec/nodejs-vulnerable-app"
+			}
+		],
+		"technology": [
+			"Node.js",
+			"Express.js",
+			"swagger",
+			"sqlite",
+			"sequelize"
+		]
+	},
+	{
 		"url": "https://github.com/mattvaldes/vulnerable-api",
 		"name": "vulnerable-api",
 		"collection": [
