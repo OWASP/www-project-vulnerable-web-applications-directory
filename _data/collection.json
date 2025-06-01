@@ -2399,6 +2399,31 @@
 		"badge": null
 	},
 	{
+		"author": "Al-Amir Badmus",
+		"badge": null,
+		"collection": [
+			"offline",
+			"container",
+			"mobile"
+		],
+		"name": "Vuln-Bank",
+		"notes": "A deliberately vulnerable banking application designed for practicing secure code reviews and API security testing. Features common vulnerabilities found in real-world applications, making it an ideal platform for security professionals, developers, and enthusiasts to learn security testing and secure coding practices in a safe environment.",
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/Commando-X/vuln-bank"
+			}
+		],
+		"technology": [
+			"Python",
+			"JavaScript",
+			"Postgres",
+			"Docker",
+			"HTML/CSS"
+		],
+		"url": "https://github.com/Commando-X/vuln-bank"
+	},
+	{
 		"url": "https://github.com/Yavuzlar/VulnLab",
 		"name": "VulnLab",
 		"collection": [
@@ -2902,6 +2927,40 @@
 		],
 		"author": "Micro Focus Fortify (was HP/SpiDynamics)",
 		"notes": "(username/password)",
+		"badge": null
+	},
+	{
+		"collection": [
+			"offline",
+			"container"
+		],
+		"name": "Zero Health",
+		"url": "https://github.com/aligorithm/Zero-Health",
+		"notes": "Zero trust. Zero security. Total exposure. A deliberately vulnerable health tech platform with AI Chatbot for learning about application security and ethical hacking. It contains vulnerabilities from OWASP top 10 Web, API and AI/LLM Security Vulnerabilities. Highly vulnerable, never use in production.",
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/aligorithm/Zero-Health"
+			},
+			{
+				"name": "guide",
+				"url": "https://zerohealth.aliyu.dev"
+			},
+			{
+				"name": "demo",
+				"url": "https://youtu.be/h3jm83jw33Q"
+			}
+		],
+		"technology": [
+			"React",
+			"NodeJS",
+			"JavaScript",
+			"Postgres",
+			"Docker",
+			"Ollama",
+			"Swagger/OpenAPI"
+		],
+		"author": "Aliyu G. Yisa",
 		"badge": null
 	},
 	{
