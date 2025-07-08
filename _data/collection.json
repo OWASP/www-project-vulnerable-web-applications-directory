@@ -2402,13 +2402,17 @@
 		"author": "Al-Amir Badmus",
 		"badge": null,
 		"collection": [
-			"offline",
+			"online",
 			"container",
 			"mobile"
 		],
 		"name": "Vuln-Bank",
-		"notes": "A deliberately vulnerable banking application designed for practicing secure code reviews and API security testing. Features common vulnerabilities found in real-world applications, making it an ideal platform for security professionals, developers, and enthusiasts to learn security testing and secure coding practices in a safe environment.",
+		"notes": "A deliberately vulnerable banking application designed for practicing Security Testing of Web App, APIs, AI integrated App and secure code reviews. Features common vulnerabilities found in real-world applications, making it an ideal platform for security professionals, developers, and enthusiasts to learn security testing and secure coding practices in a safe environment.",
 		"references": [
+			{
+				"name": "live",
+				"url": "https://vulnbank.org"
+			},
 			{
 				"name": "download",
 				"url": "https://github.com/Commando-X/vuln-bank"
@@ -2419,7 +2423,8 @@
 			"JavaScript",
 			"Postgres",
 			"Docker",
-			"HTML/CSS"
+			"HTML/CSS",
+			"AI/LLM"
 		],
 		"url": "https://github.com/Commando-X/vuln-bank"
 	},
