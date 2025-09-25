@@ -28,7 +28,8 @@ repositories:
     description: ':warning: This repo is no longer in use. Please refer to https://github.com/OWASP/www-project-vulnerable-web-applications-directory'
 tags:
   - vwad
-  - custom-tag-1
-  - custom-tag-2
+  - learning
+  - vulnerableapp
+  - appsec
 type: documentation
 website: https://owasp.org/www-project-vulnerable-web-applications-directory
