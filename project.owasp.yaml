@@ -1,0 +1,35 @@
+audience:
+  - breaker
+  - builder
+  - defender
+leaders:
+  - name: Rick Mitchell
+    email: rick.mitchell@owasp.org
+    github: kingthorin
+  - name: Simon Bennetts
+    email: simon.bennetts@owasp.org
+    github: psiinon
+  - name: Raul Siles
+    email: raul.siles@owasp.org
+    github: raulsiles
+level: 3
+license:
+  - Apache-2.0
+name: OWASP Vulnerable Web Applications Directory
+pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable web applications
+  currently available for legal security and vulnerability testing of various kinds.
+repositories:
+  - name: www-project-vulnerable-web-applications-directory
+    url: https://github.com/OWASP/www-project-vulnerable-web-applications-directory
+    description: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable
+      web applications currently available.
+  - name: OWASP-VWAD
+    url: https://github.com/OWASP/OWASP-VWAD
+    description: ':warning: This repo is no longer in use. Please refer to https://github.com/OWASP/www-project-vulnerable-web-applications-directory'
+tags:
+  - vwad
+  - learning
+  - vulnerableapp
+  - appsec
+type: documentation
+website: https://owasp.org/www-project-vulnerable-web-applications-directory
