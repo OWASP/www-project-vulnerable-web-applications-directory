@@ -3496,5 +3496,32 @@
 			"Bootstrap"
 		],
 		"url": "https://yrprey.com"
+	},
+	{
+		"url": "https://github.com/LBartolini/DVI",
+		"name": "Damn Vulnerable Infrastructure (DVI)",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"PHP",
+			"Java",
+			"MySQL",
+			"SCADA",
+			"Docker"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://github.com/LBartolini/DVI/blob/main/GUIDE.md"
+			},
+			{
+				"name": "download",
+				"url": "https://github.com/LBartolini/DVI"
+			}
+		],
+		"author": "Lorenzo Bartolini, Gabriele Costa",
+		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
+		"badge": "LBartolini/DVI"
 	}
 ]
