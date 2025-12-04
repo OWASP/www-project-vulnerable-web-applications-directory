@@ -802,6 +802,30 @@
 		"notes": null,
 		"badge": "red-and-black/DjangoGoat"
 	},
+		{
+		"url": "https://duck-store.escape.tech/",
+		"name": "Duck Store",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"React",
+			"FastAPI"
+		],
+		"references": [
+			{
+				"name": "Announcement",
+				"url": "https://escape.tech/blog/duck-store-vulnerable-app/"
+			},
+			{
+				"name": "Live",
+				"url": "https://duck-store.escape.tech/"
+			}
+		],
+		"author": "DonAsako",
+		"notes": "Duck Store is an intentionally vulnerable web app for training purposes on how to find classic and business logic vulns dedicated to developers, ethical hackers, and security engineers.",
+		"badge": null
+	},
 	{
 		"url": "https://github.com/k-tamura/easybuggy",
 		"name": "EasyBuggy",
