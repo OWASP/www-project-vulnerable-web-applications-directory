@@ -814,11 +814,11 @@
 		],
 		"references": [
 			{
-				"name": "Announcement",
+				"name": "announcement",
 				"url": "https://escape.tech/blog/duck-store-vulnerable-app/"
 			},
 			{
-				"name": "Live",
+				"name": "live",
 				"url": "https://duck-store.escape.tech/"
 			}
 		],
