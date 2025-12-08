@@ -3075,6 +3075,32 @@
 		"badge": "snoopysecurity/dvws-node"
 	},
 	{
+		"url": "https://github.com/rootxjs/grpc-goat",
+		"name": "gRPC Goat",
+		"collection": [
+			"container",
+			"offline"
+		],
+		"technology": [
+			"Go",
+			"gRPC",
+			"Docker"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/rootxjs/grpc-goat"
+			},
+			{
+				"name": "guide",
+				"url": "https://rootxjs.github.io/blog/grpc-goat/"
+			}
+		],
+		"author": "rootxjs",
+		"notes": "Vulnerable by Design lab for learning and practicing gRPC security.",
+		"badge": "rootxjs/grpc-goat"
+	},
+	{
 		"url": "https://github.com/omerlh/insecure-deserialisation-net-poc",
 		"name": "insecure-deserialisation-net-poc",
 		"collection": [
