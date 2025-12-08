@@ -851,7 +851,7 @@
 	},
 	{
 		"url": "https://github.com/OWASP/www-project-eks-goat",
-		"name": "EksGoat",
+		"name": "EKS Goat",
 		"collection": [
 			"container",
 			"offline"
