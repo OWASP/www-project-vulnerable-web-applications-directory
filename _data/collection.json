@@ -994,6 +994,31 @@
 		"badge": null
 	},
 	{
+		"url": "https://gandalf.lakera.ai/",
+		"name": "Gandalf",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"AI",
+			"LLM",
+			"Prompt Injection"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://gandalf.lakera.ai/"
+			},
+			{
+				"name": "announcement",
+				"url": "https://www.lakera.ai/blog/who-is-gandalf"
+			}
+		],
+		"author": "Lakera",
+		"notes": "A game designed to challenge your ability to interact with large language models (LLMs) and test prompt injection skills. Your goal is to trick Gandalf into revealing the secret password.",
+		"badge": null
+	},
+	{
 		"url": "https://github.com/InsiderPhD/Generic-University",
 		"name": "Generic-University",
 		"collection": [
