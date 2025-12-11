@@ -2114,6 +2114,23 @@
 		"badge": "OWASP/railsgoat"
 	},
 	{
+		"url": "https://www.root-me.org",
+		"name": "Root Me",
+		"collection": [
+			"online"
+		],
+		"technology": [],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://www.root-me.org"
+			}
+		],
+		"author": "Root-Me",
+		"notes": "Root-Me is a non-profit organization aimed at providing an outstanding learning platform for ethical hacking. It offers hundreds of challenges and virtual environments.",
+		"badge": null
+	},
+	{
 		"url": "https://github.com/sqlmapproject/testenv",
 		"name": "SQL injection test environment",
 		"collection": [
