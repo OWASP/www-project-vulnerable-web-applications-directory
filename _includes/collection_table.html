@@ -25,14 +25,39 @@
         max-height: 80vh !important;
         overflow-x: auto !important;
         overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
         box-sizing: border-box !important;
+
+        overscroll-behavior-x: contain !important;
+        overscroll-behavior-y: contain !important;
+        scrollbar-gutter: stable both-edges !important;
+
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Default: never show outlines (mouse users won’t see a ring) */
+    .collection-table-wrapper:focus,
+    .collection-table-wrapper:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Keyboard-nav mode: show a subtle focus indicator (accessible + not obnoxious) */
+    html.kbd-nav .collection-table-wrapper:focus {
+        outline: 2px solid rgba(0, 0, 0, 0.22) !important;
+        outline-offset: 2px !important;
+        border-radius: 6px !important;
+    }
+
+    .collection-table-wrapper.is-dragging {
+        cursor: grabbing !important;
+        user-select: none !important;
     }
 
     .collection-table-wrapper table {
-        min-width: 700px !important;
-        width: 700px !important;
+        width: 100% !important;
+        min-width: 850px !important; /* 200 + 150 + 150 + 150 + 200 */
         table-layout: fixed !important;
+        border-collapse: collapse !important;
     }
 
     .collection-table-wrapper th {
@@ -48,6 +73,7 @@
     .collection-table-wrapper td {
         white-space: nowrap !important;
         padding: 8px !important;
+        vertical-align: top !important;
     }
 
     .collection-table-wrapper td:last-child {
@@ -125,14 +151,14 @@
     }
 </style>
 
-<div class="collection-table-wrapper">
+<div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart">
 <table style="font-size: 16px">
   <tr>
     <th>App. URL</th>
     <th>Author</th>
-    <th >Reference(s)</th>
-    <th >Technology(ies)</th>
-    <th >Note(s)</th>
+    <th>Reference(s)</th>
+    <th>Technology(ies)</th>
+    <th>Note(s)</th>
   </tr>
   {% for app in apps %}
   <tr>
@@ -148,20 +174,20 @@
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
-    <td >
+    <td>
       {% if app.references %}
-        <ul> 
+        <ul>
           {% for ref in app.references %}
-            <li> <a href="{{ ref.url }}">{{ ref.name | capitalize }}</a> </li>
+            <li><a href="{{ ref.url }}">{{ ref.name | capitalize }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
     </td>
-    <td > 
+    <td>
       {% if app.technology %}
         <ul>
           {% for tech in app.technology %}
-            <li> {{ tech }} </li>
+            <li>{{ tech }}</li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -176,3 +202,186 @@
   {% endfor %}
 </table>
 </div>
+
+<script>
+(() => {
+  const WRAPPER_SELECTOR = '.collection-table-wrapper';
+  const INTERACTIVE_SELECTOR = 'a, button, input, textarea, select, label, summary, details, [role="button"]';
+
+  function isInteractiveTarget(target) {
+    return !!(target && target.closest && target.closest(INTERACTIVE_SELECTOR));
+  }
+
+  function setKeyboardNavMode(on) {
+    const root = document.documentElement;
+    if (on) root.classList.add('kbd-nav');
+    else root.classList.remove('kbd-nav');
+  }
+
+  function initInputModalityTracker() {
+    if (document.documentElement.dataset.kbdNavInit === '1') return;
+    document.documentElement.dataset.kbdNavInit = '1';
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') setKeyboardNavMode(true);
+    }, true);
+
+    window.addEventListener('pointerdown', () => {
+      setKeyboardNavMode(false);
+    }, true);
+  }
+
+  function initWrapper(wrap) {
+    if (wrap.dataset.hscrollInit === '1') return;
+    wrap.dataset.hscrollInit = '1';
+
+    if (!wrap.hasAttribute('tabindex')) wrap.setAttribute('tabindex', '0');
+
+    wrap.addEventListener('wheel', (e) => {
+      const hasX = wrap.scrollWidth > wrap.clientWidth + 1;
+      const hasY = wrap.scrollHeight > wrap.clientHeight + 1;
+      if (!hasX && !hasY) return;
+
+      const absX = Math.abs(e.deltaX);
+      const absY = Math.abs(e.deltaY);
+      const mode = (wrap.getAttribute('data-wheel-mode') || 'smart').toLowerCase();
+
+      if (hasX && absX > absY && absX > 0) {
+        e.preventDefault();
+        wrap.scrollLeft += e.deltaX;
+        return;
+      }
+
+      if (hasX && e.shiftKey && absY > 0) {
+        e.preventDefault();
+        wrap.scrollLeft += e.deltaY;
+        return;
+      }
+
+      if (hasX && absY > 0) {
+        if (mode === 'always') {
+          e.preventDefault();
+          wrap.scrollLeft += e.deltaY;
+          return;
+        }
+
+        if (mode === 'edge') {
+          const atTop = wrap.scrollTop <= 0;
+          const atBottom = wrap.scrollTop + wrap.clientHeight >= wrap.scrollHeight - 1;
+          if (!hasY || atTop || atBottom) {
+            e.preventDefault();
+            wrap.scrollLeft += e.deltaY;
+            return;
+          }
+        }
+      }
+    }, { passive: false });
+
+    wrap.addEventListener('keydown', (e) => {
+      const hasX = wrap.scrollWidth > wrap.clientWidth + 1;
+      const hasY = wrap.scrollHeight > wrap.clientHeight + 1;
+      if (!hasX && !hasY) return;
+
+      const line = 40;
+      const pageX = Math.max(120, Math.floor(wrap.clientWidth * 0.9));
+      const pageY = Math.max(120, Math.floor(wrap.clientHeight * 0.9));
+
+      switch (e.key) {
+        case 'ArrowLeft':
+          if (!hasX) return;
+          e.preventDefault();
+          wrap.scrollLeft -= line;
+          break;
+        case 'ArrowRight':
+          if (!hasX) return;
+          e.preventDefault();
+          wrap.scrollLeft += line;
+          break;
+        case 'Home':
+          if (!hasX) return;
+          e.preventDefault();
+          wrap.scrollLeft = 0;
+          break;
+        case 'End':
+          if (!hasX) return;
+          e.preventDefault();
+          wrap.scrollLeft = wrap.scrollWidth;
+          break;
+        case 'PageUp':
+          e.preventDefault();
+          if (hasX && e.shiftKey) wrap.scrollLeft -= pageX;
+          else if (hasY) wrap.scrollTop -= pageY;
+          break;
+        case 'PageDown':
+          e.preventDefault();
+          if (hasX && e.shiftKey) wrap.scrollLeft += pageX;
+          else if (hasY) wrap.scrollTop += pageY;
+          break;
+        default:
+          break;
+      }
+    });
+
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    let pointerId = null;
+
+    wrap.addEventListener('pointerdown', (e) => {
+      if (!isInteractiveTarget(e.target) && e.button === 0) {
+        try { wrap.focus({ preventScroll: true }); } catch { wrap.focus(); }
+      }
+
+      if (isInteractiveTarget(e.target)) return;
+
+      const isMiddle = e.button === 1;
+      const isAltLeft = e.button === 0 && e.altKey;
+
+      if (!isMiddle && !isAltLeft) return;
+
+      isPanning = true;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      startLeft = wrap.scrollLeft;
+      startTop = wrap.scrollTop;
+
+      wrap.classList.add('is-dragging');
+      wrap.setPointerCapture(pointerId);
+      e.preventDefault();
+    });
+
+    wrap.addEventListener('pointermove', (e) => {
+      if (!isPanning || e.pointerId !== pointerId) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      wrap.scrollLeft = startLeft - dx;
+      wrap.scrollTop = startTop - dy;
+    });
+
+    function endPan() {
+      if (!isPanning) return;
+      isPanning = false;
+      pointerId = null;
+      wrap.classList.remove('is-dragging');
+    }
+
+    wrap.addEventListener('pointerup', endPan);
+    wrap.addEventListener('pointercancel', endPan);
+    wrap.addEventListener('lostpointercapture', endPan);
+  }
+
+  function initAll() {
+    initInputModalityTracker();
+    document.querySelectorAll(WRAPPER_SELECTOR).forEach(initWrapper);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll, { once: true });
+  } else {
+    initAll();
+  }
+})();
+</script>
