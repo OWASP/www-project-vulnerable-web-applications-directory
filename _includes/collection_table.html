@@ -9,15 +9,50 @@
 {% endif %}
 <style>
     ul { padding: 5px; }
+
+    .collection-table-wrapper {
+        display: block !important;
+        width: 100% !important;
+        max-width: 90vw !important;
+        overflow-x: scroll !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        box-sizing: border-box !important;
+    }
+
+    .collection-table-wrapper table {
+        min-width: 900px !important;
+        width: auto !important;
+        table-layout: auto !important;
+    }
+
+    .collection-table-wrapper th,
+    .collection-table-wrapper td {
+        white-space: nowrap !important;
+        padding: 8px !important;
+    }
+
+    .collection-table-wrapper td:last-child {
+        white-space: normal !important;
+    }
+
+    @media screen and (max-width: 839px) {
+        .collection-table-wrapper {
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            margin: 1em 0 !important;
+        }
+    }
 </style>
 
+<div class="collection-table-wrapper">
 <table style="font-size: 16px">
   <tr>
     <th>App. URL</th>
     <th>Author</th>
-    <th nowrap="nowrap">Reference(s)</th>
-    <th nowrap="nowrap">Technology(ies)</th>
-    <th nowrap="nowrap">Note(s)</th>
+    <th >Reference(s)</th>
+    <th >Technology(ies)</th>
+    <th >Note(s)</th>
   </tr>
   {% for app in apps %}
   <tr>
@@ -33,7 +68,7 @@
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
-    <td nowrap="nowrap">
+    <td >
       {% if app.references %}
         <ul> 
           {% for ref in app.references %}
@@ -42,7 +77,7 @@
         </ul>
       {% endif %}
     </td>
-    <td nowrap="nowrap"> 
+    <td > 
       {% if app.technology %}
         <ul>
           {% for tech in app.technology %}
@@ -60,3 +95,4 @@
   </tr>
   {% endfor %}
 </table>
+</div>
