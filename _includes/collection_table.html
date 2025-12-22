@@ -7,17 +7,17 @@
   {% assign apps = site.data["collection"] | where_exp:"app",
 "app.collection contains include.collection" | uniq | sort: "name" %}
 {% endif %}
-<style>
-    ul { padding: 5px; }
-</style>
 
-<table style="font-size: 16px">
+<link rel="stylesheet" href="{{ '/assets/css/collection_table.css' | relative_url }}">
+
+<div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart">
+<table>
   <tr>
     <th>App. URL</th>
     <th>Author</th>
-    <th nowrap="nowrap">Reference(s)</th>
-    <th nowrap="nowrap">Technology(ies)</th>
-    <th nowrap="nowrap">Note(s)</th>
+    <th>Reference(s)</th>
+    <th>Technology(ies)</th>
+    <th>Note(s)</th>
   </tr>
   {% for app in apps %}
   <tr>
@@ -33,20 +33,20 @@
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
-    <td nowrap="nowrap">
+    <td>
       {% if app.references %}
-        <ul> 
+        <ul>
           {% for ref in app.references %}
-            <li> <a href="{{ ref.url }}">{{ ref.name | capitalize }}</a> </li>
+            <li><a href="{{ ref.url }}">{{ ref.name | capitalize }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
     </td>
-    <td nowrap="nowrap"> 
+    <td>
       {% if app.technology %}
         <ul>
           {% for tech in app.technology %}
-            <li> {{ tech }} </li>
+            <li>{{ tech }}</li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -60,3 +60,6 @@
   </tr>
   {% endfor %}
 </table>
+</div>
+
+<script src="{{ '/assets/js/collection_table.js' | relative_url }}" defer></script>
