@@ -3096,7 +3096,9 @@
 		],
 		"technology": [
 			"Go",
-			"nginx"
+			"nginx",
+			"REST",
+			"Docker"
 		],
 		"references": [
 			{
@@ -3105,7 +3107,7 @@
 			}
 		],
 		"author": "OWASP",
-		"notes": null,
+		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
 		"badge": "OWASP/crAPI"
 	},
 	{
