@@ -3671,5 +3671,25 @@
 		"author": "Payatu",
 		"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
 		"badge": "payatu/diva-android"
+	},
+	{
+		"name": "InsecureBankv2",
+		"url": "https://github.com/dineshshetty/Android-InsecureBankv2",
+		"collection": [
+			"mobile"
+		],
+		"technology": [
+			"Android",
+			"Java"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/dineshshetty/Android-InsecureBankv2/releases"
+			}
+		],
+		"author": "Dinesh Shetty",
+		"notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
+		"badge": "dineshshetty/Android-InsecureBankv2"
 	}
 ]
