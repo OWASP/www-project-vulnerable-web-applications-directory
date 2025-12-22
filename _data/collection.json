@@ -3691,5 +3691,25 @@
 		"author": "Dinesh Shetty",
 		"notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
 		"badge": "dineshshetty/Android-InsecureBankv2"
+	},
+	{
+	"url": "https://github.com/B3nac/InjuredAndroid",
+	"name": "InjuredAndroid",
+	"collection": [
+		"mobile"
+	],
+	"technology": [
+		"Android",
+		"Java"
+	],
+	"references": [
+		{
+			"name": "download",
+			"url": "https://github.com/B3nac/InjuredAndroid/releases"
+		}
+	],
+	"author": "B3nac",
+	"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
+	"badge": "B3nac/InjuredAndroid"
 	}
 ]
