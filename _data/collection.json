@@ -3647,5 +3647,24 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
-	}
+	},
+	{
+	"url": "https://www.hackthebox.com",
+	"name": "HackTheBox",
+	"collection": [
+		"online"
+	],
+	"technology": [
+		"Various"
+	],
+	"references": [
+		{
+			"name": "live",
+			"url": "https://www.hackthebox.com"
+		}
+	],
+	"author": "HackTheBox",
+	"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
+	"badge": null
+}
 ]
