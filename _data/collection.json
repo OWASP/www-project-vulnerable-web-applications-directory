@@ -3646,19 +3646,25 @@
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
 	},
-{
-  "url": "https://github.com/OWASP/crAPI",
-  "name": "OWASP crAPI",
-  "collection": ["offline"],
-  "technology": ["API", "REST", "Docker"],
-  "references": [
-    {
-      "name": "project",
-      "url": "https://owasp.org/www-project-crapi/"
-    }
-  ],
-  "author": "OWASP",
-  "notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
-  "badge": "OWASP/crAPI"
-}
+[
+  {
+    "url": "https://owasp.org/www-project-api-security/",
+    "name": "OWASP API Security Project",
+    "collection": ["offline"],
+    "technology": ["API", "Security", "Documentation"],
+    "references": [
+      {
+        "name": "download",
+        "url": "https://github.com/OWASP/API-Security"
+      },
+      {
+        "name": "guide",
+        "url": "https://owasp.org/API-Security/editions/2023/en/0x00-header/"
+      }
+    ],
+    "author": "OWASP",
+    "notes": "The OWASP API Security Project highlights the top 10 API security risks and provides best practices for developers and security professionals to secure APIs. It includes living documentation, GitHub resources, and guidance for builders, breakers, and defenders.",
+    "badge": "OWASP/API-Security"
+  }
+]
 ]
