@@ -3646,8 +3646,8 @@
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
 	},
-[
-  {
+{
+  "179": {
     "url": "https://owasp.org/www-project-api-security/",
     "name": "OWASP API Security Project",
     "collection": ["offline"],
@@ -3666,5 +3666,6 @@
     "notes": "The OWASP API Security Project highlights the top 10 API security risks and provides best practices for developers and security professionals to secure APIs. It includes living documentation, GitHub resources, and guidance for builders, breakers, and defenders.",
     "badge": "OWASP/API-Security"
   }
-]
+	}
+  
 ]
