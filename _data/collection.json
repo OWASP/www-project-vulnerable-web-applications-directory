@@ -3645,5 +3645,26 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
+	},
+	{
+  "url": "https://github.com/OWASP/crAPI",
+  "name": "OWASP crAPI",
+  "collection": [
+    "api"
+  ],
+  "technology": [
+    "API",
+    "REST",
+    "Docker"
+  ],
+  "references": [
+    {
+      "name": "project",
+      "url": "https://owasp.org/www-project-crapi/"
+    }
+  ],
+  "author": "OWASP",
+  "notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
+  "badge": "OWASP/crAPI"
 	}
 ]
