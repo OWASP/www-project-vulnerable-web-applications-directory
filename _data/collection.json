@@ -3647,5 +3647,41 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
+	},
+	{
+		"url": "https://github.com/juice-shop/juice-shop",
+		"name": "OWASP Juice Shop",
+		"collection": [
+			"offline",
+			"online",
+			"container"
+		],
+		"technology": [
+			"Node.js",
+			"Express",
+			"Angular",
+			"SQLite"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/juice-shop/juice-shop/releases/latest"
+			},
+			{
+				"name": "live",
+				"url": "https://juice-shop.herokuapp.com"
+			},
+			{
+				"name": "docker",
+				"url": "https://hub.docker.com/r/bkimminich/juice-shop"
+			},
+			{
+				"name": "guide",
+				"url": "https://pwning.owasp-juice.shop"
+			}
+		],
+		"author": "OWASP - Björn Kimminich",
+		"notes": "OWASP Juice Shop is probably the most modern and sophisticated insecure web application. It can be used in security trainings, awareness demos, CTFs and as a guinea pig for security tools. Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten along with many other security flaws found in real-world applications.",
+		"badge": "juice-shop/juice-shop"
 	}
 ]
