@@ -3647,5 +3647,24 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
-	}
+	},
+	{
+	"url": "https://tryhackme.com",
+	"name": "TryHackMe",
+	"collection": [
+		"online"
+	],
+	"technology": [
+		"Various"
+	],
+	"references": [
+		{
+			"name": "live",
+			"url": "https://tryhackme.com"
+		}
+	],
+	"author": "TryHackMe",
+	"notes": "Online platform for learning cyber security through hands-on exercises and labs. Features virtual rooms with vulnerable machines and guided learning paths.",
+	"badge": null
+}
 ]
