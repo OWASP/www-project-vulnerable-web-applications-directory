@@ -3648,10 +3648,9 @@
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI"
 	},
-
 	{
 		"url": "https://github.com/payatu/diva-android",
-		"name": "DIVA Android - Damn Insecure and Vulnerable App",
+		"name": "DIVA Android",
 		"collection": [
 			"mobile"
 		],
@@ -3662,16 +3661,15 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/HCL-TECH-SOFTWARE/AltoroJ"
+				"url": "https://github.com/payatu/diva-android/releases"
 			},
 			{
 				"name": "guide",
-				"url": "https://www.payatu.com/damn-insecure-and-vulnerable-app/"
+				"url": "http://www.payatu.com/damn-insecure-and-vulnerable-app/"
 			}
 		],
 		"author": "Payatu",
 		"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
 		"badge": "payatu/diva-android"
-	},
-	
+	}
 ]
