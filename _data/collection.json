@@ -3669,7 +3669,47 @@
 		}
 	],
 	"author": "Payatu",
-	"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
-	"badge": "payatu/diva-android"
+	
+		"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about
+		"technology": [
+			"J2EE"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/HCL-TECH-SOFTWARE/AltoroJ"
+			},
+			{
+				"name": "live",
+				"url": "http://demo.testfire.net/"
+			}
+		],
+		"author": "IBM/Watchfire",
+		"notes": "Log in with jsmith/demo1234 or admin/admin",
+		"badge": "hclproducts/AltoroJ"
+	},
+	{
+		"url": "https://github.com/payatu/diva-android",
+		"name": "DIVA Android - Damn Insecure and Vulnerable App",
+		"collection": [
+			"mobile"
+		],
+		"technology": [
+			"Android",
+			"Java"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/HCL-TECH-SOFTWARE/AltoroJ"
+			},
+			{
+				"name": "guide",
+				"url": "https://www.payatu.com/damn-insecure-and-vulnerable-app/"
+			}
+		],
+		"author": "Payatu",
+		"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
+		"badge": "payatu/diva-android"
 	}
-]
+		
