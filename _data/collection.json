@@ -3649,22 +3649,22 @@
 		"badge": "LBartolini/DVI"
 	},
 	{
-	"url": "https://www.hackthebox.com",
-	"name": "HackTheBox",
-	"collection": [
-		"online"
-	],
-	"technology": [
-		"Various"
-	],
-	"references": [
-		{
-			"name": "live",
-			"url": "https://www.hackthebox.com"
-		}
-	],
-	"author": "HackTheBox",
-	"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
-	"badge": null
-}
+		"url": "https://www.hackthebox.com",
+		"name": "HackTheBox",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Various"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://www.hackthebox.com"
+			}
+		],
+		"author": "HackTheBox",
+		"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
+		"badge": null
+	}
 ]
