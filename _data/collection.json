@@ -3693,23 +3693,23 @@
 		"badge": "dineshshetty/Android-InsecureBankv2"
 	},
 	{
-	"url": "https://github.com/B3nac/InjuredAndroid",
-	"name": "InjuredAndroid",
-	"collection": [
-		"mobile"
-	],
-	"technology": [
-		"Android",
-		"Java"
-	],
-	"references": [
-		{
-			"name": "download",
-			"url": "https://github.com/B3nac/InjuredAndroid/releases"
-		}
-	],
-	"author": "B3nac",
-	"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
-	"badge": "B3nac/InjuredAndroid"
+		"url": "https://github.com/B3nac/InjuredAndroid",
+		"name": "InjuredAndroid",
+		"collection": [
+			"mobile"
+		],
+		"technology": [
+			"Android",
+			"Java"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/B3nac/InjuredAndroid/releases"
+			}
+		],
+		"author": "B3nac",
+		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
+		"badge": "B3nac/InjuredAndroid"
 	}
 ]
