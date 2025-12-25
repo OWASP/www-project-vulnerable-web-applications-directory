@@ -5,8 +5,8 @@ We actively monitor and provide security updates for the latest stable version o
 
 | Version   | Supported          |
 |-----------|--------------------|
-| `main`    | ✅                 |
-| `< 1.0.0` | ❌ (Unsupported)   |
+| `master`    | ✅                 |
+| `Anything else` | ❌ (Unsupported)   |
 
 ## Reporting a Vulnerability
 If you discover a security vulnerability, **do not open a public issue**. Instead, follow these steps:
