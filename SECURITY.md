@@ -3,10 +3,10 @@
 ## Supported Versions
 We will provide security updates for the current release version of this project. Anything else will not receive security updates.
 
-| Version   | Supported          |
-|-----------|--------------------|
-| `master`    | ✅                 |
-| `Anything else` | ❌ (Unsupported)   |
+| Version   | Supported |
+|-----------|-----------|
+| `master`    | ✅ |
+| `Anything else` | ❌ (Unsupported) |
 
 ## Reporting a Vulnerability
 If you discover a security vulnerability, **do not open a public issue**. Instead, follow these steps:
