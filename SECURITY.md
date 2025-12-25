@@ -11,7 +11,7 @@ We will provide security updates for the current release version of this project
 ## Reporting a Vulnerability
 If you discover a security vulnerability, **do not open a public issue**. Instead, follow these steps:
 
-1. **Email the maintainers** at [maintainer-email@example.com] (or open a **private/draft security advisory** on GitHub if available).
+1. Open a **private/draft security advisory** on GitHub.
 2. Provide a **detailed description** of the vulnerability, including:
    - Steps to reproduce
    - Potential impact
