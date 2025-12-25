@@ -16,7 +16,7 @@ If you discover a security vulnerability, **do not open a public issue**. Instea
    - Steps to reproduce
    - Potential impact
    - Suggested fixes (if any)
-3. We will acknowledge your report within **48 hours** and provide a timeline for a fix.
+3. We will acknowledge your report as quickly as possible and provide a timeline for a fix.
 4. Once the vulnerability is fixed, we will **publicly disclose** it (with credit to you, if desired).
 
 ## Security Best Practices for Contributors
