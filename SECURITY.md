@@ -17,7 +17,7 @@ If you discover a security vulnerability, **do not open a public issue**. Instea
    - Potential impact
    - Suggested fixes (if any)
 3. We will acknowledge your report as quickly as possible and provide a timeline for a fix.
-4. Once the vulnerability is fixed, we will **publicly disclose** it (with credit to you, if desired).
+4. Once the vulnerability is fixed, we may publicly disclose it (with credit to you, if desired).
 
 ## Security Best Practices for Contributors
 - Avoid using user-controlled input directly in shell commands or workflows.
