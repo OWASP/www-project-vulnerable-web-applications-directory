@@ -1,7 +1,7 @@
 # Security Policy
 
 ## Supported Versions
-We actively monitor and provide security updates for the latest stable version of this project. Older versions may not receive security updates.
+We will provide security updates for the current release version of this project. Anything else will not receive security updates.
 
 | Version   | Supported          |
 |-----------|--------------------|
