@@ -6,11 +6,11 @@ on:
     - '_data/collection.json'
   workflow_dispatch:
 
-permissions:
-  contents: read
 
 jobs:
   schema-check:
+    permissions:
+       contents: read  #Moved to job level
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
