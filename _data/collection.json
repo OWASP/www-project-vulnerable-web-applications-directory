@@ -3711,5 +3711,173 @@
 		"author": "B3nac",
 		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
 		"badge": "B3nac/InjuredAndroid"
-	}
+	},
+	{  
+    "url": "",
+    "name": "AWS Security Workshop",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Interactive workshop covering AWS security best practices",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "AWS CTF Challenge",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Capture-the-flag challenges for AWS",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "AWS Infrastructure Pentest Lab",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Hands-on lab for AWS infrastructure pentesting",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Azure AD Pentest Lab",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Hands-on lab for Azure AD pentesting",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Azure AD CTF Challenge",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Capture-the-flag challenges for Azure AD",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Azure Infrastructure Workshop",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Interactive workshop covering Azure security best practices",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "GCP Infrastructure CTF",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Capture-the-flag challenges for Google Cloud Platform",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "GCP Security Workshop",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Interactive workshop covering GCP security best practices",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "GCP Infrastructure Pentest Lab",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Hands-on lab for GCP infrastructure pentesting",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Kubernetes Security Workshop",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Interactive workshop covering Kubernetes security best practices",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Kubernetes CTF Challenge",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Capture-the-flag challenges for Kubernetes",
+    "badge": ""
+  },
+  {
+    "url": "",
+    "name": "Kubernetes Infrastructure Pentest Lab",
+    "collection": [
+      "cloud"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+    "badge": ""
+  }
 ]
