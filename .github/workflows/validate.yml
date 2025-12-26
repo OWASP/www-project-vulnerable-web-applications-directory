@@ -10,7 +10,7 @@ on:
 jobs:
   schema-check:
     permissions:
-       contents: read  #Moved to job level
+       contents: read  
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
