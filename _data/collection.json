@@ -3649,6 +3649,25 @@
 		"badge": "LBartolini/DVI"
 	},
 	{
+		"url": "https://www.hackthebox.com",
+		"name": "HackTheBox",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Various"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://www.hackthebox.com"
+			}
+		],
+		"author": "HackTheBox",
+		"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
+		"badge": null
+	},
+	{
 		"url": "https://github.com/payatu/diva-android",
 		"name": "DIVA Android",
 		"collection": [
@@ -3673,8 +3692,8 @@
 		"badge": "payatu/diva-android"
 	},
 	{
-		"name": "InsecureBankv2",
 		"url": "https://github.com/dineshshetty/Android-InsecureBankv2",
+		"name": "InsecureBankv2",
 		"collection": [
 			"mobile"
 		],
@@ -3712,4 +3731,4 @@
 		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
 		"badge": "B3nac/InjuredAndroid"
 	}
-]
+]	
