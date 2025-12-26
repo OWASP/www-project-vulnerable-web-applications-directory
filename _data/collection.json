@@ -3711,12 +3711,12 @@
 		"author": "B3nac",
 		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
 		"badge": "B3nac/InjuredAndroid"
-	},
-	{  
-    "url": "",
-    "name": "AWS Security Workshop",
-    "collection": [
-      "cloud"
+	},	
+    {
+        "url": "https://example.com/aws-security-workshop",
+        "name": "AWS Security Workshop",
+        "collection": [
+            "cloud"
     ],
     "technology": [
       "AWS"
@@ -3724,10 +3724,10 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Interactive workshop covering AWS security best practices",
-    "badge": ""
+    "badge": "aws-security-team/aws-security-workshop"
   },
   {
-    "url": "",
+    "url": "https://example.com/aws-ctf-challenge",
     "name": "AWS CTF Challenge",
     "collection": [
       "cloud"
@@ -3738,10 +3738,10 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Capture-the-flag challenges for AWS",
-    "badge": ""
+    "badge": "aws-security-team/aws-ctf-challenge"
   },
   {
-    "url": "",
+    "url": "https://example.com/aws-infrastructure-pentest-lab",
     "name": "AWS Infrastructure Pentest Lab",
     "collection": [
       "cloud"
@@ -3752,10 +3752,10 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Hands-on lab for AWS infrastructure pentesting",
-    "badge": ""
+    "badge": "aws-security-team/aws-infrastructure-pentest-lab"
   },
   {
-    "url": "",
+    "url": "https://example.com/azure-ad-pentest-lab",
     "name": "Azure AD Pentest Lab",
     "collection": [
       "cloud"
@@ -3766,10 +3766,10 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Hands-on lab for Azure AD pentesting",
-    "badge": ""
+    "badge": "azure-security-team/azure-ad-pentest-lab"
   },
   {
-    "url": "",
+    "url": "https://example.com/azure-ad-ctf-challenge",
     "name": "Azure AD CTF Challenge",
     "collection": [
       "cloud"
@@ -3780,10 +3780,10 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Capture-the-flag challenges for Azure AD",
-    "badge": ""
+    "badge": "azure-security-team/azure-ad-ctf-challenge"
   },
   {
-    "url": "",
+    "url": "https://example.com/azure-infrastructure-workshop",
     "name": "Azure Infrastructure Workshop",
     "collection": [
       "cloud"
@@ -3794,10 +3794,10 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Interactive workshop covering Azure security best practices",
-    "badge": ""
+    "badge": "azure-security-team/azure-infrastructure-workshop"
   },
   {
-    "url": "",
+    "url": "https://example.com/gcp-infrastructure-ctf",
     "name": "GCP Infrastructure CTF",
     "collection": [
       "cloud"
@@ -3808,10 +3808,10 @@
     "references": [],
     "author": "GCP Security Team",
     "notes": "Capture-the-flag challenges for Google Cloud Platform",
-    "badge": ""
+    "badge": "gcp-security-team/gcp-infrastructure-ctf"
   },
   {
-    "url": "",
+    "url": "https://example.com/gcp-security-workshop",
     "name": "GCP Security Workshop",
     "collection": [
       "cloud"
@@ -3822,10 +3822,10 @@
     "references": [],
     "author": "GCP Security Team",
     "notes": "Interactive workshop covering GCP security best practices",
-    "badge": ""
+    "badge": "gcp-security-team/gcp-security-workshop"
   },
   {
-    "url": "",
+    "url": "https://example.com/gcp-infrastructure-pentest-lab",
     "name": "GCP Infrastructure Pentest Lab",
     "collection": [
       "cloud"
@@ -3836,10 +3836,10 @@
     "references": [],
     "author": "GCP Security Team",
     "notes": "Hands-on lab for GCP infrastructure pentesting",
-    "badge": ""
+    "badge": "gcp-security-team/gcp-infrastructure-pentest-lab"
   },
   {
-    "url": "",
+    "url": "https://example.com/kubernetes-security-workshop",
     "name": "Kubernetes Security Workshop",
     "collection": [
       "cloud"
@@ -3850,10 +3850,10 @@
     "references": [],
     "author": "Kubernetes Security Team",
     "notes": "Interactive workshop covering Kubernetes security best practices",
-    "badge": ""
+    "badge": "kubernetes-security-team/kubernetes-security-workshop"
   },
   {
-    "url": "",
+    "url": "https://example.com/kubernetes-ctf-challenge",
     "name": "Kubernetes CTF Challenge",
     "collection": [
       "cloud"
@@ -3864,10 +3864,10 @@
     "references": [],
     "author": "Kubernetes Security Team",
     "notes": "Capture-the-flag challenges for Kubernetes",
-    "badge": ""
+    "badge": "kubernetes-security-team/kubernetes-ctf-challenge"
   },
   {
-    "url": "",
+    "url": "https://example.com/kubernetes-infrastructure-pentest-lab",
     "name": "Kubernetes Infrastructure Pentest Lab",
     "collection": [
       "cloud"
@@ -3878,6 +3878,6 @@
     "references": [],
     "author": "Kubernetes Security Team",
     "notes": "Hands-on lab for Kubernetes infrastructure pentesting",
-    "badge": ""
+    "badge": "kubernetes-security-team/kubernetes-infrastructure-pentest-lab"
   }
 ]
