@@ -3730,5 +3730,173 @@
 		"author": "B3nac",
 		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
 		"badge": "B3nac/InjuredAndroid"
+	},	
+    {
+        "url": "https://wellarchitectedlabs.com/security/",
+        "name": "AWS Security Workshop",
+        "collection": [
+            "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Interactive workshop covering AWS security best practices",
+    "badge": null
+  },
+  {
+    "url": "https://bigiamchallenge.com/",
+    "name": "AWS CTF Challenge",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Capture-the-flag challenges for AWS",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/RhinoSecurityLabs/cloudgoat",
+    "name": "AWS Infrastructure Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Hands-on lab for AWS infrastructure pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/semperis/entra-goat",
+    "name": "Azure AD Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Hands-on lab for Azure AD pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://brokenazure.cloud/",
+    "name": "Azure AD CTF Challenge",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Capture-the-flag challenges for Azure AD",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/mandiant/Azure-Workshop",
+    "name": "Azure Infrastructure Workshop",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Interactive workshop covering Azure security best practices",
+    "badge": null
+  },
+	{
+		"url": "https://github.com/ThunderCTF/Thunder-CTF",
+		"name": "GCP Infrastructure CTF",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Capture-the-flag challenges for Google Cloud Platform",
+		"badge": null
+	},
+	{
+		"url": "https://github.com/marionsack/gcp-ctf",
+		"name": "GCP Security Workshop",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Interactive workshop covering GCP security best practices",
+		"badge": null
+	},
+	{
+		"url": "https://github.com/joshlf/gcp-goat",
+		"name": "GCP Infrastructure Pentest Lab",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Hands-on lab for GCP infrastructure pentesting",
+		"badge": null
+	},
+	{
+		"url": "https://github.com/madhuakula/kubernets-goat",
+		"name": "Kubernetes Security Workshop",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Interactive workshop covering Kubernetes security best practices",
+		"badge": null
+	},
+	{
+		"url": "https://k8slanparty.com/",
+		"name": "Kubernetes CTF Challenge",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Capture-the-flag challenges for Kubernetes",
+		"badge": null
+	},
+	{
+		"url": "https://github.com/raesene/kubernetes-security-labs",
+		"name": "Kubernetes Infrastructure Pentest Lab",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+		"badge": null
 	}
-]	
+]
