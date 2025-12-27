@@ -3732,7 +3732,7 @@
 		"badge": "B3nac/InjuredAndroid"
 	},	
     {
-        "url": "https://example.com/aws-security-workshop",
+        "url": "https://wellarchitectedlabs.com/security/",
         "name": "AWS Security Workshop",
         "collection": [
             "online"
@@ -3743,10 +3743,10 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Interactive workshop covering AWS security best practices",
-    "badge": "null"
+    "badge": null
   },
   {
-    "url": "https://example.com/aws-ctf-challenge",
+    "url": "https://bigiamchallenge.com/",
     "name": "AWS CTF Challenge",
     "collection": [
       "online"
@@ -3760,7 +3760,7 @@
     "badge": null
   },
   {
-    "url": "https://example.com/aws-infrastructure-pentest-lab",
+    "url": "https://github.com/RhinoSecurityLabs/cloudgoat",
     "name": "AWS Infrastructure Pentest Lab",
     "collection": [
       "online"
@@ -3774,7 +3774,7 @@
     "badge": null
   },
   {
-    "url": "https://example.com/azure-ad-pentest-lab",
+    "url": "https://github.com/semperis/entra-goat",
     "name": "Azure AD Pentest Lab",
     "collection": [
       "online"
@@ -3785,10 +3785,10 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Hands-on lab for Azure AD pentesting",
-    "badge": "null"
+    "badge": null
   },
   {
-    "url": "https://example.com/azure-ad-ctf-challenge",
+    "url": "https://brokenazure.cloud/",
     "name": "Azure AD CTF Challenge",
     "collection": [
       "online"
@@ -3799,10 +3799,10 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Capture-the-flag challenges for Azure AD",
-    "badge": "null"
+    "badge": null
   },
   {
-    "url": "https://example.com/azure-infrastructure-workshop",
+    "url": "https://github.com/mandiant/Azure-Workshop",
     "name": "Azure Infrastructure Workshop",
     "collection": [
       "online"
@@ -3816,7 +3816,7 @@
     "badge": null
   },
 	{
-		"url": "https://example.com/gcp-infrastructure-ct",
+		"url": "https://github.com/ThunderCTF/Thunder-CTF",
 		"name": "GCP Infrastructure CTF",
 		"collection": [
 			"online"
@@ -3827,10 +3827,10 @@
 		"references": [],
 		"author": "GCP Security Team",
 		"notes": "Capture-the-flag challenges for Google Cloud Platform",
-		"badge": "null"
+		"badge": null
 	},
 	{
-		"url": "https://example.com/gcp-security-workshop",
+		"url": "https://github.com/marionsack/gcp-ctf",
 		"name": "GCP Security Workshop",
 		"collection": [
 			"online"
@@ -3841,10 +3841,10 @@
 		"references": [],
 		"author": "GCP Security Team",
 		"notes": "Interactive workshop covering GCP security best practices",
-		"badge": "null"
+		"badge": null
 	},
 	{
-		"url": "https://example.com/gcp-infrastructure-pentest-lab",
+		"url": "https://github.com/joshlf/gcp-goat",
 		"name": "GCP Infrastructure Pentest Lab",
 		"collection": [
 			"online"
@@ -3855,10 +3855,10 @@
 		"references": [],
 		"author": "GCP Security Team",
 		"notes": "Hands-on lab for GCP infrastructure pentesting",
-		"badge": "null"
+		"badge": null
 	},
 	{
-		"url": "https://example.com/kubernetes-security-workshop",
+		"url": "https://github.com/madhuakula/kubernets-goat",
 		"name": "Kubernetes Security Workshop",
 		"collection": [
 			"online"
@@ -3869,10 +3869,10 @@
 		"references": [],
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
-		"badge": "null"
+		"badge": null
 	},
 	{
-		"url": "https://example.com/kubernetes-ctf-challenge",
+		"url": "https://k8slanparty.com/",
 		"name": "Kubernetes CTF Challenge",
 		"collection": [
 			"online"
@@ -3883,10 +3883,10 @@
 		"references": [],
 		"author": "Kubernetes Security Team",
 		"notes": "Capture-the-flag challenges for Kubernetes",
-		"badge": "null"
+		"badge": null
 	},
 	{
-		"url": "https://example.com/kubernetes-infrastructure-pentest-lab",
+		"url": "https://github.com/raesene/kubernetes-security-labs",
 		"name": "Kubernetes Infrastructure Pentest Lab",
 		"collection": [
 			"online"
@@ -3897,6 +3897,6 @@
 		"references": [],
 		"author": "Kubernetes Security Team",
 		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
-		"badge": "null"
+		"badge": null
 	}
 ]
