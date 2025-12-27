@@ -40,45 +40,19 @@
 						"$ref": "#/definitions/Reference"
 					}
 				},
-				"author": {
-					"oneOf": [
-						{
-							"type": "null"
-						},
-						{
-							"type": "string"
-						}
-					]
-				},
-				"notes": {
-					"oneOf": [
-						{
-							"type": "null"
-						},
-						{
-							"type": "string"
-						}
-					]
+				"author":  {
+					"type": "string"
+                },
+				"notes":  {
+					"type": "string"
 				},
 				"badge": {
-					"oneOf": [
-						{
-							"type": "null"
-						},
-						{
-							"type": "string"
-						}
-					]
-				}
+					"type": "string"
+                }
 			},
 			"required": [
-				"author",
-				"badge",
 				"collection",
 				"name",
-				"notes",
-				"references",
-				"technology",
 				"url"
 			],
 			"title": "VWADEntry"
