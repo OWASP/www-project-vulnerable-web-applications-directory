@@ -1,0 +1,10 @@
+{
+  "editor.insertSpaces": false,
+  "editor.tabSize": 1,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
