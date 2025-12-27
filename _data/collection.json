@@ -3757,7 +3757,7 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Capture-the-flag challenges for AWS",
-    "badge": "aws-security-team/aws-ctf-challenge"
+    "badge": null
   },
   {
     "url": "https://example.com/aws-infrastructure-pentest-lab",
