@@ -3815,88 +3815,88 @@
     "notes": "Interactive workshop covering Azure security best practices",
     "badge": null
   },
-  {
-    "url": "https://example.com/gcp-infrastructure-ctf",
-    "name": "GCP Infrastructure CTF",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Capture-the-flag challenges for Google Cloud Platform",
-    "badge": "gcp-security-team/gcp-infrastructure-ctf"
-  },
-  {
-    "url": "https://example.com/gcp-security-workshop",
-    "name": "GCP Security Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Interactive workshop covering GCP security best practices",
-    "badge": null
-  },
-  {
-    "url": "https://example.com/gcp-infrastructure-pentest-lab",
-    "name": "GCP Infrastructure Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Hands-on lab for GCP infrastructure pentesting",
-    "badge": "gcp-security-team/gcp-infrastructure-pentest-lab"
-  },
-  {
-    "url": "https://example.com/kubernetes-security-workshop",
-    "name": "Kubernetes Security Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Interactive workshop covering Kubernetes security best practices",
-    "badge": "kubernetes-security-team/kubernetes-security-workshop"
-  },
-  {
-    "url": "https://example.com/kubernetes-ctf-challenge",
-    "name": "Kubernetes CTF Challenge",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Capture-the-flag challenges for Kubernetes",
-    "badge": "kubernetes-security-team/kubernetes-ctf-challenge"
-  },
-  {
-    "url": "https://example.com/kubernetes-infrastructure-pentest-lab",
-    "name": "Kubernetes Infrastructure Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Hands-on lab for Kubernetes infrastructure pentesting",
-    "badge": "kubernetes-security-team/kubernetes-infrastructure-pentest-lab"
-  }
+	{
+		"url": "https://example.com/gcp-infrastructure-ctf",
+		"name": "GCP Infrastructure CTF",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Capture-the-flag challenges for Google Cloud Platform",
+		"badge": "gcp-security-team/gcp-infrastructure-ctf"
+	},
+	{
+		"url": "https://example.com/gcp-security-workshop",
+		"name": "GCP Security Workshop",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Interactive workshop covering GCP security best practices",
+		"badge": "gcp-security-team/gcp-security-workshop"
+	},
+	{
+		"url": "https://example.com/gcp-infrastructure-pentest-lab",
+		"name": "GCP Infrastructure Pentest Lab",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"GCP"
+		],
+		"references": [],
+		"author": "GCP Security Team",
+		"notes": "Hands-on lab for GCP infrastructure pentesting",
+		"badge": "gcp-security-team/gcp-infrastructure-pentest-lab"
+	},
+	{
+		"url": "https://example.com/kubernetes-security-workshop",
+		"name": "Kubernetes Security Workshop",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Interactive workshop covering Kubernetes security best practices",
+		"badge": "kubernetes-security-team/kubernetes-security-workshop"
+	},
+	{
+		"url": "https://example.com/kubernetes-ctf-challenge",
+		"name": "Kubernetes CTF Challenge",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Capture-the-flag challenges for Kubernetes",
+		"badge": "kubernetes-security-team/kubernetes-ctf-challenge"
+	},
+	{
+		"url": "https://example.com/kubernetes-infrastructure-pentest-lab",
+		"name": "Kubernetes Infrastructure Pentest Lab",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Kubernetes"
+		],
+		"references": [],
+		"author": "Kubernetes Security Team",
+		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+		"badge": "kubernetes-security-team/kubernetes-infrastructure-pentest-lab"
+	}
 ]
