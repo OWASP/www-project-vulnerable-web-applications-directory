@@ -3716,7 +3716,7 @@
         "url": "https://example.com/aws-security-workshop",
         "name": "AWS Security Workshop",
         "collection": [
-            "cloud"
+            "online"
     ],
     "technology": [
       "AWS"
@@ -3730,7 +3730,7 @@
     "url": "https://example.com/aws-ctf-challenge",
     "name": "AWS CTF Challenge",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "AWS"
@@ -3744,7 +3744,7 @@
     "url": "https://example.com/aws-infrastructure-pentest-lab",
     "name": "AWS Infrastructure Pentest Lab",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "AWS"
@@ -3758,7 +3758,7 @@
     "url": "https://example.com/azure-ad-pentest-lab",
     "name": "Azure AD Pentest Lab",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Azure"
@@ -3772,7 +3772,7 @@
     "url": "https://example.com/azure-ad-ctf-challenge",
     "name": "Azure AD CTF Challenge",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Azure"
@@ -3786,7 +3786,7 @@
     "url": "https://example.com/azure-infrastructure-workshop",
     "name": "Azure Infrastructure Workshop",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Azure"
@@ -3800,7 +3800,7 @@
     "url": "https://example.com/gcp-infrastructure-ctf",
     "name": "GCP Infrastructure CTF",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "GCP"
@@ -3814,7 +3814,7 @@
     "url": "https://example.com/gcp-security-workshop",
     "name": "GCP Security Workshop",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "GCP"
@@ -3828,7 +3828,7 @@
     "url": "https://example.com/gcp-infrastructure-pentest-lab",
     "name": "GCP Infrastructure Pentest Lab",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "GCP"
@@ -3842,7 +3842,7 @@
     "url": "https://example.com/kubernetes-security-workshop",
     "name": "Kubernetes Security Workshop",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Kubernetes"
@@ -3856,7 +3856,7 @@
     "url": "https://example.com/kubernetes-ctf-challenge",
     "name": "Kubernetes CTF Challenge",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Kubernetes"
@@ -3870,7 +3870,7 @@
     "url": "https://example.com/kubernetes-infrastructure-pentest-lab",
     "name": "Kubernetes Infrastructure Pentest Lab",
     "collection": [
-      "cloud"
+      "online"
     ],
     "technology": [
       "Kubernetes"
