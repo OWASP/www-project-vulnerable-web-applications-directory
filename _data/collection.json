@@ -3813,7 +3813,7 @@
     "references": [],
     "author": "Azure Security Team",
     "notes": "Interactive workshop covering Azure security best practices",
-    "badge": "azure-security-team/azure-infrastructure-workshop"
+    "badge": null
   },
   {
     "url": "https://example.com/gcp-infrastructure-ctf",
