@@ -35,6 +35,48 @@
     "badge": null
   },
   {
+    "url": "https://bigiamchallenge.com/",
+    "name": "AWS CTF Challenge",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Capture-the-flag challenges for AWS",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/RhinoSecurityLabs/cloudgoat",
+    "name": "AWS Infrastructure Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Hands-on lab for AWS infrastructure pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://wellarchitectedlabs.com/security/",
+    "name": "AWS Security Workshop",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "AWS"
+    ],
+    "references": [],
+    "author": "AWS Security Team",
+    "notes": "Interactive workshop covering AWS security best practices",
+    "badge": null
+  },
+  {
     "url": "http://testphp.vulnweb.com",
     "name": "Acuart",
     "collection": [
@@ -120,6 +162,48 @@
     "author": "digininja (Robin Wood)",
     "notes": null,
     "badge": "digininja/authlab"
+  },
+  {
+    "url": "https://brokenazure.cloud/",
+    "name": "Azure AD CTF Challenge",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Capture-the-flag challenges for Azure AD",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/semperis/entra-goat",
+    "name": "Azure AD Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Hands-on lab for Azure AD pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/mandiant/Azure-Workshop",
+    "name": "Azure Infrastructure Workshop",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Azure"
+    ],
+    "references": [],
+    "author": "Azure Security Team",
+    "notes": "Interactive workshop covering Azure security best practices",
+    "badge": null
   },
   {
     "url": "http://www.bgabank.com/",
@@ -424,6 +508,30 @@
     "badge": "fridaygoldsmith/bwa_cyclone_transfers"
   },
   {
+    "url": "https://github.com/payatu/diva-android",
+    "name": "DIVA Android",
+    "collection": [
+      "mobile"
+    ],
+    "technology": [
+      "Android",
+      "Java"
+    ],
+    "references": [
+      {
+        "name": "download",
+        "url": "https://github.com/payatu/diva-android/releases"
+      },
+      {
+        "name": "guide",
+        "url": "http://www.payatu.com/damn-insecure-and-vulnerable-app/"
+      }
+    ],
+    "author": "Payatu",
+    "notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
+    "badge": "payatu/diva-android"
+  },
+  {
     "url": "https://github.com/snsttr/diwa",
     "name": "DIWA - Deliberately Insecure Web Application",
     "collection": [
@@ -598,6 +706,33 @@
     "author": "Dolev Farhi <dolev@lethalbit.com>, Connor McKinnon",
     "notes": null,
     "badge": "dolevf/Damn-Vulnerable-GraphQL-Application"
+  },
+  {
+    "url": "https://github.com/LBartolini/DVI",
+    "name": "Damn Vulnerable Infrastructure (DVI)",
+    "collection": [
+      "offline"
+    ],
+    "technology": [
+      "PHP",
+      "Java",
+      "MySQL",
+      "SCADA",
+      "Docker"
+    ],
+    "references": [
+      {
+        "name": "guide",
+        "url": "https://github.com/LBartolini/DVI/blob/main/GUIDE.md"
+      },
+      {
+        "name": "download",
+        "url": "https://github.com/LBartolini/DVI"
+      }
+    ],
+    "author": "Lorenzo Bartolini, Gabriele Costa",
+    "notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
+    "badge": "LBartolini/DVI"
   },
   {
     "url": "https://github.com/isp1r0/DVNA",
@@ -827,29 +962,6 @@
     "badge": null
   },
   {
-    "url": "https://github.com/k-tamura/easybuggy",
-    "name": "EasyBuggy",
-    "collection": [
-      "offline"
-    ],
-    "technology": [
-      "Java"
-    ],
-    "references": [
-      {
-        "name": "download",
-        "url": "https://github.com/k-tamura/easybuggy/releases"
-      },
-      {
-        "name": "guide",
-        "url": "https://github.com/k-tamura/easybuggy/wiki"
-      }
-    ],
-    "author": "Kohei Tamura",
-    "notes": null,
-    "badge": "k-tamura/easybuggy"
-  },
-  {
     "url": "https://github.com/OWASP/www-project-eks-goat",
     "name": "EKS Goat",
     "collection": [
@@ -878,6 +990,29 @@
     "author": "OWASP",
     "notes": "AWS EKS Security Lab and activity.",
     "badge": "OWASP/www-project-eks-goat"
+  },
+  {
+    "url": "https://github.com/k-tamura/easybuggy",
+    "name": "EasyBuggy",
+    "collection": [
+      "offline"
+    ],
+    "technology": [
+      "Java"
+    ],
+    "references": [
+      {
+        "name": "download",
+        "url": "https://github.com/k-tamura/easybuggy/releases"
+      },
+      {
+        "name": "guide",
+        "url": "https://github.com/k-tamura/easybuggy/wiki"
+      }
+    ],
+    "author": "Kohei Tamura",
+    "notes": null,
+    "badge": "k-tamura/easybuggy"
   },
   {
     "url": "https://sourceforge.net/projects/exploitcoilvuln/files/",
@@ -963,6 +1098,48 @@
     "author": "Google",
     "notes": null,
     "badge": "google/firing-range"
+  },
+  {
+    "url": "https://github.com/ThunderCTF/Thunder-CTF",
+    "name": "GCP Infrastructure CTF",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Capture-the-flag challenges for Google Cloud Platform",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/joshlf/gcp-goat",
+    "name": "GCP Infrastructure Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Hands-on lab for GCP infrastructure pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/marionsack/gcp-ctf",
+    "name": "GCP Security Workshop",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "GCP"
+    ],
+    "references": [],
+    "author": "GCP Security Team",
+    "notes": "Interactive workshop covering GCP security best practices",
+    "badge": null
   },
   {
     "url": "https://github.com/Orange-Cyberdefense/GOAD",
@@ -1174,6 +1351,25 @@
     "references": [],
     "author": "eLearnSecurity",
     "notes": "Beta",
+    "badge": null
+  },
+  {
+    "url": "https://www.hackthebox.com",
+    "name": "HackTheBox",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Various"
+    ],
+    "references": [
+      {
+        "name": "live",
+        "url": "https://www.hackthebox.com"
+      }
+    ],
+    "author": "HackTheBox",
+    "notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
     "badge": null
   },
   {
@@ -1496,6 +1692,88 @@
     "author": "iknowjason",
     "notes": "Includes manual build and docker options.",
     "badge": "iknowjason/hammer"
+  },
+  {
+    "url": "https://github.com/B3nac/InjuredAndroid",
+    "name": "InjuredAndroid",
+    "collection": [
+      "mobile"
+    ],
+    "technology": [
+      "Android",
+      "Java"
+    ],
+    "references": [
+      {
+        "name": "download",
+        "url": "https://github.com/B3nac/InjuredAndroid/releases"
+      }
+    ],
+    "author": "B3nac",
+    "notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
+    "badge": "B3nac/InjuredAndroid"
+  },
+  {
+    "url": "https://github.com/dineshshetty/Android-InsecureBankv2",
+    "name": "InsecureBankv2",
+    "collection": [
+      "mobile"
+    ],
+    "technology": [
+      "Android",
+      "Java"
+    ],
+    "references": [
+      {
+        "name": "download",
+        "url": "https://github.com/dineshshetty/Android-InsecureBankv2/releases"
+      }
+    ],
+    "author": "Dinesh Shetty",
+    "notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
+    "badge": "dineshshetty/Android-InsecureBankv2"
+  },
+  {
+    "url": "https://k8slanparty.com/",
+    "name": "Kubernetes CTF Challenge",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Capture-the-flag challenges for Kubernetes",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/raesene/kubernetes-security-labs",
+    "name": "Kubernetes Infrastructure Pentest Lab",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+    "badge": null
+  },
+  {
+    "url": "https://github.com/madhuakula/kubernets-goat",
+    "name": "Kubernetes Security Workshop",
+    "collection": [
+      "online"
+    ],
+    "technology": [
+      "Kubernetes"
+    ],
+    "references": [],
+    "author": "Kubernetes Security Team",
+    "notes": "Interactive workshop covering Kubernetes security best practices",
+    "badge": null
   },
   {
     "url": "https://sourceforge.net/projects/lampsecurity/",
@@ -3620,283 +3898,5 @@
       "Bootstrap"
     ],
     "url": "https://yrprey.com"
-  },
-  {
-    "url": "https://github.com/LBartolini/DVI",
-    "name": "Damn Vulnerable Infrastructure (DVI)",
-    "collection": [
-      "offline"
-    ],
-    "technology": [
-      "PHP",
-      "Java",
-      "MySQL",
-      "SCADA",
-      "Docker"
-    ],
-    "references": [
-      {
-        "name": "guide",
-        "url": "https://github.com/LBartolini/DVI/blob/main/GUIDE.md"
-      },
-      {
-        "name": "download",
-        "url": "https://github.com/LBartolini/DVI"
-      }
-    ],
-    "author": "Lorenzo Bartolini, Gabriele Costa",
-    "notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
-    "badge": "LBartolini/DVI"
-  },
-  {
-    "url": "https://www.hackthebox.com",
-    "name": "HackTheBox",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Various"
-    ],
-    "references": [
-      {
-        "name": "live",
-        "url": "https://www.hackthebox.com"
-      }
-    ],
-    "author": "HackTheBox",
-    "notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs.",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/payatu/diva-android",
-    "name": "DIVA Android",
-    "collection": [
-      "mobile"
-    ],
-    "technology": [
-      "Android",
-      "Java"
-    ],
-    "references": [
-      {
-        "name": "download",
-        "url": "https://github.com/payatu/diva-android/releases"
-      },
-      {
-        "name": "guide",
-        "url": "http://www.payatu.com/damn-insecure-and-vulnerable-app/"
-      }
-    ],
-    "author": "Payatu",
-    "notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
-    "badge": "payatu/diva-android"
-  },
-  {
-    "url": "https://github.com/dineshshetty/Android-InsecureBankv2",
-    "name": "InsecureBankv2",
-    "collection": [
-      "mobile"
-    ],
-    "technology": [
-      "Android",
-      "Java"
-    ],
-    "references": [
-      {
-        "name": "download",
-        "url": "https://github.com/dineshshetty/Android-InsecureBankv2/releases"
-      }
-    ],
-    "author": "Dinesh Shetty",
-    "notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
-    "badge": "dineshshetty/Android-InsecureBankv2"
-  },
-  {
-    "url": "https://github.com/B3nac/InjuredAndroid",
-    "name": "InjuredAndroid",
-    "collection": [
-      "mobile"
-    ],
-    "technology": [
-      "Android",
-      "Java"
-    ],
-    "references": [
-      {
-        "name": "download",
-        "url": "https://github.com/B3nac/InjuredAndroid/releases"
-      }
-    ],
-    "author": "B3nac",
-    "notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
-    "badge": "B3nac/InjuredAndroid"
-  },
-  {
-    "url": "https://wellarchitectedlabs.com/security/",
-    "name": "AWS Security Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "AWS"
-    ],
-    "references": [],
-    "author": "AWS Security Team",
-    "notes": "Interactive workshop covering AWS security best practices",
-    "badge": null
-  },
-  {
-    "url": "https://bigiamchallenge.com/",
-    "name": "AWS CTF Challenge",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "AWS"
-    ],
-    "references": [],
-    "author": "AWS Security Team",
-    "notes": "Capture-the-flag challenges for AWS",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/RhinoSecurityLabs/cloudgoat",
-    "name": "AWS Infrastructure Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "AWS"
-    ],
-    "references": [],
-    "author": "AWS Security Team",
-    "notes": "Hands-on lab for AWS infrastructure pentesting",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/semperis/entra-goat",
-    "name": "Azure AD Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Azure"
-    ],
-    "references": [],
-    "author": "Azure Security Team",
-    "notes": "Hands-on lab for Azure AD pentesting",
-    "badge": null
-  },
-  {
-    "url": "https://brokenazure.cloud/",
-    "name": "Azure AD CTF Challenge",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Azure"
-    ],
-    "references": [],
-    "author": "Azure Security Team",
-    "notes": "Capture-the-flag challenges for Azure AD",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/mandiant/Azure-Workshop",
-    "name": "Azure Infrastructure Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Azure"
-    ],
-    "references": [],
-    "author": "Azure Security Team",
-    "notes": "Interactive workshop covering Azure security best practices",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/ThunderCTF/Thunder-CTF",
-    "name": "GCP Infrastructure CTF",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Capture-the-flag challenges for Google Cloud Platform",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/marionsack/gcp-ctf",
-    "name": "GCP Security Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Interactive workshop covering GCP security best practices",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/joshlf/gcp-goat",
-    "name": "GCP Infrastructure Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "GCP"
-    ],
-    "references": [],
-    "author": "GCP Security Team",
-    "notes": "Hands-on lab for GCP infrastructure pentesting",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/madhuakula/kubernets-goat",
-    "name": "Kubernetes Security Workshop",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Interactive workshop covering Kubernetes security best practices",
-    "badge": null
-  },
-  {
-    "url": "https://k8slanparty.com/",
-    "name": "Kubernetes CTF Challenge",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Capture-the-flag challenges for Kubernetes",
-    "badge": null
-  },
-  {
-    "url": "https://github.com/raesene/kubernetes-security-labs",
-    "name": "Kubernetes Infrastructure Pentest Lab",
-    "collection": [
-      "online"
-    ],
-    "technology": [
-      "Kubernetes"
-    ],
-    "references": [],
-    "author": "Kubernetes Security Team",
-    "notes": "Hands-on lab for Kubernetes infrastructure pentesting",
-    "badge": null
   }
 ]
