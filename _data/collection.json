@@ -3771,7 +3771,7 @@
     "references": [],
     "author": "AWS Security Team",
     "notes": "Hands-on lab for AWS infrastructure pentesting",
-    "badge": "aws-security-team/aws-infrastructure-pentest-lab"
+    "badge": null
   },
   {
     "url": "https://example.com/azure-ad-pentest-lab",
