@@ -3841,7 +3841,7 @@
     "references": [],
     "author": "GCP Security Team",
     "notes": "Interactive workshop covering GCP security best practices",
-    "badge": "gcp-security-team/gcp-security-workshop"
+    "badge": null
   },
   {
     "url": "https://example.com/gcp-infrastructure-pentest-lab",
