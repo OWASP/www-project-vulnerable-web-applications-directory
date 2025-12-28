@@ -359,8 +359,7 @@
 			}
 		],
 		"author": "attacker-codeninja",
-		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes.",
-		"badge": null
+		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes."
 	},
 	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
