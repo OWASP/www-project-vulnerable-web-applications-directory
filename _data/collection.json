@@ -337,6 +337,31 @@
 		"notes": "Last updated in 2008"
 	},
 	{
+		"url": "https://github.com/attacker-codeninja/BugGPT",
+		"name": "BugGPT",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"Python",
+			"Flask",
+			"OpenAI API",
+			"Github Actions"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/attacker-codeninja/BugGPT"
+			},
+			{
+				"name": "guide",
+				"url": "https://github.com/attacker-codeninja/BugGPT#readme"
+			}
+		],
+		"author": "attacker-codeninja",
+		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes."
+	},
+	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
 		"name": "CI/CD Goat",
 		"collection": [
