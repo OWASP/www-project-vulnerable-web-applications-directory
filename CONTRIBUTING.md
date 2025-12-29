@@ -23,10 +23,10 @@ To set up a local development environment for this [Jekyll](https://jekyllrb.com
 ## Pull Request Guidelines
 
 1. The overwhelming majority of this project exists within a single JSON data file: [`_data/collection.json`](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/_data/collection.json).
-    1. That data file uses a single tab per level of indentation. (You can use <https://jsonformatter.org/>, if needed.)
-				2. Contains entries sorted by the value of the `name` key. (You can use <https://codeshack.io/json-sorter/>, if needed.)
-				3. The details associated with the entries are governed by the established [JSON schema](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/schema.json)
-				    1. PRs which involve the data file are validated against this schema as part of a GitHub workflow process.
+	1. That data file uses a single tab per level of indentation. (You can use <https://jsonformatter.org/>, if needed.)
+	2. Contains entries sorted by the value of the `name` key. (You can use <https://codeshack.io/json-sorter/>, if needed.)
+	3. The details associated with the entries are governed by the established [JSON schema](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/schema.json).
+		1. PRs which involve the data file are validated against this schema as part of a GitHub workflow process.
 2. Ensure your changes do not break the data file.
 3. Your pull request includes a clear and concise description of the changes you have made.
 3. If your change is related to a specific issue, please ensure your PR description includes a keyword to close the issue (as applicable). Per: <https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests#linking-a-pull-request-to-an-issue>
