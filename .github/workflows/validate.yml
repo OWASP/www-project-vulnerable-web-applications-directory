@@ -9,7 +9,7 @@ on:
 jobs:
   schema-check:
     permissions:
-      contents: read   # keep minimal permissions, no write access
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
@@ -33,10 +33,6 @@ jobs:
           ajv validate -s schema.json -d _data/collection.json \
             --all-errors --errors=text --verbose=true -c=ajv-formats \
             1>> validation-output.log 2>&1
-
-      - name: Show Validation Issues
-        if: failure()
-        run: cat validation-output.log
 
       - name: Upload Validation Report
         if: failure()
