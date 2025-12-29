@@ -9,76 +9,38 @@ on:
 jobs:
   schema-check:
     permissions:
-      contents: read
-      pull-requests: write  # Required to post comments
+      contents: read   # keep minimal permissions, no write access
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
-      - name: Save PR number
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        run: echo "$PR_NUMBER" > pr_number
-
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Install dependencies
         run: |
-          npm install -g ajv-formats
-          npm install -g ajv-cli
+          npm install -g ajv-formats ajv-cli
 
       - name: Run schema check
         run: |
-          ajv validate -s schema.json -d _data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
+          ajv validate -s schema.json -d _data/collection.json \
+            --all-errors --errors=text --verbose=true -c=ajv-formats \
+            1>> validation-output.log 2>&1
 
       - name: Show Validation Issues
         if: failure()
-        run: cat log.txt
+        run: cat validation-output.log
 
-      - name: Attach Log
-        uses: actions/upload-artifact@v6
+      - name: Upload Validation Report
         if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          name: JSONValidationLog
-          path: log.txt
-
-      - name: Create artifact for comment
-        if: failure()
-        run: |
-          echo "**❌ Schema Validation Failed**" > artifact.txt
-          echo "Please fix the following issues:" >> artifact.txt
-          echo "" >> artifact.txt
-          cat log.txt | sed 's/^/  - /' >> artifact.txt
-          echo "" >> artifact.txt
-          echo "📋 [Download the full validation report](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> artifact.txt
-
-      - name: Upload list of issues
-        if: failure()
-        uses: actions/upload-artifact@v6
-        with:
-          name: artifact
-          path: |
-            artifact.txt
-            pr_number
-
-      - name: Post PR comment
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const prNumber = fs.readFileSync('pr_number', 'utf8').trim();
-            const artifact = fs.readFileSync('artifact.txt', 'utf8');
-            github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: artifact
-            });
+          name: schema-validation-errors
+          path: validation-output.log
