@@ -1,58 +1,42 @@
 name: Validate JSON
 
-on: 
+on:
   pull_request_target:
     paths:
-    - '_data/collection.json'
+      - '_data/collection.json'
   workflow_dispatch:
-
 
 jobs:
   schema-check:
     permissions:
-       contents: read  
+      contents: read
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v6
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
-    - name: Save PR number
-      env:
-        PR_NUMBER: ${{ github.event.number }}
-      run: echo $PR_NUMBER > pr_number
-    - name: Setup Node
-      uses: actions/setup-node@v6
-      with:
-        node-version: 24
-    - name: Install dependencies
-      run: |
-         npm install -g ajv-formats
-         npm install -g ajv-cli
-    - name: Run schema check
-      run: |
-        ajv validate -s schema.json -d _data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
-    - name: Show Validation Issues
-      if: failure()
-      run: cat log.txt
-    - name: Attach Log
-      uses: actions/upload-artifact@v6
-      if: failure()
-      with:
-        name: JSONValidationLog
-        path: log.txt
-    - name: Create artifact for comment
-      if: failure()
-      run: |
-        echo "**The following issues were identified:**" > artifact.txt
-        # Copy to generic name for commenting
-        cat log.txt | tee -a artifact.txt
-    - name: Upload list of issues
-      if: failure()
-      uses: actions/upload-artifact@v6
-      with:
-        name: artifact
-        path: |
-          artifact.txt
-          pr_number
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: |
+          npm install -g ajv-formats ajv-cli
+
+      - name: Run schema check
+        run: |
+          ajv validate -s schema.json -d _data/collection.json \
+            --all-errors --errors=text --verbose=true -c=ajv-formats \
+            1>> validation-output.log 2>&1
+
+      - name: Upload Validation Report
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: schema-validation-errors
+          path: validation-output.log
