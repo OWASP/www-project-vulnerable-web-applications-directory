@@ -1,10 +1,49 @@
 {
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"description": "This schema defines the information related to test application/environment entries for OWASP's Vulnerable Web Applicaitons Directory (VWAD) project",
+	"examples": [
+		[
+			{
+				"url": "https://example.com",
+				"name": "Example Test App",
+				"collection": [
+					"online",
+					"container"
+				],
+				"technology": [
+					"TypeScript",
+					"JavaScript",
+					"Node.js"
+				],
+				"references": [
+					{
+						"name": "download",
+						"url": "https://gitplace.com/example/test-app"
+					},
+					{
+						"name": "docker",
+						"url": "https://hub.docker.com/r/example/test-app/"
+					},
+					{
+						"name": "guide",
+						"url": "https://guide.example.com/"
+					},
+					{
+						"name": "live",
+						"url": "https://test-app.herokuapp.com"
+					}
+				],
+				"author": "Example Author",
+				"badge": "example/test-app"
+			}
+		]
+	],
 	"type": "array",
 	"items": {
-		"$ref": "#/definitions/VWADEntry"
+		"$ref": "#/$defs/VWADEntry"
 	},
 	"title": "OWASP VWAD Schema",
-	"definitions": {
+	"$defs": {
 		"VWADEntry": {
 			"type": "object",
 			"additionalProperties": false,
@@ -19,7 +58,6 @@
 				"collection": {
 					"type": "array",
 					"items": {
-						"type": "string",
 						"enum": [
 							"container",
 							"mobile",
@@ -37,18 +75,18 @@
 				"references": {
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/Reference"
+						"$ref": "#/$defs/Reference"
 					}
 				},
-				"author":  {
+				"author": {
 					"type": "string"
-                },
-				"notes":  {
+				},
+				"notes": {
 					"type": "string"
 				},
 				"badge": {
 					"type": "string"
-                }
+				}
 			},
 			"required": [
 				"collection",
@@ -62,7 +100,7 @@
 			"additionalProperties": false,
 			"properties": {
 				"name": {
-					"$ref": "#/definitions/Name"
+					"$ref": "#/$defs/Name"
 				},
 				"url": {
 					"type": "string",
@@ -76,7 +114,6 @@
 			"title": "Reference"
 		},
 		"Name": {
-			"type": "string",
 			"enum": [
 				"guide",
 				"download",
