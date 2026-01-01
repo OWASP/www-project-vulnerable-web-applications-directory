@@ -513,7 +513,8 @@
 			}
 		],
 		"author": "theowni",
-		"notes": "An intentionally vulnerable API training game for developers, ethical hackers, and security engineers. Designed as a CTF-style playground to learn, detect, exploit, and remediate API security vulnerabilities using a FastAPI-based application. Supports local Docker deployment and online execution via GitHub Codespaces."
+		"notes": "An intentionally vulnerable API training game for developers, ethical hackers, and security engineers. Designed as a CTF-style playground to learn, detect, exploit, and remediate API security vulnerabilities using a FastAPI-based application. Supports local Docker deployment and online execution via GitHub Codespaces.",
+		"badge": "theowni/Damn-Vulnerable-RESTaurant-API-Game"
 	},
 	{
 		"url": "https://github.com/payatu/diva-android",
