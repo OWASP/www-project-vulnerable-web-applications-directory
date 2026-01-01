@@ -508,12 +508,8 @@
 		],
 		"references": [
 			{
-				"name": "repository",
+				"name": "download",
 				"url": "https://github.com/theowni/Damn-Vulnerable-RESTaurant-API-Game"
-			},
-			{
-				"name": "codespaces",
-				"url": "https://github.com/features/codespaces"
 			}
 		],
 		"author": "theowni",
