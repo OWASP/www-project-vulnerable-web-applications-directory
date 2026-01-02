@@ -2295,6 +2295,27 @@
 		"notes": "Root-Me is a non-profit organization aimed at providing an outstanding learning platform for ethical hacking. It offers hundreds of challenges and virtual environments."
 	},
 	{
+		"url": "https://github.com/alexcolb/scriptease",
+		"name": "Scriptease",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"JavaScript",
+			"React",
+			"Webpack",
+			"Vite"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/alexcolb/scriptease/archive/refs/heads/main.zip"
+			}
+		],
+		"notes": "A vulnerable JavaScript SPA (no back end) that demonstrates several client-side security flaws (XSS, open redirect, prototype pollution, ReDoS, request hijacking, etc.) It showcases a diverse set of sources and sinks for taint analysis, uses two alternative bundlers (Webpack, Vite), and includes lazy-loaded modules",
+		"badge": "alexcolb/scriptease"
+	},
+	{
 		"url": "https://github.com/sqlmapproject/testenv",
 		"name": "SQL injection test environment",
 		"collection": [
