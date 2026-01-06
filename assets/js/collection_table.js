@@ -238,12 +238,13 @@
     
     if (!searchInput || !table) return;
 
+    const rows = table.querySelectorAll('tbody tr.table-row');
     let debounceTimer;
+    
     searchInput.addEventListener('input', (e) => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         const searchTerm = e.target.value.toLowerCase().trim();
-        const rows = table.querySelectorAll('tbody tr.table-row');
 
         rows.forEach(row => {
           const text = row.textContent.toLowerCase();
