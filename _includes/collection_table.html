@@ -10,30 +10,52 @@
 
 <link rel="stylesheet" href="{{ '/assets/css/collection_table.css' | relative_url }}">
 
+<div class="collection-table-search-wrapper">
+  <input type="text" id="collection-table-search" class="collection-table-search" placeholder="Search applications..." aria-label="Search applications by name, author, technology, or notes">
+</div>
+
 <div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart">
-<table>
-  <tr>
-    <th>App. URL</th>
-    <th>Author</th>
-    <th>Reference(s)</th>
-    <th>Technology(ies)</th>
-    <th>Note(s)</th>
-  </tr>
+<table id="collection-table">
+  <thead>
+    <tr>
+      <th data-column="0" role="columnheader" aria-sort="none" tabindex="0" aria-label="App. URL - Click to sort">
+        <span class="th-content">App. URL</span>
+        <span class="sort-indicator" aria-hidden="true"></span>
+      </th>
+      <th data-column="1" role="columnheader" aria-sort="none" tabindex="0" aria-label="Author - Click to sort">
+        <span class="th-content">Author</span>
+        <span class="sort-indicator" aria-hidden="true"></span>
+      </th>
+      <th data-column="2" role="columnheader" aria-sort="none" tabindex="0" aria-label="Reference(s) - Click to sort">
+        <span class="th-content">Reference(s)</span>
+        <span class="sort-indicator" aria-hidden="true"></span>
+      </th>
+      <th data-column="3" role="columnheader" aria-sort="none" tabindex="0" aria-label="Technology(ies) - Click to sort">
+        <span class="th-content">Technology(ies)</span>
+        <span class="sort-indicator" aria-hidden="true"></span>
+      </th>
+      <th data-column="4" role="columnheader" aria-sort="none" tabindex="0" aria-label="Note(s) - Click to sort">
+        <span class="th-content">Note(s)</span>
+        <span class="sort-indicator" aria-hidden="true"></span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
   {% for app in apps %}
-  <tr>
-    <td>
+  <tr class="table-row">
+    <td data-label="App. URL">
         <a href="{{ app.url }}">{{ app.name }}</a><br>
         {% if app.badge %}
             <img alt="GitHub stars" src="https://img.shields.io/github/stars/{{ app.badge }}?style=social">
         {% endif %}
     </td>
-    <td>
+    <td data-label="Author">
         {{ app.author }}<br>
         {% if app.badge %}
             <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/{{ app.badge }}">
         {% endif %}
     </td>
-    <td>
+    <td data-label="Reference(s)">
       {% if app.references %}
         <ul>
           {% for ref in app.references %}
@@ -42,7 +64,7 @@
         </ul>
       {% endif %}
     </td>
-    <td>
+    <td data-label="Technology(ies)">
       {% if app.technology %}
         <ul>
           {% for tech in app.technology %}
@@ -51,7 +73,7 @@
         </ul>
       {% endif %}
     </td>
-    <td>
+    <td data-label="Note(s)">
         {{ app.notes }}<br>
         {% if app.badge %}
             <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
@@ -59,6 +81,7 @@
     </td>
   </tr>
   {% endfor %}
+  </tbody>
 </table>
 </div>
 

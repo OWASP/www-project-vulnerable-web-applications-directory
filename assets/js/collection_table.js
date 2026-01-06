@@ -231,10 +231,121 @@
     wrap.addEventListener('lostpointercapture', endPan);
   }
 
+  // ===== SEARCH/FILTER FUNCTIONALITY =====
+  function initSearch() {
+    const searchInput = document.getElementById('collection-table-search');
+    const table = document.getElementById('collection-table');
+    
+    if (!searchInput || !table) return;
+
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase().trim();
+      const rows = table.querySelectorAll('tbody tr.table-row');
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  // ===== SORTING FUNCTIONALITY =====
+  function initSort() {
+    const table = document.getElementById('collection-table');
+    if (!table) return;
+
+    const headers = table.querySelectorAll('th[data-column]');
+    let currentSortColumn = null;
+    let currentSortDirection = 'none';
+
+    function getCellValue(row, columnIndex) {
+      const cell = row.children[columnIndex];
+      if (!cell) return '';
+      
+      // Extract text content, ignoring images
+      const text = Array.from(cell.childNodes)
+        .filter(node => node.nodeType === Node.TEXT_NODE || (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'IMG'))
+        .map(node => node.textContent)
+        .join(' ')
+        .trim();
+      
+      return text.toLowerCase();
+    }
+
+    function sortTable(columnIndex, direction) {
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr.table-row'));
+
+      rows.sort((a, b) => {
+        const aValue = getCellValue(a, columnIndex);
+        const bValue = getCellValue(b, columnIndex);
+
+        if (direction === 'ascending') {
+          return aValue.localeCompare(bValue);
+        } else {
+          return bValue.localeCompare(aValue);
+        }
+      });
+
+      // Re-append rows in sorted order
+      rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function updateSortIndicators(columnIndex, direction) {
+      headers.forEach(header => {
+        const col = parseInt(header.getAttribute('data-column'));
+        if (col === columnIndex) {
+          header.setAttribute('aria-sort', direction);
+        } else {
+          header.setAttribute('aria-sort', 'none');
+        }
+      });
+    }
+
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const columnIndex = parseInt(header.getAttribute('data-column'));
+        
+        let newDirection;
+        if (currentSortColumn === columnIndex) {
+          // Toggle direction
+          if (currentSortDirection === 'none' || currentSortDirection === 'descending') {
+            newDirection = 'ascending';
+          } else {
+            newDirection = 'descending';
+          }
+        } else {
+          // New column, start with ascending
+          newDirection = 'ascending';
+        }
+
+        currentSortColumn = columnIndex;
+        currentSortDirection = newDirection;
+
+        sortTable(columnIndex, newDirection);
+        updateSortIndicators(columnIndex, newDirection);
+      });
+
+      // Add keyboard support for sorting
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+  }
+
   function initAll() {
     initInputModalityTracker();
     initGlobalHoverKeyHandler();
     document.querySelectorAll(WRAPPER_SELECTOR).forEach(initWrapper);
+    initSearch();
+    initSort();
   }
 
   if (document.readyState === 'loading') {
