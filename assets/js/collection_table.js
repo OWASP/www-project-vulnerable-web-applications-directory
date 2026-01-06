@@ -238,18 +238,22 @@
     
     if (!searchInput || !table) return;
 
+    let debounceTimer;
     searchInput.addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase().trim();
-      const rows = table.querySelectorAll('tbody tr.table-row');
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        const rows = table.querySelectorAll('tbody tr.table-row');
 
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-          row.classList.remove('hidden');
-        } else {
-          row.classList.add('hidden');
-        }
-      });
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            row.classList.remove('hidden');
+          } else {
+            row.classList.add('hidden');
+          }
+        });
+      }, 150);
     });
   }
 
@@ -261,19 +265,28 @@
     const headers = table.querySelectorAll('th[data-column]');
     let currentSortColumn = null;
     let currentSortDirection = 'none';
+    const cellCache = new WeakMap();
 
     function getCellValue(row, columnIndex) {
       const cell = row.children[columnIndex];
       if (!cell) return '';
+      
+      // Check cache first
+      if (cellCache.has(cell)) {
+        return cellCache.get(cell);
+      }
       
       // Extract text content, ignoring images
       const text = Array.from(cell.childNodes)
         .filter(node => node.nodeType === Node.TEXT_NODE || (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'IMG'))
         .map(node => node.textContent)
         .join(' ')
-        .trim();
+        .trim()
+        .toLowerCase();
       
-      return text.toLowerCase();
+      // Cache the result
+      cellCache.set(cell, text);
+      return text;
     }
 
     function sortTable(columnIndex, direction) {
