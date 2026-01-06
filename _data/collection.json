@@ -756,16 +756,16 @@
 				"url": "https://www.dvaib.com"
 			},
 			{
-				"name": "author-linkedin",
+				"name": "download",
+				"url": "https://www.github.com/subhashdasyam"
+			},
+			{
+				"name": "announcement",
 				"url": "https://linkedin.com/in/subhashdasyam"
 			},
 			{
-				"name": "author-website",
+				"name": "guide",
 				"url": "https://www.subhashdasyam.com"
-			},
-			{
-				"name": "author-github",
-				"url": "https://www.github.com/subhashdasyam"
 			}
 		],
 		"author": "Subhash Dasyam",
