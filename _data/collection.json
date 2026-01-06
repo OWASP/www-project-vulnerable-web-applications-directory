@@ -574,6 +574,31 @@
 		"badge": "stamparm/DSVW"
 	},
 	{
+		"url": "https://www.dvaib.com",
+		"name": "Damn Vulnerable AI Bank (DVAIB)",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"React",
+			"LLM",
+			"Transformers",
+			"Vision Language Models",
+			"Document Parsers",
+			"Python",
+			"Vector DB",
+			"PostgreSQL"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://www.dvaib.com"
+			}
+		],
+		"author": "Subhash Dasyam",
+		"notes": "Hands-on AI security training platform for prompt injection and jailbreaking, realistic attack scenarios, achievements, and leaderboard."
+	},
+	{
 		"url": "https://github.com/AvalZ/DVAS",
 		"name": "Damn Vulnerable Application Scanner (DVAS)",
 		"collection": [
