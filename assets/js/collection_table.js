@@ -232,6 +232,8 @@
   }
 
   // Filtering and Sorting functionality
+  const FILTER_DEBOUNCE_MS = 300;
+
   function getTableRows(wrapper) {
     const table = wrapper.querySelector('table');
     if (!table) return [];
@@ -319,7 +321,7 @@
       filterTimeout = setTimeout(() => {
         const visibleCount = filterTable(wrapper, e.target.value);
         updateFilterInfo(sortInfo, e.target.value, visibleCount);
-      }, 300);
+      }, FILTER_DEBOUNCE_MS);
     });
 
     clearButton.addEventListener('click', () => {
@@ -362,7 +364,8 @@
           header.setAttribute('aria-sort', newDirection === 'asc' ? 'ascending' : 'descending');
           currentSortColumn = columnIndex;
           currentSortDirection = newDirection;
-          updateSortInfo(sortInfo, header.textContent.replace(/[↑↓⇅]/g, '').trim(), newDirection);
+          const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
+          updateSortInfo(sortInfo, columnName, newDirection);
         } else {
           // Reset to original order by restoring the original rows
           resetTableOrder(wrapper, originalRows);
