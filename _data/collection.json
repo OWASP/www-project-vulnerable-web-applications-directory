@@ -754,10 +754,22 @@
 			{
 				"name": "live",
 				"url": "https://www.dvaib.com"
+			},
+			{
+				"name": "author-linkedin",
+				"url": "https://linkedin.com/in/subhashdasyam"
+			},
+			{
+				"name": "author-website",
+				"url": "https://www.subhashdasyam.com"
+			},
+			{
+				"name": "author-github",
+				"url": "https://www.github.com/subhashdasyam"
 			}
 		],
 		"author": "Subhash Dasyam",
-		"notes": "Hands-on AI security training platform for prompt injection and jailbreaking, realistic attack scenarios, achievements, and leaderboard. Author links: https://linkedin.com/in/subhashdasyam, https://www.subhashdasyam.com, https://www.github.com/subhashdasyam."
+		"notes": "Hands-on AI security training platform for prompt injection and jailbreaking, realistic attack scenarios, achievements, and leaderboard."
 	},
 	{
 		"url": "https://github.com/isp1r0/DVNA",
