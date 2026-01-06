@@ -316,16 +316,20 @@
 
     // Setup filtering
     let filterTimeout;
+    let hasActiveFilter = false;
+
     filterInput.addEventListener('input', (e) => {
       clearTimeout(filterTimeout);
       filterTimeout = setTimeout(() => {
         const visibleCount = filterTable(wrapper, e.target.value);
+        hasActiveFilter = e.target.value.trim().length > 0;
         updateFilterInfo(sortInfo, e.target.value, visibleCount);
       }, FILTER_DEBOUNCE_MS);
     });
 
     clearButton.addEventListener('click', () => {
       filterInput.value = '';
+      hasActiveFilter = false;
       filterTable(wrapper, '');
       updateFilterInfo(sortInfo, '', getTableRows(wrapper).length);
       filterInput.focus();
@@ -365,13 +369,13 @@
           currentSortColumn = columnIndex;
           currentSortDirection = newDirection;
           const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
-          updateSortInfo(sortInfo, columnName, newDirection);
+          updateSortInfo(sortInfo, columnName, newDirection, hasActiveFilter);
         } else {
           // Reset to original order by restoring the original rows
           resetTableOrder(wrapper, originalRows);
           currentSortColumn = null;
           currentSortDirection = null;
-          updateSortInfo(sortInfo, null, null);
+          updateSortInfo(sortInfo, null, null, hasActiveFilter);
         }
       };
 
@@ -411,7 +415,7 @@
     }
   }
 
-  function updateSortInfo(sortInfoElement, columnName, direction) {
+  function updateSortInfo(sortInfoElement, columnName, direction, hasActiveFilter) {
     if (!sortInfoElement) return;
 
     if (columnName && direction) {
@@ -420,7 +424,6 @@
       sortInfoElement.textContent = baseText;
     } else {
       // Only clear if there's no active filter
-      const hasActiveFilter = sortInfoElement.textContent.includes('Showing');
       if (!hasActiveFilter) {
         sortInfoElement.textContent = '';
       }
