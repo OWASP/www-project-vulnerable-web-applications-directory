@@ -23,12 +23,7 @@ ul { padding: 5px; }
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
 }
 
-/* Sortable headers */
-.collection-table-wrapper th {
-  cursor: pointer;
-  user-select: none;
-}
-
+/* Sortable headers - hover and focus states */
 .collection-table-wrapper th:hover {
   background: #e8e8e8 !important;
 }
