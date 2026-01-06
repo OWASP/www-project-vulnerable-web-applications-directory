@@ -735,6 +735,31 @@
 		"badge": "LBartolini/DVI"
 	},
 	{
+		"url": "https://www.dvaib.com",
+		"name": "Damn Vulnerable AI Bank (DVAIB)",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"React",
+			"LLM",
+			"Transformers",
+			"Vision Language Models",
+			"Document Parsers",
+			"Python",
+			"Vector DB",
+			"PostgreSQL"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://www.dvaib.com"
+			}
+		],
+		"author": "Subhash Dasyam",
+		"notes": "Hands-on AI security training platform for prompt injection and jailbreaking, realistic attack scenarios, achievements, and leaderboard. Author links: https://linkedin.com/in/subhashdasyam, https://www.subhashdasyam.com, https://www.github.com/subhashdasyam."
+	},
+	{
 		"url": "https://github.com/isp1r0/DVNA",
 		"name": "Damn Vulnerable Node Application - DVNA",
 		"collection": [
