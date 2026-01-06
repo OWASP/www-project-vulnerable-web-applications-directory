@@ -10,14 +10,33 @@
 
 <link rel="stylesheet" href="{{ '/assets/css/collection_table.css' | relative_url }}">
 
-<div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart">
+{% if include.collection != "aotd" %}
+<div class="collection-controls">
+  <div class="filter-controls">
+    <label for="filter-input-{{ include.collection }}">Filter:</label>
+    <input type="text" id="filter-input-{{ include.collection }}" class="filter-input" placeholder="Search across all columns..." aria-label="Filter table">
+    <button type="button" class="clear-filter" aria-label="Clear filter">Clear</button>
+  </div>
+  <div class="sort-info" aria-live="polite" aria-atomic="true"></div>
+</div>
+{% endif %}
+
+<div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart" data-collection="{{ include.collection }}">
 <table>
   <tr>
+    {% if include.collection != "aotd" %}
+    <th class="sortable" data-column="0" tabindex="0" role="button" aria-sort="none">App. URL <span class="sort-indicator" aria-hidden="true"></span></th>
+    <th class="sortable" data-column="1" tabindex="0" role="button" aria-sort="none">Author <span class="sort-indicator" aria-hidden="true"></span></th>
+    <th>Reference(s)</th>
+    <th class="sortable" data-column="3" tabindex="0" role="button" aria-sort="none">Technology(ies) <span class="sort-indicator" aria-hidden="true"></span></th>
+    <th class="sortable" data-column="4" tabindex="0" role="button" aria-sort="none">Note(s) <span class="sort-indicator" aria-hidden="true"></span></th>
+    {% else %}
     <th>App. URL</th>
     <th>Author</th>
     <th>Reference(s)</th>
     <th>Technology(ies)</th>
     <th>Note(s)</th>
+    {% endif %}
   </tr>
   {% for app in apps %}
   <tr>
