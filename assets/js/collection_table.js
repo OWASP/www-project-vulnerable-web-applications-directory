@@ -304,20 +304,28 @@
     
     if (!filterInput || !clearButton) return;
 
+    // Find the sort-info element for this collection (look for it in the DOM before this wrapper)
+    const controlsDiv = filterInput.closest('.collection-controls');
+    const sortInfo = controlsDiv ? controlsDiv.querySelector('.sort-info') : null;
+
+    // Store original row order for reset functionality
+    const table = wrapper.querySelector('table');
+    const originalRows = table ? Array.from(getTableRows(wrapper)).map(row => row.cloneNode(true)) : [];
+
     // Setup filtering
     let filterTimeout;
     filterInput.addEventListener('input', (e) => {
       clearTimeout(filterTimeout);
       filterTimeout = setTimeout(() => {
         const visibleCount = filterTable(wrapper, e.target.value);
-        updateFilterInfo(collection, e.target.value, visibleCount);
+        updateFilterInfo(sortInfo, e.target.value, visibleCount);
       }, 300);
     });
 
     clearButton.addEventListener('click', () => {
       filterInput.value = '';
       filterTable(wrapper, '');
-      updateFilterInfo(collection, '', getTableRows(wrapper).length);
+      updateFilterInfo(sortInfo, '', getTableRows(wrapper).length);
       filterInput.focus();
     });
 
@@ -354,12 +362,13 @@
           header.setAttribute('aria-sort', newDirection === 'asc' ? 'ascending' : 'descending');
           currentSortColumn = columnIndex;
           currentSortDirection = newDirection;
-          updateSortInfo(collection, header.textContent.replace(/[↑↓⇅]/g, '').trim(), newDirection);
+          updateSortInfo(sortInfo, header.textContent.replace(/[↑↓⇅]/g, '').trim(), newDirection);
         } else {
-          // Reset to original order (reload might be needed, or store original order)
+          // Reset to original order by restoring the original rows
+          resetTableOrder(wrapper, originalRows);
           currentSortColumn = null;
           currentSortDirection = null;
-          updateSortInfo(collection, null, null);
+          updateSortInfo(sortInfo, null, null);
         }
       };
 
@@ -373,30 +382,45 @@
     });
   }
 
-  function updateFilterInfo(collection, filterText, visibleCount) {
-    const sortInfo = document.querySelector('.collection-controls .sort-info');
-    if (!sortInfo) return;
+  function resetTableOrder(wrapper, originalRows) {
+    const table = wrapper.querySelector('table');
+    if (!table) return;
+
+    const tbody = table.querySelector('tbody') || table;
+    const currentRows = getTableRows(wrapper);
+    
+    // Remove all current data rows
+    currentRows.forEach(row => row.remove());
+    
+    // Re-append original rows (cloned to avoid reference issues)
+    originalRows.forEach(row => {
+      tbody.appendChild(row.cloneNode(true));
+    });
+  }
+
+  function updateFilterInfo(sortInfoElement, filterText, visibleCount) {
+    if (!sortInfoElement) return;
 
     if (filterText) {
-      sortInfo.textContent = `Showing ${visibleCount} result(s) for "${filterText}"`;
+      sortInfoElement.textContent = `Showing ${visibleCount} result(s) for "${filterText}"`;
     } else {
-      sortInfo.textContent = '';
+      sortInfoElement.textContent = '';
     }
   }
 
-  function updateSortInfo(collection, columnName, direction) {
-    const sortInfo = document.querySelector('.collection-controls .sort-info');
-    if (!sortInfo) return;
-
-    const filterInput = document.getElementById(`filter-input-${collection}`);
-    const hasFilter = filterInput && filterInput.value.trim();
+  function updateSortInfo(sortInfoElement, columnName, direction) {
+    if (!sortInfoElement) return;
 
     if (columnName && direction) {
       const directionText = direction === 'asc' ? 'ascending' : 'descending';
       const baseText = `Sorted by ${columnName} (${directionText})`;
-      sortInfo.textContent = baseText;
-    } else if (!hasFilter) {
-      sortInfo.textContent = '';
+      sortInfoElement.textContent = baseText;
+    } else {
+      // Only clear if there's no active filter
+      const hasActiveFilter = sortInfoElement.textContent.includes('Showing');
+      if (!hasActiveFilter) {
+        sortInfoElement.textContent = '';
+      }
     }
   }
 
