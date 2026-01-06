@@ -231,10 +231,212 @@
     wrap.addEventListener('lostpointercapture', endPan);
   }
 
+  // Filtering and Sorting functionality
+  const FILTER_DEBOUNCE_MS = 300;
+
+  function getTableRows(wrapper) {
+    const table = wrapper.querySelector('table');
+    if (!table) return [];
+    const rows = Array.from(table.querySelectorAll('tr'));
+    // Skip header row
+    return rows.slice(1);
+  }
+
+  function getTextContent(cell) {
+    if (!cell) return '';
+    // Get all text, including from nested elements
+    return cell.textContent.trim().toLowerCase();
+  }
+
+  function filterTable(wrapper, filterText) {
+    const rows = getTableRows(wrapper);
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const cells = Array.from(row.querySelectorAll('td'));
+      const rowText = cells.map(cell => getTextContent(cell)).join(' ');
+      
+      if (rowText.includes(filterText.toLowerCase())) {
+        row.classList.remove('filtered-out');
+        visibleCount++;
+      } else {
+        row.classList.add('filtered-out');
+      }
+    });
+
+    return visibleCount;
+  }
+
+  function sortTable(wrapper, columnIndex, direction) {
+    const table = wrapper.querySelector('table');
+    if (!table) return;
+
+    const tbody = table.querySelector('tbody') || table;
+    const rows = getTableRows(wrapper);
+    
+    const sortedRows = rows.sort((a, b) => {
+      const cellA = a.querySelectorAll('td')[columnIndex];
+      const cellB = b.querySelectorAll('td')[columnIndex];
+      
+      const textA = getTextContent(cellA);
+      const textB = getTextContent(cellB);
+      
+      if (direction === 'asc') {
+        return textA.localeCompare(textB);
+      } else {
+        return textB.localeCompare(textA);
+      }
+    });
+
+    // Re-append rows in sorted order
+    sortedRows.forEach(row => {
+      tbody.appendChild(row);
+    });
+  }
+
+  function initFilteringSorting(wrapper) {
+    const collection = wrapper.getAttribute('data-collection');
+    
+    // Skip if this is the "aotd" collection
+    if (collection === 'aotd') return;
+
+    // Find the filter input and clear button for this specific collection
+    const filterInput = document.getElementById(`filter-input-${collection}`);
+    const clearButton = filterInput ? filterInput.nextElementSibling : null;
+    
+    if (!filterInput || !clearButton) return;
+
+    // Find the sort-info element for this collection (look for it in the DOM before this wrapper)
+    const controlsDiv = filterInput.closest('.collection-controls');
+    const sortInfo = controlsDiv ? controlsDiv.querySelector('.sort-info') : null;
+
+    // Store original row order for reset functionality
+    const table = wrapper.querySelector('table');
+    const originalRows = table ? Array.from(getTableRows(wrapper)).map(row => row.cloneNode(true)) : [];
+
+    // Setup filtering
+    let filterTimeout;
+    let hasActiveFilter = false;
+
+    filterInput.addEventListener('input', (e) => {
+      clearTimeout(filterTimeout);
+      filterTimeout = setTimeout(() => {
+        const visibleCount = filterTable(wrapper, e.target.value);
+        hasActiveFilter = e.target.value.trim().length > 0;
+        updateFilterInfo(sortInfo, e.target.value, visibleCount);
+      }, FILTER_DEBOUNCE_MS);
+    });
+
+    clearButton.addEventListener('click', () => {
+      filterInput.value = '';
+      hasActiveFilter = false;
+      filterTable(wrapper, '');
+      updateFilterInfo(sortInfo, '', getTableRows(wrapper).length);
+      filterInput.focus();
+    });
+
+    // Setup sorting
+    const sortableHeaders = wrapper.querySelectorAll('th.sortable');
+    let currentSortColumn = null;
+    let currentSortDirection = null;
+
+    sortableHeaders.forEach(header => {
+      const handleSort = () => {
+        const columnIndex = parseInt(header.getAttribute('data-column'), 10);
+        
+        // Determine new sort direction
+        let newDirection;
+        if (currentSortColumn === columnIndex) {
+          if (currentSortDirection === 'asc') {
+            newDirection = 'desc';
+          } else if (currentSortDirection === 'desc') {
+            newDirection = null; // Reset to unsorted
+          } else {
+            newDirection = 'asc';
+          }
+        } else {
+          newDirection = 'asc';
+        }
+
+        // Clear all sort indicators
+        sortableHeaders.forEach(h => {
+          h.setAttribute('aria-sort', 'none');
+        });
+
+        if (newDirection) {
+          sortTable(wrapper, columnIndex, newDirection);
+          header.setAttribute('aria-sort', newDirection === 'asc' ? 'ascending' : 'descending');
+          currentSortColumn = columnIndex;
+          currentSortDirection = newDirection;
+          const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
+          updateSortInfo(sortInfo, columnName, newDirection, hasActiveFilter);
+        } else {
+          // Reset to original order by restoring the original rows
+          resetTableOrder(wrapper, originalRows);
+          currentSortColumn = null;
+          currentSortDirection = null;
+          updateSortInfo(sortInfo, null, null, hasActiveFilter);
+        }
+      };
+
+      header.addEventListener('click', handleSort);
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleSort();
+        }
+      });
+    });
+  }
+
+  function resetTableOrder(wrapper, originalRows) {
+    const table = wrapper.querySelector('table');
+    if (!table) return;
+
+    const tbody = table.querySelector('tbody') || table;
+    const currentRows = getTableRows(wrapper);
+    
+    // Remove all current data rows
+    currentRows.forEach(row => row.remove());
+    
+    // Re-append original rows (cloned to avoid reference issues)
+    originalRows.forEach(row => {
+      tbody.appendChild(row.cloneNode(true));
+    });
+  }
+
+  function updateFilterInfo(sortInfoElement, filterText, visibleCount) {
+    if (!sortInfoElement) return;
+
+    if (filterText) {
+      sortInfoElement.textContent = `Showing ${visibleCount} result(s) for "${filterText}"`;
+    } else {
+      sortInfoElement.textContent = '';
+    }
+  }
+
+  function updateSortInfo(sortInfoElement, columnName, direction, hasActiveFilter) {
+    if (!sortInfoElement) return;
+
+    if (columnName && direction) {
+      const directionText = direction === 'asc' ? 'ascending' : 'descending';
+      const baseText = `Sorted by ${columnName} (${directionText})`;
+      sortInfoElement.textContent = baseText;
+    } else {
+      // Only clear if there's no active filter
+      if (!hasActiveFilter) {
+        sortInfoElement.textContent = '';
+      }
+    }
+  }
+
   function initAll() {
     initInputModalityTracker();
     initGlobalHoverKeyHandler();
-    document.querySelectorAll(WRAPPER_SELECTOR).forEach(initWrapper);
+    document.querySelectorAll(WRAPPER_SELECTOR).forEach(wrapper => {
+      initWrapper(wrapper);
+      initFilteringSorting(wrapper);
+    });
   }
 
   if (document.readyState === 'loading') {
