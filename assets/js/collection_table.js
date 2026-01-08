@@ -299,6 +299,19 @@
         } else {
           return dateB - dateA;
         }
+      } else if (isDualSort && sortMode === 'numeric') {
+        // For dual-sort columns in numeric mode, use data-sort-value-numeric
+        valueA = cellA.getAttribute('data-sort-value-numeric') || '0';
+        valueB = cellB.getAttribute('data-sort-value-numeric') || '0';
+        
+        const numA = parseInt(valueA, 10);
+        const numB = parseInt(valueB, 10);
+        
+        if (direction === 'asc') {
+          return numA - numB;
+        } else {
+          return numB - numA;
+        }
       } else if (isDualSort && sortMode === 'text') {
         // For dual-sort columns in text mode, use data-sort-value-text
         valueA = cellA.getAttribute('data-sort-value-text') || '';
@@ -380,6 +393,7 @@
       const handleSort = () => {
         const columnIndex = parseInt(header.getAttribute('data-column'), 10);
         const isDualSort = header.classList.contains('dual-sort');
+        const columnName = header.getAttribute('data-column-name');
         
         // Determine new sort direction and mode
         let newDirection;
@@ -389,26 +403,32 @@
           sortClickCount++;
           
           if (isDualSort) {
-            // Dual-sort behavior: 3 clicks for text, then 3 clicks for date
-            const cyclePosition = sortClickCount % 6;
+            // 5-click dual-sort behavior
+            const cyclePosition = sortClickCount % 5;
+            
+            // Determine which type of data to sort by first
+            const isAppUrlColumn = columnName === 'App. URL';
+            const isNotesColumn = columnName === 'Note(s)';
             
             if (cyclePosition === 1) {
+              // First click: sort by secondary data (stars or last commit) ascending
               newDirection = 'asc';
-              newMode = 'text';
+              newMode = isAppUrlColumn ? 'numeric' : 'date';
             } else if (cyclePosition === 2) {
+              // Second click: sort by secondary data descending
               newDirection = 'desc';
-              newMode = 'text';
+              newMode = isAppUrlColumn ? 'numeric' : 'date';
             } else if (cyclePosition === 3) {
-              newDirection = null; // Reset after text sorting
+              // Third click: sort by primary data (name or notes) ascending
+              newDirection = 'asc';
               newMode = 'text';
             } else if (cyclePosition === 4) {
-              newDirection = 'asc';
-              newMode = 'date';
-            } else if (cyclePosition === 5) {
+              // Fourth click: sort by primary data descending
               newDirection = 'desc';
-              newMode = 'date';
+              newMode = 'text';
             } else { // cyclePosition === 0
-              newDirection = null; // Reset after date sorting
+              // Fifth click: reset
+              newDirection = null;
               newMode = 'text';
               sortClickCount = 0; // Reset counter
             }
@@ -425,7 +445,12 @@
         } else {
           newDirection = 'asc';
           sortClickCount = 1;
-          newMode = 'text';
+          // Determine starting mode based on column type
+          const isAppUrlColumn = columnName === 'App. URL';
+          const isNotesColumn = columnName === 'Note(s)';
+          newMode = (isDualSort && (isAppUrlColumn || isNotesColumn)) 
+            ? (isAppUrlColumn ? 'numeric' : 'date') 
+            : 'text';
         }
 
         // Clear all sort indicators
@@ -449,11 +474,17 @@
           if (isDualSort) {
             const modeIndicator = header.querySelector('.sort-mode-indicator');
             if (modeIndicator) {
-              modeIndicator.textContent = `(sorting by ${newMode === 'date' ? 'last commit' : 'notes'})`;
+              const isAppUrlColumn = columnName === 'App. URL';
+              const isNotesColumn = columnName === 'Note(s)';
+              
+              if (isAppUrlColumn) {
+                modeIndicator.textContent = `(sorting by ${newMode === 'numeric' ? 'stars' : 'name'})`;
+              } else if (isNotesColumn) {
+                modeIndicator.textContent = `(sorting by ${newMode === 'date' ? 'last commit' : 'notes'})`;
+              }
             }
           }
           
-          const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
           updateSortInfo(sortInfo, columnName, newDirection, hasActiveFilter);
         } else {
           // Reset to original order by restoring the original rows
