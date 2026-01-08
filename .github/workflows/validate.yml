@@ -22,19 +22,11 @@ jobs:
       env:
         PR_NUMBER: ${{ github.event.number }}
       run: echo $PR_NUMBER > pr_number
-    - name: Setup Node
-      uses: actions/setup-node@v6
-      with:
-        node-version: 24
-    - name: Install dependencies
-      run: |
-         npm install -g ajv-formats
-         npm install -g ajv-cli
     - name: Run schema check
       id: schema
       continue-on-error: true
       run: |
-        ajv validate --spec=draft2020 -s schema.json -d _data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> schema_log.txt 2>&1
+        python3 .github/workflows/scripts/check_schema.py schema.json _data/collection.json > schema_log.txt 2>&1
     - name: Run alphabetical ordering check
       id: ordering
       continue-on-error: true
