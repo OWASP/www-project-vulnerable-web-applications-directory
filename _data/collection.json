@@ -32,7 +32,8 @@
 			}
 		],
 		"author": "fhammon, Guanwei Hu",
-		"notes": "AI Goat uses the Vicuna LLM which derived from Meta's LLaMA and coupled with ChatGPT's response data. When installing AI Goat the LLM binary is downloaded from third party locally on your computer."
+		"notes": "AI Goat uses the Vicuna LLM which derived from Meta's LLaMA and coupled with ChatGPT's response data. When installing AI Goat the LLM binary is downloaded from third party locally on your computer.",
+		"badge": "dhammon/ai-goat"
 	},
 	{
 		"url": "https://bigiamchallenge.com/",
@@ -56,7 +57,8 @@
 			"AWS"
 		],
 		"author": "AWS Security Team",
-		"notes": "Hands-on lab for AWS infrastructure pentesting"
+		"notes": "Hands-on lab for AWS infrastructure pentesting",
+		"badge": "RhinoSecurityLabs/cloudgoat"
 	},
 	{
 		"url": "https://wellarchitectedlabs.com/security/",
@@ -182,7 +184,8 @@
 			"Azure"
 		],
 		"author": "Azure Security Team",
-		"notes": "Hands-on lab for Azure AD pentesting"
+		"notes": "Hands-on lab for Azure AD pentesting",
+		"badge": "semperis/entra-goat"
 	},
 	{
 		"url": "https://github.com/mandiant/Azure-Workshop",
@@ -194,7 +197,8 @@
 			"Azure"
 		],
 		"author": "Azure Security Team",
-		"notes": "Interactive workshop covering Azure security best practices"
+		"notes": "Interactive workshop covering Azure security best practices",
+		"badge": "mandiant/Azure-Workshop"
 	},
 	{
 		"url": "http://www.bgabank.com/",
@@ -371,7 +375,8 @@
 			}
 		],
 		"author": "attacker-codeninja",
-		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes."
+		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes.",
+		"badge": "attacker-codeninja/BugGPT"
 	},
 	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
@@ -1154,7 +1159,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Capture-the-flag challenges for Google Cloud Platform"
+		"notes": "Capture-the-flag challenges for Google Cloud Platform",
+		"badge": "ThunderCTF/Thunder-CTF"
 	},
 	{
 		"url": "https://github.com/joshlf/gcp-goat",
@@ -1166,7 +1172,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Hands-on lab for GCP infrastructure pentesting"
+		"notes": "Hands-on lab for GCP infrastructure pentesting",
+		"badge": "joshlf/gcp-goat"
 	},
 	{
 		"url": "https://github.com/marionsack/gcp-ctf",
@@ -1178,7 +1185,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Interactive workshop covering GCP security best practices"
+		"notes": "Interactive workshop covering GCP security best practices",
+		"badge": "marionsack/gcp-ctf"
 	},
 	{
 		"url": "https://github.com/Orange-Cyberdefense/GOAD",
@@ -1771,7 +1779,8 @@
 			"Kubernetes"
 		],
 		"author": "Kubernetes Security Team",
-		"notes": "Hands-on lab for Kubernetes infrastructure pentesting"
+		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+		"badge": "raesene/kubernetes-security-labs"
 	},
 	{
 		"url": "https://github.com/madhuakula/kubernets-goat",
@@ -1783,7 +1792,8 @@
 			"Kubernetes"
 		],
 		"author": "Kubernetes Security Team",
-		"notes": "Interactive workshop covering Kubernetes security best practices"
+		"notes": "Interactive workshop covering Kubernetes security best practices",
+		"badge": "madhuakula/kubernets-goat"
 	},
 	{
 		"url": "https://sourceforge.net/projects/lampsecurity/",
@@ -2791,7 +2801,8 @@
 			"HTML/CSS",
 			"AI/LLM"
 		],
-		"url": "https://github.com/Commando-X/vuln-bank"
+		"url": "https://github.com/Commando-X/vuln-bank",
+		"badge": "Commando-X/vuln-bank"
 	},
 	{
 		"url": "https://github.com/Yavuzlar/VulnLab",
@@ -3292,7 +3303,8 @@
 			"Ollama",
 			"Swagger/OpenAPI"
 		],
-		"author": "Aliyu G. Yisa"
+		"author": "Aliyu G. Yisa",
+		"badge": "aligorithm/Zero-Health"
 	},
 	{
 		"url": "http://www.itsecgames.com/",
