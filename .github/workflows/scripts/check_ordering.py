@@ -15,7 +15,14 @@ def check_ordering(json_file):
             print("ERROR: JSON root must be an array")
             return False
         
-        names = [entry.get('name', '') for entry in data]
+        # Check for missing names and collect names
+        names = []
+        for i, entry in enumerate(data):
+            if 'name' not in entry:
+                print(f"ERROR: Entry at index {i} is missing required 'name' field")
+                return False
+            names.append(entry['name'])
+        
         sorted_names = sorted(names, key=lambda x: x.lower())
         
         if names != sorted_names:

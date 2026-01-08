@@ -40,8 +40,12 @@ def check_editorconfig(json_file):
         # Check trim_trailing_whitespace and indent_style (tabs)
         lines = text.split('\n')
         for i, line in enumerate(lines, 1):
-            # Check trailing whitespace (except empty last line)
-            if i < len(lines) and line.rstrip() != line:
+            # Skip the final empty line (result of file ending with \n)
+            if i == len(lines) and line == '':
+                continue
+            
+            # Check trailing whitespace
+            if line.rstrip() != line:
                 errors.append(f"ERROR: Line {i} has trailing whitespace")
             
             # Check for spaces used for indentation (should be tabs)

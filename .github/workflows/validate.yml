@@ -39,12 +39,12 @@ jobs:
       id: ordering
       continue-on-error: true
       run: |
-        python3 .github/workflows/scripts/check_ordering.py _data/collection.json > ordering_log.txt 2>&1
+        python3 .github/workflows/scripts/check_ordering.py _data/collection.json 1> ordering_log.txt 2>&1
     - name: Run .editorconfig compliance check
       id: editorconfig
       continue-on-error: true
       run: |
-        python3 .github/workflows/scripts/check_editorconfig.py _data/collection.json > editorconfig_log.txt 2>&1
+        python3 .github/workflows/scripts/check_editorconfig.py _data/collection.json 1> editorconfig_log.txt 2>&1
     - name: Create unified artifact and summary
       if: always()
       run: |
