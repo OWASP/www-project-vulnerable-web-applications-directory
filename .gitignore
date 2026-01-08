@@ -14,3 +14,10 @@ Gemfile.lock
 .idea/
 
 _site/
+
+# Workflow validation logs (generated during workflow runs)
+schema_log.txt
+ordering_log.txt
+editorconfig_log.txt
+artifact.txt
+pr_number
