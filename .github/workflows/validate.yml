@@ -22,34 +22,112 @@ jobs:
       env:
         PR_NUMBER: ${{ github.event.number }}
       run: echo $PR_NUMBER > pr_number
-    - name: Setup Node
-      uses: actions/setup-node@v6
-      with:
-        node-version: 24
-    - name: Install dependencies
-      run: |
-         npm install -g ajv-formats
-         npm install -g ajv-cli
     - name: Run schema check
+      id: schema
+      continue-on-error: true
       run: |
-        ajv validate --spec=draft2020 -s schema.json -d _data/collection.json --all-errors --errors=text --verbose=true -c=ajv-formats 1>> log.txt 2>&1
-    - name: Show Validation Issues
-      if: failure()
-      run: cat log.txt
-    - name: Attach Log
-      uses: actions/upload-artifact@v6
-      if: failure()
-      with:
-        name: JSONValidationLog
-        path: log.txt
-    - name: Create artifact for comment
-      if: failure()
+        python3 .github/workflows/scripts/check_schema.py schema.json _data/collection.json > schema_log.txt 2>&1
+    - name: Run alphabetical ordering check
+      id: ordering
+      continue-on-error: true
       run: |
+        python3 .github/workflows/scripts/check_ordering.py _data/collection.json > ordering_log.txt 2>&1
+    - name: Run .editorconfig compliance check
+      id: editorconfig
+      continue-on-error: true
+      run: |
+        python3 .github/workflows/scripts/check_editorconfig.py _data/collection.json > editorconfig_log.txt 2>&1
+    - name: Create unified artifact and summary
+      if: always()
+      run: |
+        # Initialize summary (shows all results)
+        echo "# Validation Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Initialize overall status
+        overall_status=0
+        
+        # Initialize artifact file with header (only failures will be added)
         echo "**The following issues were identified:**" > artifact.txt
-        # Copy to generic name for commenting
-        cat log.txt | tee -a artifact.txt
-    - name: Upload list of issues
-      if: failure()
+        echo "" >> artifact.txt
+        
+        # Schema validation results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## Schema Validation" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.schema.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All entries conform to the schema." >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat schema_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Schema Validation" >> artifact.txt
+          echo "" >> artifact.txt
+          cat schema_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Alphabetical ordering results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## Alphabetical Ordering Check" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.ordering.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Alphabetical Ordering Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat ordering_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # .editorconfig compliance results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## .editorconfig Compliance Check" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.editorconfig.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## .editorconfig Compliance Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat editorconfig_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        
+        # Exit with error if any check failed
+        exit $overall_status
+    - name: Upload validation results
+      if: always()
       uses: actions/upload-artifact@v6
       with:
         name: artifact
