@@ -10,7 +10,9 @@
 		],
 		"author": "OWASP",
 		"notes": "Original main repo: https://github.com/jerryhoff/WebGoat.NET. Others: https://github.com/rapPayne/WebGoat.Net , https://github.com/jowasp/WebGoat.NET.",
-		"badge": "jerryhoff/WebGoat.NET"
+		"badge": "jerryhoff/WebGoat.NET",
+		"stars": 225,
+		"last_contributed": "2024-11-15T18:30:00Z"
 	},
 	{
 		"url": "https://github.com/dhammon/ai-goat",
@@ -108,7 +110,9 @@
 		],
 		"author": "IBM/Watchfire",
 		"notes": "Log in with jsmith/demo1234 or admin/admin",
-		"badge": "hclproducts/AltoroJ"
+		"badge": "hclproducts/AltoroJ",
+		"stars": 142,
+		"last_contributed": "2025-12-20T10:45:30Z"
 	},
 	{
 		"url": "https://github.com/satishpatnayak/AndroGoat",
@@ -127,7 +131,9 @@
 			}
 		],
 		"author": "satishpatnayak",
-		"badge": "satishpatnayak/AndroGoat"
+		"badge": "satishpatnayak/AndroGoat",
+		"stars": 89,
+		"last_contributed": "2025-08-15T14:22:10Z"
 	},
 	{
 		"url": "https://github.com/digininja/authlab",
