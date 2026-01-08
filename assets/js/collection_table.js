@@ -274,17 +274,56 @@
     const tbody = table.querySelector('tbody') || table;
     const rows = getTableRows(wrapper);
     
+    // Determine the sort type based on column name
+    const header = wrapper.querySelector(`th[data-column="${columnIndex}"]`);
+    const columnName = header ? header.getAttribute('data-column-name') : '';
+    const isNumeric = columnName === 'Stars';
+    const isDate = columnName === 'Last Contribution';
+    
     const sortedRows = rows.sort((a, b) => {
       const cellA = a.querySelectorAll('td')[columnIndex];
       const cellB = b.querySelectorAll('td')[columnIndex];
       
-      const textA = getTextContent(cellA);
-      const textB = getTextContent(cellB);
+      let valueA, valueB;
       
-      if (direction === 'asc') {
-        return textA.localeCompare(textB);
+      if (isNumeric) {
+        // For numeric columns, use data-sort-value or parse the text
+        valueA = cellA.getAttribute('data-sort-value') || cellA.textContent.trim();
+        valueB = cellB.getAttribute('data-sort-value') || cellB.textContent.trim();
+        
+        // Parse as numbers, treating '-' or empty as 0
+        const numA = (valueA === '-' || valueA === '') ? 0 : parseInt(valueA.replace(/,/g, ''), 10);
+        const numB = (valueB === '-' || valueB === '') ? 0 : parseInt(valueB.replace(/,/g, ''), 10);
+        
+        if (direction === 'asc') {
+          return numA - numB;
+        } else {
+          return numB - numA;
+        }
+      } else if (isDate) {
+        // For date columns, use data-sort-value (ISO format) or text
+        valueA = cellA.getAttribute('data-sort-value') || cellA.textContent.trim();
+        valueB = cellB.getAttribute('data-sort-value') || cellB.textContent.trim();
+        
+        // Treat '-' or empty as oldest date
+        const dateA = (valueA === '-' || valueA === '') ? new Date(0) : new Date(valueA);
+        const dateB = (valueB === '-' || valueB === '') ? new Date(0) : new Date(valueB);
+        
+        if (direction === 'asc') {
+          return dateA - dateB;
+        } else {
+          return dateB - dateA;
+        }
       } else {
-        return textB.localeCompare(textA);
+        // For text columns, use localeCompare
+        const textA = getTextContent(cellA);
+        const textB = getTextContent(cellB);
+        
+        if (direction === 'asc') {
+          return textA.localeCompare(textB);
+        } else {
+          return textB.localeCompare(textA);
+        }
       }
     });
 
