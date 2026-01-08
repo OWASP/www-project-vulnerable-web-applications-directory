@@ -267,7 +267,7 @@
     return visibleCount;
   }
 
-  function sortTable(wrapper, columnIndex, direction) {
+  function sortTable(wrapper, columnIndex, direction, sortMode = 'text') {
     const table = wrapper.querySelector('table');
     if (!table) return;
 
@@ -277,8 +277,7 @@
     // Determine the sort type based on column name
     const header = wrapper.querySelector(`th[data-column="${columnIndex}"]`);
     const columnName = header ? header.getAttribute('data-column-name') : '';
-    const isNumeric = columnName === 'Stars';
-    const isDate = columnName === 'Last Contribution';
+    const isDualSort = header && header.classList.contains('dual-sort');
     
     const sortedRows = rows.sort((a, b) => {
       const cellA = a.querySelectorAll('td')[columnIndex];
@@ -286,36 +285,32 @@
       
       let valueA, valueB;
       
-      if (isNumeric) {
-        // For numeric columns, use data-sort-value or parse the text
-        valueA = cellA.getAttribute('data-sort-value') || cellA.textContent.trim();
-        valueB = cellB.getAttribute('data-sort-value') || cellB.textContent.trim();
+      if (isDualSort && sortMode === 'date') {
+        // For dual-sort columns in date mode, use data-sort-value-date
+        valueA = cellA.getAttribute('data-sort-value-date') || '';
+        valueB = cellB.getAttribute('data-sort-value-date') || '';
         
-        // Parse as numbers, treating '-' or empty as 0
-        const numA = (valueA === '-' || valueA === '') ? 0 : parseInt(valueA.replace(/,/g, ''), 10);
-        const numB = (valueB === '-' || valueB === '') ? 0 : parseInt(valueB.replace(/,/g, ''), 10);
-        
-        if (direction === 'asc') {
-          return numA - numB;
-        } else {
-          return numB - numA;
-        }
-      } else if (isDate) {
-        // For date columns, use data-sort-value (ISO format) or text
-        valueA = cellA.getAttribute('data-sort-value') || cellA.textContent.trim();
-        valueB = cellB.getAttribute('data-sort-value') || cellB.textContent.trim();
-        
-        // Treat '-' or empty as oldest date
-        const dateA = (valueA === '-' || valueA === '') ? new Date(0) : new Date(valueA);
-        const dateB = (valueB === '-' || valueB === '') ? new Date(0) : new Date(valueB);
+        // Treat empty as oldest date
+        const dateA = (valueA === '') ? new Date(0) : new Date(valueA);
+        const dateB = (valueB === '') ? new Date(0) : new Date(valueB);
         
         if (direction === 'asc') {
           return dateA - dateB;
         } else {
           return dateB - dateA;
         }
+      } else if (isDualSort && sortMode === 'text') {
+        // For dual-sort columns in text mode, use data-sort-value-text
+        valueA = cellA.getAttribute('data-sort-value-text') || '';
+        valueB = cellB.getAttribute('data-sort-value-text') || '';
+        
+        if (direction === 'asc') {
+          return valueA.localeCompare(valueB);
+        } else {
+          return valueB.localeCompare(valueA);
+        }
       } else {
-        // For text columns, use localeCompare
+        // For regular text columns, use localeCompare
         const textA = getTextContent(cellA);
         const textB = getTextContent(cellB);
         
@@ -378,35 +373,86 @@
     const sortableHeaders = wrapper.querySelectorAll('th.sortable');
     let currentSortColumn = null;
     let currentSortDirection = null;
+    let currentSortMode = 'text'; // For dual-sort columns
+    let sortClickCount = 0; // Track clicks for dual-sort columns
 
     sortableHeaders.forEach(header => {
       const handleSort = () => {
         const columnIndex = parseInt(header.getAttribute('data-column'), 10);
+        const isDualSort = header.classList.contains('dual-sort');
         
-        // Determine new sort direction
+        // Determine new sort direction and mode
         let newDirection;
+        let newMode = 'text';
+        
         if (currentSortColumn === columnIndex) {
-          if (currentSortDirection === 'asc') {
-            newDirection = 'desc';
-          } else if (currentSortDirection === 'desc') {
-            newDirection = null; // Reset to unsorted
+          sortClickCount++;
+          
+          if (isDualSort) {
+            // Dual-sort behavior: 3 clicks for text, then 3 clicks for date
+            const cyclePosition = sortClickCount % 6;
+            
+            if (cyclePosition === 1) {
+              newDirection = 'asc';
+              newMode = 'text';
+            } else if (cyclePosition === 2) {
+              newDirection = 'desc';
+              newMode = 'text';
+            } else if (cyclePosition === 3) {
+              newDirection = null; // Reset after text sorting
+              newMode = 'text';
+            } else if (cyclePosition === 4) {
+              newDirection = 'asc';
+              newMode = 'date';
+            } else if (cyclePosition === 5) {
+              newDirection = 'desc';
+              newMode = 'date';
+            } else { // cyclePosition === 0
+              newDirection = null; // Reset after date sorting
+              newMode = 'text';
+              sortClickCount = 0; // Reset counter
+            }
           } else {
-            newDirection = 'asc';
+            // Regular 3-click behavior
+            if (currentSortDirection === 'asc') {
+              newDirection = 'desc';
+            } else if (currentSortDirection === 'desc') {
+              newDirection = null; // Reset to unsorted
+            } else {
+              newDirection = 'asc';
+            }
           }
         } else {
           newDirection = 'asc';
+          sortClickCount = 1;
+          newMode = 'text';
         }
 
         // Clear all sort indicators
         sortableHeaders.forEach(h => {
           h.setAttribute('aria-sort', 'none');
+          // Clear sort mode indicator
+          const modeIndicator = h.querySelector('.sort-mode-indicator');
+          if (modeIndicator) {
+            modeIndicator.textContent = '';
+          }
         });
 
         if (newDirection) {
-          sortTable(wrapper, columnIndex, newDirection);
+          sortTable(wrapper, columnIndex, newDirection, newMode);
           header.setAttribute('aria-sort', newDirection === 'asc' ? 'ascending' : 'descending');
           currentSortColumn = columnIndex;
           currentSortDirection = newDirection;
+          currentSortMode = newMode;
+          
+          // Update mode indicator for dual-sort columns
+          if (isDualSort) {
+            const modeIndicator = header.querySelector('.sort-mode-indicator');
+            if (modeIndicator) {
+              modeIndicator.textContent = `(sorting by ${newMode === 'date' ? 'last commit' : 'notes'})`;
+            }
+          }
+          
           const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
           updateSortInfo(sortInfo, columnName, newDirection, hasActiveFilter);
         } else {
@@ -414,6 +460,7 @@
           resetTableOrder(wrapper, originalRows);
           currentSortColumn = null;
           currentSortDirection = null;
+          currentSortMode = 'text';
           updateSortInfo(sortInfo, null, null, hasActiveFilter);
         }
       };

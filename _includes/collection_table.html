@@ -27,16 +27,12 @@
     {% if include.collection != "aotd" %}
     <th class="sortable" data-column="0" data-column-name="App. URL" tabindex="0" role="button" aria-sort="none">App. URL <span class="sort-indicator" aria-hidden="true"></span></th>
     <th class="sortable" data-column="1" data-column-name="Author" tabindex="0" role="button" aria-sort="none">Author <span class="sort-indicator" aria-hidden="true"></span></th>
-    <th class="sortable" data-column="2" data-column-name="Stars" tabindex="0" role="button" aria-sort="none">Stars <span class="sort-indicator" aria-hidden="true"></span></th>
-    <th class="sortable" data-column="3" data-column-name="Last Contribution" tabindex="0" role="button" aria-sort="none">Last Contribution <span class="sort-indicator" aria-hidden="true"></span></th>
     <th>Reference(s)</th>
-    <th class="sortable" data-column="5" data-column-name="Technology(ies)" tabindex="0" role="button" aria-sort="none">Technology(ies) <span class="sort-indicator" aria-hidden="true"></span></th>
-    <th class="sortable" data-column="6" data-column-name="Note(s)" tabindex="0" role="button" aria-sort="none">Note(s) <span class="sort-indicator" aria-hidden="true"></span></th>
+    <th class="sortable" data-column="3" data-column-name="Technology(ies)" tabindex="0" role="button" aria-sort="none">Technology(ies) <span class="sort-indicator" aria-hidden="true"></span></th>
+    <th class="sortable dual-sort" data-column="4" data-column-name="Note(s)" tabindex="0" role="button" aria-sort="none">Note(s) <span class="sort-indicator" aria-hidden="true"></span><br><small class="sort-mode-indicator"></small></th>
     {% else %}
     <th>App. URL</th>
     <th>Author</th>
-    <th>Stars</th>
-    <th>Last Contribution</th>
     <th>Reference(s)</th>
     <th>Technology(ies)</th>
     <th>Note(s)</th>
@@ -46,23 +42,12 @@
   <tr>
     <td>
         <a href="{{ app.url }}">{{ app.name }}</a>
+        {% if app.stars %}
+            <br><small>⭐ {{ app.stars | number_with_delimiter }}</small>
+        {% endif %}
     </td>
     <td>
         {{ app.author }}
-    </td>
-    <td data-sort-value="{{ app.stars | default: 0 }}">
-        {% if app.stars %}
-            {{ app.stars | number_with_delimiter }}
-        {% else %}
-            -
-        {% endif %}
-    </td>
-    <td data-sort-value="{{ app.last_contributed | default: '' }}">
-        {% if app.last_contributed %}
-            {{ app.last_contributed | date: "%Y-%m-%d" }}
-        {% else %}
-            -
-        {% endif %}
     </td>
     <td>
       {% if app.references %}
@@ -82,8 +67,11 @@
         </ul>
       {% endif %}
     </td>
-    <td>
+    <td data-sort-value-text="{{ app.notes | default: '' }}" data-sort-value-date="{{ app.last_contributed | default: '' }}">
         {{ app.notes }}
+        {% if app.last_contributed %}
+            <br><small>Last commit: {{ app.last_contributed | date: "%Y-%m-%d" }}</small>
+        {% endif %}
     </td>
   </tr>
   {% endfor %}
