@@ -151,7 +151,7 @@
 		"author": "AWS Security Team",
 		"notes": "Hands-on lab for AWS infrastructure pentesting",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3430,
+		"stars": 3431,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -449,7 +449,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3430,
+		"stars": 3431,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -473,7 +473,9 @@
 		],
 		"author": "OWASP",
 		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
-		"badge": "OWASP/crAPI"
+		"badge": "OWASP/crAPI",
+		"stars": 1406,
+		"last_contributed": "2025-11-13T07:10:42Z"
 	},
 	{
 		"url": "https://github.com/SpiderLabs/CryptOMG",
@@ -581,7 +583,9 @@
 			"Python"
 		],
 		"author": "Checkmarx",
-		"badge": "Checkmarx/capital"
+		"badge": "Checkmarx/capital",
+		"stars": 315,
+		"last_contributed": "2024-04-05T09:13:35Z"
 	},
 	{
 		"url": "https://github.com/stamparm/DSVW",
@@ -2744,7 +2748,7 @@
 	},
 	{
 		"url": "http://solyd.com.br/treinamentos/introducao-ao-hacking-e-pentest",
-		"name": "Solyd - Introdu\u00e7\u00e3o ao Hacking e Pentest",
+		"name": "Solyd - Introdução ao Hacking e Pentest",
 		"collection": [
 			"online"
 		],
@@ -2753,7 +2757,7 @@
 			"Linux"
 		],
 		"author": "Solyd",
-		"notes": "In Portuguese (Portugu\u00eas) - Free online trainning with free online lab"
+		"notes": "In Portuguese (Português) - Free online trainning with free online lab"
 	},
 	{
 		"url": "https://github.com/sqlmapproject/testenv",
