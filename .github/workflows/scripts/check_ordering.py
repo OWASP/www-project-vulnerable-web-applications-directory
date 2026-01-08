@@ -6,7 +6,12 @@ import json
 import sys
 
 def check_ordering(json_file):
-    """Check if entries are ordered alphabetically by name field."""
+    """
+    Check if entries are ordered alphabetically by name field.
+    
+    Uses case-insensitive comparison to ensure consistent ordering
+    regardless of capitalization (e.g., 'Abc' comes before 'xyz').
+    """
     try:
         with open(json_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -23,6 +28,7 @@ def check_ordering(json_file):
                 return False
             names.append(entry['name'])
         
+        # Sort names case-insensitively for consistent ordering
         sorted_names = sorted(names, key=lambda x: x.lower())
         
         if names != sorted_names:
