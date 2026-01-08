@@ -48,103 +48,87 @@ jobs:
     - name: Create unified artifact and summary
       if: always()
       run: |
-        # Initialize artifact file
-        echo "**Validation Results**" > artifact.txt
-        echo "" >> artifact.txt
-        
-        # Initialize summary
+        # Initialize summary (shows all results)
         echo "# Validation Results" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         # Initialize overall status
         overall_status=0
         
-        # Schema validation results
-        echo "---" >> artifact.txt
-        echo "## Schema Validation" >> artifact.txt
+        # Initialize artifact file with header (only failures will be added)
+        echo "**The following issues were identified:**" > artifact.txt
         echo "" >> artifact.txt
+        
+        # Schema validation results
         echo "---" >> $GITHUB_STEP_SUMMARY
         echo "## Schema Validation" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ "${{ steps.schema.outcome }}" == "success" ]; then
-          echo "**Status: PASS ✓**" >> artifact.txt
-          echo "" >> artifact.txt
-          echo "All entries conform to the schema." >> artifact.txt
           echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "All entries conform to the schema." >> $GITHUB_STEP_SUMMARY
         else
-          echo "**Status: FAIL ✗**" >> artifact.txt
-          echo "" >> artifact.txt
-          cat schema_log.txt >> artifact.txt
           echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           cat schema_log.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Schema Validation" >> artifact.txt
+          echo "" >> artifact.txt
+          cat schema_log.txt >> artifact.txt
+          echo "" >> artifact.txt
           overall_status=1
         fi
-        echo "" >> artifact.txt
         echo "" >> $GITHUB_STEP_SUMMARY
         
         # Alphabetical ordering results
-        echo "---" >> artifact.txt
-        echo "## Alphabetical Ordering Check" >> artifact.txt
-        echo "" >> artifact.txt
         echo "---" >> $GITHUB_STEP_SUMMARY
         echo "## Alphabetical Ordering Check" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ "${{ steps.ordering.outcome }}" == "success" ]; then
-          echo "**Status: PASS ✓**" >> artifact.txt
-          echo "" >> artifact.txt
-          cat ordering_log.txt >> artifact.txt
           echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
         else
-          echo "**Status: FAIL ✗**" >> artifact.txt
-          echo "" >> artifact.txt
-          cat ordering_log.txt >> artifact.txt
           echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Alphabetical Ordering Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat ordering_log.txt >> artifact.txt
+          echo "" >> artifact.txt
           overall_status=1
         fi
-        echo "" >> artifact.txt
         echo "" >> $GITHUB_STEP_SUMMARY
         
         # .editorconfig compliance results
-        echo "---" >> artifact.txt
-        echo "## .editorconfig Compliance Check" >> artifact.txt
-        echo "" >> artifact.txt
         echo "---" >> $GITHUB_STEP_SUMMARY
         echo "## .editorconfig Compliance Check" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ "${{ steps.editorconfig.outcome }}" == "success" ]; then
-          echo "**Status: PASS ✓**" >> artifact.txt
-          echo "" >> artifact.txt
-          cat editorconfig_log.txt >> artifact.txt
           echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
         else
-          echo "**Status: FAIL ✗**" >> artifact.txt
-          echo "" >> artifact.txt
-          cat editorconfig_log.txt >> artifact.txt
           echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## .editorconfig Compliance Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat editorconfig_log.txt >> artifact.txt
+          echo "" >> artifact.txt
           overall_status=1
         fi
-        echo "" >> artifact.txt
-        echo "---" >> artifact.txt
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "---" >> $GITHUB_STEP_SUMMARY
         
