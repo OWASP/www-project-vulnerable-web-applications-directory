@@ -27,7 +27,23 @@ To set up a local development environment for this [Jekyll](https://jekyllrb.com
 
 1. The overwhelming majority of this project exists within a single JSON data file: [`_data/collection.json`](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/_data/collection.json).
 	1. That data file uses a single tab per level of indentation. (You can use <https://jsonformatter.curiousconcept.com/>, if needed. [Make sure you set tab to 1 tab :grinning:])
-	2. Contains entries sorted by the value of the `name` key. (You can use <https://codeshack.io/json-sorter/>, if needed.)
+	2. Contains entries sorted case insensitively by the value of the `name` key. You can use the following, if needed:
+```python
+import json
+
+# Load the JSON file
+with open('_data/collection.json', 'r') as file:
+    data = json.load(file)
+
+# Sort the data (by `name` as an example)
+sorted_data = sorted(data, key=lambda x: x.get('name').lower())
+
+# Write it back to the file with tabs for indentation
+with open('_data/collection.json', 'w') as file:
+    # Use the `indent` parameter with custom separators to ensure no extra spaces
+    json.dump(sorted_data, file, indent='\t')
+    file.write('\n')  # Add a blank line at the end
+```
 	3. The details associated with the entries are governed by the established [JSON schema](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/schema.json).
 		1. PRs which involve the data file are validated against this schema as part of a GitHub workflow process.
 2. Ensure your changes do not break the data file.
