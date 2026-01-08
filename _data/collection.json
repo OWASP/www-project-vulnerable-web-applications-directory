@@ -32,7 +32,10 @@
 			}
 		],
 		"author": "fhammon, Guanwei Hu",
-		"notes": "AI Goat uses the Vicuna LLM which derived from Meta's LLaMA and coupled with ChatGPT's response data. When installing AI Goat the LLM binary is downloaded from third party locally on your computer."
+		"notes": "AI Goat uses the Vicuna LLM which derived from Meta's LLaMA and coupled with ChatGPT's response data. When installing AI Goat the LLM binary is downloaded from third party locally on your computer.",
+		"badge": "dhammon/ai-goat",
+		"stars": 314,
+		"last_contributed": "2024-08-22T02:33:49Z"
 	},
 	{
 		"url": "https://bigiamchallenge.com/",
@@ -56,7 +59,10 @@
 			"AWS"
 		],
 		"author": "AWS Security Team",
-		"notes": "Hands-on lab for AWS infrastructure pentesting"
+		"notes": "Hands-on lab for AWS infrastructure pentesting",
+		"badge": "RhinoSecurityLabs/cloudgoat",
+		"stars": 3430,
+		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
 		"url": "https://wellarchitectedlabs.com/security/",
@@ -182,7 +188,8 @@
 			"Azure"
 		],
 		"author": "Azure Security Team",
-		"notes": "Hands-on lab for Azure AD pentesting"
+		"notes": "Hands-on lab for Azure AD pentesting",
+		"badge": "semperis/entra-goat"
 	},
 	{
 		"url": "https://github.com/mandiant/Azure-Workshop",
@@ -194,7 +201,8 @@
 			"Azure"
 		],
 		"author": "Azure Security Team",
-		"notes": "Interactive workshop covering Azure security best practices"
+		"notes": "Interactive workshop covering Azure security best practices",
+		"badge": "mandiant/Azure-Workshop"
 	},
 	{
 		"url": "http://www.bgabank.com/",
@@ -371,7 +379,10 @@
 			}
 		],
 		"author": "attacker-codeninja",
-		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes."
+		"notes": "BugGPT is an intentionally vulnerable application generator for educational security training purposes.",
+		"badge": "attacker-codeninja/BugGPT",
+		"stars": 0,
+		"last_contributed": "2024-10-23T00:57:41Z"
 	},
 	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
@@ -720,7 +731,8 @@
 		"author": "Najam Ul Saqib (cybersoldier)",
 		"notes": "A deliberately insecure ElectronJS application",
 		"badge": "njmulsqb/DVEA",
-		"stars": 17
+		"stars": 17,
+		"last_contributed": "2024-11-23T05:17:55Z"
 	},
 	{
 		"url": "https://github.com/LunaM00n/File-Upload-Lab",
@@ -732,7 +744,9 @@
 			"PHP"
 		],
 		"author": "Thin Ba Shane (@art0flunam00n)",
-		"badge": "LunaM00n/File-Upload-Lab"
+		"badge": "LunaM00n/File-Upload-Lab",
+		"stars": 101,
+		"last_contributed": "2018-05-26T09:32:38Z"
 	},
 	{
 		"url": "https://github.com/we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service",
@@ -751,7 +765,9 @@
 			}
 		],
 		"author": "we45 (Abhay Bhargav)",
-		"badge": "we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service"
+		"badge": "we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service",
+		"stars": 136,
+		"last_contributed": "2019-01-23T15:17:54Z"
 	},
 	{
 		"url": "https://github.com/dolevf/Damn-Vulnerable-GraphQL-Application",
@@ -769,7 +785,9 @@
 			"docker"
 		],
 		"author": "Dolev Farhi <dolev@lethalbit.com>, Connor McKinnon",
-		"badge": "dolevf/Damn-Vulnerable-GraphQL-Application"
+		"badge": "dolevf/Damn-Vulnerable-GraphQL-Application",
+		"stars": 1676,
+		"last_contributed": "2025-05-24T16:37:37Z"
 	},
 	{
 		"url": "https://github.com/LBartolini/DVI",
@@ -796,7 +814,9 @@
 		],
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
-		"badge": "LBartolini/DVI"
+		"badge": "LBartolini/DVI",
+		"stars": 3,
+		"last_contributed": "2025-11-11T09:13:08Z"
 	},
 	{
 		"url": "https://github.com/isp1r0/DVNA",
@@ -954,7 +974,9 @@
 			"Web Sockets"
 		],
 		"author": "@appsecco",
-		"badge": "interference-security/DVWS"
+		"badge": "interference-security/DVWS",
+		"stars": 355,
+		"last_contributed": "2025-12-19T17:00:57Z"
 	},
 	{
 		"url": "https://defendtheweb.net/",
@@ -982,7 +1004,9 @@
 			"Django"
 		],
 		"author": "Red and Black",
-		"badge": "red-and-black/DjangoGoat"
+		"badge": "red-and-black/DjangoGoat",
+		"stars": 45,
+		"last_contributed": "2019-08-18T19:25:23Z"
 	},
 	{
 		"url": "https://duck-store.escape.tech/",
@@ -1035,7 +1059,9 @@
 		],
 		"author": "OWASP",
 		"notes": "AWS EKS Security Lab and activity.",
-		"badge": "OWASP/www-project-eks-goat"
+		"badge": "OWASP/www-project-eks-goat",
+		"stars": 35,
+		"last_contributed": "2025-12-11T17:35:20Z"
 	},
 	{
 		"url": "https://github.com/k-tamura/easybuggy",
@@ -1057,7 +1083,9 @@
 			}
 		],
 		"author": "Kohei Tamura",
-		"badge": "k-tamura/easybuggy"
+		"badge": "k-tamura/easybuggy",
+		"stars": 256,
+		"last_contributed": "2025-12-18T02:40:09Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/exploitcoilvuln/files/",
@@ -1154,7 +1182,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Capture-the-flag challenges for Google Cloud Platform"
+		"notes": "Capture-the-flag challenges for Google Cloud Platform",
+		"badge": "ThunderCTF/Thunder-CTF"
 	},
 	{
 		"url": "https://github.com/joshlf/gcp-goat",
@@ -1166,7 +1195,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Hands-on lab for GCP infrastructure pentesting"
+		"notes": "Hands-on lab for GCP infrastructure pentesting",
+		"badge": "joshlf/gcp-goat"
 	},
 	{
 		"url": "https://github.com/marionsack/gcp-ctf",
@@ -1178,7 +1208,8 @@
 			"GCP"
 		],
 		"author": "GCP Security Team",
-		"notes": "Interactive workshop covering GCP security best practices"
+		"notes": "Interactive workshop covering GCP security best practices",
+		"badge": "marionsack/gcp-ctf"
 	},
 	{
 		"url": "https://github.com/Orange-Cyberdefense/GOAD",
@@ -1771,7 +1802,8 @@
 			"Kubernetes"
 		],
 		"author": "Kubernetes Security Team",
-		"notes": "Hands-on lab for Kubernetes infrastructure pentesting"
+		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
+		"badge": "raesene/kubernetes-security-labs"
 	},
 	{
 		"url": "https://github.com/madhuakula/kubernets-goat",
@@ -1783,7 +1815,8 @@
 			"Kubernetes"
 		],
 		"author": "Kubernetes Security Team",
-		"notes": "Interactive workshop covering Kubernetes security best practices"
+		"notes": "Interactive workshop covering Kubernetes security best practices",
+		"badge": "madhuakula/kubernets-goat"
 	},
 	{
 		"url": "https://sourceforge.net/projects/lampsecurity/",
@@ -2578,7 +2611,8 @@
 		"author": "Globo",
 		"notes": "Repository with many intentionally vulnerable web applications. Includes attack narratives and docker options for each app.",
 		"badge": "globocom/secDevLabs",
-		"stars": 967
+		"stars": 967,
+		"last_contributed": "2024-09-25T19:54:56Z"
 	},
 	{
 		"url": "https://github.com/DataDog/security-labs-pocs",
@@ -2594,7 +2628,9 @@
 			"JWT"
 		],
 		"author": "DataDog",
-		"badge": "DataDog/security-labs-pocs"
+		"badge": "DataDog/security-labs-pocs",
+		"stars": 448,
+		"last_contributed": "2025-08-18T13:44:59Z"
 	},
 	{
 		"url": "https://owasp.org/www-project-security-shepherd/",
@@ -2612,7 +2648,9 @@
 			}
 		],
 		"author": "OWASP",
-		"badge": "OWASP/SecurityShepherd"
+		"badge": "OWASP/SecurityShepherd",
+		"stars": 1418,
+		"last_contributed": "2025-10-15T16:34:52Z"
 	},
 	{
 		"url": "http://testhtml5.vulnweb.com/",
@@ -2653,7 +2691,9 @@
 			"Various Template Engines"
 		],
 		"author": "Hackmanit and Maximilian Hildebrand",
-		"badge": "Hackmanit/template-injection-playground"
+		"badge": "Hackmanit/template-injection-playground",
+		"stars": 56,
+		"last_contributed": "2026-01-03T18:26:39Z"
 	},
 	{
 		"url": "https://github.com/dhatanian/ticketmagpie",
@@ -2670,7 +2710,9 @@
 				"url": "https://github.com/dhatanian/ticketmagpie"
 			}
 		],
-		"badge": "dhatanian/ticketmagpie"
+		"badge": "dhatanian/ticketmagpie",
+		"stars": 20,
+		"last_contributed": "2017-05-11T19:24:38Z"
 	},
 	{
 		"url": "https://github.com/payatu/Tiredful-API",
@@ -2689,7 +2731,9 @@
 			}
 		],
 		"author": "@payatu",
-		"badge": "payatu/Tiredful-API"
+		"badge": "payatu/Tiredful-API",
+		"stars": 577,
+		"last_contributed": "2020-09-07T06:22:06Z"
 	},
 	{
 		"url": "https://github.com/lucideus-repo/UnSAFE_Bank",
@@ -2702,7 +2746,9 @@
 		],
 		"author": "lucideus",
 		"notes": "Web, Android and iOS application",
-		"badge": "lucideus-repo/UnSAFE_Bank"
+		"badge": "lucideus-repo/UnSAFE_Bank",
+		"stars": 166,
+		"last_contributed": "2025-09-29T13:35:56Z"
 	},
 	{
 		"url": "https://github.com/erev0s/VAmPI",
@@ -2726,7 +2772,8 @@
 			}
 		],
 		"author": "erev0s",
-		"badge": "erev0s/VAmPI"
+		"badge": "erev0s/VAmPI",
+		"stars": 1155
 	},
 	{
 		"url": "https://github.com/detectify/Varnish-H2-Request-Smuggling",
@@ -2791,7 +2838,8 @@
 			"HTML/CSS",
 			"AI/LLM"
 		],
-		"url": "https://github.com/Commando-X/vuln-bank"
+		"url": "https://github.com/Commando-X/vuln-bank",
+		"badge": "Commando-X/vuln-bank"
 	},
 	{
 		"url": "https://github.com/Yavuzlar/VulnLab",
@@ -3292,7 +3340,8 @@
 			"Ollama",
 			"Swagger/OpenAPI"
 		],
-		"author": "Aliyu G. Yisa"
+		"author": "Aliyu G. Yisa",
+		"badge": "aligorithm/Zero-Health"
 	},
 	{
 		"url": "http://www.itsecgames.com/",
