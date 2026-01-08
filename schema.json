@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"description": "This schema defines the information related to test application/environment entries for OWASP's Vulnerable Web Applicaitons Directory (VWAD) project",
+	"description": "This schema defines the information related to test application/environment entries for OWASP's Vulnerable Web Applications Directory (VWAD) project",
 	"examples": [
 		[
 			{
