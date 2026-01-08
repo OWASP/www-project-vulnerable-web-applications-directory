@@ -267,24 +267,71 @@
     return visibleCount;
   }
 
-  function sortTable(wrapper, columnIndex, direction) {
+  function sortTable(wrapper, columnIndex, direction, sortMode = 'text') {
     const table = wrapper.querySelector('table');
     if (!table) return;
 
     const tbody = table.querySelector('tbody') || table;
     const rows = getTableRows(wrapper);
     
+    // Determine the sort type based on column name
+    const header = wrapper.querySelector(`th[data-column="${columnIndex}"]`);
+    const columnName = header ? header.getAttribute('data-column-name') : '';
+    const isDualSort = header && header.classList.contains('dual-sort');
+    
     const sortedRows = rows.sort((a, b) => {
       const cellA = a.querySelectorAll('td')[columnIndex];
       const cellB = b.querySelectorAll('td')[columnIndex];
       
-      const textA = getTextContent(cellA);
-      const textB = getTextContent(cellB);
+      let valueA, valueB;
       
-      if (direction === 'asc') {
-        return textA.localeCompare(textB);
+      if (isDualSort && sortMode === 'date') {
+        // For dual-sort columns in date mode, use data-sort-value-date
+        valueA = cellA.getAttribute('data-sort-value-date') || '';
+        valueB = cellB.getAttribute('data-sort-value-date') || '';
+        
+        // Treat empty as oldest date
+        const dateA = (valueA === '') ? new Date(0) : new Date(valueA);
+        const dateB = (valueB === '') ? new Date(0) : new Date(valueB);
+        
+        if (direction === 'asc') {
+          return dateA - dateB;
+        } else {
+          return dateB - dateA;
+        }
+      } else if (isDualSort && sortMode === 'numeric') {
+        // For dual-sort columns in numeric mode, use data-sort-value-numeric
+        valueA = cellA.getAttribute('data-sort-value-numeric') || '0';
+        valueB = cellB.getAttribute('data-sort-value-numeric') || '0';
+        
+        const numA = parseInt(valueA, 10);
+        const numB = parseInt(valueB, 10);
+        
+        if (direction === 'asc') {
+          return numA - numB;
+        } else {
+          return numB - numA;
+        }
+      } else if (isDualSort && sortMode === 'text') {
+        // For dual-sort columns in text mode, use data-sort-value-text
+        valueA = cellA.getAttribute('data-sort-value-text') || '';
+        valueB = cellB.getAttribute('data-sort-value-text') || '';
+        
+        if (direction === 'asc') {
+          return valueA.localeCompare(valueB);
+        } else {
+          return valueB.localeCompare(valueA);
+        }
       } else {
-        return textB.localeCompare(textA);
+        // For regular text columns, use localeCompare
+        const textA = getTextContent(cellA);
+        const textB = getTextContent(cellB);
+        
+        if (direction === 'asc') {
+          return textA.localeCompare(textB);
+        } else {
+          return textB.localeCompare(textA);
+        }
       }
     });
 
@@ -339,42 +386,112 @@
     const sortableHeaders = wrapper.querySelectorAll('th.sortable');
     let currentSortColumn = null;
     let currentSortDirection = null;
+    let currentSortMode = 'text'; // For dual-sort columns
+    let sortClickCount = 0; // Track clicks for dual-sort columns
 
     sortableHeaders.forEach(header => {
       const handleSort = () => {
         const columnIndex = parseInt(header.getAttribute('data-column'), 10);
+        const isDualSort = header.classList.contains('dual-sort');
+        const columnName = header.getAttribute('data-column-name');
         
-        // Determine new sort direction
+        // Determine new sort direction and mode
         let newDirection;
+        let newMode = 'text';
+        
         if (currentSortColumn === columnIndex) {
-          if (currentSortDirection === 'asc') {
-            newDirection = 'desc';
-          } else if (currentSortDirection === 'desc') {
-            newDirection = null; // Reset to unsorted
+          sortClickCount++;
+          
+          if (isDualSort) {
+            // 5-click dual-sort behavior
+            const cyclePosition = sortClickCount % 5;
+            
+            // Determine which type of data to sort by first
+            const isAppUrlColumn = columnName === 'App. URL';
+            const isNotesColumn = columnName === 'Note(s)';
+            
+            if (cyclePosition === 1) {
+              // First click: sort by secondary data (stars or last commit) ascending
+              newDirection = 'asc';
+              newMode = isAppUrlColumn ? 'numeric' : 'date';
+            } else if (cyclePosition === 2) {
+              // Second click: sort by secondary data descending
+              newDirection = 'desc';
+              newMode = isAppUrlColumn ? 'numeric' : 'date';
+            } else if (cyclePosition === 3) {
+              // Third click: sort by primary data (name or notes) ascending
+              newDirection = 'asc';
+              newMode = 'text';
+            } else if (cyclePosition === 4) {
+              // Fourth click: sort by primary data descending
+              newDirection = 'desc';
+              newMode = 'text';
+            } else { // cyclePosition === 0
+              // Fifth click: reset
+              newDirection = null;
+              newMode = 'text';
+              sortClickCount = 0; // Reset counter
+            }
           } else {
-            newDirection = 'asc';
+            // Regular 3-click behavior
+            if (currentSortDirection === 'asc') {
+              newDirection = 'desc';
+            } else if (currentSortDirection === 'desc') {
+              newDirection = null; // Reset to unsorted
+            } else {
+              newDirection = 'asc';
+            }
           }
         } else {
           newDirection = 'asc';
+          sortClickCount = 1;
+          // Determine starting mode based on column type
+          const isAppUrlColumn = columnName === 'App. URL';
+          const isNotesColumn = columnName === 'Note(s)';
+          newMode = (isDualSort && (isAppUrlColumn || isNotesColumn)) 
+            ? (isAppUrlColumn ? 'numeric' : 'date') 
+            : 'text';
         }
 
         // Clear all sort indicators
         sortableHeaders.forEach(h => {
           h.setAttribute('aria-sort', 'none');
+          // Clear sort mode indicator
+          const modeIndicator = h.querySelector('.sort-mode-indicator');
+          if (modeIndicator) {
+            modeIndicator.textContent = '';
+          }
         });
 
         if (newDirection) {
-          sortTable(wrapper, columnIndex, newDirection);
+          sortTable(wrapper, columnIndex, newDirection, newMode);
           header.setAttribute('aria-sort', newDirection === 'asc' ? 'ascending' : 'descending');
           currentSortColumn = columnIndex;
           currentSortDirection = newDirection;
-          const columnName = header.getAttribute('data-column-name') || header.textContent.trim();
+          currentSortMode = newMode;
+          
+          // Update mode indicator for dual-sort columns
+          if (isDualSort) {
+            const modeIndicator = header.querySelector('.sort-mode-indicator');
+            if (modeIndicator) {
+              const isAppUrlColumn = columnName === 'App. URL';
+              const isNotesColumn = columnName === 'Note(s)';
+              
+              if (isAppUrlColumn) {
+                modeIndicator.textContent = `(sorting by ${newMode === 'numeric' ? 'stars' : 'name'})`;
+              } else if (isNotesColumn) {
+                modeIndicator.textContent = `(sorting by ${newMode === 'date' ? 'last commit' : 'notes'})`;
+              }
+            }
+          }
+          
           updateSortInfo(sortInfo, columnName, newDirection, hasActiveFilter);
         } else {
           // Reset to original order by restoring the original rows
           resetTableOrder(wrapper, originalRows);
           currentSortColumn = null;
           currentSortDirection = null;
+          currentSortMode = 'text';
           updateSortInfo(sortInfo, null, null, hasActiveFilter);
         }
       };
