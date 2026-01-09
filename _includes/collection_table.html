@@ -61,16 +61,19 @@
     <td>
       {% if app.technology %}
         <ul>
-          {% for tech in app.technology %}
+          {%- for tech in app.technology -%}
             <li>{{ tech }}</li>
-          {% endfor %}
+          {%- endfor -%}
         </ul>
       {% endif %}
     </td>
     <td data-sort-value-text="{{ app.notes | default: '' }}" data-sort-value-date="{{ app.last_contributed | default: '' }}">
         {{ app.notes }}
         {% if app.last_contributed %}
-            <br><small>Last commit: {{ app.last_contributed | date: "%Y-%m-%d" }}</small>
+            <br><small class="not-displayed">Last commit: {{ app.last_contributed | date: "%Y-%m-%d" }}</small>
+        {% endif %}
+        {% if app.badge %}
+             <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
         {% endif %}
     </td>
   </tr>
