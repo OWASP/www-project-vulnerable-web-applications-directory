@@ -21,3 +21,7 @@ ordering_log.txt
 editorconfig_log.txt
 artifact.txt
 pr_number
+
+# Misc
+sort_json.py
+.ruby-version

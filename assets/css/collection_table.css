@@ -1,4 +1,7 @@
-ul { padding: 5px; }
+ul { 
+  padding: 5px;
+  margin: 0px;
+}
 
 .collection-table-wrapper table li {
   margin-left: 10px !important;
@@ -113,6 +116,9 @@ tr.filtered-out {
   display: none;
 }
 
+small.not-displayed {
+  display:none;
+}
 
 .collection-table-wrapper {
   display: block !important;
