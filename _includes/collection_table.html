@@ -68,9 +68,11 @@
       {% endif %}
     </td>
     <td data-sort-value-text="{{ app.notes | default: '' }}" data-sort-value-date="{{ app.last_contributed | default: '' }}">
-        {{ app.notes }}
+        {% if app.notes %}
+            {{ app.notes }}<br>
+        {% endif %}
         {% if app.last_contributed %}
-            <br><small class="not-displayed">Last commit: {{ app.last_contributed | date: "%Y-%m-%d" }}</small>
+            <small class="not-displayed">Last commit: {{ app.last_contributed | date: "%Y-%m-%d" }}</small>
         {% endif %}
         {% if app.badge %}
              <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/{{ app.badge }}">
