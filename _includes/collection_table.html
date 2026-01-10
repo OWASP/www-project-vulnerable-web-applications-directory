@@ -9,16 +9,20 @@
 {% endif %}
 
 <link rel="stylesheet" href="{{ '/assets/css/collection_table.css?v=2026-01-09' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/advanced_search.css?v=2026-01-09' | relative_url }}">
 
 {% if include.collection != "aotd" %}
 <div class="collection-controls">
   <div class="filter-controls">
     <label for="filter-input-{{ include.collection }}">Filter:</label>
-    <input type="text" id="filter-input-{{ include.collection }}" class="filter-input" placeholder="Search across all columns..." aria-label="Filter table">
+    <input type="text" id="filter-input-{{ include.collection }}" class="filter-input" placeholder="Search by keyword..." aria-label="Filter table">
     <button type="button" class="clear-filter" aria-label="Clear filter">Clear</button>
+    <button type="button" class="advanced-search-open" data-collection="{{ include.collection }}" aria-label="Open advanced search">Advanced Search</button>
   </div>
   <div class="sort-info" aria-live="polite" aria-atomic="true"></div>
+  <div class="filter-pills" data-collection="{{ include.collection }}" aria-live="polite"></div>
 </div>
+{% include collection_table/advanced_search.html collection=include.collection apps=apps %}
 {% endif %}
 
 <div class="collection-table-wrapper" tabindex="0" role="region" aria-label="Collection table" data-wheel-mode="smart" data-collection="{{ include.collection }}">
@@ -39,7 +43,19 @@
     {% endif %}
   </tr>
   {% for app in apps %}
-  <tr>
+  {% assign tech_values = "" %}
+  {% if app.technology %}
+    {% assign tech_values = app.technology | join: "|" | downcase %}
+  {% endif %}
+  {% assign ref_values = "" %}
+  {% if app.references %}
+    {% assign ref_values = app.references | map: "name" | join: "|" | downcase %}
+  {% endif %}
+  {% assign year_value = "" %}
+  {% if app.last_contributed %}
+    {% assign year_value = app.last_contributed | date: "%Y" %}
+  {% endif %}
+  <tr data-filter-tech="{{ tech_values | escape }}" data-filter-refs="{{ ref_values | escape }}" data-filter-stars="{{ app.stars | default: 0 }}" data-filter-year="{{ year_value }}">
     <td data-sort-value-text="{{ app.name | default: '' }}" data-sort-value-numeric="{{ app.stars | default: 0 }}">
         <a href="{{ app.url }}">{{ app.name }}</a>
         {% if app.stars %}
@@ -83,5 +99,6 @@
 </table>
 </div>
 
-<script src="{{ '/assets/js/collection_table.js?v=2026-01-06' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/collection_table.js?v=2026-01-09' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/advanced_search.js?v=2026-01-09' | relative_url }}" defer></script>
 
