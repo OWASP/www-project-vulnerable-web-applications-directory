@@ -42,10 +42,10 @@
       <div class="advanced-field">
         <div class="advanced-field-grid">
           <div class="field-left">
-            <label>Technologies</label>
+            <label id="tech-label-{{ include.collection }}">Technologies</label>
             <div class="multi-select" data-multi-select="tech">
-              <button type="button" class="multi-select-trigger" aria-expanded="false" aria-controls="tech-panel-{{ include.collection }}" data-collection="{{ include.collection }}" data-multi-trigger="tech" data-default-label="Select technologies">Select technologies</button>
-              <div class="multi-select-panel" id="tech-panel-{{ include.collection }}" data-multi-panel="tech" hidden tabindex="-1">
+              <button type="button" class="multi-select-trigger" id="tech-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="tech-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="tech-label-{{ include.collection }} tech-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-multi-trigger="tech" data-default-label="Select technologies">Select technologies</button>
+              <div class="multi-select-panel" id="tech-panel-{{ include.collection }}" data-multi-panel="tech" hidden tabindex="-1" role="group" aria-labelledby="tech-label-{{ include.collection }}">
                 <button type="button" class="multi-select-ok" data-multi-ok="tech">Confirm</button>
                 <div class="multi-select-options">
                   {% for tech in tech_options %}
@@ -60,12 +60,12 @@
           </div>
           <div class="field-right">
             <div class="boolean-select">
-              <div class="boolean-label">Boolean</div>
+              <div class="boolean-label" id="tech-boolean-label-{{ include.collection }}">Boolean</div>
               <div class="single-select" data-single-select="tech-boolean">
-                <button type="button" class="single-select-trigger" aria-expanded="false" data-collection="{{ include.collection }}" data-single-trigger="tech-boolean" data-default-label="OR">OR</button>
-                <div class="single-select-panel" data-single-panel="tech-boolean" hidden tabindex="-1">
-                  <button type="button" class="single-option" data-single-option="tech-boolean" data-value="or">OR</button>
-                  <button type="button" class="single-option" data-single-option="tech-boolean" data-value="and">AND</button>
+                <button type="button" class="single-select-trigger" id="tech-boolean-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="tech-boolean-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="tech-label-{{ include.collection }} tech-boolean-label-{{ include.collection }} tech-boolean-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="tech-boolean" data-default-label="OR">OR</button>
+                <div class="single-select-panel" id="tech-boolean-panel-{{ include.collection }}" data-single-panel="tech-boolean" hidden tabindex="-1" role="listbox" aria-labelledby="tech-label-{{ include.collection }} tech-boolean-label-{{ include.collection }}">
+                  <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="tech-boolean" data-value="or">OR</button>
+                  <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="tech-boolean" data-value="and">AND</button>
                 </div>
               </div>
             </div>
@@ -76,10 +76,10 @@
       <div class="advanced-field">
         <div class="advanced-field-grid">
           <div class="field-left">
-            <label>References</label>
+            <label id="refs-label-{{ include.collection }}">References</label>
             <div class="multi-select" data-multi-select="refs">
-              <button type="button" class="multi-select-trigger" aria-expanded="false" aria-controls="refs-panel-{{ include.collection }}" data-collection="{{ include.collection }}" data-multi-trigger="refs" data-default-label="Select references">Select references</button>
-              <div class="multi-select-panel" id="refs-panel-{{ include.collection }}" data-multi-panel="refs" hidden tabindex="-1">
+              <button type="button" class="multi-select-trigger" id="refs-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="refs-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="refs-label-{{ include.collection }} refs-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-multi-trigger="refs" data-default-label="Select references">Select references</button>
+              <div class="multi-select-panel" id="refs-panel-{{ include.collection }}" data-multi-panel="refs" hidden tabindex="-1" role="group" aria-labelledby="refs-label-{{ include.collection }}">
                 <button type="button" class="multi-select-ok" data-multi-ok="refs">Confirm</button>
                 <div class="multi-select-options">
                   {% for ref in ref_options %}
@@ -94,12 +94,12 @@
           </div>
           <div class="field-right">
             <div class="boolean-select">
-              <div class="boolean-label">Boolean</div>
+              <div class="boolean-label" id="refs-boolean-label-{{ include.collection }}">Boolean</div>
               <div class="single-select" data-single-select="refs-boolean">
-                <button type="button" class="single-select-trigger" aria-expanded="false" data-collection="{{ include.collection }}" data-single-trigger="refs-boolean" data-default-label="OR">OR</button>
-                <div class="single-select-panel" data-single-panel="refs-boolean" hidden tabindex="-1">
-                  <button type="button" class="single-option" data-single-option="refs-boolean" data-value="or">OR</button>
-                  <button type="button" class="single-option" data-single-option="refs-boolean" data-value="and">AND</button>
+                <button type="button" class="single-select-trigger" id="refs-boolean-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="refs-boolean-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="refs-label-{{ include.collection }} refs-boolean-label-{{ include.collection }} refs-boolean-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="refs-boolean" data-default-label="OR">OR</button>
+                <div class="single-select-panel" id="refs-boolean-panel-{{ include.collection }}" data-single-panel="refs-boolean" hidden tabindex="-1" role="listbox" aria-labelledby="refs-label-{{ include.collection }} refs-boolean-label-{{ include.collection }}">
+                  <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="refs-boolean" data-value="or">OR</button>
+                  <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="refs-boolean" data-value="and">AND</button>
                 </div>
               </div>
             </div>
@@ -108,43 +108,43 @@
       </div>
 
       <div class="advanced-field">
-        <label>GitHub Stars</label>
+        <label id="stars-label-{{ include.collection }}">GitHub Stars</label>
         <div class="single-select" data-single-select="stars">
-          <button type="button" class="single-select-trigger" aria-expanded="false" data-collection="{{ include.collection }}" data-single-trigger="stars" data-default-label="Any">Any</button>
-          <div class="single-select-panel" data-single-panel="stars" hidden tabindex="-1">
-            <button type="button" class="single-option" data-single-option="stars" data-value="">Any</button>
-            <button type="button" class="single-option" data-single-option="stars" data-value="1">+1</button>
-            <button type="button" class="single-option" data-single-option="stars" data-value="100">+100</button>
-            <button type="button" class="single-option" data-single-option="stars" data-value="500">+500</button>
-            <button type="button" class="single-option" data-single-option="stars" data-value="1000">+1000</button>
-            <button type="button" class="single-option" data-single-option="stars" data-value="10000">+10000</button>
+          <button type="button" class="single-select-trigger" id="stars-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="stars-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="stars-label-{{ include.collection }} stars-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="stars" data-default-label="Any">Any</button>
+          <div class="single-select-panel" id="stars-panel-{{ include.collection }}" data-single-panel="stars" hidden tabindex="-1" role="listbox" aria-labelledby="stars-label-{{ include.collection }}">
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="">Any</button>
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="1">+1</button>
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="100">+100</button>
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="500">+500</button>
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="1000">+1000</button>
+            <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="stars" data-value="10000">+10000</button>
           </div>
         </div>
       </div>
 
       <div class="advanced-field">
-        <label>Last Contributed Year</label>
+        <label id="year-label-{{ include.collection }}">Last Contributed Year</label>
         <div class="year-range">
           <div class="year-field">
-            <span class="year-label">From</span>
+            <span class="year-label" id="year-from-label-{{ include.collection }}">From</span>
             <div class="single-select" data-single-select="year-from">
-              <button type="button" class="single-select-trigger" aria-expanded="false" data-collection="{{ include.collection }}" data-single-trigger="year-from" data-default-label="Any">Any</button>
-              <div class="single-select-panel" data-single-panel="year-from" hidden tabindex="-1">
-                <button type="button" class="single-option" data-single-option="year-from" data-value="">Any</button>
+              <button type="button" class="single-select-trigger" id="year-from-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="year-from-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="year-label-{{ include.collection }} year-from-label-{{ include.collection }} year-from-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="year-from" data-default-label="Any">Any</button>
+              <div class="single-select-panel" id="year-from-panel-{{ include.collection }}" data-single-panel="year-from" hidden tabindex="-1" role="listbox" aria-labelledby="year-label-{{ include.collection }} year-from-label-{{ include.collection }}">
+                <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-from" data-value="">Any</button>
                 {% for year in year_options_desc %}
-                <button type="button" class="single-option" data-single-option="year-from" data-value="{{ year }}">{{ year }}</button>
+                <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-from" data-value="{{ year }}">{{ year }}</button>
                 {% endfor %}
               </div>
             </div>
           </div>
           <div class="year-field">
-            <span class="year-label">To</span>
+            <span class="year-label" id="year-to-label-{{ include.collection }}">To</span>
             <div class="single-select" data-single-select="year-to">
-              <button type="button" class="single-select-trigger" aria-expanded="false" data-collection="{{ include.collection }}" data-single-trigger="year-to" data-default-label="None">None</button>
-              <div class="single-select-panel" data-single-panel="year-to" hidden tabindex="-1">
-                <button type="button" class="single-option" data-single-option="year-to" data-value="">None</button>
+              <button type="button" class="single-select-trigger" id="year-to-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="year-to-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="year-label-{{ include.collection }} year-to-label-{{ include.collection }} year-to-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="year-to" data-default-label="None">None</button>
+              <div class="single-select-panel" id="year-to-panel-{{ include.collection }}" data-single-panel="year-to" hidden tabindex="-1" role="listbox" aria-labelledby="year-label-{{ include.collection }} year-to-label-{{ include.collection }}">
+                <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-to" data-value="">None</button>
                 {% for year in year_options_desc %}
-                <button type="button" class="single-option" data-single-option="year-to" data-value="{{ year }}">{{ year }}</button>
+                <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-to" data-value="{{ year }}">{{ year }}</button>
                 {% endfor %}
               </div>
             </div>

@@ -10,6 +10,14 @@
     updateTriggerLabel
   } = AdvancedSearchUI.dropdowns;
 
+  function updateSingleOptionStates(modal, type, value) {
+    const stringValue = value === null || value === undefined ? '' : String(value);
+    modal.querySelectorAll(`[data-single-option="${type}"]`).forEach(option => {
+      const optionValue = option.getAttribute('data-value') || '';
+      option.setAttribute('aria-selected', optionValue === stringValue ? 'true' : 'false');
+    });
+  }
+
   function syncModalInputs(modal, state) {
     if (!modal || !state) return;
     const filters = state.filters;
@@ -31,11 +39,14 @@
 
     const starsValue = filters.stars !== null ? String(filters.stars) : '';
     updateSingleTriggerLabel(modal, 'stars', starsValue);
+    updateSingleOptionStates(modal, 'stars', starsValue);
 
     const yearFromValue = filters.yearFrom !== null ? String(filters.yearFrom) : '';
     const yearToValue = filters.yearTo !== null ? String(filters.yearTo) : '';
     updateSingleTriggerLabel(modal, 'year-from', yearFromValue);
     updateSingleTriggerLabel(modal, 'year-to', yearToValue);
+    updateSingleOptionStates(modal, 'year-from', yearFromValue);
+    updateSingleOptionStates(modal, 'year-to', yearToValue);
 
     const yearToTrigger = modal.querySelector('[data-single-trigger="year-to"]');
     if (yearToTrigger) {
@@ -48,6 +59,8 @@
 
     updateSingleTriggerLabel(modal, 'tech-boolean', filters.techMatch || 'or');
     updateSingleTriggerLabel(modal, 'refs-boolean', filters.refMatch || 'or');
+    updateSingleOptionStates(modal, 'tech-boolean', filters.techMatch || 'or');
+    updateSingleOptionStates(modal, 'refs-boolean', filters.refMatch || 'or');
   }
 
   AdvancedSearchUI.sync = {

@@ -22,6 +22,7 @@
         document.querySelectorAll(`${MODAL_SELECTOR}.${OPEN_CLASS}`).forEach(other => {
           if (other !== modal) closeModal(other);
         });
+        modal._returnFocusEl = document.activeElement;
         openModal(modal);
       });
     }
