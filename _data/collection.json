@@ -52,7 +52,7 @@
 		"author": "fhammon, Guanwei Hu",
 		"notes": "AI Goat uses the Vicuna LLM which derived from Meta's LLaMA and coupled with ChatGPT's response data. When installing AI Goat the LLM binary is downloaded from third party locally on your computer.",
 		"badge": "dhammon/ai-goat",
-		"stars": 314,
+		"stars": 315,
 		"last_contributed": "2024-08-22T02:33:49Z"
 	},
 	{
@@ -151,7 +151,7 @@
 		"author": "AWS Security Team",
 		"notes": "Hands-on lab for AWS infrastructure pentesting",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3431,
+		"stars": 3438,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -297,8 +297,8 @@
 		],
 		"author": "NeuraLegion",
 		"badge": "NeuraLegion/brokencrystals",
-		"stars": 179,
-		"last_contributed": "2025-12-08T14:27:52Z"
+		"stars": 181,
+		"last_contributed": "2026-01-10T08:00:25Z"
 	},
 	{
 		"url": "https://www.owasp.org/index.php/OWASP_Broken_Web_Applications_Project",
@@ -419,7 +419,7 @@
 		"author": "Cider",
 		"notes": "Deliberately vulnerable CI/CD environment. Hack CI/CD pipelines, capture the flags.",
 		"badge": "cider-security-research/cicd-goat",
-		"stars": 2174,
+		"stars": 2173,
 		"last_contributed": "2024-07-11T13:31:30Z"
 	},
 	{
@@ -449,7 +449,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3431,
+		"stars": 3438,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -474,7 +474,7 @@
 		"author": "OWASP",
 		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
 		"badge": "OWASP/crAPI",
-		"stars": 1406,
+		"stars": 1405,
 		"last_contributed": "2025-11-13T07:10:42Z"
 	},
 	{
@@ -528,7 +528,7 @@
 		],
 		"author": "Conviso AppSec",
 		"badge": "convisolabs/CVWA",
-		"stars": 62,
+		"stars": 63,
 		"last_contributed": "2025-07-16T15:30:42Z"
 	},
 	{
@@ -668,7 +668,7 @@
 		],
 		"author": "Rewanth Tammana, Akshansh Jaiswal, Hrushikesh Kakade",
 		"badge": "rewanthtammana/Damn-Vulnerable-Bank",
-		"stars": 728,
+		"stars": 729,
 		"last_contributed": "2023-12-13T07:48:44Z"
 	},
 	{
@@ -813,7 +813,9 @@
 			"Node.js"
 		],
 		"author": "Claudio Lacayo",
-		"badge": "isp1r0/DVNA"
+		"badge": "isp1r0/DVNA",
+		"stars": 20,
+		"last_contributed": "2015-12-22T14:34:30Z"
 	},
 	{
 		"url": "https://github.com/appsecco/dvna",
@@ -826,7 +828,9 @@
 		],
 		"author": "@appsecco",
 		"notes": "Different project from the old DVNA",
-		"badge": "appsecco/dvna"
+		"badge": "appsecco/dvna",
+		"stars": 756,
+		"last_contributed": "2023-11-08T12:11:49Z"
 	},
 	{
 		"url": "https://github.com/koenbuyens/Vulnerable-OAuth-2.0-Applications",
@@ -841,7 +845,9 @@
 		],
 		"author": "Koen Buyens",
 		"notes": "A set of vulnerable applications which show Oauth2.0 vulnerabilities.",
-		"badge": "koenbuyens/Vulnerable-OAuth-2.0-Applications"
+		"badge": "koenbuyens/Vulnerable-OAuth-2.0-Applications",
+		"stars": 325,
+		"last_contributed": "2018-09-15T17:12:22Z"
 	},
 	{
 		"url": "https://github.com/anxolerd/dvpwa",
@@ -854,7 +860,9 @@
 			"Docker"
 		],
 		"author": "Oleksandr Kovalchuk",
-		"badge": "anxolerd/dvpwa"
+		"badge": "anxolerd/dvpwa",
+		"stars": 183,
+		"last_contributed": "2022-11-04T11:57:00Z"
 	},
 	{
 		"url": "https://github.com/theowni/Damn-Vulnerable-RESTaurant-API-Game",
@@ -874,7 +882,9 @@
 		],
 		"author": "theowni",
 		"notes": "Damn Vulnerable Restaurant is an intentionally vulnerable Web API game for learning and training purposes dedicated to developers, ethical hackers and security engineers.",
-		"badge": "theowni/Damn-Vulnerable-Restaurant-API-Game"
+		"badge": "theowni/Damn-Vulnerable-Restaurant-API-Game",
+		"stars": 876,
+		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
 		"url": "https://github.com/theowni/Damn-Vulnerable-RESTaurant-API-Game",
@@ -922,7 +932,9 @@
 			}
 		],
 		"author": "Protego Labs",
-		"badge": "OWASP/DVSA"
+		"badge": "OWASP/DVSA",
+		"stars": 544,
+		"last_contributed": "2023-09-12T11:04:54Z"
 	},
 	{
 		"url": "https://github.com/silentsignal/damn-vulnerable-stateful-web-app",
@@ -940,7 +952,9 @@
 			}
 		],
 		"author": "dnet",
-		"badge": "silentsignal/damn-vulnerable-stateful-web-app"
+		"badge": "silentsignal/damn-vulnerable-stateful-web-app",
+		"stars": 14,
+		"last_contributed": "2015-12-04T15:52:13Z"
 	},
 	{
 		"url": "https://github.com/digininja/DVWA",
@@ -963,7 +977,9 @@
 			}
 		],
 		"author": "RandomStorm",
-		"badge": "ethicalhack3r/DVWA"
+		"badge": "ethicalhack3r/DVWA",
+		"stars": 12450,
+		"last_contributed": "2026-01-08T08:38:38Z"
 	},
 	{
 		"url": "https://github.com/snoopysecurity/dvws",
@@ -975,7 +991,9 @@
 			"Web Services"
 		],
 		"author": "snoopysecurity",
-		"badge": "snoopysecurity/dvws"
+		"badge": "snoopysecurity/dvws",
+		"stars": 457,
+		"last_contributed": "2021-12-06T00:15:00Z"
 	},
 	{
 		"url": "https://github.com/interference-security/DVWS",
@@ -1111,7 +1129,9 @@
 			}
 		],
 		"author": "@snoopysecurity",
-		"badge": "snoopysecurity/dvws-node"
+		"badge": "snoopysecurity/dvws-node",
+		"stars": 499,
+		"last_contributed": "2024-09-01T23:04:12Z"
 	},
 	{
 		"url": "https://github.com/k-tamura/easybuggy",
@@ -1491,7 +1511,9 @@
 		],
 		"author": "rootxjs",
 		"notes": "Vulnerable by Design lab for learning and practicing gRPC security.",
-		"badge": "rootxjs/grpc-goat"
+		"badge": "rootxjs/grpc-goat",
+		"stars": 50,
+		"last_contributed": "2025-09-22T13:28:09Z"
 	},
 	{
 		"url": "http://google-gruyere.appspot.com/",
@@ -1863,7 +1885,7 @@
 		"author": "B3nac",
 		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
 		"badge": "B3nac/InjuredAndroid",
-		"stars": 730,
+		"stars": 731,
 		"last_contributed": "2021-06-25T04:04:12Z"
 	},
 	{
