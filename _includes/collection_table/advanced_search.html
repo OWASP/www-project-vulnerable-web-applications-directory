@@ -140,9 +140,8 @@
           <div class="year-field">
             <span class="year-label" id="year-to-label-{{ include.collection }}">To</span>
             <div class="single-select" data-single-select="year-to">
-              <button type="button" class="single-select-trigger single-select-trigger--year" id="year-to-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="year-to-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="year-label-{{ include.collection }} year-to-label-{{ include.collection }} year-to-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="year-to" data-default-label="None">None</button>
+              <button type="button" class="single-select-trigger single-select-trigger--year" id="year-to-trigger-{{ include.collection }}" aria-expanded="false" aria-controls="year-to-panel-{{ include.collection }}" aria-haspopup="listbox" aria-labelledby="year-label-{{ include.collection }} year-to-label-{{ include.collection }} year-to-trigger-{{ include.collection }}" data-collection="{{ include.collection }}" data-single-trigger="year-to" data-default-label="Any">Any</button>
               <div class="single-select-panel" id="year-to-panel-{{ include.collection }}" data-single-panel="year-to" hidden tabindex="-1" role="listbox" aria-labelledby="year-label-{{ include.collection }} year-to-label-{{ include.collection }}">
-                <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-to" data-value="">None</button>
                 {% for year in year_options_desc %}
                 <button type="button" class="single-option" role="option" aria-selected="false" data-single-option="year-to" data-value="{{ year }}">{{ year }}</button>
                 {% endfor %}

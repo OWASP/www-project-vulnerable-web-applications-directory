@@ -99,22 +99,12 @@
   function updateYearToOptions(modal, fromValue) {
     const panel = modal.querySelector('[data-single-panel="year-to"]');
     if (!panel) return;
-    const stringValue = fromValue ? String(fromValue) : '';
     const options = Array.from(panel.querySelectorAll('[data-single-option="year-to"]'));
     options.forEach(option => {
-      const value = option.getAttribute('data-value') || '';
-      if (value === '') {
-        option.hidden = false;
-        option.disabled = false;
-        option.classList.remove('is-disabled');
-        option.style.display = '';
-        return;
-      }
-      const shouldHide = !!stringValue && value === stringValue;
-      option.hidden = shouldHide;
-      option.style.display = shouldHide ? 'none' : '';
+      option.hidden = false;
       option.disabled = false;
       option.classList.remove('is-disabled');
+      option.style.display = '';
     });
   }
 

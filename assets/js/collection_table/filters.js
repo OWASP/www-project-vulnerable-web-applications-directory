@@ -52,7 +52,7 @@
 
     if (filters.yearFrom !== null) {
       let label = String(filters.yearFrom);
-      if (filters.yearTo !== null) {
+      if (filters.yearTo !== null && filters.yearTo !== filters.yearFrom) {
         const minYear = Math.min(filters.yearFrom, filters.yearTo);
         const maxYear = Math.max(filters.yearFrom, filters.yearTo);
         label = `${minYear}-${maxYear}`;
@@ -237,6 +237,8 @@
 
     if (filters.yearFrom === null) {
       filters.yearTo = null;
+    } else if ('yearFrom' in updates && !('yearTo' in updates)) {
+      filters.yearTo = filters.yearFrom;
     }
 
     applyFilters(state);

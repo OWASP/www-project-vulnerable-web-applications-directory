@@ -15,7 +15,7 @@
 
 .advanced-field-grid {
   display: grid;
-  grid-template-columns: minmax(0, 200px) auto;
+  grid-template-columns: minmax(0, 170px) auto;
   gap: 1.1rem;
   align-items: start;
 }

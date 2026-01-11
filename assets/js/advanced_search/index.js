@@ -70,6 +70,11 @@
 
     if ('yearFrom' in updates) {
       draft.yearFrom = normalizeNumber(updates.yearFrom);
+      if (draft.yearFrom === null) {
+        draft.yearTo = null;
+      } else if (!('yearTo' in updates)) {
+        draft.yearTo = draft.yearFrom;
+      }
     }
 
     if ('yearTo' in updates) {
