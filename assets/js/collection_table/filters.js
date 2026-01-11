@@ -43,11 +43,19 @@
     });
 
     if (filters.stars !== null) {
-      pills.push({
-        type: 'stars',
-        value: String(filters.stars),
-        label: `+${formatStars(filters.stars)} Stars`
-      });
+      if (filters.stars === 'none') {
+        pills.push({
+          type: 'stars',
+          value: 'none',
+          label: 'No Stars'
+        });
+      } else {
+        pills.push({
+          type: 'stars',
+          value: String(filters.stars),
+          label: `+${formatStars(filters.stars)} Stars`
+        });
+      }
     }
 
     if (filters.yearFrom !== null) {
@@ -166,10 +174,14 @@
           : refs.some(value => rowRefs.includes(value));
       }
 
-      if (matches && stars !== null) {
-        const rowStars = parseInt(row.getAttribute('data-filter-stars') || '0', 10);
+    if (matches && stars !== null) {
+      const rowStars = parseInt(row.getAttribute('data-filter-stars') || '0', 10);
+      if (stars === 'none') {
+        matches = rowStars < 1;
+      } else {
         matches = rowStars >= stars;
       }
+    }
 
       if (matches && yearFrom !== null) {
         const rowYear = parseInt(row.getAttribute('data-filter-year') || '', 10);
@@ -216,7 +228,7 @@
     }
 
     if ('stars' in updates) {
-      filters.stars = normalizeNumber(updates.stars);
+      filters.stars = updates.stars === 'none' ? 'none' : normalizeNumber(updates.stars);
     }
 
     if ('yearFrom' in updates) {

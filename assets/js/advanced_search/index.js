@@ -65,7 +65,7 @@
     }
 
     if ('stars' in updates) {
-      draft.stars = normalizeNumber(updates.stars);
+      draft.stars = updates.stars === 'none' ? 'none' : normalizeNumber(updates.stars);
     }
 
     if ('yearFrom' in updates) {
