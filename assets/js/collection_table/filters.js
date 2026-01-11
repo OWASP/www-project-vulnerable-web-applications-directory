@@ -113,11 +113,7 @@
 
     if (hasActiveFilters(filters)) {
       const count = state.visibleCount || 0;
-      if (filters.query) {
-        parts.push(`Showing ${count} result(s) for "${filters.query}"`);
-      } else {
-        parts.push(`Showing ${count} result(s)`);
-      }
+      parts.push(`Showing ${count} result(s)`);
     }
 
     state.sortInfo.textContent = parts.join(' | ');
