@@ -100,13 +100,18 @@
     if (dialog) dialog.focus();
   }
 
-  function closeModal(modal) {
+  function closeModal(modal, options = {}) {
     if (!modal) return;
     AdvancedSearchUI.dropdowns.closeAllPanels(modal);
     modal.classList.remove(OPEN_CLASS);
     modal.setAttribute('aria-hidden', 'true');
     setBackgroundHidden(modal, false);
-    restoreFocus(modal);
+    const shouldRestore = options.restoreFocus !== false;
+    if (shouldRestore) {
+      restoreFocus(modal);
+    } else {
+      modal._returnFocusEl = null;
+    }
   }
 
   AdvancedSearchUI.modal = {

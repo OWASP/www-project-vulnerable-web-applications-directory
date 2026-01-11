@@ -31,15 +31,6 @@
 }
 
 .advanced-search-input {
-  cursor: pointer;
-}
-
-.advanced-search-input:hover {
-  cursor: pointer;
-}
-
-.advanced-search-input:focus,
-.advanced-search-input:focus-visible {
   cursor: text;
 }
 

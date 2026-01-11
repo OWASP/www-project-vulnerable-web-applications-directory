@@ -10,6 +10,11 @@
     updateTriggerLabel
   } = AdvancedSearchUI.dropdowns;
 
+  function getFilters(source) {
+    if (!source) return null;
+    return source.filters ? source.filters : source;
+  }
+
   function updateSingleOptionStates(modal, type, value) {
     const stringValue = value === null || value === undefined ? '' : String(value);
     modal.querySelectorAll(`[data-single-option="${type}"]`).forEach(option => {
@@ -18,9 +23,10 @@
     });
   }
 
-  function syncModalInputs(modal, state) {
-    if (!modal || !state) return;
-    const filters = state.filters;
+  function syncModalInputs(modal, source) {
+    if (!modal || !source) return;
+    const filters = getFilters(source);
+    if (!filters) return;
 
     const searchInput = modal.querySelector('.advanced-search-input');
     if (searchInput && searchInput.value !== filters.query) {
@@ -63,7 +69,27 @@
     updateSingleOptionStates(modal, 'refs-boolean', filters.refMatch || 'or');
   }
 
+  function renderModalPills(modal, source) {
+    if (!modal || !source || !window.CollectionTable) return;
+    const filters = getFilters(source);
+    if (!filters) return;
+    const container = modal.querySelector('.filter-pills[data-pill-scope="modal"]');
+    if (!container) return;
+    const pills = CollectionTable.filters.buildPills(filters);
+    const html = pills.map(pill => {
+      const label = CollectionTable.utils.escapeHtml(pill.label);
+      const value = CollectionTable.utils.escapeHtml(pill.value);
+      return (
+        `<button type="button" class="filter-pill" data-pill-type="${pill.type}" data-pill-value="${value}"` +
+        ` aria-label="Remove ${label} filter">` +
+        `${label}<span class="pill-remove" aria-hidden="true">x</span></button>`
+      );
+    }).join('');
+    container.innerHTML = html;
+  }
+
   AdvancedSearchUI.sync = {
-    syncModalInputs
+    syncModalInputs,
+    renderModalPills
   };
 })();

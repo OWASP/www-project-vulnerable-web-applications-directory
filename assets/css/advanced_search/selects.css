@@ -53,6 +53,14 @@
   font-size: 0.95rem;
 }
 
+.single-select-trigger--stars {
+  width: 100px;
+}
+
+.single-select-trigger--year {
+  width: 80px;
+}
+
 .multi-select-trigger:focus,
 .single-select-trigger:focus {
   outline: none;
@@ -93,7 +101,6 @@
   width: auto;
   min-width: 80px;
   max-width: 240px;
-  max-height: 240px;
   overflow-y: auto;
   background: #ffffff;
   border: 1px solid #dee2e6;
@@ -109,7 +116,7 @@
 }
 
 .single-select-panel {
-  max-height: 200px;
+  max-height: 180px;
 }
 
 .multi-select-panel[hidden],

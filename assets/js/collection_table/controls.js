@@ -24,7 +24,9 @@
 
     const clearButton = controlsDiv.querySelector('.clear-filter');
     const sortInfo = controlsDiv.querySelector('.sort-info');
-    const pillContainers = Array.from(document.querySelectorAll(`.filter-pills[data-collection="${collection}"]`));
+    const pillContainers = Array.from(
+      document.querySelectorAll(`.filter-pills[data-collection="${collection}"]:not([data-pill-scope="modal"])`)
+    );
 
     state.filterInput = filterInput;
     state.clearButton = clearButton;

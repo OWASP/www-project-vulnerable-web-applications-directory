@@ -55,7 +55,7 @@
 
 .advanced-search-open {
   padding: 0.5rem 1rem;
-  background-color: #495057;
+  background-color: #212529;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -65,7 +65,7 @@
 }
 
 .advanced-search-open:hover {
-  background-color: #5a6268;
+  background-color: #343a40;
 }
 
 .advanced-search-open:focus {
