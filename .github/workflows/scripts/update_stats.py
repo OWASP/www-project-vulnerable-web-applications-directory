@@ -13,21 +13,12 @@ import json
 import time
 import sys
 import os
-import logging
 from datetime import datetime
 from typing import Dict, Optional, List, Any
-
-# Configure logging with standard format
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
 
 try:
     import requests
 except ImportError:
-    logging.error("requests library is required. Install with: pip install requests")
     print("Error: requests library is required. Install with: pip install requests")
     sys.exit(1)
 
@@ -54,10 +45,8 @@ def get_github_headers() -> Dict[str, str]:
     token = os.environ.get('GITHUB_TOKEN')
     if token:
         headers['Authorization'] = f'token {token}'
-        logging.info("Using authenticated GitHub API requests")
         print("Using authenticated GitHub API requests")
     else:
-        logging.warning("GITHUB_TOKEN not found, using unauthenticated requests (lower rate limits)")
         print("Using unauthenticated GitHub API requests (lower rate limits)")
     
     return headers
@@ -103,21 +92,17 @@ def fetch_github_stats(owner: str, repo: str) -> Optional[Dict[str, Any]]:
     try:
         # Fetch repository information
         repo_url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}"
-        logging.debug(f"Fetching stats for {owner}/{repo}")
         print(f"  Fetching stats for {owner}/{repo}...")
         
         response = requests.get(repo_url, headers=headers, timeout=REQUEST_TIMEOUT)
         
         if response.status_code == 404:
-            logging.warning(f"Repository {owner}/{repo} not found (404)")
             print(f"  Warning: Repository {owner}/{repo} not found (404)")
             return None
         elif response.status_code == 403:
-            logging.warning(f"Rate limit exceeded or access forbidden for {owner}/{repo} (403)")
             print(f"  Warning: Rate limit exceeded or access forbidden (403)")
             return None
         elif response.status_code != 200:
-            logging.warning(f"Failed to fetch {owner}/{repo} (status {response.status_code})")
             print(f"  Warning: Failed to fetch {owner}/{repo} (status {response.status_code})")
             return None
         
@@ -141,28 +126,22 @@ def fetch_github_stats(owner: str, repo: str) -> Optional[Dict[str, Any]]:
                 commit_info = commit.get('commit', {})
                 committer_info = commit_info.get('committer', {})
                 last_contributed = committer_info.get('date')
-        else:
-            logging.warning(f"Could not fetch commits for {owner}/{repo} (status {commits_response.status_code})")
         
         result = {
             'stars': stars,
             'last_contributed': last_contributed
         }
         
-        logging.info(f"Successfully fetched stats for {owner}/{repo}: {stars} stars")
         print(f"  ✓ {owner}/{repo}: {stars} stars, last commit: {last_contributed}")
         return result
         
     except requests.exceptions.Timeout:
-        logging.error(f"Request timeout for {owner}/{repo}")
         print(f"  Warning: Request timeout for {owner}/{repo}")
         return None
     except requests.exceptions.RequestException as e:
-        logging.error(f"Request error for {owner}/{repo}: {e}")
         print(f"  Warning: Request error for {owner}/{repo}: {e}")
         return None
     except (KeyError, ValueError, json.JSONDecodeError) as e:
-        logging.error(f"Error parsing response for {owner}/{repo}: {e}")
         print(f"  Warning: Error parsing response for {owner}/{repo}: {e}")
         return None
 
@@ -177,28 +156,21 @@ def update_collection_stats(collection_path: str) -> bool:
     Returns:
         True if successful, False otherwise
     """
-    logging.info(f"Starting statistics update for {collection_path}")
-    
     # Read the collection.json file
     try:
-        logging.debug(f"Reading {collection_path}")
         with open(collection_path, 'r', encoding='utf-8') as f:
             collection = json.load(f)
     except FileNotFoundError:
-        logging.error(f"File not found: {collection_path}")
         print(f"Error: File not found: {collection_path}")
         return False
     except json.JSONDecodeError as e:
-        logging.error(f"Invalid JSON in {collection_path}: {e}")
         print(f"Error: Invalid JSON in {collection_path}: {e}")
         return False
     
     if not isinstance(collection, list):
-        logging.error(f"Expected array in {collection_path}")
         print(f"Error: Expected array in {collection_path}")
         return False
     
-    logging.info(f"Processing {len(collection)} entries...")
     print(f"Processing {len(collection)} entries...")
     
     updated_count = 0
@@ -219,7 +191,6 @@ def update_collection_stats(collection_path: str) -> bool:
         # Parse the badge to get owner/repo
         parsed = parse_github_badge(badge)
         if not parsed:
-            logging.warning(f"Invalid badge format '{badge}' in entry {i}: {entry.get('name', 'Unknown')}")
             print(f"  Warning: Invalid badge format '{badge}' in entry {i}: {entry.get('name', 'Unknown')}")
             skipped_count += 1
             continue
@@ -241,7 +212,6 @@ def update_collection_stats(collection_path: str) -> bool:
         # Add delay between requests
         time.sleep(REQUEST_DELAY)
     
-    logging.info(f"Summary - Updated: {updated_count}, Skipped: {skipped_count}, Errors: {error_count}")
     print(f"\nSummary:")
     print(f"  Updated: {updated_count}")
     print(f"  Skipped: {skipped_count}")
@@ -249,15 +219,12 @@ def update_collection_stats(collection_path: str) -> bool:
     
     # Write updated collection back to file
     try:
-        logging.debug(f"Writing updated data to {collection_path}")
         with open(collection_path, 'w', encoding='utf-8') as f:
             json.dump(collection, f, indent='\t', ensure_ascii=False)
             f.write('\n')  # Add trailing newline
-        logging.info(f"Successfully updated {collection_path}")
         print(f"\n✓ Successfully updated {collection_path}")
         return True
     except IOError as e:
-        logging.error(f"Failed to write {collection_path}: {e}")
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
@@ -269,16 +236,12 @@ def main():
     print("=" * 60)
     print()
     
-    logging.info("GitHub Statistics Update Script started")
-    
     success = update_collection_stats(COLLECTION_JSON_PATH)
     
     if success:
-        logging.info("Update completed successfully")
         print("\n✓ Update completed successfully")
         sys.exit(0)
     else:
-        logging.error("Update failed")
         print("\n✗ Update failed")
         sys.exit(1)
 

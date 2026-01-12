@@ -27,60 +27,27 @@ jobs:
       
       - name: Install dependencies
         run: |
-          echo "Installing Python dependencies..."
           pip install requests
-          echo "Dependencies installed successfully"
       
       - name: Run update script
-        id: update
         run: |
-          echo "Starting GitHub statistics update..."
           python .github/workflows/scripts/update_stats.py
-          echo "Update script completed"
       
       - name: Check for changes
         id: git-check
         run: |
-          echo "Checking for changes in collection.json..."
           git diff --exit-code _data/collection.json || echo "changed=true" >> $GITHUB_OUTPUT
-          if [ "$?" -eq 0 ]; then
-            echo "No changes detected"
-          else
-            echo "Changes detected in collection.json"
-          fi
       
       - name: Commit and push if changed
         if: steps.git-check.outputs.changed == 'true'
         run: |
-          echo "Committing and pushing changes..."
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add _data/collection.json
           git commit -m "Update GitHub statistics [automated]"
           git push
-          echo "Changes pushed successfully"
       
       - name: No changes detected
         if: steps.git-check.outputs.changed != 'true'
         run: |
           echo "No changes to collection.json"
-          echo "::notice::No updates were needed - all statistics are current"
-      
-      - name: Summary
-        if: always()
-        run: |
-          echo "## Update Statistics Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.git-check.outputs.changed }}" == "true" ]; then
-            echo "✓ **Status:** Changes committed and pushed" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "The collection.json file has been updated with the latest GitHub statistics." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "✓ **Status:** No changes needed" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "All statistics are current." >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Workflow:** Update GitHub Statistics" >> $GITHUB_STEP_SUMMARY
-          echo "**Triggered by:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

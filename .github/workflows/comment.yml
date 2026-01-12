@@ -21,9 +21,7 @@ jobs:
           name: artifact
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
-      
       - name: Comment on PR
-        id: comment
         uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -31,27 +29,9 @@ jobs:
             let fs = require('fs');
             const issue_number = Number(fs.readFileSync('./pr_number'));
             const artifactString = fs.readFileSync('./artifact.txt').toString().trimEnd();
-            
-            console.log(`Posting validation failure comment to PR #${issue_number}`);
-            
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
               body: `${artifactString}`
             });
-            
-            console.log('Comment posted successfully');
-      
-      - name: Summary
-        if: always()
-        run: |
-          echo "## Validation Comment Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✓ **Status:** Validation failure comment posted to PR" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The pull request has been notified of validation failures." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Workflow:** Comment on Validation Failure" >> $GITHUB_STEP_SUMMARY
-          echo "**Triggered by:** Validate JSON workflow completion" >> $GITHUB_STEP_SUMMARY
-          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

@@ -24,24 +24,4 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Validate metadata file
-        id: validate
         uses: owasp/nest-schema/.github/actions/validate@011b47d59567ae7cfd246948c67503ba2f6cc15b
-      
-      - name: Summary
-        if: always()
-        run: |
-          echo "## OWASP Metadata Validation Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.validate.outcome }}" == "success" ]; then
-            echo "✓ **Status:** OWASP metadata validation passed" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "The OWASP entity metadata file conforms to the required schema." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "✗ **Status:** OWASP metadata validation failed" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Please review the validation errors above and update the metadata file accordingly." >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Workflow:** Validate OWASP Metadata" >> $GITHUB_STEP_SUMMARY
-          echo "**Triggered by:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

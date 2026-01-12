@@ -11,44 +11,5 @@ jobs:
     name: Rebuild
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger GitHub Pages rebuild
-      id: trigger
-      run: |
-        echo "Triggering GitHub Pages rebuild..."
-        echo "API endpoint: https://api.github.com/repos/OWASP/www-project-vulnerable-web-applications-directory/pages/builds"
-        
-        response=$(curl -s -w "\n%{http_code}" -u vwadbot:${{secrets.VWAD_REBUILD}} -X POST https://api.github.com/repos/OWASP/www-project-vulnerable-web-applications-directory/pages/builds)
-        
-        http_code=$(echo "$response" | tail -n1)
-        body=$(echo "$response" | sed '$d')
-        
-        echo "HTTP Status Code: $http_code"
-        echo "Response: $body"
-        
-        if [ "$http_code" -eq 201 ]; then
-          echo "✓ GitHub Pages rebuild triggered successfully"
-          echo "status=success" >> $GITHUB_OUTPUT
-        else
-          echo "✗ Failed to trigger rebuild (HTTP $http_code)"
-          echo "status=failed" >> $GITHUB_OUTPUT
-          exit 1
-        fi
-    
-    - name: Summary
-      if: always()
-      run: |
-        echo "## Rebuild Trigger Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        if [ "${{ steps.trigger.outputs.status }}" == "success" ]; then
-          echo "✓ **Status:** GitHub Pages rebuild triggered successfully" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The GitHub Pages site will be rebuilt shortly." >> $GITHUB_STEP_SUMMARY
-        else
-          echo "✗ **Status:** Failed to trigger rebuild" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Please check the logs for details." >> $GITHUB_STEP_SUMMARY
-        fi
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Workflow:** Trigger Rebuild" >> $GITHUB_STEP_SUMMARY
-        echo "**Triggered by:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+    - name: DoRebuild
+      run: curl -u vwadbot:${{secrets.VWAD_REBUILD}} -X POST https://api.github.com/repos/OWASP/www-project-vulnerable-web-applications-directory/pages/builds
