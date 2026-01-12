@@ -64,7 +64,8 @@
 							"container",
 							"mobile",
 							"online",
-							"offline"
+							"offline",
+							"platform"
 						]
 					}
 				},
