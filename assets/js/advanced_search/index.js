@@ -223,6 +223,23 @@
     closeModalAndDiscard(modal);
   }
 
+  function dedupeMultiOptions(modal) {
+    if (!modal) return;
+    const seen = new Set();
+    modal.querySelectorAll('[data-multi-option]').forEach(input => {
+      const type = input.getAttribute('data-multi-option') || '';
+      const value = (input.value || '').trim().toLowerCase();
+      const key = `${type}:${value}`;
+      if (!value) return;
+      if (seen.has(key)) {
+        const option = input.closest('.multi-option');
+        if (option) option.remove();
+        return;
+      }
+      seen.add(key);
+    });
+  }
+
   function initModal(modal) {
     if (modal.dataset.advancedInit === '1') return;
     modal.dataset.advancedInit = '1';
@@ -231,6 +248,8 @@
     const searchInput = modal.querySelector('.advanced-search-input');
     const clearButton = modal.querySelector('.advanced-clear');
     const acceptButton = modal.querySelector('.advanced-accept');
+
+    dedupeMultiOptions(modal);
 
     CollectionTable.registerAdvancedSync(collection, (state) => {
       const draft = getDraft(collection);
