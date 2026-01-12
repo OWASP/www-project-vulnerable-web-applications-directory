@@ -18,28 +18,48 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         repository: ${{github.event.pull_request.head.repo.full_name}}
+    
     - name: Save PR number
       env:
         PR_NUMBER: ${{ github.event.number }}
-      run: echo $PR_NUMBER > pr_number
+      run: |
+        echo "Processing PR #$PR_NUMBER"
+        echo $PR_NUMBER > pr_number
+    
     - name: Run schema check
       id: schema
       continue-on-error: true
       run: |
+        echo "Starting schema validation..."
         python3 .github/workflows/scripts/check_schema.py schema.json _data/collection.json > schema_log.txt 2>&1
+        exit_code=$?
+        echo "Schema validation exit code: $exit_code"
+        exit $exit_code
+    
     - name: Run alphabetical ordering check
       id: ordering
       continue-on-error: true
       run: |
+        echo "Starting alphabetical ordering check..."
         python3 .github/workflows/scripts/check_ordering.py _data/collection.json > ordering_log.txt 2>&1
+        exit_code=$?
+        echo "Ordering check exit code: $exit_code"
+        exit $exit_code
+    
     - name: Run .editorconfig compliance check
       id: editorconfig
       continue-on-error: true
       run: |
+        echo "Starting .editorconfig compliance check..."
         python3 .github/workflows/scripts/check_editorconfig.py _data/collection.json > editorconfig_log.txt 2>&1
+        exit_code=$?
+        echo ".editorconfig check exit code: $exit_code"
+        exit $exit_code
     - name: Create unified artifact and summary
       if: always()
       run: |
+        echo "Creating validation summary..."
+        
         # Initialize summary (shows all results)
         echo "# Validation Results" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
@@ -71,6 +91,8 @@ jobs:
           echo "" >> artifact.txt
           cat schema_log.txt >> artifact.txt
           echo "" >> artifact.txt
+          echo "**How to fix:** Ensure all entries in \`_data/collection.json\` conform to the schema defined in \`schema.json\`. Review the error messages above for specific fields that need correction." >> artifact.txt
+          echo "" >> artifact.txt
           overall_status=1
         fi
         echo "" >> $GITHUB_STEP_SUMMARY
@@ -94,6 +116,8 @@ jobs:
           echo "## Alphabetical Ordering Check" >> artifact.txt
           echo "" >> artifact.txt
           cat ordering_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          echo "**How to fix:** Sort entries in \`_data/collection.json\` alphabetically by the \`name\` field (case-insensitive). You can use the Python snippet in [CONTRIBUTING.md](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/CONTRIBUTING.md#pull-request-guidelines) to automatically sort the file." >> artifact.txt
           echo "" >> artifact.txt
           overall_status=1
         fi
@@ -119,10 +143,26 @@ jobs:
           echo "" >> artifact.txt
           cat editorconfig_log.txt >> artifact.txt
           echo "" >> artifact.txt
+          echo "**How to fix:** Ensure \`_data/collection.json\` uses:" >> artifact.txt
+          echo "- Tab indentation (not spaces)" >> artifact.txt
+          echo "- UTF-8 encoding" >> artifact.txt
+          echo "- LF line endings (not CRLF)" >> artifact.txt
+          echo "- A final newline at the end of the file" >> artifact.txt
+          echo "- No trailing whitespace" >> artifact.txt
+          echo "" >> artifact.txt
+          echo "See [.editorconfig](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/.editorconfig) for the complete rules." >> artifact.txt
+          echo "" >> artifact.txt
           overall_status=1
         fi
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "---" >> $GITHUB_STEP_SUMMARY
+        
+        # Log overall status
+        if [ $overall_status -eq 0 ]; then
+          echo "All validation checks passed successfully"
+        else
+          echo "Validation failed - see summary for details"
+        fi
         
         # Exit with error if any check failed
         exit $overall_status
