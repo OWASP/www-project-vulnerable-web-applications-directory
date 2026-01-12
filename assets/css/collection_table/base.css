@@ -1,4 +1,4 @@
-ul { 
+ul {
   padding: 5px;
   margin: 0px;
 }
@@ -9,68 +9,6 @@ ul {
 
 .collection-table-wrapper table ul li {
   margin-left: 10px !important;
-}
-
-.collection-controls {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
-}
-
-.filter-controls {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.filter-controls label {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.filter-input {
-  flex: 1;
-  min-width: 200px;
-  padding: 0.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 0.95rem;
-}
-
-.filter-input:focus {
-  outline: 2px solid #0066cc;
-  outline-offset: 2px;
-  border-color: #0066cc;
-}
-
-.clear-filter {
-  padding: 0.5rem 1rem;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
-}
-
-.clear-filter:hover {
-  background-color: #5a6268;
-}
-
-.clear-filter:focus {
-  outline: 2px solid #0066cc;
-  outline-offset: 2px;
-}
-
-.sort-info {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: #6c757d;
-  min-height: 1.2rem;
 }
 
 .sortable {
@@ -98,17 +36,17 @@ ul {
 }
 
 .sort-indicator::before {
-  content: '⇅';
+  content: '▲▼';
   color: #6c757d;
 }
 
 th[aria-sort="ascending"] .sort-indicator::before {
-  content: '↑';
+  content: '▲';
   color: #0066cc;
 }
 
 th[aria-sort="descending"] .sort-indicator::before {
-  content: '↓';
+  content: '▼';
   color: #0066cc;
 }
 
@@ -117,7 +55,13 @@ tr.filtered-out {
 }
 
 small.not-displayed {
-  display:none;
+  display: none;
+}
+
+.star-icon {
+  color: #e2f10f;
+  margin-right: 0.2rem;
+  font-size: 20px;
 }
 
 .collection-table-wrapper {
@@ -216,9 +160,9 @@ html.kbd-nav .collection-table-wrapper:focus {
 
 .collection-table-wrapper th:nth-child(4),
 .collection-table-wrapper td:nth-child(4) {
-  width: 150px !important;
-  min-width: 150px !important;
-  max-width: 150px !important;
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
   white-space: normal !important;
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;

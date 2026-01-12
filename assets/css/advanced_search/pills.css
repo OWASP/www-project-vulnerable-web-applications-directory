@@ -1,0 +1,40 @@
+.advanced-search-pills-section {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+}
+
+.advanced-pills-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.advanced-pills-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.advanced-clear {
+  padding: 0.4rem 0.9rem;
+  background-color: #6c757d;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.advanced-clear:hover {
+  background-color: #5a6268;
+}
+
+.advanced-pills-surface {
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  min-height: 60px;
+  padding: 0.6rem;
+}

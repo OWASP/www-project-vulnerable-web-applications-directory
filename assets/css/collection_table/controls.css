@@ -1,0 +1,121 @@
+.collection-controls {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-controls label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.filter-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.filter-input:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  border-color: #0066cc;
+}
+
+.clear-filter {
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.clear-filter:hover {
+  background-color: #5a6268;
+}
+
+.clear-filter:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.advanced-search-open {
+  padding: 0.5rem 1rem;
+  background-color: #212529;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.advanced-search-open:hover {
+  background-color: #343a40;
+}
+
+.advanced-search-open:focus {
+  outline: none;
+}
+
+.advanced-search-open:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.sort-info {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+  min-height: 1.2rem;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #6c757d;
+  color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-pill:hover {
+  background-color: #5a6268;
+}
+
+.filter-pill:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.filter-pill .pill-remove {
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+}

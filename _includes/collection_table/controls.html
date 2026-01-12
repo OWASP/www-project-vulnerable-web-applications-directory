@@ -1,0 +1,10 @@
+<div class="collection-controls">
+  <div class="filter-controls">
+    <label for="filter-input-{{ include.collection }}">Filter:</label>
+    <input type="text" id="filter-input-{{ include.collection }}" class="filter-input" placeholder="Search by keyword...">
+    <button type="button" class="clear-filter" aria-label="Clear filter">Clear</button>
+    <button type="button" class="advanced-search-open" data-collection="{{ include.collection }}" aria-label="Open advanced search">Advanced Search</button>
+  </div>
+  <div class="sort-info" aria-live="polite" aria-atomic="true"></div>
+  <div class="filter-pills" data-collection="{{ include.collection }}" aria-live="polite"></div>
+</div>

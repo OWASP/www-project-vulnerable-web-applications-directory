@@ -1,0 +1,212 @@
+.multi-select {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.boolean-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.advanced-field-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 170px) auto;
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.field-left,
+.field-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-right {
+  justify-self: start;
+  align-items: flex-start;
+}
+
+.boolean-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.single-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.multi-select-trigger,
+.single-select-trigger {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.single-select-trigger--stars {
+  width: 100px;
+}
+
+.single-select-trigger--year {
+  width: 80px;
+}
+
+.multi-select-trigger:focus,
+.single-select-trigger:focus {
+  outline: none;
+}
+
+.multi-select-trigger:focus-visible,
+.single-select-trigger:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  border-color: #0066cc;
+}
+
+.single-select-trigger:disabled {
+  background: #e9ecef;
+  border-color: #ced4da;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.and-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #495057;
+  cursor: pointer;
+}
+
+.and-toggle input {
+  cursor: pointer;
+}
+
+.multi-select-panel,
+.single-select-panel {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: auto;
+  min-width: 80px;
+  max-width: 240px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  padding: 0.5rem;
+  z-index: 5;
+  overscroll-behavior: contain;
+}
+
+.multi-select-panel {
+  max-height: 300px;
+}
+
+.single-select-panel {
+  max-height: 180px;
+}
+
+.multi-select-panel[hidden],
+.single-select-panel[hidden] {
+  display: none;
+}
+
+.multi-select-panel:focus,
+.single-select-panel:focus {
+  outline: none;
+}
+
+.multi-select-ok {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: #f1f3f5;
+  color: #343a40;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.multi-select-options {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.multi-option,
+.single-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.single-option {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+
+.single-option[hidden] {
+  display: none;
+}
+
+.multi-option input {
+  cursor: pointer;
+  margin: 0;
+  margin-top: -0.15rem;
+  vertical-align: middle;
+}
+
+.multi-option:hover,
+.single-option:hover {
+  background: #e9ecef;
+}
+
+.single-option:disabled {
+  background: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.single-option.is-disabled:hover {
+  background: #e9ecef;
+}
+
+.year-range {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 100px 150px;
+  justify-content: start;
+}
+
+.year-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
