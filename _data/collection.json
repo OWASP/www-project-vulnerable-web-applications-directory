@@ -1621,7 +1621,8 @@
 		"url": "https://www.hackthebox.com",
 		"name": "HackTheBox",
 		"collection": [
-			"online"
+			"online",
+			"platform"
 		],
 		"technology": [
 			"Various"
@@ -2916,7 +2917,8 @@
 		"url": "https://tryhackme.com",
 		"name": "TryHackMe",
 		"collection": [
-			"online"
+			"online",
+			"platform"
 		],
 		"technology": [
 			"Various"
