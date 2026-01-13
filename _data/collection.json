@@ -179,20 +179,6 @@
 		"notes": "Capture-the-flag challenges for Azure AD"
 	},
 	{
-		"url": "https://github.com/Semperis/EntraGoat",
-		"name": "EntraGoat",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"Azure",
-			"Entra ID"
-		],
-		"author": "Azure Security Team",
-		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
-		"badge": "semperis/EntraGoat"
-	},
-	{
 		"url": "https://github.com/mandiant/Azure_Workshop",
 		"name": "Azure Infrastructure Workshop",
 		"collection": [
@@ -1129,6 +1115,20 @@
 		"badge": "OWASP/www-project-eks-goat",
 		"stars": 35,
 		"last_contributed": "2025-12-11T17:35:20Z"
+	},
+	{
+		"url": "https://github.com/Semperis/EntraGoat",
+		"name": "EntraGoat",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"Azure",
+			"Entra ID"
+		],
+		"author": "Azure Security Team",
+		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
+		"badge": "semperis/EntraGoat"
 	},
 	{
 		"url": "https://sourceforge.net/projects/exploitcoilvuln/files/",
