@@ -1,0 +1,11 @@
+[
+  { "canonical": "Node.js", "aliases": ["Node", "NodeJS", "node.js", "Node js"] },
+  { "canonical": ".NET", "aliases": [".Net", ".net"] },
+  { "canonical": "Express", "aliases": ["Expressjs", "Express.js"] },
+  { "canonical": "Next.js", "aliases": ["Nextjs", "Next JS", "NextJS", "next.js"] },
+  { "canonical": "Angular", "aliases": ["Angular.js", "Angularjs"] },
+  { "canonical": "PostgreSQL", "aliases": ["Postgres", "Postgresql"] },
+  { "canonical": "WebSockets", "aliases": ["web sockets", "Websockets", "websockets"] },
+  { "canonical": "REST API", "aliases": ["Rest", "Rest API", "Restapi"] },
+  { "canonical": "OpenAPI", "aliases": ["Swagger", "Open API", "Swagger/OpenAPI"] }
+]

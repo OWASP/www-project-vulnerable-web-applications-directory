@@ -1,0 +1,23 @@
+{%- assign input_value = include.value | default: '' -%}
+{%- assign normalized_value = input_value -%}
+{%- assign input_lc = input_value | downcase -%}
+{%- assign matched = false -%}
+{%- for entry in site.data["dedupe-list"] -%}
+  {%- if matched -%}{% break %}{%- endif -%}
+  {%- assign canonical = entry.canonical | default: '' -%}
+  {%- assign canonical_lc = canonical | downcase -%}
+  {%- if input_lc == canonical_lc -%}
+    {%- assign normalized_value = canonical -%}
+    {%- assign matched = true -%}
+    {%- break -%}
+  {%- endif -%}
+  {%- for alias in entry.aliases -%}
+    {%- assign alias_lc = alias | downcase -%}
+    {%- if input_lc == alias_lc -%}
+      {%- assign normalized_value = canonical -%}
+      {%- assign matched = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{{- normalized_value -}}
