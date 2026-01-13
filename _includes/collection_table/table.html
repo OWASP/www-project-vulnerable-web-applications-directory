@@ -16,10 +16,24 @@
     {% endif %}
   </tr>
   {% for app in include.apps %}
-  {% assign tech_values = "" %}
+  {% assign tech_values = "" | split: "," %}
+  {% assign tech_seen = "" | split: "," %}
   {% if app.technology %}
-    {% assign tech_values = app.technology | join: "|" | downcase %}
+    {% for tech in app.technology %}
+      {% capture canonical_tech %}
+        {% include collection_table/normalize_value.html value=tech %}
+      {% endcapture %}
+      {% assign canonical_tech = canonical_tech | strip %}
+      {% if canonical_tech != "" %}
+        {% assign canonical_tech_lc = canonical_tech | downcase %}
+        {% unless tech_seen contains canonical_tech_lc %}
+          {% assign tech_seen = tech_seen | push: canonical_tech_lc %}
+          {% assign tech_values = tech_values | push: canonical_tech %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
+  {% assign tech_filter_values = tech_values | join: "|" | downcase %}
   {% assign ref_values = "" %}
   {% if app.references %}
     {% assign ref_values = app.references | map: "name" | join: "|" | downcase %}
@@ -28,7 +42,7 @@
   {% if app.last_contributed %}
     {% assign year_value = app.last_contributed | date: "%Y" %}
   {% endif %}
-  <tr data-filter-tech="{{ tech_values | escape }}" data-filter-refs="{{ ref_values | escape }}" data-filter-stars="{{ app.stars | default: 0 }}" data-filter-year="{{ year_value }}">
+  <tr data-filter-tech="{{ tech_filter_values | escape }}" data-filter-refs="{{ ref_values | escape }}" data-filter-stars="{{ app.stars | default: 0 }}" data-filter-year="{{ year_value }}">
     <td data-sort-value-text="{{ app.name | default: '' }}" data-sort-value-numeric="{{ app.stars | default: 0 }}">
         <a href="{{ app.url }}">{{ app.name }}</a>
         {% if app.stars %}
@@ -48,9 +62,9 @@
       {% endif %}
     </td>
     <td>
-      {% if app.technology %}
+      {% if tech_values.size > 0 %}
         <ul>
-          {%- for tech in app.technology -%}
+          {%- for tech in tech_values -%}
             <li>{{ tech }}</li>
           {%- endfor -%}
         </ul>

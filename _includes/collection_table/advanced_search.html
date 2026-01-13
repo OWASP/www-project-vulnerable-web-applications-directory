@@ -1,11 +1,22 @@
 {% assign tech_options = "" | split: "," %}
+{% assign tech_seen = "" | split: "," %}
 {% assign ref_options = "" | split: "," %}
 {% assign year_options = "" | split: "," %}
 
 {% for app in include.apps %}
   {% if app.technology %}
     {% for tech in app.technology %}
-      {% assign tech_options = tech_options | push: tech %}
+      {% capture canonical_tech %}
+        {% include collection_table/normalize_value.html value=tech %}
+      {% endcapture %}
+      {% assign canonical_tech = canonical_tech | strip %}
+      {% if canonical_tech != "" %}
+        {% assign canonical_tech_lc = canonical_tech | downcase %}
+        {% unless tech_seen contains canonical_tech_lc %}
+          {% assign tech_seen = tech_seen | push: canonical_tech_lc %}
+          {% assign tech_options = tech_options | push: canonical_tech %}
+        {% endunless %}
+      {% endif %}
     {% endfor %}
   {% endif %}
 

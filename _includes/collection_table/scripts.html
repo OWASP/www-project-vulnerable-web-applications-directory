@@ -1,3 +1,11 @@
+{% unless dedupe_map_included %}
+  {% assign dedupe_map_included = true %}
+  <!-- Optional runtime mapping for future use; build-time normalization uses _data/dedupe-list.json. -->
+  <script type="application/json" data-dedupe-map>
+    {{ site.data["dedupe-list"] | jsonify }}
+  </script>
+{% endunless %}
+
 <script src="{{ '/assets/js/collection_table/utils.js?v=2026-01-09' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/collection_table/state.js?v=2026-01-09' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/collection_table/sorting.js?v=2026-01-09' | relative_url }}" defer></script>
