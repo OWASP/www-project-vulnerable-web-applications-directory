@@ -1,0 +1,34 @@
+name: Link Checker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    name: Validate App and Reference URLs
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Validate App and Reference URLs
+      id: link-check
+      env:
+        DATA_FILE: _data/collection.json
+      run: python .github/workflows/scripts/link-checker.py
+
+    - name: Upload Results (Failures and Redirects)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: validation-results
+        path: failed_links.json
