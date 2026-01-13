@@ -167,7 +167,7 @@
 		"notes": "Interactive workshop covering AWS security best practices"
 	},
 	{
-		"url": "https://brokenazure.cloud/",
+		"url": "https://www.brokenazure.cloud/",
 		"name": "Azure AD CTF Challenge",
 		"collection": [
 			"online"
@@ -179,20 +179,21 @@
 		"notes": "Capture-the-flag challenges for Azure AD"
 	},
 	{
-		"url": "https://github.com/semperis/entra-goat",
-		"name": "Azure AD Pentest Lab",
+		"url": "https://github.com/Semperis/EntraGoat",
+		"name": "EntraGoat",
 		"collection": [
 			"online"
 		],
 		"technology": [
-			"Azure"
+			"Azure",
+			"Entra ID"
 		],
 		"author": "Azure Security Team",
-		"notes": "Hands-on lab for Azure AD pentesting",
-		"badge": "semperis/entra-goat"
+		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
+		"badge": "semperis/EntraGoat"
 	},
 	{
-		"url": "https://github.com/mandiant/Azure-Workshop",
+		"url": "https://github.com/mandiant/Azure_Workshop",
 		"name": "Azure Infrastructure Workshop",
 		"collection": [
 			"online"
@@ -202,7 +203,7 @@
 		],
 		"author": "Azure Security Team",
 		"notes": "Interactive workshop covering Azure security best practices",
-		"badge": "mandiant/Azure-Workshop"
+		"badge": "mandiant/Azure_Workshop"
 	},
 	{
 		"url": "https://sourceforge.net/projects/bwapp/files/bee-box/",
@@ -213,23 +214,6 @@
 		"technology": [
 			"VMware"
 		]
-	},
-	{
-		"url": "http://www.bgabank.com/",
-		"name": "BGA Vulnerable BANK App",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			".NET"
-		],
-		"references": [
-			{
-				"name": "live",
-				"url": "http://www.bgabank.com/"
-			}
-		],
-		"author": "BGA Security"
 	},
 	{
 		"url": "https://github.com/psiinon/bodgeit",
@@ -299,45 +283,6 @@
 		"badge": "NeuraLegion/brokencrystals",
 		"stars": 181,
 		"last_contributed": "2026-01-10T08:00:25Z"
-	},
-	{
-		"url": "https://www.owasp.org/index.php/OWASP_Broken_Web_Applications_Project",
-		"name": "Broken Web Applications Project (BWA) - OWASP",
-		"collection": [
-			"container"
-		],
-		"technology": [
-			"VMware"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/chuckfw/owaspbwa/"
-			},
-			{
-				"name": "download",
-				"url": "https://sourceforge.net/projects/owaspbwa/files/"
-			}
-		],
-		"author": "OWASP - Chuck Willis"
-	},
-	{
-		"url": "https://bugbait.io",
-		"name": "BugBait - Vulnerable Web Application",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"Node.js"
-		],
-		"references": [
-			{
-				"name": "live",
-				"url": "https://bugbait.io"
-			}
-		],
-		"author": "Blacklock Security",
-		"notes": "bugbait.io is a vulnerable web application for students, developers, cyber enthusiasts and pen testers to identify and exploit the vulnerabilities."
 	},
 	{
 		"url": "https://github.com/attacker-codeninja/BugGPT",
@@ -928,7 +873,7 @@
 		"references": [
 			{
 				"name": "guide",
-				"url": "https://github.com/OWASP/DVSA/tree/master/AWS/LESSONS"
+				"url": "https://github.com/OWASP/DVSA/tree/master/CONTENT/AWS/LESSONS"
 			}
 		],
 		"author": "Protego Labs",
@@ -1171,10 +1116,6 @@
 		],
 		"references": [
 			{
-				"name": "announcement",
-				"url": "https://www.linkedin.com/posts/peachycloudsecurity_owasp-eks-goat-aws-eks-security-lab-and-activity-7333785743066120196-lBps"
-			},
-			{
 				"name": "guide",
 				"url": "https://eksgoat.kubernetesvillage.com/"
 			},
@@ -1297,24 +1238,6 @@
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
-		"url": "http://www.gameofhacks.com/",
-		"name": "Game of Hacks",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"Node",
-			"Express.js"
-		],
-		"references": [
-			{
-				"name": "live",
-				"url": "http://www.gameofhacks.com/"
-			}
-		],
-		"author": "Checkmarx"
-	},
-	{
 		"url": "https://sourceforge.net/projects/null-gameover/",
 		"name": "GameOver",
 		"collection": [
@@ -1353,45 +1276,6 @@
 		],
 		"author": "Lakera",
 		"notes": "A game designed to challenge your ability to interact with large language models (LLMs) and test prompt injection skills. Your goal is to trick Gandalf into revealing the secret password."
-	},
-	{
-		"url": "https://github.com/ThunderCTF/Thunder-CTF",
-		"name": "GCP Infrastructure CTF",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"GCP"
-		],
-		"author": "GCP Security Team",
-		"notes": "Capture-the-flag challenges for Google Cloud Platform",
-		"badge": "ThunderCTF/Thunder-CTF"
-	},
-	{
-		"url": "https://github.com/joshlf/gcp-goat",
-		"name": "GCP Infrastructure Pentest Lab",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"GCP"
-		],
-		"author": "GCP Security Team",
-		"notes": "Hands-on lab for GCP infrastructure pentesting",
-		"badge": "joshlf/gcp-goat"
-	},
-	{
-		"url": "https://github.com/marionsack/gcp-ctf",
-		"name": "GCP Security Workshop",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"GCP"
-		],
-		"author": "GCP Security Team",
-		"notes": "Interactive workshop covering GCP security best practices",
-		"badge": "marionsack/gcp-ctf"
 	},
 	{
 		"url": "https://github.com/InsiderPhD/Generic-University",
@@ -1536,15 +1420,6 @@
 			}
 		],
 		"author": "Google"
-	},
-	{
-		"url": "https://hack.me",
-		"name": "Hack.me",
-		"collection": [
-			"online"
-		],
-		"author": "eLearnSecurity",
-		"notes": "Beta"
 	},
 	{
 		"url": "https://github.com/Hackademic/hackademic",
@@ -1750,99 +1625,6 @@
 		"author": "Troy Hunt"
 	},
 	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-bank.aspx",
-		"name": "Hacme Bank",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			".NET"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "http://downloadcenter.mcafee.com/products/tools/foundstone/hacmebank2_install.zip"
-			}
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-bank-android.aspx",
-		"name": "Hacme Bank - Android",
-		"collection": [
-			"offline"
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmebooks.aspx",
-		"name": "Hacme Books",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"Java"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "http://b2b-download.mcafee.com/products/tools/foundstone/hacmebooks2_installer.zip"
-			}
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacme-casino.aspx",
-		"name": "Hacme Casino",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"Ruby on Rails"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "http://downloadcenter.mcafee.com/products/tools/foundstone/hacmecasino_installer.zip"
-			}
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmeshipping.aspx",
-		"name": "Hacme Shipping",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"ColdFusion"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "http://downloadcenter.mcafee.com/products/tools/foundstone/hacmeshipping.zip"
-			}
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
-		"url": "http://www.mcafee.com/us/downloads/free-tools/hacmetravel.aspx",
-		"name": "Hacme Travel",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"C++"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "http://downloadcenter.mcafee.com/products/tools/foundstone/hacmetravel_install.zip"
-			}
-		],
-		"author": "McAfee / Foundstone"
-	},
-	{
 		"url": "https://github.com/iknowjason/hammer",
 		"name": "Hammer",
 		"collection": [
@@ -1855,10 +1637,6 @@
 			{
 				"name": "download",
 				"url": "https://github.com/iknowjason/hammer"
-			},
-			{
-				"name": "live",
-				"url": "https://preprod.rtcfingroup.com/"
 			}
 		],
 		"author": "iknowjason",
@@ -1958,26 +1736,34 @@
 		"notes": "Capture-the-flag challenges for Kubernetes"
 	},
 	{
-		"url": "https://github.com/raesene/kubernetes-security-labs",
+		"url": "https://github.com/raesene/kube_security_lab",
 		"name": "Kubernetes Infrastructure Pentest Lab",
 		"collection": [
-			"online"
+			"container"
 		],
 		"technology": [
-			"Kubernetes"
+			"Kubernetes",
+			"docker",
+			"ansible"
 		],
 		"author": "Kubernetes Security Team",
 		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
-		"badge": "raesene/kubernetes-security-labs"
+		"badge": "raesene/kube_security_lab"
 	},
 	{
-		"url": "https://github.com/madhuakula/kubernets-goat",
+		"url": "https://github.com/madhuakula/kubernetes-goat",
 		"name": "Kubernetes Security Workshop",
 		"collection": [
 			"online"
 		],
 		"technology": [
 			"Kubernetes"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://madhuakula.com/kubernetes-goat/"
+			}
 		],
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
@@ -2357,14 +2143,6 @@
 		],
 		"references": [
 			{
-				"name": "demo",
-				"url": "https://demo.securityknowledgeframework.org"
-			},
-			{
-				"name": "guide",
-				"url": "https://owasp-skf.gitbook.io/asvs-write-ups/"
-			},
-			{
 				"name": "live",
 				"url": "https://secureby.design/"
 			}
@@ -2439,19 +2217,6 @@
 		],
 		"author": "Pentest-Tools.com",
 		"notes": "Suite of vulnerable web apps to practice"
-	},
-	{
-		"url": "http://pentesteracademylab.appspot.com",
-		"name": "Pentester Academy",
-		"collection": [
-			"online"
-		],
-		"references": [
-			{
-				"name": "live",
-				"url": "http://pentesteracademylab.appspot.com"
-			}
-		]
 	},
 	{
 		"url": "https://www.pentesterlab.com/exercises/",
@@ -2558,7 +2323,7 @@
 		"references": [
 			{
 				"name": "guide",
-				"url": "https://github.com/adeyosemanputra/pygoat/blob/master/pygoat/Solutions/solution.md"
+				"url": "https://github.com/adeyosemanputra/pygoat/tree/master/Solutions"
 			},
 			{
 				"name": "docker",
@@ -2567,10 +2332,6 @@
 			{
 				"name": "download",
 				"url": "https://github.com/adeyosemanputra/pygoat"
-			},
-			{
-				"name": "live",
-				"url": "http://pygoat.herokuapp.com/"
 			}
 		],
 		"author": "Ade Yoseman",
@@ -2977,10 +2738,6 @@
 			"OpenAPI"
 		],
 		"references": [
-			{
-				"name": "guide",
-				"url": "https://thetesttherapist.com/2022/02/13/api-security-testing-with-postman-and-owasp-zap/"
-			},
 			{
 				"name": "announcement",
 				"url": "https://erev0s.com/blog/vampi-vulnerable-api-security-testing/"
