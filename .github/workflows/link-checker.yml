@@ -30,7 +30,7 @@ jobs:
 
     - name: Upload Results (Failures and Redirects)
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v6
       with:
         name: validation-results
         path: failed_links.json
