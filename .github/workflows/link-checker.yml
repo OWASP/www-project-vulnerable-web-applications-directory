@@ -24,7 +24,9 @@ jobs:
       id: link-check
       env:
         DATA_FILE: _data/collection.json
-      run: python .github/workflows/scripts/link-checker.py
+      run: |
+        python .github/workflows/scripts/link-checker.py
+        cat failed_links.json >> $GITHUB_STEP_SUMMARY
 
     - name: Upload Results (Failures and Redirects)
       if: always()
