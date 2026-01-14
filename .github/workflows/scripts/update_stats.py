@@ -166,6 +166,7 @@ def handle_rate_limit(response: requests.Response, retry_count: int) -> Tuple[bo
                 wait_time = int(retry_after)
             except ValueError:
                 # Retry-After might be a HTTP date, use exponential backoff
+                debug_log(f"Invalid Retry-After header value: {retry_after}")
                 wait_time = min(2 ** retry_count, 300)
         else:
             wait_time = min(2 ** retry_count, 300)
@@ -402,12 +403,17 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
     for i in range(0, len(repos), batch_size):
         batch = repos[i:i + batch_size]
         
-        # Build query
+        # Build parameterized query to prevent injection
         query_parts = []
+        variables = {}
         for idx, (owner, repo) in enumerate(batch):
             alias = f"repo{idx}"
+            owner_var = f"owner{idx}"
+            repo_var = f"repo{idx}"
+            variables[owner_var] = owner
+            variables[repo_var] = repo
             query_parts.append(f'''
-                {alias}: repository(owner: "{owner}", name: "{repo}") {{
+                {alias}: repository(owner: ${owner_var}, name: ${repo_var}) {{
                     stargazerCount
                     defaultBranchRef {{
                         target {{
@@ -419,11 +425,16 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                 }}
             ''')
         
-        query = '''
-            query {
-                %s
-            }
-        ''' % '\n'.join(query_parts)
+        # Build variable declarations
+        var_declarations = []
+        for idx in range(len(batch)):
+            var_declarations.append(f"$owner{idx}: String!, $repo{idx}: String!")
+        
+        query = f'''
+            query({", ".join(var_declarations)}) {{
+                {" ".join(query_parts)}
+            }}
+        '''
         
         debug_log(f"GraphQL batch query for {len(batch)} repos")
         
@@ -431,7 +442,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
             response = make_api_request_with_retry(
                 GITHUB_GRAPHQL_API,
                 headers,
-                data={'query': query},
+                data={'query': query, 'variables': variables},
                 method='POST'
             )
             
