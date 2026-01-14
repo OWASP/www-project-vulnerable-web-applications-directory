@@ -3013,7 +3013,7 @@
 		"badge": "adamdoupe/WackoPicko"
 	},
 	{
-		"url": "https://github.com/sectooladdict/wavsep",
+		"url": "https://github.com/zaproxy/wavsep",
 		"name": "WAVSEP - Web Application Vulnerability Scanner Evaluation Project",
 		"collection": [
 			"offline"
@@ -3023,20 +3023,16 @@
 		],
 		"references": [
 			{
-				"name": "download",
-				"url": "https://sourceforge.net/projects/wavsep/"
-			},
-			{
-				"name": "downloads",
-				"url": "https://code.google.com/p/wavsep/downloads/list"
-			},
-			{
 				"name": "downloads",
 				"url": "https://github.com/sectooladdict/wavsep/wiki"
+			},
+			{
+				"name": "announcement",
+				"url": "https://www.zaproxy.org/blog/2025-09-08-zap-is-adopting-wavsep/"
 			}
 		],
-		"author": "Shay Chen",
-		"badge": "sectooladdict/wavsep"
+		"author": "Shay Chen & The ZAP Dev Team",
+		"badge": "zaproxy/wavsep"
 	},
 	{
 		"url": "https://github.com/samuraiwtf/wayfarer",
