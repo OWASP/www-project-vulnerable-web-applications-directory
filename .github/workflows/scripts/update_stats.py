@@ -629,9 +629,10 @@ def update_collection_stats(collection_path: str) -> bool:
                 new_stars = stats['stars']
                 new_last_contributed = stats.get('last_contributed')
                 
-                # Determine if data will actually change
+                # Determine if data will actually change in collection.json
                 stars_changed = (old_stars != new_stars)
                 # Only consider last_contributed changed if we have a new value and it differs
+                # Note: If new_last_contributed is None, we don't update the field, so it's not a change
                 last_contributed_changed = (new_last_contributed is not None and old_last_contributed != new_last_contributed)
                 data_changed = stars_changed or last_contributed_changed
                 
@@ -662,9 +663,10 @@ def update_collection_stats(collection_path: str) -> bool:
                 new_stars = stats['stars']
                 new_last_contributed = stats.get('last_contributed')
                 
-                # Determine if data will actually change
+                # Determine if data will actually change in collection.json
                 stars_changed = (old_stars != new_stars)
                 # Only consider last_contributed changed if we have a new value and it differs
+                # Note: If new_last_contributed is None, we don't update the field, so it's not a change
                 last_contributed_changed = (new_last_contributed is not None and old_last_contributed != new_last_contributed)
                 data_changed = stars_changed or last_contributed_changed
                 
