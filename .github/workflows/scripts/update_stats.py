@@ -623,11 +623,19 @@ def update_collection_stats(collection_path: str) -> bool:
         for repo_key, stats in stats_results.items():
             entry = repo_to_entry_map.get(repo_key)
             if entry and stats:
-                entry['stars'] = stats['stars']
-                if stats['last_contributed']:
-                    entry['last_contributed'] = stats['last_contributed']
+                # Check if data in collection.json is actually changing
+                old_stars = entry.get('stars')
+                old_last_contributed = entry.get('last_contributed')
+                new_stars = stats['stars']
+                new_last_contributed = stats.get('last_contributed')
+                
+                data_changed = (old_stars != new_stars or old_last_contributed != new_last_contributed)
+                
+                entry['stars'] = new_stars
+                if new_last_contributed:
+                    entry['last_contributed'] = new_last_contributed
                 processed_count += 1
-                if stats.get('data_changed', True):
+                if data_changed:
                     updated_count += 1
                 else:
                     unchanged_count += 1
@@ -643,11 +651,20 @@ def update_collection_stats(collection_path: str) -> bool:
             if stats:
                 # Update the entry with new fields
                 entry = repo_to_entry_map[repo_key]
-                entry['stars'] = stats['stars']
-                if stats['last_contributed']:
-                    entry['last_contributed'] = stats['last_contributed']
+                
+                # Check if data in collection.json is actually changing
+                old_stars = entry.get('stars')
+                old_last_contributed = entry.get('last_contributed')
+                new_stars = stats['stars']
+                new_last_contributed = stats.get('last_contributed')
+                
+                data_changed = (old_stars != new_stars or old_last_contributed != new_last_contributed)
+                
+                entry['stars'] = new_stars
+                if new_last_contributed:
+                    entry['last_contributed'] = new_last_contributed
                 processed_count += 1
-                if stats.get('data_changed', True):
+                if data_changed:
                     updated_count += 1
                 else:
                     unchanged_count += 1
