@@ -25,7 +25,7 @@ except ImportError:
 # Configuration
 COLLECTION_JSON_PATH = "_data/collection.json"
 GITHUB_API_BASE = "https://api.github.com"
-REQUEST_DELAY = 10  # Delay between requests in seconds (to stay under rate limits)
+REQUEST_DELAY = 1  # Delay between requests in seconds (to stay under rate limits)
 REQUEST_TIMEOUT = 10  # Timeout for API requests in seconds
 
 
