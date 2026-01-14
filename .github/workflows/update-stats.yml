@@ -13,7 +13,9 @@ permissions:
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    
+    env:
+      USE_GRAPHQL: ${{ vars.USE_GRAPHQL }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
