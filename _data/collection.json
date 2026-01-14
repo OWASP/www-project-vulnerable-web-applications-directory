@@ -779,7 +779,7 @@
 		"author": "Koen Buyens",
 		"notes": "A set of vulnerable applications which show Oauth2.0 vulnerabilities.",
 		"badge": "koenbuyens/Vulnerable-OAuth-2.0-Applications",
-		"stars": 325,
+		"stars": 324,
 		"last_contributed": "2018-09-15T17:12:22Z"
 	},
 	{
@@ -816,7 +816,7 @@
 		"author": "theowni",
 		"notes": "Damn Vulnerable Restaurant is an intentionally vulnerable Web API game for learning and training purposes dedicated to developers, ethical hackers and security engineers.",
 		"badge": "theowni/Damn-Vulnerable-Restaurant-API-Game",
-		"stars": 876,
+		"stars": 877,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -844,7 +844,7 @@
 		"author": "theowni",
 		"notes": "An intentionally vulnerable API training game for developers, ethical hackers, and security engineers. Designed as a CTF-style playground to learn, detect, exploit, and remediate API security vulnerabilities using a FastAPI-based application. Supports local Docker deployment and online execution via GitHub Codespaces.",
 		"badge": "theowni/Damn-Vulnerable-RESTaurant-API-Game",
-		"stars": 876,
+		"stars": 877,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -911,7 +911,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12450,
+		"stars": 12454,
 		"last_contributed": "2026-01-08T08:38:38Z"
 	},
 	{
@@ -1064,7 +1064,7 @@
 		"author": "@snoopysecurity",
 		"badge": "snoopysecurity/dvws-node",
 		"stars": 500,
-		"last_contributed": "2026-01-13T23:49:44Z"
+		"last_contributed": "2026-01-14T01:21:10Z"
 	},
 	{
 		"url": "https://github.com/k-tamura/easybuggy",
@@ -3144,7 +3144,9 @@
 		],
 		"author": "Younes Jaaidi (yjaaidi)",
 		"notes": " Websheep is an app based on a willingly vulnerable ReSTful APIs.",
-		"badge": "marmicode/websheep"
+		"badge": "marmicode/websheep",
+		"stars": 57,
+		"last_contributed": "2022-12-21T14:35:22Z"
 	},
 	{
 		"url": "https://code.google.com/p/wivet/",
@@ -3186,7 +3188,9 @@
 		],
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
-		"badge": "commjoen/wrongsecrets"
+		"badge": "commjoen/wrongsecrets",
+		"stars": 1385,
+		"last_contributed": "2025-12-28T21:19:52Z"
 	},
 	{
 		"url": "https://github.com/s4n7h0/xvwa",
@@ -3205,7 +3209,9 @@
 			}
 		],
 		"author": "@s4n7h0, @samanL33T",
-		"badge": "s4n7h0/xvwa"
+		"badge": "s4n7h0/xvwa",
+		"stars": 1745,
+		"last_contributed": "2020-09-12T17:26:23Z"
 	},
 	{
 		"url": "http://xxe.sourceforge.net/",
@@ -3235,7 +3241,9 @@
 			"vagrant"
 		],
 		"author": "Joshua Barone",
-		"badge": "jbarone/xxelab"
+		"badge": "jbarone/xxelab",
+		"stars": 229,
+		"last_contributed": "2021-11-10T12:01:04Z"
 	},
 	{
 		"author": "Fernando Mengali",
@@ -3684,6 +3692,8 @@
 			"Swagger/OpenAPI"
 		],
 		"author": "Aliyu G. Yisa",
-		"badge": "aligorithm/Zero-Health"
+		"badge": "aligorithm/Zero-Health",
+		"stars": 32,
+		"last_contributed": "2025-06-15T14:46:24Z"
 	}
 ]
