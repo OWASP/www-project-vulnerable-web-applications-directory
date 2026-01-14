@@ -30,7 +30,6 @@ import json
 import time
 import sys
 import os
-import hashlib
 from datetime import datetime
 from typing import Dict, Optional, List, Any, Tuple
 
@@ -160,7 +159,7 @@ def handle_rate_limit(response: requests.Response, retry_count: int) -> Tuple[bo
     
     # Check for secondary rate limit (status 429 or specific 403)
     if response.status_code == 429 or (response.status_code == 403 and 'Retry-After' in response.headers):
-        retry_after = response.headers.get('Retry-After', response.headers.get('retry-after'))
+        retry_after = response.headers.get('Retry-After')
         if retry_after:
             try:
                 wait_time = int(retry_after)
@@ -396,7 +395,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
     
     headers = get_github_headers(for_graphql=True)
     
-    # Build GraphQL query for batch fetching (max 100 repos at a time)
+    # Build GraphQL query for batch fetching
     batch_size = 50  # Conservative batch size to avoid query complexity issues
     results = {}
     
