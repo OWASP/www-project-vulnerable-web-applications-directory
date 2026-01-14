@@ -272,7 +272,7 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
         cache: Cache dictionary for storing/retrieving cached data
 
     Returns:
-        Dictionary with 'stars' and 'last_contributed' or None on error
+        Dictionary with 'stars', 'last_contributed', and 'data_changed' flag, or None on error
     """
     headers = get_github_headers()
     repo_key = f"{owner}/{repo}"
@@ -297,13 +297,21 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
             # Return cached data if available
             if 'stars' in cached_data:
                 print(f"  Using cached data for {owner}/{repo}")
-                return {'stars': cached_data['stars'], 'last_contributed': cached_data.get('last_contributed')}
+                return {
+                    'stars': cached_data['stars'],
+                    'last_contributed': cached_data.get('last_contributed'),
+                    'data_changed': False
+                }
             return None
 
         # Handle 304 Not Modified - use cached data
         if response.status_code == 304:
-            print(f"  ✓ {owner}/{repo}: Using cached data (not modified)")
-            return {'stars': cached_data['stars'], 'last_contributed': cached_data.get('last_contributed')}
+            print(f"  ✓ {owner}/{repo}: No changes (cached data still valid)")
+            return {
+                'stars': cached_data['stars'],
+                'last_contributed': cached_data.get('last_contributed'),
+                'data_changed': False
+            }
 
         if response.status_code == 404:
             print(f"  Warning: Repository {owner}/{repo} not found (404)")
@@ -314,7 +322,11 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
             # Return cached data if available
             if 'stars' in cached_data:
                 print(f"  Using cached data for {owner}/{repo}")
-                return {'stars': cached_data['stars'], 'last_contributed': cached_data.get('last_contributed')}
+                return {
+                    'stars': cached_data['stars'],
+                    'last_contributed': cached_data.get('last_contributed'),
+                    'data_changed': False
+                }
             return None
         elif response.status_code != 200:
             print(f"  Warning: Failed to fetch {owner}/{repo} (status {response.status_code})")
@@ -322,7 +334,11 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
             # Return cached data if available
             if 'stars' in cached_data:
                 print(f"  Using cached data for {owner}/{repo}")
-                return {'stars': cached_data['stars'], 'last_contributed': cached_data.get('last_contributed')}
+                return {
+                    'stars': cached_data['stars'],
+                    'last_contributed': cached_data.get('last_contributed'),
+                    'data_changed': False
+                }
             return None
 
         repo_data = response.json()
@@ -353,9 +369,23 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
         elif commits_response and commits_response.status_code != 200:
             debug_log(f"Failed to fetch commits for {owner}/{repo}: status {commits_response.status_code}")
 
+        # Check if data actually changed compared to cached data
+        data_changed = True
+        if 'stars' in cached_data:
+            old_stars = cached_data.get('stars')
+            old_last_contributed = cached_data.get('last_contributed')
+            if old_stars == stars and old_last_contributed == last_contributed:
+                data_changed = False
+                print(f"  ✓ {owner}/{repo}: No changes ({stars} stars, last commit: {last_contributed})")
+            else:
+                print(f"  ✓ {owner}/{repo}: Updated - {stars} stars (was {old_stars}), last commit: {last_contributed}")
+        else:
+            print(f"  ✓ {owner}/{repo}: New entry - {stars} stars, last commit: {last_contributed}")
+
         result = {
             'stars': stars,
-            'last_contributed': last_contributed
+            'last_contributed': last_contributed,
+            'data_changed': data_changed
         }
         
         # Update cache
@@ -366,7 +396,6 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
             'updated_at': datetime.utcnow().isoformat()
         }
 
-        print(f"  ✓ {owner}/{repo}: {stars} stars, last commit: {last_contributed}")
         return result
 
     except (KeyError, ValueError, json.JSONDecodeError) as e:
@@ -375,7 +404,11 @@ def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) 
         # Return cached data if available
         if 'stars' in cached_data:
             print(f"  Using cached data for {owner}/{repo}")
-            return {'stars': cached_data['stars'], 'last_contributed': cached_data.get('last_contributed')}
+            return {
+                'stars': cached_data['stars'],
+                'last_contributed': cached_data.get('last_contributed'),
+                'data_changed': False
+            }
         return None
 
 
@@ -388,7 +421,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
         cache: Cache dictionary for storing/retrieving cached data
         
     Returns:
-        Dictionary mapping repo_key to stats
+        Dictionary mapping repo_key to stats (including 'data_changed' flag)
     """
     if not repos:
         return {}
@@ -471,9 +504,24 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                     if default_branch and default_branch.get('target'):
                         last_contributed = default_branch['target'].get('committedDate')
                     
+                    # Check if data actually changed compared to cached data
+                    cached_data = cache.get(repo_key, {})
+                    data_changed = True
+                    if 'stars' in cached_data:
+                        old_stars = cached_data.get('stars')
+                        old_last_contributed = cached_data.get('last_contributed')
+                        if old_stars == stars and old_last_contributed == last_contributed:
+                            data_changed = False
+                            print(f"  ✓ {owner}/{repo}: No changes ({stars} stars, last commit: {last_contributed})")
+                        else:
+                            print(f"  ✓ {owner}/{repo}: Updated - {stars} stars (was {old_stars}), last commit: {last_contributed}")
+                    else:
+                        print(f"  ✓ {owner}/{repo}: New entry - {stars} stars, last commit: {last_contributed}")
+                    
                     results[repo_key] = {
                         'stars': stars,
-                        'last_contributed': last_contributed
+                        'last_contributed': last_contributed,
+                        'data_changed': data_changed
                     }
                     
                     # Update cache
@@ -482,8 +530,6 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                         'last_contributed': last_contributed,
                         'updated_at': datetime.utcnow().isoformat()
                     }
-                    
-                    print(f"  ✓ {owner}/{repo}: {stars} stars, last commit: {last_contributed}")
                 else:
                     print(f"  Warning: No data for {owner}/{repo} in GraphQL response")
             
@@ -537,7 +583,9 @@ def update_collection_stats(collection_path: str) -> bool:
     repos_to_fetch = []
     repo_to_entry_map = {}
 
+    processed_count = 0
     updated_count = 0
+    unchanged_count = 0
     skipped_count = 0
     error_count = 0
 
@@ -578,7 +626,11 @@ def update_collection_stats(collection_path: str) -> bool:
                 entry['stars'] = stats['stars']
                 if stats['last_contributed']:
                     entry['last_contributed'] = stats['last_contributed']
-                updated_count += 1
+                processed_count += 1
+                if stats.get('data_changed', True):
+                    updated_count += 1
+                else:
+                    unchanged_count += 1
     else:
         # Use REST API for individual fetching
         print("Using REST API for individual queries...")
@@ -594,7 +646,11 @@ def update_collection_stats(collection_path: str) -> bool:
                 entry['stars'] = stats['stars']
                 if stats['last_contributed']:
                     entry['last_contributed'] = stats['last_contributed']
-                updated_count += 1
+                processed_count += 1
+                if stats.get('data_changed', True):
+                    updated_count += 1
+                else:
+                    unchanged_count += 1
             else:
                 error_count += 1
 
@@ -604,7 +660,7 @@ def update_collection_stats(collection_path: str) -> bool:
     # Save cache
     save_cache(cache)
 
-    output_summary(updated_count, skipped_count, error_count)
+    output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count)
 
     # Write updated collection back to file
     try:
@@ -617,9 +673,11 @@ def update_collection_stats(collection_path: str) -> bool:
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
-def output_summary(updated_count: int, skipped_count: int, error_count: int):
+def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int):
     summary =  f"""\nSummary:
-      Updated: {updated_count}
+      Processed: {processed_count}
+        - Updated (changes detected): {updated_count}
+        - Unchanged (no changes): {unchanged_count}
       Skipped: {skipped_count}
       Errors: {error_count}"""
 
