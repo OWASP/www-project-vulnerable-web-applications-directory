@@ -22,6 +22,9 @@ editorconfig_log.txt
 artifact.txt
 pr_number
 
+# GitHub stats cache
+.github_stats_cache.json
+
 # Misc
 sort_json.py
 .ruby-version
