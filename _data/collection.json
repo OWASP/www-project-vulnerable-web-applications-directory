@@ -269,8 +269,8 @@
 		],
 		"author": "NeuraLegion",
 		"badge": "NeuraLegion/brokencrystals",
-		"stars": 179,
-		"last_contributed": "2026-01-10T08:00:25Z"
+		"stars": 180,
+		"last_contributed": "2026-01-14T14:34:10Z"
 	},
 	{
 		"url": "https://github.com/attacker-codeninja/BugGPT",
@@ -2139,7 +2139,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12293,
+		"stars": 12294,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -3234,7 +3234,7 @@
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
 		"badge": "commjoen/wrongsecrets",
 		"stars": 1386,
-		"last_contributed": "2025-12-28T21:19:52Z"
+		"last_contributed": "2026-01-14T14:59:41Z"
 	},
 	{
 		"url": "https://github.com/s4n7h0/xvwa",
