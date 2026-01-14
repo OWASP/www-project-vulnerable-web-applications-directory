@@ -159,7 +159,7 @@ def handle_rate_limit(response: requests.Response, retry_count: int) -> Tuple[bo
             return True, wait_time
     
     # Check for secondary rate limit (status 429 or specific 403)
-    if response.status_code == 429 or (response.status_code == 403 and 'retry-after' in response.headers.lower()):
+    if response.status_code == 429 or (response.status_code == 403 and 'Retry-After' in response.headers):
         retry_after = response.headers.get('Retry-After', response.headers.get('retry-after'))
         if retry_after:
             try:
