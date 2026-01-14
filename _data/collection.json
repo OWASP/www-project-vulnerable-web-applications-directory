@@ -382,7 +382,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3439,
+		"stars": 3441,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -816,7 +816,7 @@
 		"author": "theowni",
 		"notes": "Damn Vulnerable Restaurant is an intentionally vulnerable Web API game for learning and training purposes dedicated to developers, ethical hackers and security engineers.",
 		"badge": "theowni/Damn-Vulnerable-Restaurant-API-Game",
-		"stars": 877,
+		"stars": 878,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -844,7 +844,7 @@
 		"author": "theowni",
 		"notes": "An intentionally vulnerable API training game for developers, ethical hackers, and security engineers. Designed as a CTF-style playground to learn, detect, exploit, and remediate API security vulnerabilities using a FastAPI-based application. Supports local Docker deployment and online execution via GitHub Codespaces.",
 		"badge": "theowni/Damn-Vulnerable-RESTaurant-API-Game",
-		"stars": 877,
+		"stars": 878,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -911,7 +911,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12454,
+		"stars": 12455,
 		"last_contributed": "2026-01-08T08:38:38Z"
 	},
 	{
@@ -1131,7 +1131,7 @@
 		"author": "Azure Security Team",
 		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
 		"badge": "semperis/EntraGoat",
-		"stars": 865,
+		"stars": 864,
 		"last_contributed": "2025-10-19T12:30:53Z"
 	},
 	{
@@ -1238,7 +1238,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7316,
+		"stars": 7317,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -1758,7 +1758,7 @@
 		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
 		"badge": "raesene/kube_security_lab",
 		"stars": 268,
-		"last_contributed": "2024-09-08T11:46:27Z"
+		"last_contributed": "2026-01-14T08:57:49Z"
 	},
 	{
 		"url": "https://github.com/madhuakula/kubernetes-goat",
@@ -1902,7 +1902,9 @@
 			"mobile"
 		],
 		"author": "OWASP",
-		"badge": "OWASP/owasp-mstg"
+		"badge": "OWASP/owasp-mstg",
+		"stars": 12658,
+		"last_contributed": "2026-01-14T09:07:21Z"
 	},
 	{
 		"url": "https://github.com/OWASP/MSTG-Hacking-Playground",
@@ -1918,7 +1920,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/MSTG-Hacking-Playground",
-		"stars": 651,
+		"stars": 653,
 		"last_contributed": "2022-10-31T17:03:31Z"
 	},
 	{
@@ -1937,7 +1939,7 @@
 			}
 		],
 		"badge": "webpwnized/mutillidae",
-		"stars": 1457,
+		"stars": 1458,
 		"last_contributed": "2025-08-03T18:57:10Z"
 	},
 	{
@@ -2090,7 +2092,7 @@
 		],
 		"author": "Abhineet Jayaraj (@xploresec)",
 		"badge": "interference-security/DVWS",
-		"stars": 355,
+		"stars": 356,
 		"last_contributed": "2025-12-19T17:00:57Z"
 	},
 	{
@@ -2135,7 +2137,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12262,
+		"stars": 12293,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -2161,7 +2163,7 @@
 		"author": "glenn.ten.cate@owasp.org and riccardo.ten.cate@owasp.org",
 		"notes": "You can go to the demo website and login(admin / test-skf) or skip login, go to Labs menu and start a Lab you want to do. Please limit the usage of scanning tools on the Labs.",
 		"badge": "blabla1337/skf-labs",
-		"stars": 460,
+		"stars": 462,
 		"last_contributed": "2024-08-02T11:33:45Z"
 	},
 	{
@@ -2302,7 +2304,9 @@
 			"Scala",
 			"Play Framework"
 		],
-		"badge": "playframework/play-webgoat"
+		"badge": "playframework/play-webgoat",
+		"stars": 18,
+		"last_contributed": "2026-01-06T23:04:33Z"
 	},
 	{
 		"url": "https://code.google.com/p/puzzlemall/",
@@ -2347,8 +2351,8 @@
 		],
 		"author": "Ade Yoseman",
 		"badge": "adeyosemanputra/pygoat",
-		"stars": 297,
-		"last_contributed": "2026-01-05T03:07:19Z"
+		"stars": 296,
+		"last_contributed": "2026-01-11T11:26:02Z"
 	},
 	{
 		"url": "https://github.com/insp3ctre/race-the-web",
@@ -2364,7 +2368,7 @@
 		],
 		"author": "insp3ctre",
 		"badge": "insp3ctre/race-the-web",
-		"stars": 629,
+		"stars": 628,
 		"last_contributed": "2019-10-16T19:00:49Z"
 	},
 	{
@@ -2388,8 +2392,8 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/railsgoat",
-		"stars": 903,
-		"last_contributed": "2026-01-07T17:07:04Z"
+		"stars": 906,
+		"last_contributed": "2026-01-13T01:57:41Z"
 	},
 	{
 		"url": "https://www.root-me.org",
@@ -2485,7 +2489,7 @@
 		"author": "Globo",
 		"notes": "Repository with many intentionally vulnerable web applications. Includes attack narratives and docker options for each app.",
 		"badge": "globocom/secDevLabs",
-		"stars": 967,
+		"stars": 969,
 		"last_contributed": "2024-09-25T19:54:56Z"
 	},
 	{
@@ -2523,7 +2527,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/SecurityShepherd",
-		"stars": 1418,
+		"stars": 1419,
 		"last_contributed": "2025-10-15T16:34:52Z"
 	},
 	{
@@ -2588,7 +2592,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5690,
+		"stars": 5691,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -2627,7 +2631,7 @@
 		],
 		"author": "incredibleindishell, Mohammed Farhan",
 		"badge": "incredibleindishell/SSRF_Vulnerable_Lab",
-		"stars": 743,
+		"stars": 746,
 		"last_contributed": "2023-08-21T17:02:38Z"
 	},
 	{
@@ -2720,7 +2724,9 @@
 			}
 		],
 		"author": "Sakti Dwi Cahyono",
-		"badge": "sakti/twitterlike"
+		"badge": "sakti/twitterlike",
+		"stars": 4,
+		"last_contributed": "2013-10-16T10:21:18Z"
 	},
 	{
 		"url": "https://github.com/lucideus-repo/UnSAFE_Bank",
@@ -2756,7 +2762,8 @@
 		],
 		"author": "erev0s",
 		"badge": "erev0s/VAmPI",
-		"stars": 1155
+		"stars": 1158,
+		"last_contributed": "2024-11-25T13:00:33Z"
 	},
 	{
 		"url": "https://github.com/roottusk/vapi",
@@ -2779,7 +2786,9 @@
 		],
 		"author": "Tushar Kulkarni",
 		"notes": "vAPI is a Vulnerable Interface that demonstrates the OWASP API Top 10 vulnerabilities in the means of exercises",
-		"badge": "roottusk/vapi"
+		"badge": "roottusk/vapi",
+		"stars": 1321,
+		"last_contributed": "2025-01-10T02:48:25Z"
 	},
 	{
 		"url": "https://github.com/detectify/Varnish-H2-Request-Smuggling",
@@ -2799,7 +2808,9 @@
 		],
 		"author": "Detectify",
 		"notes": "A docker-compose file to setup a local environment that is vulnerable to CVE-2021-36740 Varnish HTTP/2 request smuggling, presented by Albinowax at Blackhat/Defcon 2021.",
-		"badge": "detectify/Varnish-H2-Request-Smuggling"
+		"badge": "detectify/Varnish-H2-Request-Smuggling",
+		"stars": 56,
+		"last_contributed": "2021-08-26T21:21:10Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/virtualhacking/",
@@ -2845,7 +2856,9 @@
 			"AI/LLM"
 		],
 		"url": "https://github.com/Commando-X/vuln-bank",
-		"badge": "Commando-X/vuln-bank"
+		"badge": "Commando-X/vuln-bank",
+		"stars": 543,
+		"last_contributed": "2025-11-23T11:52:35Z"
 	},
 	{
 		"url": "https://github.com/SirAppSec/vuln-node.js-express.js-app",
@@ -2873,7 +2886,9 @@
 			"swagger",
 			"sqlite",
 			"sequelize"
-		]
+		],
+		"stars": 41,
+		"last_contributed": "2024-08-26T22:48:44Z"
 	},
 	{
 		"url": "https://github.com/ScaleSec/vulnado",
@@ -2887,7 +2902,9 @@
 		],
 		"author": "ScaleSec",
 		"notes": "Purposely vulnerable Java application to help lead secure coding workshops",
-		"badge": "ScaleSec/vulnado"
+		"badge": "ScaleSec/vulnado",
+		"stars": 191,
+		"last_contributed": "2020-06-02T13:59:07Z"
 	},
 	{
 		"url": "https://github.com/CSPF-Founder/JavaVulnerableLab/",
@@ -2899,7 +2916,9 @@
 			"Java"
 		],
 		"author": "Cyber Security and Privacy Foundation",
-		"badge": "CSPF-Founder/JavaVulnerableLab"
+		"badge": "CSPF-Founder/JavaVulnerableLab",
+		"stars": 270,
+		"last_contributed": "2024-06-20T06:43:30Z"
 	},
 	{
 		"url": "https://github.com/kaakaww/vuln_node_express",
@@ -2913,7 +2932,9 @@
 		],
 		"author": "Zachary Conger",
 		"notes": "SQLi and XSS",
-		"badge": "kaakaww/vuln_node_express"
+		"badge": "kaakaww/vuln_node_express",
+		"stars": 21,
+		"last_contributed": "2023-11-16T20:03:11Z"
 	},
 	{
 		"url": "https://github.com/mddanish/Vulnerable-OTP-Application",
@@ -2926,7 +2947,9 @@
 			"Google OTP"
 		],
 		"author": "mddanish",
-		"badge": "mddanish/Vulnerable-OTP-Application"
+		"badge": "mddanish/Vulnerable-OTP-Application",
+		"stars": 85,
+		"last_contributed": "2019-11-13T11:35:42Z"
 	},
 	{
 		"url": "https://github.com/yogisec/VulnerableSAMLApp",
@@ -2938,7 +2961,9 @@
 			"Python"
 		],
 		"author": "yogisec",
-		"badge": "yogisec/VulnerableSAMLApp"
+		"badge": "yogisec/VulnerableSAMLApp",
+		"stars": 54,
+		"last_contributed": "2020-11-02T13:33:52Z"
 	},
 	{
 		"url": "https://github.com/mattvaldes/vulnerable-api",
@@ -3011,7 +3036,7 @@
 		"author": "Yavuzlar (siberyavuzlar.com)",
 		"notes": "A web vulnerability lab project developed by Yavuzlar.",
 		"badge": "Yavuzlar/VulnLab",
-		"stars": 474,
+		"stars": 473,
 		"last_contributed": "2025-02-02T18:40:45Z"
 	},
 	{
