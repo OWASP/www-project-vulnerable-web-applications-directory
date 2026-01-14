@@ -1777,7 +1777,9 @@
 		],
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
-		"badge": "madhuakula/kubernetes-goat"
+		"badge": "madhuakula/kubernetes-goat",
+		"stars": 5358,
+		"last_contributed": "2025-11-18T15:14:10Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/lampsecurity/",
