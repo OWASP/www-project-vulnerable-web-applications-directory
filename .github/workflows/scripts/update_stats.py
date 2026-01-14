@@ -225,7 +225,7 @@ def update_collection_stats(collection_path: str) -> bool:
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
-def output_summary(updated_count: int, skipped_count: int, error_count: int)
+def output_summary(updated_count: int, skipped_count: int, error_count: int):
     summary =  f"""\nSummary:
       Updated: {updated_count}
       Skipped: {skipped_count}
