@@ -4,25 +4,24 @@ Update GitHub statistics in collection.json
 
 This script:
 1. Parses collection.json to find entries with GitHub badge fields
-2. Queries the GitHub API for stargazers_count and latest commit
+2. Queries the GitHub GraphQL API for stargazers_count and latest commit
 3. Updates the JSON with stars and last_contributed fields
 4. Implements dynamic rate limiting with exponential backoff
 5. Uses local caching to minimize API calls
-6. Supports both REST and GraphQL APIs
 
 Features:
 - Dynamic rate limit handling with automatic retry
-- Local caching of repository statistics (etag-based)
+- Local caching of repository statistics
 - Exponential backoff for rate limit errors
 - Enhanced error logging with full response headers
 - Configurable retry limits and delays
+- GraphQL batch queries for efficient processing
 
 Environment Variables:
 - GITHUB_TOKEN: GitHub personal access token (recommended for higher rate limits)
 - CACHE_FILE: Path to cache file (default: .github_stats_cache.json)
 - MAX_RETRIES: Maximum number of retry attempts (default: 3)
 - INITIAL_DELAY: Initial delay between requests in seconds (default: 1)
-- USE_GRAPHQL: Use GraphQL API for batch queries (default: false)
 - DEBUG_LOGGING: Enable detailed debug logging (default: false)
 """
 
@@ -41,13 +40,11 @@ except ImportError:
 
 # Configuration
 COLLECTION_JSON_PATH = "_data/collection.json"
-GITHUB_API_BASE = "https://api.github.com"
 GITHUB_GRAPHQL_API = "https://api.github.com/graphql"
 REQUEST_TIMEOUT = 10  # Timeout for API requests in seconds
 MAX_RETRIES = int(os.environ.get('MAX_RETRIES', '3'))
 INITIAL_DELAY = float(os.environ.get('INITIAL_DELAY', '1'))
 CACHE_FILE = os.environ.get('CACHE_FILE', '.github_stats_cache.json')
-USE_GRAPHQL = os.environ.get('USE_GRAPHQL', 'false').lower() == 'true'
 DEBUG_LOGGING = os.environ.get('DEBUG_LOGGING', 'false').lower() == 'true'
 
 
@@ -93,24 +90,18 @@ def save_cache(cache: Dict[str, Dict[str, Any]]):
         print(f"Warning: Failed to save cache file: {e}")
 
 
-def get_github_headers(for_graphql: bool = False) -> Dict[str, str]:
+def get_github_headers() -> Dict[str, str]:
     """
-    Get headers for GitHub API requests.
+    Get headers for GitHub GraphQL API requests.
     Uses GITHUB_TOKEN environment variable if available.
-
-    Args:
-        for_graphql: Whether headers are for GraphQL API
 
     Returns:
         Dictionary of headers
     """
     headers = {
-        'Accept': 'application/vnd.github.v3+json',
+        'Accept': 'application/json',
         'User-Agent': 'OWASP-VWAD-Stats-Updater'
     }
-    
-    if for_graphql:
-        headers['Accept'] = 'application/json'
 
     token = os.environ.get('GITHUB_TOKEN')
     if token:
@@ -122,74 +113,16 @@ def get_github_headers(for_graphql: bool = False) -> Dict[str, str]:
     return headers
 
 
-def handle_rate_limit(response: requests.Response, retry_count: int) -> Tuple[bool, float]:
+def make_graphql_request_with_retry(query: str, variables: Dict[str, Any], 
+                                     headers: Dict[str, str],
+                                     max_retries: int = MAX_RETRIES) -> Optional[requests.Response]:
     """
-    Handle rate limit responses from GitHub API.
+    Make a GraphQL API request with automatic retry and rate limit handling.
     
     Args:
-        response: Response object from requests
-        retry_count: Current retry attempt number
-        
-    Returns:
-        Tuple of (should_retry, wait_time)
-    """
-    # Log response headers for debugging
-    if DEBUG_LOGGING:
-        debug_log(f"Response status: {response.status_code}")
-        debug_log(f"Response headers: {dict(response.headers)}")
-    
-    # Check for rate limit via status code and headers
-    if response.status_code == 403:
-        rate_limit_remaining = response.headers.get('X-RateLimit-Remaining')
-        rate_limit_reset = response.headers.get('X-RateLimit-Reset')
-        
-        # Check if it's actually a rate limit error
-        if rate_limit_remaining is not None and int(rate_limit_remaining) == 0:
-            # Calculate wait time based on reset time
-            if rate_limit_reset:
-                reset_time = int(rate_limit_reset)
-                current_time = int(time.time())
-                wait_time = max(reset_time - current_time, 0) + 5  # Add 5 second buffer
-            else:
-                # Fallback to exponential backoff
-                wait_time = min(2 ** retry_count, 300)  # Cap at 5 minutes
-            
-            print(f"  Rate limit exceeded. Waiting {wait_time} seconds before retry...")
-            return True, wait_time
-    
-    # Check for secondary rate limit (status 429 or specific 403)
-    if response.status_code == 429 or (response.status_code == 403 and 'Retry-After' in response.headers):
-        retry_after = response.headers.get('Retry-After')
-        if retry_after:
-            try:
-                wait_time = int(retry_after)
-            except ValueError:
-                # Retry-After might be a HTTP date, use exponential backoff
-                debug_log(f"Invalid Retry-After header value: {retry_after}")
-                wait_time = min(2 ** retry_count, 300)
-        else:
-            wait_time = min(2 ** retry_count, 300)
-        
-        print(f"  Secondary rate limit hit. Waiting {wait_time} seconds before retry...")
-        return True, wait_time
-    
-    return False, 0
-
-
-def make_api_request_with_retry(url: str, headers: Dict[str, str], 
-                                  params: Optional[Dict[str, Any]] = None,
-                                  data: Optional[Dict[str, Any]] = None,
-                                  method: str = 'GET',
-                                  max_retries: int = MAX_RETRIES) -> Optional[requests.Response]:
-    """
-    Make an API request with automatic retry and rate limit handling.
-    
-    Args:
-        url: URL to request
+        query: GraphQL query string
+        variables: Query variables
         headers: Request headers
-        params: Query parameters
-        data: Request body data (for POST requests)
-        method: HTTP method (GET or POST)
         max_retries: Maximum number of retry attempts
         
     Returns:
@@ -198,19 +131,49 @@ def make_api_request_with_retry(url: str, headers: Dict[str, str],
     for retry_count in range(max_retries + 1):
         try:
             if retry_count > 0:
-                debug_log(f"Retry attempt {retry_count}/{max_retries} for {url}")
+                debug_log(f"Retry attempt {retry_count}/{max_retries} for GraphQL query")
             
-            if method.upper() == 'POST':
-                response = requests.post(url, headers=headers, json=data, timeout=REQUEST_TIMEOUT)
-            else:
-                response = requests.get(url, headers=headers, params=params, timeout=REQUEST_TIMEOUT)
+            response = requests.post(
+                GITHUB_GRAPHQL_API,
+                headers=headers,
+                json={'query': query, 'variables': variables},
+                timeout=REQUEST_TIMEOUT
+            )
             
-            # Check for rate limit
-            should_retry, wait_time = handle_rate_limit(response, retry_count)
+            # Log response headers for debugging
+            if DEBUG_LOGGING:
+                debug_log(f"Response status: {response.status_code}")
+                debug_log(f"Response headers: {dict(response.headers)}")
             
-            if should_retry and retry_count < max_retries:
-                time.sleep(wait_time)
-                continue
+            # Check for rate limit (403 or 429)
+            if response.status_code in [403, 429]:
+                rate_limit_remaining = response.headers.get('X-RateLimit-Remaining')
+                rate_limit_reset = response.headers.get('X-RateLimit-Reset')
+                retry_after = response.headers.get('Retry-After')
+                
+                # Calculate wait time
+                wait_time = None
+                if rate_limit_remaining is not None and int(rate_limit_remaining) == 0 and rate_limit_reset:
+                    # Primary rate limit
+                    reset_time = int(rate_limit_reset)
+                    current_time = int(time.time())
+                    wait_time = max(reset_time - current_time, 0) + 5  # Add 5 second buffer
+                    print(f"  Rate limit exceeded. Waiting {wait_time} seconds before retry...")
+                elif retry_after:
+                    # Secondary rate limit with Retry-After header
+                    try:
+                        wait_time = int(retry_after)
+                    except ValueError:
+                        wait_time = min(2 ** retry_count, 300)
+                    print(f"  Secondary rate limit hit. Waiting {wait_time} seconds before retry...")
+                else:
+                    # Exponential backoff
+                    wait_time = min(2 ** retry_count, 300)
+                    print(f"  Rate limit hit. Waiting {wait_time} seconds before retry...")
+                
+                if retry_count < max_retries:
+                    time.sleep(wait_time)
+                    continue
             
             # Return response even if it's an error (caller will handle)
             return response
@@ -262,156 +225,6 @@ def parse_github_badge(badge: str) -> Optional[tuple]:
     return (owner, repo)
 
 
-def fetch_github_stats(owner: str, repo: str, cache: Dict[str, Dict[str, Any]]) -> Optional[Dict[str, Any]]:
-    """
-    Fetch GitHub repository statistics from the API.
-
-    Args:
-        owner: Repository owner
-        repo: Repository name
-        cache: Cache dictionary for storing/retrieving cached data
-
-    Returns:
-        Dictionary with 'stars', 'last_contributed', and 'data_changed' flag, or None on error
-    """
-    headers = get_github_headers()
-    repo_key = f"{owner}/{repo}"
-    
-    # Check cache for etag
-    cached_data = cache.get(repo_key, {})
-    etag = cached_data.get('etag')
-    
-    if etag:
-        headers['If-None-Match'] = etag
-        debug_log(f"Using cached etag for {repo_key}: {etag}")
-
-    try:
-        # Fetch repository information
-        repo_url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}"
-        print(f"  Fetching stats for {owner}/{repo}...")
-
-        response = make_api_request_with_retry(repo_url, headers)
-        
-        if response is None:
-            print(f"  Warning: Failed to fetch {owner}/{repo} after retries")
-            # Return cached data if available
-            if 'stars' in cached_data:
-                print(f"  Using cached data for {owner}/{repo}")
-                return {
-                    'stars': cached_data['stars'],
-                    'last_contributed': cached_data.get('last_contributed'),
-                    'data_changed': False
-                }
-            return None
-
-        # Handle 304 Not Modified - use cached data
-        if response.status_code == 304:
-            print(f"  ✓ {owner}/{repo}: No changes (cached data still valid)")
-            return {
-                'stars': cached_data['stars'],
-                'last_contributed': cached_data.get('last_contributed'),
-                'data_changed': False
-            }
-
-        if response.status_code == 404:
-            print(f"  Warning: Repository {owner}/{repo} not found (404)")
-            return None
-        elif response.status_code == 403:
-            print(f"  Warning: Rate limit exceeded or access forbidden (403) for {owner}/{repo}")
-            debug_log(f"Response headers: {dict(response.headers)}")
-            # Return cached data if available
-            if 'stars' in cached_data:
-                print(f"  Using cached data for {owner}/{repo}")
-                return {
-                    'stars': cached_data['stars'],
-                    'last_contributed': cached_data.get('last_contributed'),
-                    'data_changed': False
-                }
-            return None
-        elif response.status_code != 200:
-            print(f"  Warning: Failed to fetch {owner}/{repo} (status {response.status_code})")
-            debug_log(f"Response body: {response.text[:500]}")
-            # Return cached data if available
-            if 'stars' in cached_data:
-                print(f"  Using cached data for {owner}/{repo}")
-                return {
-                    'stars': cached_data['stars'],
-                    'last_contributed': cached_data.get('last_contributed'),
-                    'data_changed': False
-                }
-            return None
-
-        repo_data = response.json()
-        stars = repo_data.get('stargazers_count', 0)
-        
-        # Store new etag
-        new_etag = response.headers.get('ETag')
-
-        # Fetch latest commit to get last contribution date
-        # Use commits endpoint with per_page=1 to get just the most recent
-        commits_url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/commits"
-        params = {'per_page': 1}
-
-        # Add a small delay between requests to the same repo
-        time.sleep(INITIAL_DELAY)
-        
-        commits_response = make_api_request_with_retry(commits_url, headers, params)
-
-        last_contributed = None
-        if commits_response and commits_response.status_code == 200:
-            commits_data = commits_response.json()
-            if commits_data and len(commits_data) > 0:
-                # Get commit date from the most recent commit
-                commit = commits_data[0]
-                commit_info = commit.get('commit', {})
-                committer_info = commit_info.get('committer', {})
-                last_contributed = committer_info.get('date')
-        elif commits_response and commits_response.status_code != 200:
-            debug_log(f"Failed to fetch commits for {owner}/{repo}: status {commits_response.status_code}")
-
-        # Check if data actually changed compared to cached data
-        data_changed = True
-        if 'stars' in cached_data:
-            old_stars = cached_data.get('stars')
-            old_last_contributed = cached_data.get('last_contributed')
-            if old_stars == stars and old_last_contributed == last_contributed:
-                data_changed = False
-                print(f"  ✓ {owner}/{repo}: No changes ({stars} stars, last commit: {last_contributed})")
-            else:
-                print(f"  ✓ {owner}/{repo}: Updated - {stars} stars (was {old_stars}), last commit: {last_contributed}")
-        else:
-            print(f"  ✓ {owner}/{repo}: New entry - {stars} stars, last commit: {last_contributed}")
-
-        result = {
-            'stars': stars,
-            'last_contributed': last_contributed,
-            'data_changed': data_changed
-        }
-        
-        # Update cache
-        cache[repo_key] = {
-            'stars': stars,
-            'last_contributed': last_contributed,
-            'etag': new_etag,
-            'updated_at': datetime.utcnow().isoformat()
-        }
-
-        return result
-
-    except (KeyError, ValueError, json.JSONDecodeError) as e:
-        print(f"  Warning: Error parsing response for {owner}/{repo}: {e}")
-        debug_log(f"Exception details: {str(e)}")
-        # Return cached data if available
-        if 'stars' in cached_data:
-            print(f"  Using cached data for {owner}/{repo}")
-            return {
-                'stars': cached_data['stars'],
-                'last_contributed': cached_data.get('last_contributed'),
-                'data_changed': False
-            }
-        return None
-
-
 def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
     """
     Fetch GitHub repository statistics using GraphQL API (batch query).
@@ -426,7 +239,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
     if not repos:
         return {}
     
-    headers = get_github_headers(for_graphql=True)
+    headers = get_github_headers()
     
     # Build GraphQL query for batch fetching
     batch_size = 50  # Conservative batch size to avoid query complexity issues
@@ -471,31 +284,38 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
         debug_log(f"GraphQL batch query for {len(batch)} repos")
         
         try:
-            response = make_api_request_with_retry(
-                GITHUB_GRAPHQL_API,
-                headers,
-                data={'query': query, 'variables': variables},
-                method='POST'
-            )
+            response = make_graphql_request_with_retry(query, variables, headers)
             
             if response is None or response.status_code != 200:
-                print(f"  Warning: GraphQL batch query failed, falling back to REST API")
-                # Fall back to individual REST API calls
+                print(f"  Warning: GraphQL batch query failed (status: {response.status_code if response else 'None'})")
+                # Use cached data if available for repositories in this batch
                 for owner, repo in batch:
                     repo_key = f"{owner}/{repo}"
-                    stats = fetch_github_stats(owner, repo, cache)
-                    if stats:
-                        results[repo_key] = stats
+                    cached_data = cache.get(repo_key, {})
+                    if 'stars' in cached_data:
+                        print(f"  Using cached data for {owner}/{repo}")
+                        results[repo_key] = {
+                            'stars': cached_data['stars'],
+                            'last_contributed': cached_data.get('last_contributed'),
+                            'data_changed': False
+                        }
+                    else:
+                        print(f"  Warning: No cached data available for {owner}/{repo}")
                 continue
             
             data = response.json()
+            
+            # Check for GraphQL errors
+            if 'errors' in data:
+                print(f"  Warning: GraphQL errors in response: {data['errors']}")
+                # Still try to process any partial data we got
             
             # Parse results
             for idx, (owner, repo) in enumerate(batch):
                 alias = f"repo{idx}"
                 repo_key = f"{owner}/{repo}"
                 
-                repo_data = data.get('data', {}).get(alias)
+                repo_data = data.get('data', {}).get(alias) if data.get('data') else None
                 if repo_data:
                     stars = repo_data.get('stargazerCount', 0)
                     last_contributed = None
@@ -524,7 +344,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                         'data_changed': data_changed
                     }
                     
-                    # Update cache
+                    # Update cache (without etag field)
                     cache[repo_key] = {
                         'stars': stars,
                         'last_contributed': last_contributed,
@@ -532,6 +352,15 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                     }
                 else:
                     print(f"  Warning: No data for {owner}/{repo} in GraphQL response")
+                    # Try to use cached data
+                    cached_data = cache.get(repo_key, {})
+                    if 'stars' in cached_data:
+                        print(f"  Using cached data for {owner}/{repo}")
+                        results[repo_key] = {
+                            'stars': cached_data['stars'],
+                            'last_contributed': cached_data.get('last_contributed'),
+                            'data_changed': False
+                        }
             
             # Rate limiting between batches
             time.sleep(INITIAL_DELAY)
@@ -539,12 +368,19 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
         except Exception as e:
             print(f"  Warning: GraphQL batch query error: {e}")
             debug_log(f"Exception details: {str(e)}")
-            # Fall back to individual REST API calls
+            # Use cached data if available for repositories in this batch
             for owner, repo in batch:
                 repo_key = f"{owner}/{repo}"
-                stats = fetch_github_stats(owner, repo, cache)
-                if stats:
-                    results[repo_key] = stats
+                cached_data = cache.get(repo_key, {})
+                if 'stars' in cached_data:
+                    print(f"  Using cached data for {owner}/{repo}")
+                    results[repo_key] = {
+                        'stars': cached_data['stars'],
+                        'last_contributed': cached_data.get('last_contributed'),
+                        'data_changed': False
+                    }
+                else:
+                    print(f"  Warning: No cached data available for {owner}/{repo}")
     
     return results
 
@@ -614,8 +450,8 @@ def update_collection_stats(collection_path: str) -> bool:
 
     print(f"Found {len(repos_to_fetch)} repositories to update")
     
-    # Use GraphQL for batch fetching if enabled
-    if USE_GRAPHQL and len(repos_to_fetch) > 0:
+    # Use GraphQL for batch fetching
+    if len(repos_to_fetch) > 0:
         print("Using GraphQL API for batch queries...")
         stats_results = fetch_github_stats_graphql(repos_to_fetch, cache)
         
@@ -644,45 +480,6 @@ def update_collection_stats(collection_path: str) -> bool:
                     updated_count += 1
                 else:
                     unchanged_count += 1
-    else:
-        # Use REST API for individual fetching
-        print("Using REST API for individual queries...")
-        for owner, repo in repos_to_fetch:
-            repo_key = f"{owner}/{repo}"
-            
-            # Fetch GitHub stats
-            stats = fetch_github_stats(owner, repo, cache)
-
-            if stats:
-                # Update the entry with new fields
-                entry = repo_to_entry_map[repo_key]
-                
-                # Check if data in collection.json is actually changing
-                old_stars = entry.get('stars')
-                old_last_contributed = entry.get('last_contributed')
-                new_stars = stats['stars']
-                new_last_contributed = stats.get('last_contributed')
-                
-                # Determine if data will actually change in collection.json
-                stars_changed = (old_stars != new_stars)
-                # Only consider last_contributed changed if we have a new value and it differs
-                # Note: If new_last_contributed is None, we don't update the field, so it's not a change
-                last_contributed_changed = (new_last_contributed is not None and old_last_contributed != new_last_contributed)
-                data_changed = stars_changed or last_contributed_changed
-                
-                entry['stars'] = new_stars
-                if new_last_contributed:
-                    entry['last_contributed'] = new_last_contributed
-                processed_count += 1
-                if data_changed:
-                    updated_count += 1
-                else:
-                    unchanged_count += 1
-            else:
-                error_count += 1
-
-            # Add delay between requests to avoid hitting rate limits
-            time.sleep(INITIAL_DELAY)
     
     # Save cache
     save_cache(cache)
