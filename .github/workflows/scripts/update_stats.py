@@ -153,21 +153,26 @@ def make_graphql_request_with_retry(query: str, variables: Dict[str, Any],
                 
                 # Calculate wait time
                 wait_time = None
-                if rate_limit_remaining is not None and int(rate_limit_remaining) == 0 and rate_limit_reset:
-                    # Primary rate limit
-                    reset_time = int(rate_limit_reset)
-                    current_time = int(time.time())
-                    wait_time = max(reset_time - current_time, 0) + 5  # Add 5 second buffer
-                    print(f"  Rate limit exceeded. Waiting {wait_time} seconds before retry...")
-                elif retry_after:
-                    # Secondary rate limit with Retry-After header
-                    try:
-                        wait_time = int(retry_after)
-                    except ValueError:
+                try:
+                    if rate_limit_remaining is not None and int(rate_limit_remaining) == 0 and rate_limit_reset:
+                        # Primary rate limit
+                        reset_time = int(rate_limit_reset)
+                        current_time = int(time.time())
+                        wait_time = max(reset_time - current_time, 0) + 5  # Add 5 second buffer
+                        print(f"  Rate limit exceeded. Waiting {wait_time} seconds before retry...")
+                    elif retry_after:
+                        # Secondary rate limit with Retry-After header
+                        try:
+                            wait_time = int(retry_after)
+                        except ValueError:
+                            wait_time = min(2 ** retry_count, 300)
+                        print(f"  Secondary rate limit hit. Waiting {wait_time} seconds before retry...")
+                    else:
+                        # Exponential backoff
                         wait_time = min(2 ** retry_count, 300)
-                    print(f"  Secondary rate limit hit. Waiting {wait_time} seconds before retry...")
-                else:
-                    # Exponential backoff
+                        print(f"  Rate limit hit. Waiting {wait_time} seconds before retry...")
+                except ValueError:
+                    # Handle invalid header values
                     wait_time = min(2 ** retry_count, 300)
                     print(f"  Rate limit hit. Waiting {wait_time} seconds before retry...")
                 
@@ -286,8 +291,9 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
         try:
             response = make_graphql_request_with_retry(query, variables, headers)
             
-            if response is None or response.status_code != 200:
-                print(f"  Warning: GraphQL batch query failed (status: {response.status_code if response else 'None'})")
+            status_code = getattr(response, 'status_code', None)
+            if response is None or status_code != 200:
+                print(f"  Warning: GraphQL batch query failed (status: {status_code if status_code else 'None'})")
                 # Use cached data if available for repositories in this batch
                 for owner, repo in batch:
                     repo_key = f"{owner}/{repo}"
@@ -315,7 +321,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                 alias = f"repo{idx}"
                 repo_key = f"{owner}/{repo}"
                 
-                repo_data = data.get('data', {}).get(alias) if data.get('data') else None
+                repo_data = data.get('data', {}).get(alias)
                 if repo_data:
                     stars = repo_data.get('stargazerCount', 0)
                     last_contributed = None
