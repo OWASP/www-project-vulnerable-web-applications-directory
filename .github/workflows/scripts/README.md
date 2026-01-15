@@ -70,9 +70,9 @@ python3 update_stats.py
 
 **Features:**
 - **Dynamic rate limit handling**: Automatically detects and handles GitHub API rate limits with exponential backoff
-- **Intelligent caching**: Uses ETag-based caching to skip API calls for unchanged repositories
+- **Intelligent caching**: Uses local caching to minimize API calls
 - **Retry mechanism**: Automatically retries failed requests with configurable retry limits
-- **GraphQL support**: Optional GraphQL API for batch queries (faster for large datasets)
+- **GraphQL batch queries**: Uses GraphQL API for efficient batch processing (faster for large datasets)
 - **Debug logging**: Comprehensive logging with response headers for troubleshooting
 - **Graceful degradation**: Falls back to cached data when API limits are exceeded
 
@@ -81,7 +81,6 @@ python3 update_stats.py
 - `CACHE_FILE`: Path to cache file (default: `.github_stats_cache.json`)
 - `MAX_RETRIES`: Maximum number of retry attempts (default: `3`)
 - `INITIAL_DELAY`: Initial delay between requests in seconds (default: `1`)
-- `USE_GRAPHQL`: Use GraphQL API for batch queries (default: `false`). Set to `true` to enable batch fetching for improved performance.
 - `DEBUG_LOGGING`: Enable detailed debug logging (default: `false`). Set to `true` to see full response headers and diagnostic information.
 
 **Examples:**
@@ -94,11 +93,6 @@ python3 update_stats.py
 With debug logging:
 ```bash
 DEBUG_LOGGING=true python3 update_stats.py
-```
-
-With GraphQL API for faster updates:
-```bash
-USE_GRAPHQL=true python3 update_stats.py
 ```
 
 With custom retry settings:
@@ -118,13 +112,11 @@ The script implements sophisticated rate limit handling:
 
 **Caching:**
 
-The script uses ETag-based HTTP caching:
+The script uses local caching to minimize API calls:
 
-1. **ETag storage**: Stores ETag from each API response in the cache file
-2. **Conditional requests**: Sends `If-None-Match` header with cached ETag
-3. **304 Not Modified**: GitHub returns 304 if content unchanged, saving rate limit quota
-4. **Cache file**: JSON file mapping `owner/repo` to stats and ETags (excluded from git via `.gitignore`)
-5. **Fallback**: Uses cached data when API calls fail or rate limits are exceeded
+1. **Cache storage**: Stores repository statistics in a local cache file
+2. **Cache file**: JSON file mapping `owner/repo` to stats (excluded from git via `.gitignore`)
+3. **Fallback**: Uses cached data when API calls fail or rate limits are exceeded
 
 ## Integration with Workflows
 
