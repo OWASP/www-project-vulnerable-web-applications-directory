@@ -99,7 +99,7 @@
 		],
 		"author": "satishpatnayak",
 		"badge": "satishpatnayak/AndroGoat",
-		"stars": 308,
+		"stars": 309,
 		"last_contributed": "2025-11-22T05:07:26Z"
 	},
 	{
@@ -382,7 +382,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3441,
+		"stars": 3443,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -517,7 +517,7 @@
 		],
 		"author": "Checkmarx",
 		"badge": "Checkmarx/capital",
-		"stars": 315,
+		"stars": 316,
 		"last_contributed": "2024-04-05T09:13:35Z"
 	},
 	{
@@ -531,7 +531,7 @@
 		],
 		"author": "Miroslav Stampar",
 		"badge": "stamparm/DSVW",
-		"stars": 853,
+		"stars": 854,
 		"last_contributed": "2025-12-21T15:44:20Z"
 	},
 	{
@@ -733,7 +733,7 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI",
-		"stars": 3,
+		"stars": 4,
 		"last_contributed": "2025-11-11T09:13:08Z"
 	},
 	{
@@ -816,7 +816,7 @@
 		"author": "theowni",
 		"notes": "Damn Vulnerable Restaurant is an intentionally vulnerable Web API game for learning and training purposes dedicated to developers, ethical hackers and security engineers.",
 		"badge": "theowni/Damn-Vulnerable-Restaurant-API-Game",
-		"stars": 878,
+		"stars": 879,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -844,7 +844,7 @@
 		"author": "theowni",
 		"notes": "An intentionally vulnerable API training game for developers, ethical hackers, and security engineers. Designed as a CTF-style playground to learn, detect, exploit, and remediate API security vulnerabilities using a FastAPI-based application. Supports local Docker deployment and online execution via GitHub Codespaces.",
 		"badge": "theowni/Damn-Vulnerable-RESTaurant-API-Game",
-		"stars": 878,
+		"stars": 879,
 		"last_contributed": "2026-01-03T14:11:08Z"
 	},
 	{
@@ -911,7 +911,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12455,
+		"stars": 12461,
 		"last_contributed": "2026-01-08T08:38:38Z"
 	},
 	{
@@ -1063,7 +1063,7 @@
 		],
 		"author": "@snoopysecurity",
 		"badge": "snoopysecurity/dvws-node",
-		"stars": 500,
+		"stars": 499,
 		"last_contributed": "2026-01-14T01:21:10Z"
 	},
 	{
@@ -1131,8 +1131,8 @@
 		"author": "Azure Security Team",
 		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
 		"badge": "semperis/EntraGoat",
-		"stars": 864,
-		"last_contributed": "2025-10-19T12:30:53Z"
+		"stars": 865,
+		"last_contributed": "2026-01-15T12:54:21Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/exploitcoilvuln/files/",
@@ -1238,7 +1238,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7317,
+		"stars": 7318,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -1372,7 +1372,7 @@
 		"author": "Snyk",
 		"notes": "online - via Heroku deploy",
 		"badge": "snyk-labs/nodejs-goof",
-		"stars": 532,
+		"stars": 533,
 		"last_contributed": "2023-05-24T00:11:27Z"
 	},
 	{
@@ -1778,7 +1778,7 @@
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
 		"badge": "madhuakula/kubernetes-goat",
-		"stars": 5358,
+		"stars": 5362,
 		"last_contributed": "2025-11-18T15:14:10Z"
 	},
 	{
@@ -2139,7 +2139,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12294,
+		"stars": 12305,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -2859,7 +2859,7 @@
 		],
 		"url": "https://github.com/Commando-X/vuln-bank",
 		"badge": "Commando-X/vuln-bank",
-		"stars": 543,
+		"stars": 545,
 		"last_contributed": "2025-11-23T11:52:35Z"
 	},
 	{
@@ -3038,7 +3038,7 @@
 		"author": "Yavuzlar (siberyavuzlar.com)",
 		"notes": "A web vulnerability lab project developed by Yavuzlar.",
 		"badge": "Yavuzlar/VulnLab",
-		"stars": 473,
+		"stars": 475,
 		"last_contributed": "2025-02-02T18:40:45Z"
 	},
 	{
@@ -3142,7 +3142,7 @@
 		],
 		"author": "OWASP",
 		"badge": "WebGoat/WebGoat",
-		"stars": 8853,
+		"stars": 8857,
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
@@ -3166,7 +3166,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/OWASPWebGoatPHP",
-		"stars": 145,
+		"stars": 146,
 		"last_contributed": "2025-04-28T23:55:59Z"
 	},
 	{
@@ -3233,8 +3233,8 @@
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
 		"badge": "commjoen/wrongsecrets",
-		"stars": 1386,
-		"last_contributed": "2026-01-14T14:59:41Z"
+		"stars": 1387,
+		"last_contributed": "2026-01-15T14:03:15Z"
 	},
 	{
 		"url": "https://github.com/s4n7h0/xvwa",
