@@ -737,6 +737,29 @@
 		"last_contributed": "2025-11-11T09:13:08Z"
 	},
 	{
+		"url": "https://github.com/ReversecLabs/damn-vulnerable-llm-agent",
+		"name": "Damn Vulnerable LLM Agent",
+		"collection": [
+			"offline",
+			"container"
+		],
+		"technology": [
+			"Python",
+			"docker",
+			"LLM",
+			"ollama",
+			"Agent"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://github.com/ReversecLabs/damn-vulnerable-llm-agent?tab=readme-ov-file#possible-payload-solutions-spolier-alert"
+			}
+		],
+		"author": "Reversec Labs",
+		"badge": "ReversecLabs/damn-vulnerable-llm-agent"
+	},
+	{
 		"url": "https://github.com/isp1r0/DVNA",
 		"name": "Damn Vulnerable Node Application - DVNA",
 		"collection": [
@@ -2558,7 +2581,7 @@
 			"Linux"
 		],
 		"author": "Solyd",
-		"notes": "In Portuguese (Português) - Free online trainning with free online lab"
+		"notes": "In Portuguese (Português) - Free online training with free online lab"
 	},
 	{
 		"url": "https://github.com/sqlmapproject/testenv",
@@ -3191,6 +3214,27 @@
 		"badge": "marmicode/websheep",
 		"stars": 57,
 		"last_contributed": "2022-12-21T14:35:22Z"
+	},
+	{
+		"url": "hhttps://github.com/GrrrDog/weird_proxies/tree/master/labs",
+		"name": "Weird Proxies - Labs",
+		"collection": [
+			"offline",
+			"container"
+		],
+		"technology": [
+			"Python",
+			"docker",
+			"PHP"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://github.com/GrrrDog/weird_proxies"
+			}
+		],
+		"author": "Green Dog (GrrrDog)",
+		"badge": "GrrrDog/weird_proxies"
 	},
 	{
 		"url": "https://code.google.com/p/wivet/",
