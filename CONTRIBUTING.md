@@ -41,7 +41,7 @@ sorted_data = sorted(data, key=lambda x: x.get('name').lower())
 # Write it back to the file with tabs for indentation
 with open('_data/collection.json', 'w') as file:
     # Use the `indent` parameter with custom separators to ensure no extra spaces
-    json.dump(sorted_data, file, indent='\t')
+    json.dump(sorted_data, file, indent='\t', ensure_ascii=False)
     file.write('\n')  # Add a blank line at the end
 ```
 	3. The details associated with the entries are governed by the established [JSON schema](https://github.com/OWASP/www-project-vulnerable-web-applications-directory/blob/master/schema.json).
