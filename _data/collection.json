@@ -2493,6 +2493,28 @@
 		"last_contributed": "2026-01-02T14:49:29Z"
 	},
 	{
+		"url": "https://github.com/google/security-testbeds",
+		"name": "Google Security Testbeds",
+		"collection": [
+			"platform",
+			"container"
+		],
+		"technology": [
+			 "Docker"
+		],
+		"references": [
+			{
+				"name": "Google",
+				"url": "https://github.com/google/security-testbeds"
+			}
+		],
+		"author": "Google",
+		"notes": "This project aims to provide a central repository for testbeds contents usable to assert the quality and functionality of security scanners. This includes 0-day and 1-day scanning capabilities. Covering various CVEs, weak credentials across various services, exposed UI for various services.",
+  "badge": "google/security-testbeds",
+		"stars": 58,
+		"last_contributed": "2025-01-17T00:00:00Z"
+	},
+	{
 		"url": "https://github.com/globocom/secDevLabs",
 		"name": "SecDevLabs",
 		"collection": [
