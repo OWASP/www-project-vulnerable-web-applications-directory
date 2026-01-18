@@ -407,7 +407,7 @@
 		"author": "OWASP",
 		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
 		"badge": "OWASP/crAPI",
-		"stars": 1407,
+		"stars": 1408,
 		"last_contributed": "2025-11-13T07:10:42Z"
 	},
 	{
@@ -704,7 +704,7 @@
 		],
 		"author": "Dolev Farhi <dolev@lethalbit.com>, Connor McKinnon",
 		"badge": "dolevf/Damn-Vulnerable-GraphQL-Application",
-		"stars": 1676,
+		"stars": 1675,
 		"last_contributed": "2025-05-24T16:37:37Z"
 	},
 	{
@@ -733,7 +733,7 @@
 		"author": "Lorenzo Bartolini, Gabriele Costa",
 		"notes": "A fully simulated and self-hosted Damn Vulnerable Infrastructure with routers, subnetworks, Scada and many other vulnerable containers. It simulates an Energy Management System inside a University Campus.",
 		"badge": "LBartolini/DVI",
-		"stars": 4,
+		"stars": 5,
 		"last_contributed": "2025-11-11T09:13:08Z"
 	},
 	{
@@ -787,7 +787,7 @@
 		"author": "@appsecco",
 		"notes": "Different project from the old DVNA",
 		"badge": "appsecco/dvna",
-		"stars": 756,
+		"stars": 757,
 		"last_contributed": "2023-11-08T12:11:49Z"
 	},
 	{
@@ -936,7 +936,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12463,
+		"stars": 12470,
 		"last_contributed": "2026-01-08T08:38:38Z"
 	},
 	{
@@ -1263,7 +1263,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7324,
+		"stars": 7326,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -1397,7 +1397,7 @@
 		"author": "Snyk",
 		"notes": "online - via Heroku deploy",
 		"badge": "snyk-labs/nodejs-goof",
-		"stars": 533,
+		"stars": 534,
 		"last_contributed": "2023-05-24T00:11:27Z"
 	},
 	{
@@ -1420,7 +1420,7 @@
 		"notes": "This project aims to provide a central repository for testbeds contents usable to assert the quality and functionality of security scanners. This includes 0-day and 1-day scanning capabilities. Covering various CVEs, weak credentials across various services, exposed UI for various services.",
 		"badge": "google/security-testbeds",
 		"stars": 58,
-		"last_contributed": "2025-01-17T00:00:00Z"
+		"last_contributed": "2026-01-16T13:27:21Z"
 	},
 	{
 		"url": "https://github.com/rootxjs/grpc-goat",
@@ -1754,7 +1754,7 @@
 		"author": "Dinesh Shetty",
 		"notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
 		"badge": "dineshshetty/Android-InsecureBankv2",
-		"stars": 1392,
+		"stars": 1393,
 		"last_contributed": "2019-11-21T15:29:07Z"
 	},
 	{
@@ -1825,7 +1825,7 @@
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
 		"badge": "madhuakula/kubernetes-goat",
-		"stars": 5364,
+		"stars": 5365,
 		"last_contributed": "2025-11-18T15:14:10Z"
 	},
 	{
@@ -1925,7 +1925,7 @@
 			}
 		],
 		"badge": "rapid7/metasploitable3",
-		"stars": 5395,
+		"stars": 5398,
 		"last_contributed": "2025-02-13T14:49:36Z"
 	},
 	{
@@ -1952,8 +1952,8 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/owasp-mstg",
-		"stars": 12659,
-		"last_contributed": "2026-01-14T09:07:21Z"
+		"stars": 12664,
+		"last_contributed": "2026-01-17T17:56:48Z"
 	},
 	{
 		"url": "https://github.com/OWASP/MSTG-Hacking-Playground",
@@ -1969,7 +1969,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/MSTG-Hacking-Playground",
-		"stars": 653,
+		"stars": 654,
 		"last_contributed": "2022-10-31T17:03:31Z"
 	},
 	{
@@ -2042,7 +2042,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/NodeGoat",
-		"stars": 1999,
+		"stars": 2002,
 		"last_contributed": "2023-06-21T07:23:23Z"
 	},
 	{
@@ -2186,7 +2186,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12313,
+		"stars": 12323,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -2238,7 +2238,7 @@
 		],
 		"author": "Karan Preet Singh Sasan",
 		"badge": "SasanLabs/VulnerableApp",
-		"stars": 354,
+		"stars": 355,
 		"last_contributed": "2025-12-31T17:37:10Z"
 	},
 	{
@@ -2441,7 +2441,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/railsgoat",
-		"stars": 906,
+		"stars": 907,
 		"last_contributed": "2026-01-13T01:57:41Z"
 	},
 	{
@@ -2641,7 +2641,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5692,
+		"stars": 5697,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -2695,7 +2695,7 @@
 		],
 		"author": "Hackmanit and Maximilian Hildebrand",
 		"badge": "Hackmanit/template-injection-playground",
-		"stars": 56,
+		"stars": 57,
 		"last_contributed": "2026-01-03T18:26:39Z"
 	},
 	{
@@ -2811,7 +2811,7 @@
 		],
 		"author": "erev0s",
 		"badge": "erev0s/VAmPI",
-		"stars": 1159,
+		"stars": 1160,
 		"last_contributed": "2024-11-25T13:00:33Z"
 	},
 	{
@@ -2836,7 +2836,7 @@
 		"author": "Tushar Kulkarni",
 		"notes": "vAPI is a Vulnerable Interface that demonstrates the OWASP API Top 10 vulnerabilities in the means of exercises",
 		"badge": "roottusk/vapi",
-		"stars": 1321,
+		"stars": 1322,
 		"last_contributed": "2025-01-10T02:48:25Z"
 	},
 	{
@@ -3189,7 +3189,7 @@
 		],
 		"author": "OWASP",
 		"badge": "WebGoat/WebGoat",
-		"stars": 8857,
+		"stars": 8860,
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
@@ -3303,7 +3303,7 @@
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
 		"badge": "commjoen/wrongsecrets",
-		"stars": 1387,
+		"stars": 1388,
 		"last_contributed": "2026-01-15T14:03:15Z"
 	},
 	{
@@ -3324,7 +3324,7 @@
 		],
 		"author": "@s4n7h0, @samanL33T",
 		"badge": "s4n7h0/xvwa",
-		"stars": 1745,
+		"stars": 1746,
 		"last_contributed": "2020-09-12T17:26:23Z"
 	},
 	{
@@ -3807,7 +3807,7 @@
 		],
 		"author": "Aliyu G. Yisa",
 		"badge": "aligorithm/Zero-Health",
-		"stars": 32,
+		"stars": 33,
 		"last_contributed": "2025-06-15T14:46:24Z"
 	}
 ]
