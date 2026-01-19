@@ -13,7 +13,6 @@ authors:
 - raulsiles
 contributors:
 - bkimminich
-- OWASPFoundation
 - S3DFX-CYBER
 - yrprey
 - arthurakay
