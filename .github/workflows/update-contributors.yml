@@ -1,0 +1,53 @@
+name: Update GitHub Contributors
+
+on:
+  schedule:
+    # Run weekly on Sundays at 00:15 UTC
+    - cron: '15 0 * * 0'
+  workflow_dispatch:
+    # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-contribs:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.VWAD_REBUILD }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests pyyaml
+      
+      - name: Run update script
+        run: |
+          python .github/workflows/scripts/update_contributors.py index.md
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code index.md || echo "changed=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.md
+          git commit -m "Update GitHub contributors [automated]"
+          git push
+      
+      - name: No changes detected
+        if: steps.git-check.outputs.changed != 'true'
+        run: |
+          echo "No changes to index.md"
