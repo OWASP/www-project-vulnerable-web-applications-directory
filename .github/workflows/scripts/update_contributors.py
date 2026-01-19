@@ -18,6 +18,7 @@ EXCLUDE = {
     "owasp-nest[bot]",
     "github-actions[bot]",
     "Copilot",
+    "OWASPFoundation",
     # Authors
     "kingthorin",
     "psiinon",
