@@ -337,6 +337,26 @@
 			}
 		]
 	},
+	{ 
+		"url": "https://labs.caido.io/",
+		"name": "Caido labs",
+		"collection": [
+			"online",
+			"platform"
+		],
+		"technology": [
+			"Web",
+			"Security"
+		],
+		"references": [
+		{
+			"name": "live",
+			"url": "https://labs.caido.io/"
+		}
+	],
+			"author": "Caido",
+		 "notes": "Caido Labs provides interactive security testing challenges and vulnerable web applications for learning and practicing web security skills."
+	},
 	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
 		"name": "CI/CD Goat",
