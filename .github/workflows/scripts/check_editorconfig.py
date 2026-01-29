@@ -11,7 +11,6 @@ Rules for *.json files:
 """
 import sys
 import json
-import re
 
 def build_line_to_entry_map(text, lines):
     """
