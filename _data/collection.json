@@ -55,7 +55,7 @@
 		"stars": 314,
 		"last_contributed": "2024-08-22T02:33:49Z"
 	},
-		{
+	{
 		"url": "https://github.com/t0thkr1s/allsafe-android",
 		"name": "Allsafe (Android)",
 		"collection": [
@@ -63,7 +63,7 @@
 		],
 		"technology": [
 			"Android",
-			"apk:"
+			"apk"
 		],
 		"author": "t0thkr1s",
 		"notes": "Intentionally vulnerable Android application.",
@@ -766,27 +766,6 @@
 		"last_contributed": "2025-11-11T09:13:08Z"
 	},
 	{
-		"url": "https://github.com/prateek147/DVIA-v2",
-		"name": "DDamn Vulnerable iOS App (DVIA-v2)",
-		"collection": [
-			"mobile"
-		],
-		"technology": [
-			"iOS",
-			"swift",
-			"xcode"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/prateek147/DVIA-v2/releases"
-			}
-		],
-		"author": "prateekg147",
-		"notes": "An iOS application that is damn vulnerable.",
-		"badge": "prateek147/DVIA-v2"
-	},
-	{
 		"url": "https://github.com/ReversecLabs/damn-vulnerable-llm-agent",
 		"name": "Damn Vulnerable LLM Agent",
 		"collection": [
@@ -1016,6 +995,27 @@
 		"badge": "interference-security/DVWS",
 		"stars": 356,
 		"last_contributed": "2025-12-19T17:00:57Z"
+	},
+	{
+		"url": "https://github.com/prateek147/DVIA-v2",
+		"name": "DDamn Vulnerable iOS App (DVIA-v2)",
+		"collection": [
+			"mobile"
+		],
+		"technology": [
+			"iOS",
+			"swift",
+			"xcode"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/prateek147/DVIA-v2/releases"
+			}
+		],
+		"author": "prateekg147",
+		"notes": "An iOS application that is damn vulnerable.",
+		"badge": "prateek147/DVIA-v2"
 	},
 	{
 		"url": "https://defendtheweb.net/",
@@ -1602,21 +1602,6 @@
 		"stars": 1016,
 		"last_contributed": "2021-03-11T20:02:53Z"
 	},
-		{
-		"url": "https://app.hackinghub.io",
-		"name": "HackingHub Labs",
-		"collection": [
-			"platform"
-		],
-		"references": [
-			{
-				"name": "live",
-				"url": "https://app.hackinghub.io/"
-			}
-		],
-		"author": "HackingHub",
-		"notes": "Carefully crafted environments based on real vulnerabilities, released pentests and bug bounty findings."
-	},
 	{
 		"url": "https://www.hacking-lab.com/events/",
 		"name": "Hacking Lab",
@@ -1630,6 +1615,21 @@
 			}
 		],
 		"author": "Hacking Lab"
+	},
+	{
+		"url": "https://app.hackinghub.io",
+		"name": "HackingHub Labs",
+		"collection": [
+			"platform"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://app.hackinghub.io/"
+			}
+		],
+		"author": "HackingHub",
+		"notes": "Carefully crafted environments based on real vulnerabilities, released pentests and bug bounty findings."
 	},
 	{
 		"url": "https://www.hackthebox.com",
@@ -2209,7 +2209,7 @@
 		"stars": 17,
 		"last_contributed": "2023-12-15T23:12:22Z"
 	},
-		{
+	{
 		"url": "https://github.com/oversecured/OversecuredVulnerableiOSApp",
 		"name": "OversecuredVulnerableiOSApp",
 		"collection": [
