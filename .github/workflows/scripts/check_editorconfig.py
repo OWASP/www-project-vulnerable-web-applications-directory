@@ -45,6 +45,7 @@ def check_json_structural_indentation(text, lines):
         
         # Count leading tabs and check for mixed indentation
         leading_tabs = 0
+        has_mixed_indentation = False
         for j, char in enumerate(line):
             if char == '\t':
                 leading_tabs += 1
@@ -54,6 +55,7 @@ def check_json_structural_indentation(text, lines):
                     f"ERROR: Line {i} has space character in indentation "
                     f"(position {j+1}): tabs and spaces should not be mixed"
                 )
+                has_mixed_indentation = True
                 break
             else:
                 # First non-whitespace character
@@ -66,8 +68,12 @@ def check_json_structural_indentation(text, lines):
         else:
             expected_depth = depth
         
-        # Check if indentation matches expected depth
-        if leading_tabs != expected_depth:
+        # Guard against negative depth (malformed JSON structure)
+        if expected_depth < 0:
+            expected_depth = 0
+        
+        # Check if indentation matches expected depth (skip if mixed indentation already reported)
+        if not has_mixed_indentation and leading_tabs != expected_depth:
             # Get context for error message
             context = stripped[:50] + '...' if len(stripped) > 50 else stripped
             errors.append(
@@ -77,33 +83,42 @@ def check_json_structural_indentation(text, lines):
         
         # Update depth for next line based on what's on this line
         # We need to properly count braces/brackets, ignoring those in strings
-        in_string = False
-        escape_next = False
+        # Note: This assumes single-line strings (which is the case for this repository)
+        line_in_string = in_string
+        line_escape_next = escape_next
         open_count = 0
         close_count = 0
         
         for char in stripped:
-            if escape_next:
-                escape_next = False
+            if line_escape_next:
+                line_escape_next = False
                 continue
             
             if char == '\\':
-                escape_next = True
+                line_escape_next = True
                 continue
             
             if char == '"':
-                in_string = not in_string
+                line_in_string = not line_in_string
                 continue
             
-            if not in_string:
+            if not line_in_string:
                 if char == '{' or char == '[':
                     open_count += 1
                 elif char == '}' or char == ']':
                     close_count += 1
         
+        # Update the persistent string state for multi-line string support
+        in_string = line_in_string
+        escape_next = line_escape_next
+        
         # Account for same-line open/close (like "[]" or "{}")
         net_change = open_count - close_count
         depth += net_change
+        
+        # Guard against negative depth
+        if depth < 0:
+            depth = 0
     
     return errors
 
