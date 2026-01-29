@@ -12,100 +12,29 @@ Rules for *.json files:
 import sys
 import json
 
-def build_line_to_entry_map(text, lines):
-    """
-    Build a mapping from line numbers to entry information.
-    Uses the parsed JSON structure to identify entries and their boundaries.
-    Returns a dict mapping line number to (entry_index, entry_name).
-    """
-    line_to_entry = {}
-    
-    try:
-        data = json.loads(text)
-        if not isinstance(data, list):
-            return line_to_entry
-        
-        # For each entry in the parsed JSON, find where it appears in the text
-        # by searching for unique fields like "name" or "url"
-        entry_line_ranges = []
-        
-        for entry_index, entry in enumerate(data):
-            # Get identifying fields for this entry
-            entry_name = entry.get('name', '')
-            entry_url = entry.get('url', '')
-            
-            # Search for the line containing this entry's name field
-            # Format in JSON: "name": "EntryName",
-            name_search = f'"name": "{entry_name}"'
-            
-            start_line = None
-            for i, line in enumerate(lines, 1):
-                if name_search in line:
-                    start_line = i
-                    break
-            
-            # If we found the name, work backwards to find the opening brace
-            # and forwards to find the closing brace
-            if start_line:
-                # Find opening brace (search backwards from name line)
-                open_line = start_line
-                for i in range(start_line - 1, 0, -1):
-                    if lines[i - 1].strip() == '{' or lines[i - 1].strip().startswith('{'):
-                        open_line = i
-                        break
-                
-                # Find closing brace (search forwards from name line)
-                close_line = start_line
-                brace_depth = 0
-                found_opening = False
-                for i in range(open_line - 1, len(lines)):
-                    line_stripped = lines[i].strip()
-                    # Track brace depth to find matching closing brace
-                    if '{' in line_stripped:
-                        brace_depth += line_stripped.count('{')
-                        found_opening = True
-                    if '}' in line_stripped:
-                        brace_depth -= line_stripped.count('}')
-                        if found_opening and brace_depth == 0:
-                            close_line = i + 1
-                            break
-                
-                entry_line_ranges.append((entry_index, entry_name, open_line, close_line))
-        
-        # Now map all lines within each entry's range
-        for entry_index, entry_name, start_line, end_line in entry_line_ranges:
-            for line_num in range(start_line, end_line + 1):
-                line_to_entry[line_num] = (entry_index, entry_name)
-        
-    except Exception:
-        # If we can't build the map, return empty dict
-        pass
-    
-    return line_to_entry
-
 
 def check_json_structural_indentation(text, lines):
     """
     Check if JSON structural indentation adheres to tab-based rules.
     Validates that braces, brackets, and their contents are properly indented.
+    Uses JSON structure to identify which entry errors belong to.
     """
     errors = []
     
-    # Try to parse JSON to ensure it's valid
+    # Try to parse JSON to get entry information
     try:
         data = json.loads(text)
+        is_array = isinstance(data, list)
     except json.JSONDecodeError as e:
         errors.append(f"ERROR: Invalid JSON - {e}")
         return errors
     
-    # Build mapping from line numbers to entries
-    line_to_entry = build_line_to_entry_map(text, lines)
-    
-    # Track expected indentation depth based on JSON structure
-    # We'll analyze each line and determine expected indentation
+    # Track expected indentation depth and current entry
     depth = 0
     in_string = False
     escape_next = False
+    current_entry_index = None
+    current_entry_name = None
     
     for i, line in enumerate(lines, 1):
         # Skip the final empty line
@@ -118,6 +47,30 @@ def check_json_structural_indentation(text, lines):
         if not stripped:
             continue
         
+        # Track which entry we're in based on depth
+        # At depth 1, we're inside a top-level array entry
+        if is_array and depth == 1:
+            # Check if this line starts a new entry (opening brace at depth 1)
+            if stripped == '{' or stripped.startswith('{'):
+                # We're entering a new entry - count how many entries we've seen
+                # by counting previous opening braces at this depth
+                entry_count = 0
+                for prev_i in range(i - 1, 0, -1):
+                    prev_line = lines[prev_i - 1].strip()
+                    # Count opening braces that would be at depth 1
+                    if len(lines[prev_i - 1]) > 0 and lines[prev_i - 1][0] == '\t':
+                        if not lines[prev_i - 1].startswith('\t\t'):
+                            if prev_line == '{' or prev_line.startswith('{'):
+                                entry_count += 1
+                
+                current_entry_index = entry_count
+                if current_entry_index < len(data):
+                    current_entry_name = data[current_entry_index].get('name')
+        elif depth == 0:
+            # Outside of any entry
+            current_entry_index = None
+            current_entry_name = None
+        
         # Count leading tabs and check for mixed indentation
         leading_tabs = 0
         has_mixed_indentation = False
@@ -126,19 +79,16 @@ def check_json_structural_indentation(text, lines):
                 leading_tabs += 1
             elif char == ' ':
                 # Found space in indentation area - this is an error
-                entry_info = line_to_entry.get(i)
-                if entry_info:
-                    entry_index, entry_name = entry_info
-                    if entry_name:
-                        errors.append(
-                            f"ERROR: Entry #{entry_index} ('{entry_name}'): Line {i} has space character in indentation "
-                            f"(position {j+1}): tabs and spaces should not be mixed"
-                        )
-                    else:
-                        errors.append(
-                            f"ERROR: Entry #{entry_index}: Line {i} has space character in indentation "
-                            f"(position {j+1}): tabs and spaces should not be mixed"
-                        )
+                if current_entry_index is not None and current_entry_name:
+                    errors.append(
+                        f"ERROR: Entry #{current_entry_index} ('{current_entry_name}'): Line {i} has space character in indentation "
+                        f"(position {j+1}): tabs and spaces should not be mixed"
+                    )
+                elif current_entry_index is not None:
+                    errors.append(
+                        f"ERROR: Entry #{current_entry_index}: Line {i} has space character in indentation "
+                        f"(position {j+1}): tabs and spaces should not be mixed"
+                    )
                 else:
                     errors.append(
                         f"ERROR: Line {i} has space character in indentation "
@@ -166,20 +116,17 @@ def check_json_structural_indentation(text, lines):
             # Get context for error message
             context = stripped[:50] + '...' if len(stripped) > 50 else stripped
             
-            # Get entry information if available
-            entry_info = line_to_entry.get(i)
-            if entry_info:
-                entry_index, entry_name = entry_info
-                if entry_name:
-                    errors.append(
-                        f"ERROR: Entry #{entry_index} ('{entry_name}'): Line {i} has incorrect indentation: "
-                        f"expected {expected_depth} tab(s), found {leading_tabs} tab(s) - '{context}'"
-                    )
-                else:
-                    errors.append(
-                        f"ERROR: Entry #{entry_index}: Line {i} has incorrect indentation: "
-                        f"expected {expected_depth} tab(s), found {leading_tabs} tab(s) - '{context}'"
-                    )
+            # Use entry information from structural tracking
+            if current_entry_index is not None and current_entry_name:
+                errors.append(
+                    f"ERROR: Entry #{current_entry_index} ('{current_entry_name}'): Line {i} has incorrect indentation: "
+                    f"expected {expected_depth} tab(s), found {leading_tabs} tab(s) - '{context}'"
+                )
+            elif current_entry_index is not None:
+                errors.append(
+                    f"ERROR: Entry #{current_entry_index}: Line {i} has incorrect indentation: "
+                    f"expected {expected_depth} tab(s), found {leading_tabs} tab(s) - '{context}'"
+                )
             else:
                 errors.append(
                     f"ERROR: Line {i} has incorrect indentation: "
@@ -188,7 +135,6 @@ def check_json_structural_indentation(text, lines):
         
         # Update depth for next line based on what's on this line
         # We need to properly count braces/brackets, ignoring those in strings
-        # Note: This assumes single-line strings (which is the case for this repository)
         line_in_string = in_string
         line_escape_next = escape_next
         open_count = 0
@@ -257,42 +203,70 @@ def check_editorconfig(json_file):
         # Check trim_trailing_whitespace and indent_style (tabs)
         lines = text.split('\n')
         
-        # Build line-to-entry map for better error messages
+        # Parse JSON to get entry information for error messages
         try:
             data = json.loads(text)
-            line_to_entry = build_line_to_entry_map(text, lines)
+            is_array = isinstance(data, list)
         except:
             data = None
-            line_to_entry = {}
+            is_array = False
+        
+        # Track current entry while checking each line
+        depth = 0
+        current_entry_index = None
+        current_entry_name = None
         
         for i, line in enumerate(lines, 1):
             # Skip the final empty line (result of file ending with \n)
             if i == len(lines) and line == '':
                 continue
             
+            stripped = line.strip()
+            
+            # Track which entry we're in based on depth (similar to structural check)
+            if is_array and data and depth == 1:
+                if stripped == '{' or stripped.startswith('{'):
+                    # Count entries seen so far
+                    entry_count = 0
+                    for prev_i in range(i - 1, 0, -1):
+                        prev_line = lines[prev_i - 1].strip()
+                        if len(lines[prev_i - 1]) > 0 and lines[prev_i - 1][0] == '\t':
+                            if not lines[prev_i - 1].startswith('\t\t'):
+                                if prev_line == '{' or prev_line.startswith('{'):
+                                    entry_count += 1
+                    current_entry_index = entry_count
+                    if current_entry_index < len(data):
+                        current_entry_name = data[current_entry_index].get('name')
+            elif depth == 0:
+                current_entry_index = None
+                current_entry_name = None
+            
             # Check trailing whitespace
             if line.rstrip() != line:
-                entry_info = line_to_entry.get(i)
-                if entry_info:
-                    entry_index, entry_name = entry_info
-                    if entry_name:
-                        errors.append(f"ERROR: Entry #{entry_index} ('{entry_name}'): Line {i} has trailing whitespace")
-                    else:
-                        errors.append(f"ERROR: Entry #{entry_index}: Line {i} has trailing whitespace")
+                if current_entry_index is not None and current_entry_name:
+                    errors.append(f"ERROR: Entry #{current_entry_index} ('{current_entry_name}'): Line {i} has trailing whitespace")
+                elif current_entry_index is not None:
+                    errors.append(f"ERROR: Entry #{current_entry_index}: Line {i} has trailing whitespace")
                 else:
                     errors.append(f"ERROR: Line {i} has trailing whitespace")
             
             # Check for spaces used for indentation (should be tabs)
             if line.startswith(' '):
-                entry_info = line_to_entry.get(i)
-                if entry_info:
-                    entry_index, entry_name = entry_info
-                    if entry_name:
-                        errors.append(f"ERROR: Entry #{entry_index} ('{entry_name}'): Line {i} uses spaces for indentation (should use tabs)")
-                    else:
-                        errors.append(f"ERROR: Entry #{entry_index}: Line {i} uses spaces for indentation (should use tabs)")
+                if current_entry_index is not None and current_entry_name:
+                    errors.append(f"ERROR: Entry #{current_entry_index} ('{current_entry_name}'): Line {i} uses spaces for indentation (should use tabs)")
+                elif current_entry_index is not None:
+                    errors.append(f"ERROR: Entry #{current_entry_index}: Line {i} uses spaces for indentation (should use tabs)")
                 else:
                     errors.append(f"ERROR: Line {i} uses spaces for indentation (should use tabs)")
+            
+            # Update depth for entry tracking
+            if not stripped:
+                continue
+            open_count = stripped.count('{') + stripped.count('[')
+            close_count = stripped.count('}') + stripped.count(']')
+            depth += (open_count - close_count)
+            if depth < 0:
+                depth = 0
         
         # Check JSON structural indentation
         structural_errors = check_json_structural_indentation(text, lines)
