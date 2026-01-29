@@ -336,8 +336,8 @@
 				"url": "http://itsecgames.blogspot.be/2013/01/bwapp-installation.html"
 			}
 		]
-},
-{
+	},
+	{
 		"url": "https://labs.caido.io/",
 		"name": "Caido labs",
 		"collection": [
@@ -349,8 +349,8 @@
 				"url": "https://labs.caido.io/"
 			}
 		],
-			"author": "Caido",
-		 "notes": "Caido Labs provides interactive security testing challenges and vulnerable web applications for learning and practicing web security skills."
+		"author": "Caido",
+		"notes": "Caido Labs provides interactive security testing challenges and vulnerable web applications for learning and practicing web security skills."
 	},
 	{
 		"url": "https://github.com/cider-security-research/cicd-goat",
