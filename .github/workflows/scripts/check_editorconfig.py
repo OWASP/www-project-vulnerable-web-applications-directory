@@ -15,6 +15,7 @@ import json
 def build_line_to_entry_map(text, lines):
     """
     Build a mapping from line numbers to entry information.
+    Uses the parsed JSON structure to identify entries and their boundaries.
     Returns a dict mapping line number to (entry_index, entry_name).
     """
     line_to_entry = {}
@@ -24,28 +25,55 @@ def build_line_to_entry_map(text, lines):
         if not isinstance(data, list):
             return line_to_entry
         
-        # Find entry boundaries by looking for object starts at depth 1 (one tab)
-        # Each entry starts with a line like "\t{"
-        entry_starts = []
-        for i, line in enumerate(lines, 1):
-            # Check if this line starts an entry (opening brace at depth 1)
-            if line.startswith('\t{') and not line.startswith('\t\t'):
-                entry_starts.append(i)
+        # For each entry in the parsed JSON, find where it appears in the text
+        # by searching for unique fields like "name" or "url"
+        entry_line_ranges = []
         
-        # Map each line to its entry
-        for entry_index, start_line in enumerate(entry_starts):
-            # Determine end line (next entry start or end of file)
-            if entry_index + 1 < len(entry_starts):
-                end_line = entry_starts[entry_index + 1] - 1
-            else:
-                end_line = len(lines)
+        for entry_index, entry in enumerate(data):
+            # Get identifying fields for this entry
+            entry_name = entry.get('name', '')
+            entry_url = entry.get('url', '')
             
-            # Get entry name if available
-            entry_name = None
-            if entry_index < len(data):
-                entry_name = data[entry_index].get('name')
+            # Search for the line containing this entry's name field
+            # Format in JSON: "name": "EntryName",
+            name_search = f'"name": "{entry_name}"'
             
-            # Map all lines in this entry
+            start_line = None
+            for i, line in enumerate(lines, 1):
+                if name_search in line:
+                    start_line = i
+                    break
+            
+            # If we found the name, work backwards to find the opening brace
+            # and forwards to find the closing brace
+            if start_line:
+                # Find opening brace (search backwards from name line)
+                open_line = start_line
+                for i in range(start_line - 1, 0, -1):
+                    if lines[i - 1].strip() == '{' or lines[i - 1].strip().startswith('{'):
+                        open_line = i
+                        break
+                
+                # Find closing brace (search forwards from name line)
+                close_line = start_line
+                brace_depth = 0
+                found_opening = False
+                for i in range(open_line - 1, len(lines)):
+                    line_stripped = lines[i].strip()
+                    # Track brace depth to find matching closing brace
+                    if '{' in line_stripped:
+                        brace_depth += line_stripped.count('{')
+                        found_opening = True
+                    if '}' in line_stripped:
+                        brace_depth -= line_stripped.count('}')
+                        if found_opening and brace_depth == 0:
+                            close_line = i + 1
+                            break
+                
+                entry_line_ranges.append((entry_index, entry_name, open_line, close_line))
+        
+        # Now map all lines within each entry's range
+        for entry_index, entry_name, start_line, end_line in entry_line_ranges:
             for line_num in range(start_line, end_line + 1):
                 line_to_entry[line_num] = (entry_index, entry_name)
         
