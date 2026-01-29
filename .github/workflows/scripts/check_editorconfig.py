@@ -10,6 +10,73 @@ Rules for *.json files:
 - trim_trailing_whitespace = true
 """
 import sys
+import json
+import re
+
+def check_json_structural_indentation(text, lines):
+    """
+    Check if JSON structural indentation adheres to tab-based rules.
+    Validates that braces, brackets, and their contents are properly indented.
+    """
+    errors = []
+    
+    # Try to parse JSON to ensure it's valid
+    try:
+        json.loads(text)
+    except json.JSONDecodeError as e:
+        errors.append(f"ERROR: Invalid JSON - {e}")
+        return errors
+    
+    # Track expected indentation depth based on JSON structure
+    # We'll analyze each line and determine expected indentation
+    depth = 0
+    
+    for i, line in enumerate(lines, 1):
+        # Skip the final empty line
+        if i == len(lines) and line == '':
+            continue
+        
+        stripped = line.strip()
+        
+        # Skip empty lines
+        if not stripped:
+            continue
+        
+        # Count leading tabs
+        leading_tabs = 0
+        for char in line:
+            if char == '\t':
+                leading_tabs += 1
+            else:
+                break
+        
+        # Determine expected indentation based on the line content
+        # Lines that decrease depth (closing braces/brackets)
+        if stripped.startswith('}') or stripped.startswith(']'):
+            expected_depth = depth - 1
+        else:
+            expected_depth = depth
+        
+        # Check if indentation matches expected depth
+        if leading_tabs != expected_depth:
+            # Get context for error message
+            context = stripped[:50] + '...' if len(stripped) > 50 else stripped
+            errors.append(
+                f"ERROR: Line {i} has incorrect indentation: "
+                f"expected {expected_depth} tab(s), found {leading_tabs} tab(s) - '{context}'"
+            )
+        
+        # Update depth for next line based on what's on this line
+        # Opening braces/brackets increase depth
+        open_count = stripped.count('{') + stripped.count('[')
+        close_count = stripped.count('}') + stripped.count(']')
+        
+        # Account for same-line open/close (like "[]" or "{}")
+        net_change = open_count - close_count
+        depth += net_change
+    
+    return errors
+
 
 def check_editorconfig(json_file):
     """Check if JSON file adheres to .editorconfig rules."""
@@ -51,6 +118,10 @@ def check_editorconfig(json_file):
             # Check for spaces used for indentation (should be tabs)
             if line.startswith(' '):
                 errors.append(f"ERROR: Line {i} uses spaces for indentation (should use tabs)")
+        
+        # Check JSON structural indentation
+        structural_errors = check_json_structural_indentation(text, lines)
+        errors.extend(structural_errors)
         
         if errors:
             print('\n'.join(errors))
