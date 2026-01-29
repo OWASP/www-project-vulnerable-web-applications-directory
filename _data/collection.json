@@ -1050,8 +1050,7 @@
 		],
 		"author": "Contrast Security",
 		"notes": "Intentionally vulnerable Django application inspired by RailsGoat, designed as an internal employee portal and containing OWASP Top 10 vulnerabilities for educational use.",
-		"badge": "Contrast-Security-OSS/DjanGoat",
-		"stars": 75
+		"badge": "Contrast-Security-OSS/DjanGoat"
 	},
 	{
 		"url": "https://github.com/red-and-black/DjangoGoat",
