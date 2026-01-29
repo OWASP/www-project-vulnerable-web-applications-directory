@@ -67,7 +67,9 @@
 		],
 		"author": "t0thkr1s",
 		"notes": "Intentionally vulnerable Android application.",
-		"badge": "t0thkr1s/allsafe-android"
+		"badge": "t0thkr1s/allsafe-android",
+		"stars": 354,
+		"last_contributed": "2025-09-20T10:47:24Z"
 	},
 	{
 		"url": "https://demo.testfire.net/",
@@ -965,7 +967,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12521,
+		"stars": 12523,
 		"last_contributed": "2026-01-21T12:02:07Z"
 	},
 	{
@@ -1015,7 +1017,9 @@
 		],
 		"author": "prateekg147",
 		"notes": "An iOS application that is damn vulnerable.",
-		"badge": "prateek147/DVIA-v2"
+		"badge": "prateek147/DVIA-v2",
+		"stars": 1051,
+		"last_contributed": "2024-03-29T08:01:43Z"
 	},
 	{
 		"url": "https://defendtheweb.net/",
@@ -1161,7 +1165,7 @@
 		],
 		"author": "@snoopysecurity",
 		"badge": "snoopysecurity/dvws-node",
-		"stars": 501,
+		"stars": 502,
 		"last_contributed": "2026-01-23T22:58:47Z"
 	},
 	{
@@ -1229,7 +1233,7 @@
 		"author": "Azure Security Team",
 		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
 		"badge": "semperis/EntraGoat",
-		"stars": 875,
+		"stars": 876,
 		"last_contributed": "2026-01-15T12:54:21Z"
 	},
 	{
@@ -1336,7 +1340,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7389,
+		"stars": 7390,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -2040,7 +2044,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/owasp-mstg",
-		"stars": 12684,
+		"stars": 12685,
 		"last_contributed": "2026-01-29T10:11:18Z"
 	},
 	{
@@ -2076,7 +2080,7 @@
 			}
 		],
 		"badge": "webpwnized/mutillidae",
-		"stars": 1464,
+		"stars": 1465,
 		"last_contributed": "2025-08-03T18:57:10Z"
 	},
 	{
@@ -2222,7 +2226,9 @@
 		],
 		"author": "Oversecured Inc",
 		"notes": "an iOS app that aggregates all the platform's known and popular security vulnerabilities.",
-		"badge": "oversecured/OversecuredVulnerableiOSApp"
+		"badge": "oversecured/OversecuredVulnerableiOSApp",
+		"stars": 230,
+		"last_contributed": "2024-01-10T11:04:41Z"
 	},
 	{
 		"url": "https://owasp.org/www-project-damn-vulnerable-web-sockets/",
@@ -2289,7 +2295,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12403,
+		"stars": 12405,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -2503,7 +2509,7 @@
 		],
 		"author": "Ade Yoseman",
 		"badge": "adeyosemanputra/pygoat",
-		"stars": 297,
+		"stars": 298,
 		"last_contributed": "2026-01-25T10:49:23Z"
 	},
 	{
@@ -2744,7 +2750,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5709,
+		"stars": 5710,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -3009,7 +3015,7 @@
 		],
 		"url": "https://github.com/Commando-X/vuln-bank",
 		"badge": "Commando-X/vuln-bank",
-		"stars": 550,
+		"stars": 549,
 		"last_contributed": "2025-11-23T11:52:35Z"
 	},
 	{
@@ -3292,7 +3298,7 @@
 		],
 		"author": "OWASP",
 		"badge": "WebGoat/WebGoat",
-		"stars": 8892,
+		"stars": 8893,
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
