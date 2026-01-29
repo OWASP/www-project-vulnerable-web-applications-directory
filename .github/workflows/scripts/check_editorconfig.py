@@ -11,7 +11,6 @@ Rules for *.json files:
 """
 import sys
 import json
-import re
 
 def check_json_structural_indentation(text, lines):
     """
@@ -30,6 +29,8 @@ def check_json_structural_indentation(text, lines):
     # Track expected indentation depth based on JSON structure
     # We'll analyze each line and determine expected indentation
     depth = 0
+    in_string = False
+    escape_next = False
     
     for i, line in enumerate(lines, 1):
         # Skip the final empty line
@@ -42,12 +43,20 @@ def check_json_structural_indentation(text, lines):
         if not stripped:
             continue
         
-        # Count leading tabs
+        # Count leading tabs and check for mixed indentation
         leading_tabs = 0
-        for char in line:
+        for j, char in enumerate(line):
             if char == '\t':
                 leading_tabs += 1
+            elif char == ' ':
+                # Found space in indentation area - this is an error
+                errors.append(
+                    f"ERROR: Line {i} has space character in indentation "
+                    f"(position {j+1}): tabs and spaces should not be mixed"
+                )
+                break
             else:
+                # First non-whitespace character
                 break
         
         # Determine expected indentation based on the line content
@@ -67,9 +76,30 @@ def check_json_structural_indentation(text, lines):
             )
         
         # Update depth for next line based on what's on this line
-        # Opening braces/brackets increase depth
-        open_count = stripped.count('{') + stripped.count('[')
-        close_count = stripped.count('}') + stripped.count(']')
+        # We need to properly count braces/brackets, ignoring those in strings
+        in_string = False
+        escape_next = False
+        open_count = 0
+        close_count = 0
+        
+        for char in stripped:
+            if escape_next:
+                escape_next = False
+                continue
+            
+            if char == '\\':
+                escape_next = True
+                continue
+            
+            if char == '"':
+                in_string = not in_string
+                continue
+            
+            if not in_string:
+                if char == '{' or char == '[':
+                    open_count += 1
+                elif char == '}' or char == ']':
+                    close_count += 1
         
         # Account for same-line open/close (like "[]" or "{}")
         net_change = open_count - close_count
