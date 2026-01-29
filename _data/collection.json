@@ -1032,6 +1032,28 @@
 		"last_contributed": "2020-01-09T16:25:31Z"
 	},
 	{
+		"url": "https://github.com/Contrast-Security-OSS/DjanGoat",
+		"name": "DjanGoat",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"Python",
+			"Django",
+			"MySQL"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://github.com/Contrast-Security-OSS/DjanGoat/blob/master/docs/home.md"
+			}
+		],
+		"author": "Contrast Security",
+		"notes": "Intentionally vulnerable Django application inspired by RailsGoat, designed as an internal employee portal and containing OWASP Top 10 vulnerabilities for educational use.",
+		"badge": "Contrast-Security-OSS/DjanGoat",
+		"stars": 75
+	},
+	{
 		"url": "https://github.com/red-and-black/DjangoGoat",
 		"name": "DjangoGoat",
 		"collection": [
