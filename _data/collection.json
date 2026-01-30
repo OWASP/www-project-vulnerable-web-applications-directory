@@ -994,7 +994,7 @@
 		"last_contributed": "2026-01-21T12:02:07Z"
 	},
 	{
-		"url": "https://github.com/snoopysecurity/dvws",
+		"url": "https://github.com/snoopysecurity/dvws-node",
 		"name": "Damn Vulnerable Web Services",
 		"collection": [
 			"offline"
@@ -1003,7 +1003,7 @@
 			"Web Services"
 		],
 		"author": "snoopysecurity",
-		"badge": "snoopysecurity/dvws",
+		"badge": "snoopysecurity/dvws-node",
 		"stars": 457,
 		"last_contributed": "2021-12-06T00:15:00Z"
 	},
@@ -2019,22 +2019,6 @@
 		"badge": "rapid7/metasploitable3",
 		"stars": 5411,
 		"last_contributed": "2025-02-13T14:49:36Z"
-	},
-	{
-		"url": "https://sourceforge.net/projects/w3af/files/moth/moth/",
-		"name": "Moth",
-		"collection": [
-			"container"
-		],
-		"technology": [
-			"VMware"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://sourceforge.net/projects/w3af/files/moth/moth/"
-			}
-		]
 	},
 	{
 		"url": "https://github.com/OWASP/owasp-mstg/tree/master/Crackmes",
