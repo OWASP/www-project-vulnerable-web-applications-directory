@@ -52,7 +52,8 @@
 			"properties": {
 				"url": {
 					"type": "string",
-					"format": "uri"
+					"format": "uri",
+					"pattern": "^https?://.*"
 				},
 				"name": {
 					"type": "string"
@@ -117,7 +118,8 @@
 				},
 				"url": {
 					"type": "string",
-					"format": "uri"
+					"format": "uri",
+					"pattern": "^https?://.*"
 				}
 			},
 			"required": [
