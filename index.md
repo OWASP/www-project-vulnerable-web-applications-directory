@@ -22,12 +22,12 @@ contributors:
 - hblankenship
 - noraj
 - preetkaran20
+- codeXanu
 - ebell451
 - PauloASilva
 - Aif4thah
 - AlexandraC0
 - alexcolb
-- codeXanu
 - Commando-X
 - dhower7
 - drfoofoo
