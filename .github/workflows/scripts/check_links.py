@@ -10,7 +10,7 @@ SEEN_URLS = set()
 
 def output_summary(total_entries, failures_count, redirects_count):
     """Output workflow summary to GITHUB_STEP_SUMMARY."""
-    summary = f"""\n## Link Checker Results
+    summary = f"""## Link Checker Results
 
 **Summary:**
 - Total entries checked: {total_entries}
@@ -64,15 +64,16 @@ def validate_url(url, context):
         print(f"Checking URL: {url} (Context: {context})")
         response = requests.head(url, allow_redirects=True, timeout=10)
 
-        if response.is_redirect:
-            # Log redirects for review
+        if len(response.history) > 0:
+            # URL was redirected
+            original_response = response.history[0]
             REDIRECTS.append({
                 "url": url,
-                "final_url": response.headers.get("Location"),
-                "status": response.status_code,
+                "final_url": response.url,
+                "status": original_response.status_code,
                 "context": context
             })
-            print(f"Redirect noted: {url} -> {response.headers.get('Location')} ({response.status_code})")
+            print(f"Redirect noted: {url} -> {response.url} ({original_response.status_code})")
         elif response.status_code >= 400:
             # Failures for 4xx and 5xx status codes
             FAILURES.append({"url": url, "status": response.status_code, "context": context})
