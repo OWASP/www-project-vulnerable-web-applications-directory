@@ -33,7 +33,7 @@ jobs:
         echo "✓ Successfully checked out _data/ from PR"
     - name: Save PR number
       env:
-        PR_NUMBER: ${{ github.event.number }}
+        PR_NUMBER: ${{ github.event.pull_request.number || 'manual-run' }}
       run: echo $PR_NUMBER > pr_number
     # Note: The following validation steps process untrusted data from the PR,
     # but use trusted validation scripts from the base repository.
