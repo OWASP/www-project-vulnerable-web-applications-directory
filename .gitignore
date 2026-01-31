@@ -28,3 +28,4 @@ pr_number
 # Misc
 sort_json.py
 .ruby-version
+*.backup
