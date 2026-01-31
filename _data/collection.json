@@ -195,21 +195,6 @@
 		"notes": "Capture-the-flag challenges for Azure AD"
 	},
 	{
-		"url": "https://github.com/mandiant/Azure_Workshop",
-		"name": "Azure Infrastructure Workshop",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"Azure"
-		],
-		"author": "Azure Security Team",
-		"notes": "Interactive workshop covering Azure security best practices",
-		"badge": "mandiant/Azure_Workshop",
-		"stars": 616,
-		"last_contributed": "2023-06-01T13:35:45Z"
-	},
-	{
 		"url": "https://sourceforge.net/projects/bwapp/files/bee-box/",
 		"name": "Bee-Box",
 		"collection": [
@@ -1301,27 +1286,6 @@
 		"last_contributed": "2021-08-10T22:13:44Z"
 	},
 	{
-		"url": "https://public-firing-range.appspot.com/",
-		"name": "Firing Range",
-		"collection": [
-			"online"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/google/firing-range"
-			},
-			{
-				"name": "live",
-				"url": "https://public-firing-range.appspot.com/"
-			}
-		],
-		"author": "Google",
-		"badge": "google/firing-range",
-		"stars": 1403,
-		"last_contributed": "2018-11-08T13:57:43Z"
-	},
-	{
 		"url": "https://github.com/Orange-Cyberdefense/GOAD",
 		"name": "Game of Active Directory",
 		"collection": [
@@ -1550,63 +1514,6 @@
 		"author": "Google"
 	},
 	{
-		"url": "https://github.com/Hackademic/hackademic",
-		"name": "Hackademic Challenges Project",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"PHP",
-			"Joomla"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/Hackademic/hackademic"
-			}
-		],
-		"author": "OWASP",
-		"badge": "Hackademic/hackademic",
-		"stars": 324,
-		"last_contributed": "2017-02-24T16:48:07Z"
-	},
-	{
-		"url": "https://github.com/rapid7/hackazon",
-		"name": "Hackazon",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"AJAX",
-			"JSON",
-			"XML",
-			"GwT",
-			"AMF"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/rapid7/hackazon"
-			},
-			{
-				"name": "guide",
-				"url": "https://medium.com/faun/automating-authenticated-api-vulnerability-scanning-with-owasp-zap-eaddba0c2e94"
-			},
-			{
-				"name": "guide",
-				"url": "https://github.com/tahmed11/OWASP_ZAP_API_scripts"
-			},
-			{
-				"name": "guide",
-				"url": "https://github.com/rapid7/hackazon/blob/master/REST.md"
-			}
-		],
-		"author": "Rapid7 (NTObjectives)",
-		"badge": "rapid7/hackazon",
-		"stars": 1016,
-		"last_contributed": "2021-03-11T20:02:53Z"
-	},
-	{
 		"url": "https://hacking-lab.com/events/",
 		"name": "Hacking Lab",
 		"collection": [
@@ -1653,30 +1560,6 @@
 		],
 		"author": "HackTheBox",
 		"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs."
-	},
-	{
-		"url": "https://defendtheweb.net/",
-		"name": "HackThis",
-		"collection": [
-			"online"
-		],
-		"technology": [
-			"PHP"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/defendtheweb/hackthis.co.uk"
-			},
-			{
-				"name": "live",
-				"url": "https://defendtheweb.net/"
-			}
-		],
-		"author": "Luke Ward (0x6C77)",
-		"badge": "defendtheweb/hackthis.co.uk",
-		"stars": 46,
-		"last_contributed": "2018-08-31T15:26:40Z"
 	},
 	{
 		"url": "https://www.hackthissite.org",
@@ -1787,28 +1670,6 @@
 		"badge": "iknowjason/hammer",
 		"stars": 21,
 		"last_contributed": "2022-04-26T20:51:05Z"
-	},
-	{
-		"url": "https://github.com/B3nac/InjuredAndroid",
-		"name": "InjuredAndroid",
-		"collection": [
-			"mobile"
-		],
-		"technology": [
-			"Android",
-			"Java"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/B3nac/InjuredAndroid/releases"
-			}
-		],
-		"author": "B3nac",
-		"notes": "A vulnerable Android application with CTF-style challenges focused on Android security.",
-		"badge": "B3nac/InjuredAndroid",
-		"stars": 735,
-		"last_contributed": "2021-06-25T04:04:12Z"
 	},
 	{
 		"url": "https://github.com/omerlh/insecure-deserialisation-net-poc",
@@ -1954,20 +1815,6 @@
 		"badge": "christophetd/log4shell-vulnerable-app",
 		"stars": 1136,
 		"last_contributed": "2022-12-14T08:48:45Z"
-	},
-	{
-		"url": "https://github.com/SpiderLabs/MCIR",
-		"name": "Magical Code Injection Rainbow - MCIR",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"PHP"
-		],
-		"author": "SpiderLabs",
-		"badge": "SpiderLabs/MCIR",
-		"stars": 446,
-		"last_contributed": "2020-08-07T12:44:09Z"
 	},
 	{
 		"url": "https://github.com/cschneider4711/Marathon",
@@ -2851,26 +2698,6 @@
 		"notes": "Online platform for learning cyber security through hands-on exercises and labs. Features virtual rooms with vulnerable machines and guided learning paths."
 	},
 	{
-		"url": "https://github.com/sakti/twitterlike",
-		"name": "twitterlike",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"PHP"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/sakti/twitterlike"
-			}
-		],
-		"author": "Sakti Dwi Cahyono",
-		"badge": "sakti/twitterlike",
-		"stars": 4,
-		"last_contributed": "2013-10-16T10:21:18Z"
-	},
-	{
 		"url": "https://github.com/lucideus-repo/UnSAFE_Bank",
 		"name": "UnSAFE Bank",
 		"collection": [
@@ -3398,27 +3225,6 @@
 		"badge": "OWASP/wrongsecrets",
 		"stars": 1392,
 		"last_contributed": "2026-01-26T07:25:21Z"
-	},
-	{
-		"url": "https://github.com/s4n7h0/xvwa",
-		"name": "Xtreme Vulnerable Web Application (XVWA)",
-		"collection": [
-			"offline"
-		],
-		"technology": [
-			"PHP",
-			"MySQL"
-		],
-		"references": [
-			{
-				"name": "download",
-				"url": "https://github.com/s4n7h0/xvwa"
-			}
-		],
-		"author": "@s4n7h0, @samanL33T",
-		"badge": "s4n7h0/xvwa",
-		"stars": 1745,
-		"last_contributed": "2020-09-12T17:26:23Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/xxe/",

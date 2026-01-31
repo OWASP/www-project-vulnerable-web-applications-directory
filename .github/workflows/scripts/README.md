@@ -46,6 +46,8 @@ Validates that `collection.json` adheres to the `.editorconfig` rules for JSON f
 - `insert_final_newline = true`
 - `trim_trailing_whitespace = true`
 
+Additionally validates that special characters (e.g., ç, ê) are stored as-is rather than as Unicode escape sequences (e.g., `\u00e7`, `\u00ea`), which requires using `ensure_ascii=False` in `json.dump()`.
+
 **Usage:**
 ```bash
 python3 check_editorconfig.py <json_file>
