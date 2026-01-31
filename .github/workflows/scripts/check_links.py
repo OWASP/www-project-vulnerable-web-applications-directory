@@ -32,7 +32,7 @@ def output_summary(total_entries, failures_count, redirects_count):
             if FAILURES:
                 summary_file.write("\n### Failed URLs\n\n")
                 for failure in FAILURES:
-                    status_or_error = failure.get('status') or failure.get('error')
+                    status_or_error = failure.get('status') if failure.get('status') is not None else failure.get('error')
                     summary_file.write(f"- **{failure.get('context')}**: {failure.get('url')} ({status_or_error})\n")
             
             # Add redirect details if any
@@ -89,6 +89,7 @@ def validate_url(url, context):
 
 # Process each entry in the JSON file
 for index, entry in enumerate(data):
+    # Use 1-based indexing for human-readable fallback name
     name = entry.get("name", f"Entry {index + 1}")
 
     # Check app URL
@@ -113,7 +114,8 @@ if REDIRECTS:
 if FAILURES:
     print(f"\n{len(FAILURES)} URLs failed validation:")
     for failure in FAILURES:
-        print(f"- {failure.get('context')}: {failure.get('url')} ({failure.get('status') or failure.get('error')})")
+        status_or_error = failure.get('status') if failure.get('status') is not None else failure.get('error')
+        print(f"- {failure.get('context')}: {failure.get('url')} ({status_or_error})")
     with open("failed_links.json", "w") as f:
         json.dump({"failures": FAILURES, "redirects": REDIRECTS}, f, indent=2)
     output_summary(len(data), len(FAILURES), len(REDIRECTS))
