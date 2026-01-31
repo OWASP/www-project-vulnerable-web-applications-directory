@@ -1,11 +1,47 @@
 import json
 import requests
+import os
 from sys import exit
 
 DATA_FILE = "_data/collection.json"
 FAILURES = []
 REDIRECTS = []
 SEEN_URLS = set()
+
+def output_summary(total_entries, failures_count, redirects_count):
+    """Output workflow summary to GITHUB_STEP_SUMMARY."""
+    summary = f"""\n## Link Checker Results
+
+**Summary:**
+- Total entries checked: {total_entries}
+- Failed URLs: {failures_count}
+- Redirected URLs: {redirects_count}
+- Status: {'✓ PASSED' if failures_count == 0 else '✗ FAILED'}
+"""
+
+    print(summary)
+    
+    # Get the path to the summary file from the environment variable
+    summary_file_path = os.environ.get('GITHUB_STEP_SUMMARY')
+    
+    if summary_file_path:
+        with open(summary_file_path, 'a') as summary_file:
+            summary_file.write(summary)
+            
+            # Add failure details if any
+            if FAILURES:
+                summary_file.write("\n### Failed URLs\n\n")
+                for failure in FAILURES:
+                    status_or_error = failure.get('status') or failure.get('error')
+                    summary_file.write(f"- **{failure.get('context')}**: {failure.get('url')} ({status_or_error})\n")
+            
+            # Add redirect details if any
+            if REDIRECTS:
+                summary_file.write("\n### Redirected URLs\n\n")
+                for redirect in REDIRECTS:
+                    summary_file.write(f"- **{redirect['context']}**: {redirect['url']} → {redirect['final_url']} ({redirect['status']})\n")
+    else:
+        print("GITHUB_STEP_SUMMARY environment variable not found.")
 
 # Load collection JSON file
 try:
@@ -74,9 +110,11 @@ if FAILURES:
         print(f"- {failure.get('context')}: {failure.get('url')} ({failure.get('status') or failure.get('error')})")
     with open("failed_links.json", "w") as f:
         json.dump({"failures": FAILURES, "redirects": REDIRECTS}, f, indent=2)
+    output_summary(len(data), len(FAILURES), len(REDIRECTS))
     exit(1)
 else:
     if REDIRECTS:
         with open("failed_links.json", "w") as f:
             json.dump({"redirects": REDIRECTS}, f, indent=2)
     print("All URLs passed validation!")
+    output_summary(len(data), len(FAILURES), len(REDIRECTS))
