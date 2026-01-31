@@ -354,7 +354,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                         'is_archived': is_archived
                     }
                     
-                    # Update cache (without etag field)
+                    # Update cache (without etag or archived fields)
                     cache[repo_key] = {
                         'stars': stars,
                         'last_contributed': last_contributed,
