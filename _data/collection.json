@@ -144,7 +144,7 @@
 		"last_contributed": "2023-01-30T09:47:54Z"
 	},
 	{
-		"url": "https://bigiamchallenge.com/",
+		"url": "https://bigiamchallenge.com/challenge/1",
 		"name": "AWS CTF Challenge",
 		"collection": [
 			"online"
@@ -171,7 +171,7 @@
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
-		"url": "https://wellarchitectedlabs.com/security/",
+		"url": "https://wellarchitectedlabs.com/",
 		"name": "AWS Security Workshop",
 		"collection": [
 			"online"
@@ -232,7 +232,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/psiinon/bodgeit/releases/latest"
+				"url": "https://github.com/psiinon/bodgeit/releases/tag/1.4.0"
 			},
 			{
 				"name": "docker",
@@ -245,7 +245,7 @@
 		"last_contributed": "2024-08-13T15:45:36Z"
 	},
 	{
-		"url": "http://sechow.com/bricks/index.html",
+		"url": "https://sechow.com/bricks/index.html",
 		"name": "Bricks",
 		"collection": [
 			"offline"
@@ -256,11 +256,11 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "http://sechow.com/bricks/download.html"
+				"url": "https://sechow.com/bricks/download.html"
 			},
 			{
 				"name": "guide",
-				"url": "http://sechow.com/bricks/docs/"
+				"url": "https://sechow.com/bricks/docs/"
 			}
 		],
 		"author": "OWASP"
@@ -349,7 +349,7 @@
 			},
 			{
 				"name": "guide",
-				"url": "http://itsecgames.blogspot.be/2013/01/bwapp-installation.html"
+				"url": "http://itsecgames.blogspot.com/2013/01/bwapp-installation.html"
 			}
 		]
 	},
@@ -453,7 +453,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "http://isc.sans.edu/forums/diary/Modern+Web+Application+Penetration+Testing+Hash+Length+Extension+Attacks/22792/"
+				"url": "https://isc.sans.edu/diary/Modern+Web+Application+Penetration+Testing+Hash+Length+Extension+Attacks/22792"
 			}
 		],
 		"author": "SpiderLabs",
@@ -522,7 +522,7 @@
 		"last_contributed": "2022-07-19T19:37:43Z"
 	},
 	{
-		"url": "https://github.com/fridaygoldsmith/bwa_cyclone_transfers",
+		"url": "https://github.com/thedeadrobots/bwa_cyclone_transfers",
 		"name": "Cyclone Transfers",
 		"collection": [
 			"offline"
@@ -530,7 +530,7 @@
 		"technology": [
 			"Ruby on Rails"
 		],
-		"badge": "fridaygoldsmith/bwa_cyclone_transfers",
+		"badge": "thedeadrobots/bwa_cyclone_transfers",
 		"stars": 5,
 		"last_contributed": "2013-10-17T18:09:13Z"
 	},
@@ -627,7 +627,7 @@
 		"references": [
 			{
 				"name": "guide",
-				"url": "https://rewanthtammana.com/damn-vulnerable-bank/"
+				"url": "https://rewanthtammana.com/damn-vulnerable-bank/index.html"
 			}
 		],
 		"author": "Rewanth Tammana, Akshansh Jaiswal, Hrushikesh Kakade",
@@ -710,7 +710,7 @@
 		"references": [
 			{
 				"name": "guide",
-				"url": "https://www.slideshare.net/abhaybhargav/an-attackers-view-of-serverless-and-graphql-apps-abhay-bhargav-appsec-california-2019"
+				"url": "https://www.slideshare.net/slideshow/an-attackers-view-of-serverless-and-graphql-apps-abhay-bhargav-appsec-california-2019/129289800"
 			}
 		],
 		"author": "we45 (Abhay Bhargav)",
@@ -960,7 +960,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "http://www.sans.org/reading-room/whitepapers/testing/testing-stateful-web-application-workflows-36637"
+				"url": "https://www.sans.org/white-papers/36637"
 			}
 		],
 		"author": "dnet",
@@ -1053,7 +1053,7 @@
 			},
 			{
 				"name": "guide",
-				"url": "http://www.payatu.com/damn-insecure-and-vulnerable-app/"
+				"url": "https://payatu.com/blog/damn-insecure-and-vulnerable-app-diva/"
 			}
 		],
 		"author": "Payatu",
@@ -1287,7 +1287,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/adamtlangley/ffufme"
+				"url": "https://github.com/BuildHackSecure/ffufme"
 			},
 			{
 				"name": "live",
@@ -1296,7 +1296,7 @@
 		],
 		"author": "adamtlangley",
 		"notes": "Target practice for ffuf",
-		"badge": "adamtlangley/ffufme",
+		"badge": "BuildHackSecure/ffufme",
 		"stars": 70,
 		"last_contributed": "2021-08-10T22:13:44Z"
 	},
@@ -1607,7 +1607,7 @@
 		"last_contributed": "2021-03-11T20:02:53Z"
 	},
 	{
-		"url": "https://www.hacking-lab.com/events/",
+		"url": "https://hacking-lab.com/events/",
 		"name": "Hacking Lab",
 		"collection": [
 			"online"
@@ -1615,7 +1615,7 @@
 		"references": [
 			{
 				"name": "live",
-				"url": "https://www.hacking-lab.com/events/"
+				"url": "https://hacking-lab.com/events/"
 			}
 		],
 		"author": "Hacking Lab"
@@ -1655,7 +1655,7 @@
 		"notes": "Online platform featuring vulnerable machines and challenges for penetration testing practice. Includes retired machines, active challenges, and Pro Labs."
 	},
 	{
-		"url": "https://www.hackthis.co.uk/",
+		"url": "https://defendtheweb.net/",
 		"name": "HackThis",
 		"collection": [
 			"online"
@@ -1666,15 +1666,15 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/HackThis/hackthis.co.uk"
+				"url": "https://github.com/defendtheweb/hackthis.co.uk"
 			},
 			{
 				"name": "live",
-				"url": "https://www.hackthis.co.uk/"
+				"url": "https://defendtheweb.net/"
 			}
 		],
 		"author": "Luke Ward (0x6C77)",
-		"badge": "HackThis/hackthis.co.uk",
+		"badge": "defendtheweb/hackthis.co.uk",
 		"stars": 46,
 		"last_contributed": "2018-08-31T15:26:40Z"
 	},
@@ -1701,7 +1701,7 @@
 		"notes": "Always-on CTF challenges including Basic, Realistic, Application, Steganography, and many others."
 	},
 	{
-		"url": "http://hackxor.sourceforge.net/cgi-bin/index.pl",
+		"url": "https://hackxor.net/",
 		"name": "Hackxor",
 		"collection": [
 			"offline",
@@ -1718,7 +1718,7 @@
 			},
 			{
 				"name": "guide",
-				"url": "http://hackxor.sourceforge.net/cgi-bin/hints.pl"
+				"url": "https://hackxor.sourceforge.net/cgi-bin/hints.pl"
 			},
 			{
 				"name": "live",
