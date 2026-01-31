@@ -13,15 +13,34 @@ jobs:
        contents: read  
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    # Security: Checkout base repository first to use trusted validation scripts
+    # Only data files from the PR will be checked out in the next step
+    # For workflow_dispatch: validates current branch data with current branch scripts
+    - name: Checkout base repository
       uses: actions/checkout@v6
       with:
-        ref: ${{ github.event.pull_request.head.sha }}
-        repository: ${{github.event.pull_request.head.repo.full_name}}
+        ref: ${{ github.event.pull_request.base.ref || github.ref }}
+    - name: Sparse checkout changed datafiles from PR
+      if: github.event_name == 'pull_request_target'
+      run: |
+        # Fetch the PR branch
+        git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-branch
+        
+        # Checkout only _data directory from PR branch
+        # This ensures validation scripts come from base repo (trusted)
+        # while only datafiles come from PR (untrusted)
+        git checkout pr-branch -- _data/
+        echo "✓ Successfully checked out _data/ from PR"
     - name: Save PR number
       env:
-        PR_NUMBER: ${{ github.event.number }}
+        PR_NUMBER: ${{ github.event.pull_request.number || 'manual-run' }}
       run: echo $PR_NUMBER > pr_number
+    # Note: The following validation steps process untrusted data from the PR,
+    # but use trusted validation scripts from the base repository.
+    # This is safe because:
+    # 1. Scripts come from base repo (checked out in step 1)
+    # 2. Only data files come from PR (checked out in step 2)
+    # 3. Scripts validate data without executing it as code
     - name: Run schema check
       id: schema
       continue-on-error: true
