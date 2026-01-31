@@ -35,6 +35,12 @@ jobs:
       env:
         PR_NUMBER: ${{ github.event.number }}
       run: echo $PR_NUMBER > pr_number
+    # Note: The following validation steps process untrusted data from the PR,
+    # but use trusted validation scripts from the base repository.
+    # This is safe because:
+    # 1. Scripts come from base repo (checked out in step 1)
+    # 2. Only data files come from PR (checked out in step 2)
+    # 3. Scripts validate data without executing it as code
     - name: Run schema check
       id: schema
       continue-on-error: true
