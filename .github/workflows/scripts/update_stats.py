@@ -517,18 +517,18 @@ def update_collection_stats(collection_path: str) -> bool:
 
 def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int, archived_repos: List[str]):
     summary =  f"""\nSummary:
-      Processed: {processed_count}
-        - Updated (changes detected): {updated_count}
-        - Unchanged (no changes): {unchanged_count}
-        - Archived repositories: {archived_count}"""
+Processed: {processed_count}
+- Updated (changes detected): {updated_count}
+- Unchanged (no changes): {unchanged_count}
+- Archived repositories: {archived_count}"""
     
     if archived_repos:
         for repo in archived_repos:
-            summary += f"\n          {repo}"
+            summary += f"\n    {repo}"
     
     summary += f"""
-      Skipped: {skipped_count}
-      Errors: {error_count}"""
+- Skipped: {skipped_count}
+- Errors: {error_count}"""
 
     print(summary)
     # Get the path to the summary file from the environment variable
