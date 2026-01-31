@@ -265,6 +265,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
             query_parts.append(f'''
                 {alias}: repository(owner: ${owner_var}, name: ${repo_var}) {{
                     stargazerCount
+                    isArchived
                     defaultBranchRef {{
                         target {{
                             ... on Commit {{
@@ -324,6 +325,7 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                 repo_data = data.get('data', {}).get(alias)
                 if repo_data:
                     stars = repo_data.get('stargazerCount', 0)
+                    is_archived = repo_data.get('isArchived', False)
                     last_contributed = None
                     
                     default_branch = repo_data.get('defaultBranchRef')
@@ -333,21 +335,23 @@ def fetch_github_stats_graphql(repos: List[Tuple[str, str]], cache: Dict[str, Di
                     # Check if data actually changed compared to cached data
                     cached_data = cache.get(repo_key, {})
                     data_changed = True
+                    archived_indicator = " [ARCHIVED]" if is_archived else ""
                     if 'stars' in cached_data:
                         old_stars = cached_data.get('stars')
                         old_last_contributed = cached_data.get('last_contributed')
                         if old_stars == stars and old_last_contributed == last_contributed:
                             data_changed = False
-                            print(f"  ✓ {owner}/{repo}: No changes ({stars} stars, last commit: {last_contributed})")
+                            print(f"  ✓ {owner}/{repo}{archived_indicator}: No changes ({stars} stars, last commit: {last_contributed})")
                         else:
-                            print(f"  ✓ {owner}/{repo}: Updated - {stars} stars (was {old_stars}), last commit: {last_contributed}")
+                            print(f"  ✓ {owner}/{repo}{archived_indicator}: Updated - {stars} stars (was {old_stars}), last commit: {last_contributed}")
                     else:
-                        print(f"  ✓ {owner}/{repo}: New entry - {stars} stars, last commit: {last_contributed}")
+                        print(f"  ✓ {owner}/{repo}{archived_indicator}: New entry - {stars} stars, last commit: {last_contributed}")
                     
                     results[repo_key] = {
                         'stars': stars,
                         'last_contributed': last_contributed,
-                        'data_changed': data_changed
+                        'data_changed': data_changed,
+                        'is_archived': is_archived
                     }
                     
                     # Update cache (without etag field)
@@ -430,6 +434,7 @@ def update_collection_stats(collection_path: str) -> bool:
     unchanged_count = 0
     skipped_count = 0
     error_count = 0
+    archived_count = 0
 
     # Process each entry to collect repos
     for i, entry in enumerate(collection):
@@ -465,6 +470,10 @@ def update_collection_stats(collection_path: str) -> bool:
         for repo_key, stats in stats_results.items():
             entry = repo_to_entry_map.get(repo_key)
             if entry and stats:
+                # Track archived repos
+                if stats.get('is_archived', False):
+                    archived_count += 1
+                
                 # Check if data in collection.json is actually changing
                 old_stars = entry.get('stars')
                 old_last_contributed = entry.get('last_contributed')
@@ -478,6 +487,7 @@ def update_collection_stats(collection_path: str) -> bool:
                 last_contributed_changed = (new_last_contributed is not None and old_last_contributed != new_last_contributed)
                 data_changed = stars_changed or last_contributed_changed
                 
+                # Update collection.json with stars and last_contributed only (NOT archived status)
                 entry['stars'] = new_stars
                 if new_last_contributed:
                     entry['last_contributed'] = new_last_contributed
@@ -490,7 +500,7 @@ def update_collection_stats(collection_path: str) -> bool:
     # Save cache
     save_cache(cache)
 
-    output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count)
+    output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count, archived_count)
 
     # Write updated collection back to file
     try:
@@ -503,11 +513,12 @@ def update_collection_stats(collection_path: str) -> bool:
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
-def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int):
+def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int):
     summary =  f"""\nSummary:
       Processed: {processed_count}
         - Updated (changes detected): {updated_count}
         - Unchanged (no changes): {unchanged_count}
+        - Archived repositories: {archived_count}
       Skipped: {skipped_count}
       Errors: {error_count}"""
 
