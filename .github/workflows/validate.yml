@@ -15,6 +15,7 @@ jobs:
     steps:
     # Security: Checkout base repository first to use trusted validation scripts
     # Only data files from the PR will be checked out in the next step
+    # For workflow_dispatch: validates current branch data with current branch scripts
     - name: Checkout base repository
       uses: actions/checkout@v6
       with:
@@ -29,6 +30,7 @@ jobs:
         # This ensures validation scripts come from base repo (trusted)
         # while only datafiles come from PR (untrusted)
         git checkout pr-branch -- _data/
+        echo "✓ Successfully checked out _data/ from PR"
     - name: Save PR number
       env:
         PR_NUMBER: ${{ github.event.number }}
