@@ -34,15 +34,15 @@ def output_summary(total_entries, failures_count, redirects_count):
             
             # Add failure details if any
             if FAILURES:
-                summary_file.write("\n### Failed URLs\n\n")
+                summary_file.write(f"\n### {len(FAILURES)} URLs failed validation:\n\n")
                 for failure in FAILURES:
-                    summary_file.write(f"- **{failure.get('context')}**: {failure.get('url')} ({get_status_or_error(failure)})\n")
+                    summary_file.write(f"- {failure.get('context')}: {failure.get('url')} ({get_status_or_error(failure)})\n")
             
             # Add redirect details if any
             if REDIRECTS:
-                summary_file.write("\n### Redirected URLs\n\n")
+                summary_file.write(f"\n### {len(REDIRECTS)} URLs resulted in redirects:\n\n")
                 for redirect in REDIRECTS:
-                    summary_file.write(f"- **{redirect['context']}**: {redirect['url']} → {redirect['final_url']} ({redirect['status']})\n")
+                    summary_file.write(f"- {redirect['context']}: {redirect['url']} -> {redirect['final_url']} ({redirect['status']})\n")
     else:
         print("GITHUB_STEP_SUMMARY environment variable not found.")
 
