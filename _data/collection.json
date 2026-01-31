@@ -2170,7 +2170,7 @@
 		"references": [
 			{
 				"name": "docker",
-				"url": "https://hub.docker.com/repository/docker/aabashkin/niva"
+				"url": "https://hub.docker.com/r/aabashkin/niva/tags"
 			},
 			{
 				"name": "guide",
