@@ -1986,7 +1986,7 @@
 		"last_contributed": "2025-06-15T21:08:48Z"
 	},
 	{
-		"url": "https://community.rapid7.com/docs/DOC-1875",
+		"url": "https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/",
 		"name": "Metasploitable 2",
 		"collection": [
 			"container"
@@ -2021,7 +2021,7 @@
 		"last_contributed": "2025-02-13T14:49:36Z"
 	},
 	{
-		"url": "https://github.com/OWASP/owasp-mstg/tree/master/Crackmes",
+		"url": "https://github.com/OWASP/mastg/tree/master/Crackmes",
 		"name": "MSTG CrackMes",
 		"collection": [
 			"mobile"
@@ -2032,7 +2032,7 @@
 		"last_contributed": "2026-01-30T11:37:13Z"
 	},
 	{
-		"url": "https://github.com/OWASP/MSTG-Hacking-Playground",
+		"url": "https://github.com/OWASP/MASTG-Hacking-Playground",
 		"name": "MSTG Hacking Playground",
 		"collection": [
 			"mobile"
@@ -2040,11 +2040,11 @@
 		"references": [
 			{
 				"name": "guide",
-				"url": "https://github.com/OWASP/MSTG-Hacking-Playground/wiki"
+				"url": "https://github.com/OWASP/MASTG-Hacking-Playground/wiki"
 			}
 		],
 		"author": "OWASP",
-		"badge": "OWASP/MSTG-Hacking-Playground",
+		"badge": "OWASP/MASTG-Hacking-Playground",
 		"stars": 657,
 		"last_contributed": "2022-10-31T17:03:31Z"
 	},
@@ -2102,7 +2102,7 @@
 		"author": "Netsparker"
 	},
 	{
-		"url": "https://www.owasp.org/index.php/OWASP_Node_js_Goat_Project",
+		"url": "https://wiki.owasp.org/index.php/OWASP_Node_js_Goat_Project",
 		"name": "NodeGoat",
 		"collection": [
 			"offline"
@@ -2238,7 +2238,7 @@
 		"last_contributed": "2025-12-19T17:00:57Z"
 	},
 	{
-		"url": "https://owasp-juice.shop",
+		"url": "https://owasp.org/www-project-juice-shop/",
 		"name": "OWASP Juice Shop",
 		"collection": [
 			"offline",
@@ -2374,7 +2374,7 @@
 		"notes": "Suite of vulnerable web apps to practice"
 	},
 	{
-		"url": "https://www.pentesterlab.com/exercises/",
+		"url": "https://pentesterlab.com/exercises",
 		"name": "PentesterLab - The Exercises",
 		"collection": [
 			"container"
@@ -2385,7 +2385,7 @@
 		]
 	},
 	{
-		"url": "http://peruggia.sourceforge.net/",
+		"url": "https://sourceforge.net/projects/peruggia/",
 		"name": "Peruggia",
 		"collection": [
 			"offline"
@@ -2451,7 +2451,7 @@
 		"last_contributed": "2026-01-28T08:31:00Z"
 	},
 	{
-		"url": "https://code.google.com/p/puzzlemall/",
+		"url": "https://code.google.com/archive/p/puzzlemall",
 		"name": "Puzzlemall",
 		"collection": [
 			"offline"
@@ -2462,7 +2462,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "http://code.google.com/p/puzzlemall/downloads/list"
+				"url": "https://code.google.com/archive/p/puzzlemall/downloads"
 			}
 		]
 	},
@@ -2497,7 +2497,7 @@
 		"last_contributed": "2026-01-25T10:49:23Z"
 	},
 	{
-		"url": "https://github.com/insp3ctre/race-the-web",
+		"url": "https://github.com/TheHackerDev/race-the-web",
 		"name": "Race The Web",
 		"collection": [
 			"offline"
@@ -2505,16 +2505,16 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/insp3ctre/race-the-web"
+				"url": "https://github.com/TheHackerDev/race-the-web"
 			}
 		],
 		"author": "insp3ctre",
-		"badge": "insp3ctre/race-the-web",
+		"badge": "TheHackerDev/race-the-web",
 		"stars": 627,
 		"last_contributed": "2019-10-16T19:00:49Z"
 	},
 	{
-		"url": "https://www.owasp.org/index.php/OWASP_Rails_Goat_Project",
+		"url": "https://wiki.owasp.org/index.php/OWASP_Rails_Goat_Project",
 		"name": "Rails Goat",
 		"collection": [
 			"offline"
@@ -2525,11 +2525,11 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/OWASP/railsgoat/archive/master.zip"
+				"url": "https://codeload.github.com/OWASP/railsgoat/zip/main"
 			},
 			{
 				"name": "downloads",
-				"url": "http://railsgoat.cktricky.com/getting_started.html"
+				"url": "https://railsgoat.cktricky.com/getting_started.html"
 			}
 		],
 		"author": "OWASP",
@@ -2553,7 +2553,7 @@
 		"notes": "Root-Me is a non-profit organization aimed at providing an outstanding learning platform for ethical hacking. It offers hundreds of challenges and virtual environments."
 	},
 	{
-		"url": "http://www.samurai-wtf.org/",
+		"url": "https://www.samurai-wtf.org/",
 		"name": "Samurai WTF",
 		"collection": [
 			"container"
@@ -2599,7 +2599,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/alexcolb/scriptease/archive/refs/heads/main.zip"
+				"url": "https://codeload.github.com/alexcolb/scriptease/zip/refs/heads/main"
 			}
 		],
 		"notes": "A vulnerable JavaScript SPA (no back end) that demonstrates several client-side security flaws (XSS, open redirect, prototype pollution, ReDoS, request hijacking, etc.) It showcases a diverse set of sources and sinks for taint analysis, uses two alternative bundlers (Webpack, Vite), and includes lazy-loaded modules",
@@ -2688,7 +2688,7 @@
 		"notes": "HTML5"
 	},
 	{
-		"url": "http://solyd.com.br/treinamentos/introducao-ao-hacking-e-pentest",
+		"url": "https://solyd.com.br/cursos/introducao-ao-hacking-e-pentest-2/",
 		"name": "Solyd - Introdução ao Hacking e Pentest",
 		"collection": [
 			"online"
@@ -2726,7 +2726,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/Audi-1/sqli-labs/archive/master.zip"
+				"url": "https://codeload.github.com/Audi-1/sqli-labs/zip/refs/heads/master"
 			},
 			{
 				"name": "guide",
@@ -2749,7 +2749,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/SpiderLabs/SQLol/archive/master.zip"
+				"url": "https://codeload.github.com/SpiderLabs/SQLol/zip/refs/heads/master"
 			}
 		],
 		"badge": "SpiderLabs/SQLol",
@@ -3193,7 +3193,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/adamdoupe/WackoPicko/zipball/master"
+				"url": "https://codeload.github.com/adamdoupe/WackoPicko/legacy.zip/refs/heads/master"
 			}
 		],
 		"badge": "adamdoupe/WackoPicko",
@@ -3241,7 +3241,7 @@
 		"last_contributed": "2023-08-24T20:35:50Z"
 	},
 	{
-		"url": "http://www.mavensecurity.com/web_security_dojo/",
+		"url": "https://www.mavensecurity.com/resources/web-security-dojo",
 		"name": "Web Security Dojo",
 		"collection": [
 			"container"
@@ -3286,7 +3286,7 @@
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
-		"url": "https://www.owasp.org/index.php/WebGoatPHP",
+		"url": "https://owasp.org/www-project-webgoat/",
 		"name": "WebGoatPHP",
 		"collection": [
 			"offline"
@@ -3356,7 +3356,7 @@
 		"last_contributed": "2023-11-04T18:48:02Z"
 	},
 	{
-		"url": "https://code.google.com/p/wivet/",
+		"url": "https://code.google.com/archive/p/wivet",
 		"name": "WIVET- Web Input Vector Extractor Teaser",
 		"collection": [
 			"offline"
@@ -3368,12 +3368,12 @@
 			},
 			{
 				"name": "downloads",
-				"url": "https://code.google.com/p/wivet/downloads/list?can=1&q="
+				"url": "https://code.google.com/archive/p/wivet/downloads"
 			}
 		]
 	},
 	{
-		"url": "https://github.com/commjoen/wrongsecrets",
+		"url": "https://github.com/OWASP/wrongsecrets",
 		"name": "WrongSecrets",
 		"collection": [
 			"offline"
@@ -3390,12 +3390,12 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "https://github.com/commjoen/wrongsecrets"
+				"url": "https://github.com/OWASP/wrongsecrets"
 			}
 		],
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
-		"badge": "commjoen/wrongsecrets",
+		"badge": "OWASP/wrongsecrets",
 		"stars": 1391,
 		"last_contributed": "2026-01-26T07:25:21Z"
 	},
@@ -3421,7 +3421,7 @@
 		"last_contributed": "2020-09-12T17:26:23Z"
 	},
 	{
-		"url": "http://xxe.sourceforge.net/",
+		"url": "https://sourceforge.net/projects/xxe/",
 		"name": "XXE",
 		"collection": [
 			"container"
@@ -3886,7 +3886,7 @@
 			},
 			{
 				"name": "demo",
-				"url": "https://youtu.be/h3jm83jw33Q"
+				"url": "https://www.youtube.com/watch?v=h3jm83jw33Q&feature=youtu.be"
 			}
 		],
 		"technology": [
