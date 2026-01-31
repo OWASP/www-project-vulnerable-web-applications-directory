@@ -94,7 +94,7 @@
 		"author": "HCL/IBM/Watchfire",
 		"notes": "Log in with jsmith/demo1234 or admin/admin",
 		"badge": "hclproducts/AltoroJ",
-		"stars": 280,
+		"stars": 281,
 		"last_contributed": "2024-07-23T11:07:27Z"
 	},
 	{
@@ -413,7 +413,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3457,
+		"stars": 3459,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -438,7 +438,7 @@
 		"author": "OWASP",
 		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
 		"badge": "OWASP/crAPI",
-		"stars": 1411,
+		"stars": 1413,
 		"last_contributed": "2026-01-20T18:56:04Z"
 	},
 	{
@@ -735,7 +735,7 @@
 		],
 		"author": "Dolev Farhi <dolev@lethalbit.com>, Connor McKinnon",
 		"badge": "dolevf/Damn-Vulnerable-GraphQL-Application",
-		"stars": 1675,
+		"stars": 1676,
 		"last_contributed": "2025-05-24T16:37:37Z"
 	},
 	{
@@ -812,7 +812,7 @@
 		],
 		"author": "Reversec Labs",
 		"badge": "ReversecLabs/damn-vulnerable-llm-agent",
-		"stars": 358,
+		"stars": 359,
 		"last_contributed": "2025-06-25T13:58:42Z"
 	},
 	{
@@ -858,7 +858,7 @@
 		"author": "Koen Buyens",
 		"notes": "A set of vulnerable applications which show Oauth2.0 vulnerabilities.",
 		"badge": "koenbuyens/Vulnerable-OAuth-2.0-Applications",
-		"stars": 324,
+		"stars": 325,
 		"last_contributed": "2018-09-15T17:12:22Z"
 	},
 	{
@@ -990,7 +990,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12528,
+		"stars": 12535,
 		"last_contributed": "2026-01-21T12:02:07Z"
 	},
 	{
@@ -1218,7 +1218,7 @@
 		"notes": "AWS EKS Security Lab and activity.",
 		"badge": "OWASP/www-project-eks-goat",
 		"stars": 37,
-		"last_contributed": "2026-01-21T19:03:10Z"
+		"last_contributed": "2026-01-31T15:18:32Z"
 	},
 	{
 		"url": "https://github.com/Semperis/EntraGoat",
@@ -1233,7 +1233,7 @@
 		"author": "Azure Security Team",
 		"notes": "A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.",
 		"badge": "semperis/EntraGoat",
-		"stars": 878,
+		"stars": 879,
 		"last_contributed": "2026-01-15T12:54:21Z"
 	},
 	{
@@ -1340,7 +1340,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7393,
+		"stars": 7398,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -1474,7 +1474,7 @@
 		"author": "Snyk",
 		"notes": "online - via Heroku deploy",
 		"badge": "snyk-labs/nodejs-goof",
-		"stars": 534,
+		"stars": 535,
 		"last_contributed": "2023-05-24T00:11:27Z"
 	},
 	{
@@ -1917,7 +1917,7 @@
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
 		"badge": "madhuakula/kubernetes-goat",
-		"stars": 5382,
+		"stars": 5383,
 		"last_contributed": "2025-11-18T15:14:10Z"
 	},
 	{
@@ -1952,7 +1952,7 @@
 		"author": "Christophe Tafani-Dereeper, Gerard Arall, rayhan0x01 Rayhan Ahmed",
 		"notes": "CVE-2021-44228",
 		"badge": "christophetd/log4shell-vulnerable-app",
-		"stars": 1135,
+		"stars": 1136,
 		"last_contributed": "2022-12-14T08:48:45Z"
 	},
 	{
@@ -2017,7 +2017,7 @@
 			}
 		],
 		"badge": "rapid7/metasploitable3",
-		"stars": 5412,
+		"stars": 5413,
 		"last_contributed": "2025-02-13T14:49:36Z"
 	},
 	{
@@ -2028,8 +2028,8 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/owasp-mstg",
-		"stars": 12685,
-		"last_contributed": "2026-01-30T11:37:13Z"
+		"stars": 12687,
+		"last_contributed": "2026-01-30T16:20:54Z"
 	},
 	{
 		"url": "https://github.com/OWASP/MASTG-Hacking-Playground",
@@ -2064,7 +2064,7 @@
 			}
 		],
 		"badge": "webpwnized/mutillidae",
-		"stars": 1465,
+		"stars": 1466,
 		"last_contributed": "2025-08-03T18:57:10Z"
 	},
 	{
@@ -2279,7 +2279,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12409,
+		"stars": 12412,
 		"last_contributed": "2026-01-05T10:05:51Z"
 	},
 	{
@@ -2493,7 +2493,7 @@
 		],
 		"author": "Ade Yoseman",
 		"badge": "adeyosemanputra/pygoat",
-		"stars": 298,
+		"stars": 299,
 		"last_contributed": "2026-01-25T10:49:23Z"
 	},
 	{
@@ -2669,7 +2669,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/SecurityShepherd",
-		"stars": 1420,
+		"stars": 1421,
 		"last_contributed": "2025-10-15T16:34:52Z"
 	},
 	{
@@ -2734,7 +2734,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5712,
+		"stars": 5714,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -2773,7 +2773,7 @@
 		],
 		"author": "incredibleindishell, Mohammed Farhan",
 		"badge": "incredibleindishell/SSRF_Vulnerable_Lab",
-		"stars": 754,
+		"stars": 756,
 		"last_contributed": "2023-08-21T17:02:38Z"
 	},
 	{
@@ -2999,7 +2999,7 @@
 		],
 		"url": "https://github.com/Commando-X/vuln-bank",
 		"badge": "Commando-X/vuln-bank",
-		"stars": 550,
+		"stars": 551,
 		"last_contributed": "2025-11-23T11:52:35Z"
 	},
 	{
@@ -3282,7 +3282,7 @@
 		],
 		"author": "OWASP",
 		"badge": "WebGoat/WebGoat",
-		"stars": 8895,
+		"stars": 8896,
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
@@ -3396,7 +3396,7 @@
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
 		"badge": "OWASP/wrongsecrets",
-		"stars": 1391,
+		"stars": 1392,
 		"last_contributed": "2026-01-26T07:25:21Z"
 	},
 	{
