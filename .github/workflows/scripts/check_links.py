@@ -64,7 +64,8 @@ def validate_url(url, context):
         print(f"Checking URL: {url} (Context: {context})")
         response = requests.head(url, allow_redirects=True, timeout=10)
 
-        if len(response.history) > 0:
+        # Check if URL was redirected
+        if response.history:
             # URL was redirected
             original_response = response.history[0]
             REDIRECTS.append({
@@ -74,6 +75,10 @@ def validate_url(url, context):
                 "context": context
             })
             print(f"Redirect noted: {url} -> {response.url} ({original_response.status_code})")
+            # Also check if the final destination has an error status
+            if response.status_code >= 400:
+                FAILURES.append({"url": url, "status": response.status_code, "context": context})
+                print(f"  Warning: Final URL returned error status {response.status_code}")
         elif response.status_code >= 400:
             # Failures for 4xx and 5xx status codes
             FAILURES.append({"url": url, "status": response.status_code, "context": context})
