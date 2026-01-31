@@ -32,15 +32,17 @@ To set up a local development environment for this [Jekyll](https://jekyllrb.com
 import json
 
 # Load the JSON file
-with open('_data/collection.json', 'r') as file:
+with open('_data/collection.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Sort the data (by `name` as an example)
 sorted_data = sorted(data, key=lambda x: x.get('name').lower())
 
 # Write it back to the file with tabs for indentation
-with open('_data/collection.json', 'w') as file:
+with open('_data/collection.json', 'w', encoding='utf-8') as file:
     # Use the `indent` parameter with custom separators to ensure no extra spaces
+    # IMPORTANT: Use ensure_ascii=False to preserve special characters (ç, ê, etc.)
+    # instead of converting them to Unicode escape sequences (\u00e7, \u00ea)
     json.dump(sorted_data, file, indent='\t', ensure_ascii=False)
     file.write('\n')  # Add a blank line at the end
 ```

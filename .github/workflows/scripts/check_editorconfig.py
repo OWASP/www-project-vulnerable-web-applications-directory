@@ -174,6 +174,45 @@ def check_json_structural_indentation(text, lines):
     return errors
 
 
+def check_unicode_escapes(text, data):
+    """
+    Check if JSON file contains unnecessary Unicode escape sequences.
+    Characters like ç, ê, etc. should be stored as-is, not as \u00e7, \u00ea.
+    This requires ensure_ascii=False when using json.dump().
+    """
+    import re
+    errors = []
+    
+    # Common Unicode escape patterns for Latin characters with diacritics
+    # These should be written directly, not escaped
+    unicode_escape_pattern = re.compile(r'\\u00[0-9a-fA-F]{2}')
+    
+    # Find all Unicode escape sequences
+    matches = list(unicode_escape_pattern.finditer(text))
+    
+    if matches:
+        # Try to identify which entries contain these escapes
+        if isinstance(data, list):
+            for entry_index, entry in enumerate(data):
+                entry_str = json.dumps(entry, ensure_ascii=True)
+                if unicode_escape_pattern.search(entry_str):
+                    entry_name = entry.get('name', 'Unknown')
+                    # Find specific fields with escapes
+                    fields_with_escapes = []
+                    for key, value in entry.items():
+                        if isinstance(value, str) and unicode_escape_pattern.search(json.dumps(value, ensure_ascii=True)):
+                            fields_with_escapes.append(key)
+                    
+                    if fields_with_escapes:
+                        errors.append(
+                            f"ERROR: Entry #{entry_index} ('{entry_name}'): "
+                            f"Contains Unicode escape sequences in field(s): {', '.join(fields_with_escapes)}. "
+                            f"Use ensure_ascii=False in json.dump() to preserve special characters."
+                        )
+    
+    return errors
+
+
 def check_editorconfig(json_file):
     """Check if JSON file adheres to .editorconfig rules."""
     errors = []
@@ -271,6 +310,11 @@ def check_editorconfig(json_file):
         # Check JSON structural indentation
         structural_errors = check_json_structural_indentation(text, lines)
         errors.extend(structural_errors)
+        
+        # Check for Unicode escape sequences (if JSON is valid)
+        if data is not None:
+            unicode_errors = check_unicode_escapes(text, data)
+            errors.extend(unicode_errors)
         
         if errors:
             print('\n'.join(errors))
