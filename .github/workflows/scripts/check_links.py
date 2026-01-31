@@ -8,6 +8,10 @@ FAILURES = []
 REDIRECTS = []
 SEEN_URLS = set()
 
+def get_status_or_error(failure):
+    """Get status code or error message from a failure dict."""
+    return failure.get('status') if failure.get('status') is not None else failure.get('error')
+
 def output_summary(total_entries, failures_count, redirects_count):
     """Output workflow summary to GITHUB_STEP_SUMMARY."""
     summary = f"""## Link Checker Results
@@ -32,8 +36,7 @@ def output_summary(total_entries, failures_count, redirects_count):
             if FAILURES:
                 summary_file.write("\n### Failed URLs\n\n")
                 for failure in FAILURES:
-                    status_or_error = failure.get('status') if failure.get('status') is not None else failure.get('error')
-                    summary_file.write(f"- **{failure.get('context')}**: {failure.get('url')} ({status_or_error})\n")
+                    summary_file.write(f"- **{failure.get('context')}**: {failure.get('url')} ({get_status_or_error(failure)})\n")
             
             # Add redirect details if any
             if REDIRECTS:
@@ -114,8 +117,7 @@ if REDIRECTS:
 if FAILURES:
     print(f"\n{len(FAILURES)} URLs failed validation:")
     for failure in FAILURES:
-        status_or_error = failure.get('status') if failure.get('status') is not None else failure.get('error')
-        print(f"- {failure.get('context')}: {failure.get('url')} ({status_or_error})")
+        print(f"- {failure.get('context')}: {failure.get('url')} ({get_status_or_error(failure)})")
     with open("failed_links.json", "w") as f:
         json.dump({"failures": FAILURES, "redirects": REDIRECTS}, f, indent=2)
     output_summary(len(data), len(FAILURES), len(REDIRECTS))
