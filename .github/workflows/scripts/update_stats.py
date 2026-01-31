@@ -435,6 +435,7 @@ def update_collection_stats(collection_path: str) -> bool:
     skipped_count = 0
     error_count = 0
     archived_count = 0
+    archived_repos = []
 
     # Process each entry to collect repos
     for i, entry in enumerate(collection):
@@ -473,6 +474,7 @@ def update_collection_stats(collection_path: str) -> bool:
                 # Track archived repos
                 if stats.get('is_archived', False):
                     archived_count += 1
+                    archived_repos.append(repo_key)
                 
                 # Check if data in collection.json is actually changing
                 old_stars = entry.get('stars')
@@ -500,7 +502,7 @@ def update_collection_stats(collection_path: str) -> bool:
     # Save cache
     save_cache(cache)
 
-    output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count, archived_count)
+    output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count, archived_count, archived_repos)
 
     # Write updated collection back to file
     try:
@@ -513,12 +515,18 @@ def update_collection_stats(collection_path: str) -> bool:
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
-def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int):
+def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int, archived_repos: List[str]):
     summary =  f"""\nSummary:
       Processed: {processed_count}
         - Updated (changes detected): {updated_count}
         - Unchanged (no changes): {unchanged_count}
-        - Archived repositories: {archived_count}
+        - Archived repositories: {archived_count}"""
+    
+    if archived_repos:
+        for repo in archived_repos:
+            summary += f"\n          {repo}"
+    
+    summary += f"""
       Skipped: {skipped_count}
       Errors: {error_count}"""
 
