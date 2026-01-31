@@ -349,7 +349,7 @@
 			},
 			{
 				"name": "guide",
-				"url": "http://itsecgames.blogspot.com/2013/01/bwapp-installation.html"
+				"url": "https://itsecgames.blogspot.com/2013/01/bwapp-installation.html"
 			}
 		]
 	},
@@ -2569,7 +2569,7 @@
 		]
 	},
 	{
-		"url": "http://sg6-labs.blogspot.com/2007/12/secgame-1-sauron.html",
+		"url": "https://sg6-labs.blogspot.com/2007/12/secgame-1-sauron.html",
 		"name": "Sauron",
 		"collection": [
 			"container"
@@ -2580,7 +2580,7 @@
 		"references": [
 			{
 				"name": "download",
-				"url": "http://sg6-labs.blogspot.com/search/label/SecGame"
+				"url": "https://sg6-labs.blogspot.com/search/label/SecGame"
 			}
 		]
 	},
@@ -2730,7 +2730,7 @@
 			},
 			{
 				"name": "guide",
-				"url": "http://dummy2dummies.blogspot.com/2012/06/sqli-lab-series-part-1.html"
+				"url": "https://dummy2dummies.blogspot.com/2012/06/sqli-lab-series-part-1.html"
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
