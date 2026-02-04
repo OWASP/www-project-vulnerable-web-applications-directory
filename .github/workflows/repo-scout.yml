@@ -1,0 +1,70 @@
+name: Repository Scout - Discover Vulnerable Web Apps
+
+on:
+  schedule:
+    # Runs every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install PyGithub==2.1.1 requests==2.31.0 python-dateutil==2.8.2
+      
+      - name: Run Repository Scout
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/scout.py
+      
+      - name: Create Issue with Findings
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read the scout results
+            if (!fs.existsSync('scout-results.json')) {
+              console.log('No new repositories found');
+              return;
+            }
+            
+            const results = JSON.parse(fs.readFileSync('scout-results.json', 'utf8'));
+            
+            if (results.repositories.length === 0) {
+              console.log('No new repositories found');
+              return;
+            }
+            
+            // Read the issue body
+            const issueBody = fs.readFileSync('scout-issue-body.md', 'utf8');
+            
+            // Create the issue
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔍 Scout Report - ${results.scan_date}`,
+              body: issueBody,
+              labels: ['automated-scout', 'new-apps']
+            });
+            
+            console.log(`Created issue with ${results.repositories.length} new repositories`);
