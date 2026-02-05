@@ -68,7 +68,7 @@
 		"author": "t0thkr1s",
 		"notes": "Intentionally vulnerable Android application.",
 		"badge": "t0thkr1s/allsafe-android",
-		"stars": 354,
+		"stars": 357,
 		"last_contributed": "2025-09-20T10:47:24Z"
 	},
 	{
@@ -115,7 +115,7 @@
 		],
 		"author": "satishpatnayak",
 		"badge": "satishpatnayak/AndroGoat",
-		"stars": 313,
+		"stars": 317,
 		"last_contributed": "2025-11-22T05:07:26Z"
 	},
 	{
@@ -270,7 +270,7 @@
 		],
 		"author": "NeuraLegion",
 		"badge": "NeuraLegion/brokencrystals",
-		"stars": 180,
+		"stars": 181,
 		"last_contributed": "2026-01-14T14:34:10Z"
 	},
 	{
@@ -368,7 +368,7 @@
 		"author": "Cider",
 		"notes": "Deliberately vulnerable CI/CD environment. Hack CI/CD pipelines, capture the flags.",
 		"badge": "cider-security-research/cicd-goat",
-		"stars": 2185,
+		"stars": 2186,
 		"last_contributed": "2024-07-11T13:31:30Z"
 	},
 	{
@@ -398,7 +398,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3459,
+		"stars": 3462,
 		"last_contributed": "2025-09-18T14:44:41Z"
 	},
 	{
@@ -423,7 +423,7 @@
 		"author": "OWASP",
 		"notes": "OWASP crAPI (Completely Ridiculous API) is an intentionally vulnerable API designed to help security teams practice API security testing including BOLA, BFLA, mass assignment, and authentication flaws.",
 		"badge": "OWASP/crAPI",
-		"stars": 1413,
+		"stars": 1415,
 		"last_contributed": "2026-01-20T18:56:04Z"
 	},
 	{
@@ -547,7 +547,7 @@
 		],
 		"author": "Miroslav Stampar",
 		"badge": "stamparm/DSVW",
-		"stars": 854,
+		"stars": 853,
 		"last_contributed": "2025-12-21T15:44:20Z"
 	},
 	{
@@ -661,7 +661,9 @@
 		],
 		"author": "The Red Guild",
 		"badge": "theredguild/damn-vulnerable-defi",
-		"notes": "Perhaps the most sophisticated vulnerable set of Solidity smart contracts ever witnessed, it features flashloans, price oracles, governance, NFTs, DEXs, lending pools, smart contract wallets, timelocks, vaults, meta-transactions, token distributions, upgradeability and more."
+		"notes": "Perhaps the most sophisticated vulnerable set of Solidity smart contracts ever witnessed, it features flashloans, price oracles, governance, NFTs, DEXs, lending pools, smart contract wallets, timelocks, vaults, meta-transactions, token distributions, upgradeability and more.",
+		"stars": 1276,
+		"last_contributed": "2025-03-21T11:25:21Z"
 	},
 	{
 		"url": "https://github.com/njmulsqb/DVEA/",
@@ -792,7 +794,7 @@
 		"author": "prateekg147",
 		"notes": "An iOS application that is damn vulnerable.",
 		"badge": "prateek147/DVIA-v2",
-		"stars": 1051,
+		"stars": 1055,
 		"last_contributed": "2024-03-29T08:01:43Z"
 	},
 	{
@@ -817,7 +819,7 @@
 		],
 		"author": "Reversec Labs",
 		"badge": "ReversecLabs/damn-vulnerable-llm-agent",
-		"stars": 359,
+		"stars": 360,
 		"last_contributed": "2025-06-25T13:58:42Z"
 	},
 	{
@@ -846,7 +848,7 @@
 		"author": "@appsecco",
 		"notes": "Different project from the old DVNA",
 		"badge": "appsecco/dvna",
-		"stars": 758,
+		"stars": 757,
 		"last_contributed": "2023-11-08T12:11:49Z"
 	},
 	{
@@ -995,7 +997,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12535,
+		"stars": 12555,
 		"last_contributed": "2026-01-21T12:02:07Z"
 	},
 	{
@@ -1061,7 +1063,9 @@
 		],
 		"author": "SunSec",
 		"badge": "SunWeb3Sec/DeFiHackLabs",
-		"notes": "Reproduce DeFi hacked incidents using Foundry."
+		"notes": "Reproduce DeFi hacked incidents using Foundry.",
+		"stars": 6378,
+		"last_contributed": "2026-01-29T13:23:11Z"
 	},
 	{
 		"url": "https://github.com/payatu/diva-android",
@@ -1086,7 +1090,7 @@
 		"author": "Payatu",
 		"notes": "DIVA (Damn Insecure and Vulnerable App) is an intentionally vulnerable Android application designed to help security professionals and developers learn about Android security vulnerabilities.",
 		"badge": "payatu/diva-android",
-		"stars": 1074,
+		"stars": 1075,
 		"last_contributed": "2016-01-15T10:13:59Z"
 	},
 	{
@@ -1346,7 +1350,7 @@
 		"author": "Orange-Cyberdefense",
 		"notes": "Requires a considerably powerful system",
 		"badge": "Orange-Cyberdefense/GOAD",
-		"stars": 7399,
+		"stars": 7406,
 		"last_contributed": "2025-07-16T16:54:53Z"
 	},
 	{
@@ -1406,7 +1410,7 @@
 		],
 		"author": " Katie Paxton-Fear ",
 		"badge": "InsiderPhD/Generic-University",
-		"stars": 416,
+		"stars": 417,
 		"last_contributed": "2022-11-14T19:01:24Z"
 	},
 	{
@@ -1502,7 +1506,7 @@
 		"author": "Google",
 		"notes": "This project aims to provide a central repository for testbeds contents usable to assert the quality and functionality of security scanners. This includes 0-day and 1-day scanning capabilities. Covering various CVEs, weak credentials across various services, exposed UI for various services.",
 		"badge": "google/security-testbeds",
-		"stars": 58,
+		"stars": 57,
 		"last_contributed": "2026-01-16T13:27:21Z"
 	},
 	{
@@ -1749,7 +1753,7 @@
 		"author": "Dinesh Shetty",
 		"notes": "Vulnerable Android application for security enthusiasts and developers to learn about Android insecurities. Showcases various security vulnerabilities in Android banking applications.",
 		"badge": "dineshshetty/Android-InsecureBankv2",
-		"stars": 1398,
+		"stars": 1402,
 		"last_contributed": "2019-11-21T15:29:07Z"
 	},
 	{
@@ -1799,7 +1803,7 @@
 		"author": "Kubernetes Security Team",
 		"notes": "Hands-on lab for Kubernetes infrastructure pentesting",
 		"badge": "raesene/kube_security_lab",
-		"stars": 268,
+		"stars": 269,
 		"last_contributed": "2026-01-14T08:57:49Z"
 	},
 	{
@@ -1820,7 +1824,7 @@
 		"author": "Kubernetes Security Team",
 		"notes": "Interactive workshop covering Kubernetes security best practices",
 		"badge": "madhuakula/kubernetes-goat",
-		"stars": 5383,
+		"stars": 5392,
 		"last_contributed": "2025-11-18T15:14:10Z"
 	},
 	{
@@ -1855,7 +1859,7 @@
 		"author": "Christophe Tafani-Dereeper, Gerard Arall, rayhan0x01 Rayhan Ahmed",
 		"notes": "CVE-2021-44228",
 		"badge": "christophetd/log4shell-vulnerable-app",
-		"stars": 1136,
+		"stars": 1138,
 		"last_contributed": "2022-12-14T08:48:45Z"
 	},
 	{
@@ -1906,7 +1910,7 @@
 			}
 		],
 		"badge": "rapid7/metasploitable3",
-		"stars": 5413,
+		"stars": 5420,
 		"last_contributed": "2025-02-13T14:49:36Z"
 	},
 	{
@@ -1917,8 +1921,8 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/owasp-mstg",
-		"stars": 12686,
-		"last_contributed": "2026-01-30T16:20:54Z"
+		"stars": 12696,
+		"last_contributed": "2026-02-03T11:51:31Z"
 	},
 	{
 		"url": "https://github.com/OWASP/MASTG-Hacking-Playground",
@@ -1934,7 +1938,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/MASTG-Hacking-Playground",
-		"stars": 657,
+		"stars": 658,
 		"last_contributed": "2022-10-31T17:03:31Z"
 	},
 	{
@@ -1953,7 +1957,7 @@
 			}
 		],
 		"badge": "webpwnized/mutillidae",
-		"stars": 1466,
+		"stars": 1467,
 		"last_contributed": "2025-08-03T18:57:10Z"
 	},
 	{
@@ -2007,7 +2011,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/NodeGoat",
-		"stars": 2010,
+		"stars": 2009,
 		"last_contributed": "2023-06-21T07:23:23Z"
 	},
 	{
@@ -2100,7 +2104,7 @@
 		"author": "Oversecured Inc",
 		"notes": "an iOS app that aggregates all the platform's known and popular security vulnerabilities.",
 		"badge": "oversecured/OversecuredVulnerableiOSApp",
-		"stars": 230,
+		"stars": 231,
 		"last_contributed": "2024-01-10T11:04:41Z"
 	},
 	{
@@ -2168,8 +2172,8 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12411,
-		"last_contributed": "2026-01-05T10:05:51Z"
+		"stars": 12436,
+		"last_contributed": "2026-02-04T10:54:02Z"
 	},
 	{
 		"url": "https://secureby.design/",
@@ -2221,7 +2225,7 @@
 		"author": "Karan Preet Singh Sasan",
 		"badge": "SasanLabs/VulnerableApp",
 		"stars": 357,
-		"last_contributed": "2026-01-26T12:43:26Z"
+		"last_contributed": "2026-02-02T23:22:35Z"
 	},
 	{
 		"url": "https://github.com/SasanLabs/VulnerableApp-facade",
@@ -2382,8 +2386,8 @@
 		],
 		"author": "Ade Yoseman",
 		"badge": "adeyosemanputra/pygoat",
-		"stars": 299,
-		"last_contributed": "2026-01-25T10:49:23Z"
+		"stars": 302,
+		"last_contributed": "2026-02-01T14:45:00Z"
 	},
 	{
 		"url": "https://github.com/TheHackerDev/race-the-web",
@@ -2558,7 +2562,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/SecurityShepherd",
-		"stars": 1421,
+		"stars": 1422,
 		"last_contributed": "2025-10-15T16:34:52Z"
 	},
 	{
@@ -2623,7 +2627,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5714,
+		"stars": 5716,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -2662,7 +2666,7 @@
 		],
 		"author": "incredibleindishell, Mohammed Farhan",
 		"badge": "incredibleindishell/SSRF_Vulnerable_Lab",
-		"stars": 756,
+		"stars": 757,
 		"last_contributed": "2023-08-21T17:02:38Z"
 	},
 	{
@@ -2751,7 +2755,7 @@
 		"author": "lucideus",
 		"notes": "Web, Android and iOS application",
 		"badge": "lucideus-repo/UnSAFE_Bank",
-		"stars": 167,
+		"stars": 168,
 		"last_contributed": "2025-09-29T13:35:56Z"
 	},
 	{
@@ -2773,7 +2777,7 @@
 		],
 		"author": "erev0s",
 		"badge": "erev0s/VAmPI",
-		"stars": 1164,
+		"stars": 1166,
 		"last_contributed": "2024-11-25T13:00:33Z"
 	},
 	{
@@ -2868,7 +2872,7 @@
 		],
 		"url": "https://github.com/Commando-X/vuln-bank",
 		"badge": "Commando-X/vuln-bank",
-		"stars": 551,
+		"stars": 556,
 		"last_contributed": "2025-11-23T11:52:35Z"
 	},
 	{
@@ -2898,7 +2902,7 @@
 			"sqlite",
 			"sequelize"
 		],
-		"stars": 41,
+		"stars": 42,
 		"last_contributed": "2024-08-26T22:48:44Z"
 	},
 	{
@@ -3047,7 +3051,7 @@
 		"author": "Yavuzlar (siberyavuzlar.com)",
 		"notes": "A web vulnerability lab project developed by Yavuzlar.",
 		"badge": "Yavuzlar/VulnLab",
-		"stars": 479,
+		"stars": 482,
 		"last_contributed": "2025-02-02T18:40:45Z"
 	},
 	{
@@ -3151,7 +3155,7 @@
 		],
 		"author": "OWASP",
 		"badge": "WebGoat/WebGoat",
-		"stars": 8896,
+		"stars": 8907,
 		"last_contributed": "2025-11-02T13:53:55Z"
 	},
 	{
@@ -3221,7 +3225,7 @@
 		],
 		"author": "Green Dog (GrrrDog)",
 		"badge": "GrrrDog/weird_proxies",
-		"stars": 1852,
+		"stars": 1854,
 		"last_contributed": "2023-11-04T18:48:02Z"
 	},
 	{
@@ -3265,8 +3269,8 @@
 		"author": "Jeroen Willemsen (@commjoen), Ben de Haan (@bendehaan), Nanne Baars (@nbaars)",
 		"notes": "OWASP WrongSecrets is a vulnerable app used to show how to not use secrets.",
 		"badge": "OWASP/wrongsecrets",
-		"stars": 1392,
-		"last_contributed": "2026-01-26T07:25:21Z"
+		"stars": 1395,
+		"last_contributed": "2026-02-03T20:52:04Z"
 	},
 	{
 		"url": "https://sourceforge.net/projects/xxe/",
@@ -3748,7 +3752,7 @@
 		],
 		"author": "Aliyu G. Yisa",
 		"badge": "aligorithm/Zero-Health",
-		"stars": 33,
+		"stars": 36,
 		"last_contributed": "2025-06-15T14:46:24Z"
 	}
 ]
