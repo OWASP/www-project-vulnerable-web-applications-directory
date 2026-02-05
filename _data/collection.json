@@ -622,7 +622,7 @@
 	},
 	{
 		"url": "https://github.com/appsecco/dvcsharp-api",
-		"name": "Damn Vulnerable C# Application (API) ",
+		"name": "Damn Vulnerable C# Application (API)",
 		"collection": [
 			"container",
 			"offline"
@@ -642,6 +642,26 @@
 		"badge": "appsecco/dvcsharp-api",
 		"stars": 79,
 		"last_contributed": "2022-12-07T07:14:10Z"
+	},
+	{
+		"url": "https://github.com/theredguild/damn-vulnerable-defi",
+		"name": "Damn Vulnerable DeFi",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"DeFi",
+			"solidity"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://www.damnvulnerabledefi.xyz/"
+			}
+		],
+		"author": "The Red Guild",
+		"badge": "theredguild/damn-vulnerable-defi",
+		"notes": "Perhaps the most sophisticated vulnerable set of Solidity smart contracts ever witnessed, it features flashloans, price oracles, governance, NFTs, DEXs, lending pools, smart contract wallets, timelocks, vaults, meta-transactions, token distributions, upgradeability and more."
 	},
 	{
 		"url": "https://github.com/njmulsqb/DVEA/",
@@ -1020,6 +1040,28 @@
 		],
 		"author": "Luke [flabbyrabbit]",
 		"notes": "Formerly HackThis"
+	},
+	{
+		"url": "https://github.com/SunWeb3Sec/DeFiHackLabs",
+		"name": "DeFi Hack Labs",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"DeFi",
+			"solidity",
+			"etherium",
+			"foundry"
+		],
+		"references": [
+			{
+				"name": "announcement",
+				"url": "https://x.com/pashov/status/1647586395823669248"
+			}
+		],
+		"author": "SunSec",
+		"badge": "SunWeb3Sec/DeFiHackLabs",
+		"notes": "Reproduce DeFi hacked incidents using Foundry."
 	},
 	{
 		"url": "https://github.com/payatu/diva-android",
