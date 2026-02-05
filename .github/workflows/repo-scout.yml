@@ -2,9 +2,8 @@ name: Repository Scout - Discover Vulnerable Web Apps
 
 on:
   schedule:
-    # Runs every Monday at 9:00 AM UTC
     - cron: '0 9 * * 1'
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,7 +21,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
       
       - name: Install dependencies
         run: |
@@ -42,7 +40,6 @@ jobs:
           script: |
             const fs = require('fs');
             
-            // Read the scout results
             if (!fs.existsSync('scout-results.json')) {
               console.log('No new repositories found');
               return;
@@ -55,10 +52,8 @@ jobs:
               return;
             }
             
-            // Read the issue body
             const issueBody = fs.readFileSync('scout-issue-body.md', 'utf8');
             
-            // Create the issue
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
