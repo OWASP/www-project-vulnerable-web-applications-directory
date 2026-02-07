@@ -1,8 +1,26 @@
 #!/usr/bin/env python3
 import os
 import json
+import re
 from datetime import datetime
 from github import Github
+
+def load_existing_repos():
+    """Load existing GitHub repos from collection.json to avoid duplicates"""
+    existing = set()
+    try:
+        if os.path.exists('_data/collection.json'):
+            with open('_data/collection.json', 'r') as f:
+                data = json.load(f)
+                for item in data:
+                    url = item.get('url', '')
+                    if 'github.com' in url:
+                        match = re.search(r'github\.com/([^/]+/[^/]+)', url)
+                        if match:
+                            existing.add(match.group(1).lower())
+    except Exception as e:
+        print(f"Warning: Could not load collection.json: {e}")
+    return existing
 
 def main():
     token = os.environ.get('GITHUB_TOKEN')
@@ -11,8 +29,14 @@ def main():
         return 1
     
     print("Starting scout...")
+    
+    # Load existing repos to prevent duplicates
+    existing = load_existing_repos()
+    print(f"Loaded {len(existing)} existing repositories from collection")
+    
     gh = Github(token)
     found = []
+    skipped = 0
     
     # Search for vulnerable apps
     queries = ["intentionally vulnerable", "deliberately vulnerable web"]
@@ -20,35 +44,79 @@ def main():
         print(f"Searching: {query}")
         try:
             results = gh.search_repositories(query=f"{query} stars:>=10", sort='stars', order='desc')
-            for repo in list(results)[:3]:
+            for repo in list(results)[:5]:
+                # Skip if already in collection
+                if repo.full_name.lower() in existing:
+                    print(f"  Skipping {repo.name} (already in collection)")
+                    skipped += 1
+                    continue
+                
                 if not repo.archived and repo.stargazers_count >= 10:
                     found.append({
                         'name': repo.name,
                         'url': repo.html_url,
                         'stars': repo.stargazers_count,
                         'description': repo.description or 'No description',
-                        'language': repo.language or 'Unknown'
+                        'language': repo.language or 'Unknown',
+                        'full_name': repo.full_name
                     })
-                    print(f"  Found: {repo.name}")
+                    print(f"  Found: {repo.name} ({repo.stargazers_count} stars)")
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error searching '{query}': {e}")
     
     # Save results
     date = datetime.now().strftime('%Y-%m-%d')
     with open('scout-results.json', 'w') as f:
-        json.dump({'scan_date': date, 'total_found': len(found), 'repositories': found}, f, indent=2)
+        json.dump({
+            'scan_date': date,
+            'total_found': len(found),
+            'total_skipped': skipped,
+            'existing_in_collection': len(existing),
+            'repositories': found
+        }, f, indent=2)
     
     # Create issue body
-    body = f"## Scout Report - {date}\n\nFound {len(found)} repositories:\n\n"
-    for i, r in enumerate(found, 1):
-        body += f"{i}. **{r['name']}** - {r['stars']} stars\n"
-        body += f"   {r['url']}\n"
-        body += f"   {r['description']}\n\n"
+    body = f"## 🔍 Scout Report - {date}\n\n"
+    body += f"**Summary:**\n"
+    body += f"- New repositories found: {len(found)}\n"
+    body += f"- Already in collection (skipped): {skipped}\n"
+    body += f"- Total existing in collection: {len(existing)}\n\n"
+    body += "---\n\n"
+    
+    if len(found) == 0:
+        body += "*No new repositories found in this scan. All discovered repositories are already in the collection.*\n"
+    else:
+        body += "### 🆕 New Repositories\n\n"
+        for i, r in enumerate(found, 1):
+            body += f"#### {i}. [{r['name']}]({r['url']})\n\n"
+            body += f"- **Repository:** `{r['full_name']}`\n"
+            body += f"- **Stars:** ⭐ {r['stars']}\n"
+            body += f"- **Language:** {r['language']}\n"
+            body += f"- **Description:** {r['description']}\n\n"
+            body += "<details>\n"
+            body += "<summary>📋 Suggested collection.json entry</summary>\n\n"
+            body += "```json\n"
+            body += json.dumps({
+                "url": r['url'],
+                "name": r['name'],
+                "description": r['description'],
+                "language": r['language'],
+                "technologies": [],
+                "collection": ["offline"]
+            }, indent=2)
+            body += "\n```\n\n"
+            body += "</details>\n\n"
+            body += "---\n\n"
+    
+    body += "\n*🤖 This issue was created automatically by the Repository Scout GitHub Action*\n"
     
     with open('scout-issue-body.md', 'w') as f:
         f.write(body)
     
-    print(f"Done! Found {len(found)} repos")
+    print(f"\nDone!")
+    print(f"  New repos found: {len(found)}")
+    print(f"  Duplicates skipped: {skipped}")
+    print(f"  Existing in collection: {len(existing)}")
     return 0
 
 if __name__ == '__main__':
