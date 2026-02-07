@@ -43,7 +43,10 @@ def main():
     for query in queries:
         print(f"Searching: {query}")
         try:
-            results = gh.search_repositories(query=f"{query} stars:>=10", sort='stars', order='desc')
+            # Build query with filters: stars, fork, archived
+            search_query = f"{query} stars:>=10 fork:false archived:false"
+            results = gh.search_repositories(query=search_query, sort='stars', order='desc')
+            
             for repo in list(results)[:5]:
                 # Skip if already in collection
                 if repo.full_name.lower() in existing:
@@ -51,22 +54,15 @@ def main():
                     skipped += 1
                     continue
                 
-                # Skip forks
-                if repo.fork:
-                    print(f"  Skipping {repo.name} (is a fork)")
-                    skipped += 1
-                    continue
-                
-                if not repo.archived and repo.stargazers_count >= 10:
-                    found.append({
-                        'name': repo.name,
-                        'url': repo.html_url,
-                        'stars': repo.stargazers_count,
-                        'description': repo.description or 'No description',
-                        'language': repo.language or 'Unknown',
-                        'full_name': repo.full_name
-                    })
-                    print(f"  Found: {repo.name} ({repo.stargazers_count} stars)")
+                found.append({
+                    'name': repo.name,
+                    'url': repo.html_url,
+                    'stars': repo.stargazers_count,
+                    'description': repo.description or 'No description',
+                    'language': repo.language or 'Unknown',
+                    'full_name': repo.full_name
+                })
+                print(f"  Found: {repo.name} ({repo.stargazers_count} stars)")
         except Exception as e:
             print(f"Error searching '{query}': {e}")
     
