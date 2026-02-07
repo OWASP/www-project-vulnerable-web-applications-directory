@@ -51,6 +51,12 @@ def main():
                     skipped += 1
                     continue
                 
+                # Skip forks
+                if repo.fork:
+                    print(f"  Skipping {repo.name} (is a fork)")
+                    skipped += 1
+                    continue
+                
                 if not repo.archived and repo.stargazers_count >= 10:
                     found.append({
                         'name': repo.name,
