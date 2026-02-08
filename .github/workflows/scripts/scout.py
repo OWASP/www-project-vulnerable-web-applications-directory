@@ -13,11 +13,22 @@ def load_existing_repos():
             with open('_data/collection.json', 'r') as f:
                 data = json.load(f)
                 for item in data:
+                    # Check main URL
                     url = item.get('url', '')
                     if 'github.com' in url:
                         match = re.search(r'github\.com/([^/]+/[^/]+)', url)
                         if match:
                             existing.add(match.group(1).lower())
+                    
+                    # Check references array for GitHub URLs
+                    if 'references' in item and isinstance(item['references'], list):
+                        for ref in item['references']:
+                            if isinstance(ref, dict) and 'url' in ref:
+                                ref_url = ref['url']
+                                if 'github.com' in ref_url:
+                                    match = re.search(r'github\.com/([^/]+/[^/]+)', ref_url)
+                                    if match:
+                                        existing.add(match.group(1).lower())
     except Exception as e:
         print(f"Warning: Could not load collection.json: {e}")
     return existing
@@ -66,7 +77,16 @@ def main():
         except Exception as e:
             print(f"Error searching '{query}': {e}")
     
-    # Save results
+    # Check if we found any new repositories
+    if len(found) == 0:
+        print(f"\nDone!")
+        print(f"  New repos found: {len(found)}")
+        print(f"  Duplicates skipped: {skipped}")
+        print(f"  Existing in collection: {len(existing)}")
+        print("  No issue will be created (no new apps found)")
+        return 0
+    
+    # Save results only if we have new repositories
     date = datetime.now().strftime('%Y-%m-%d')
     with open('scout-results.json', 'w') as f:
         json.dump({
@@ -85,30 +105,27 @@ def main():
     body += f"- Total existing in collection: {len(existing)}\n\n"
     body += "---\n\n"
     
-    if len(found) == 0:
-        body += "*No new repositories found in this scan. All discovered repositories are already in the collection.*\n"
-    else:
-        body += "### 🆕 New Repositories\n\n"
-        for i, r in enumerate(found, 1):
-            body += f"#### {i}. [{r['name']}]({r['url']})\n\n"
-            body += f"- **Repository:** `{r['full_name']}`\n"
-            body += f"- **Stars:** ⭐ {r['stars']}\n"
-            body += f"- **Language:** {r['language']}\n"
-            body += f"- **Description:** {r['description']}\n\n"
-            body += "<details>\n"
-            body += "<summary>📋 Suggested collection.json entry</summary>\n\n"
-            body += "```json\n"
-            body += json.dumps({
-                "url": r['url'],
-                "name": r['name'],
-                "description": r['description'],
-                "language": r['language'],
-                "technologies": [],
-                "collection": ["offline"]
-            }, indent=2)
-            body += "\n```\n\n"
-            body += "</details>\n\n"
-            body += "---\n\n"
+    body += "### 🆕 New Repositories\n\n"
+    for i, r in enumerate(found, 1):
+        body += f"#### {i}. [{r['name']}]({r['url']})\n\n"
+        body += f"- **Repository:** `{r['full_name']}`\n"
+        body += f"- **Stars:** ⭐ {r['stars']}\n"
+        body += f"- **Language:** {r['language']}\n"
+        body += f"- **Description:** {r['description']}\n\n"
+        body += "<details>\n"
+        body += "<summary>📋 Suggested collection.json entry</summary>\n\n"
+        body += "```json\n"
+        body += json.dumps({
+            "url": r['url'],
+            "name": r['name'],
+            "description": r['description'],
+            "language": r['language'],
+            "technologies": [],
+            "collection": ["offline"]
+        }, indent=2)
+        body += "\n```\n\n"
+        body += "</details>\n\n"
+        body += "---\n\n"
     
     body += "\n*🤖 This issue was created automatically by the Repository Scout GitHub Action*\n"
     
