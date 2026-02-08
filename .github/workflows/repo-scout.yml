@@ -59,7 +59,7 @@ jobs:
               repo: context.repo.repo,
               title: `🔍 Scout Report - ${results.scan_date}`,
               body: issueBody,
-              labels: ['automated-scout', 'new-apps']
+              labels: ['new app']
             });
             
             console.log(`Created issue with ${results.repositories.length} new repositories`);
