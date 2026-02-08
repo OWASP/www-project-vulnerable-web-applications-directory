@@ -3,7 +3,40 @@ import os
 import json
 import re
 from datetime import datetime
+from urllib.parse import urlparse
 from github import Github
+
+def extract_github_repo(url):
+    """Extract normalized owner/repo from a GitHub URL.
+    
+    Handles URLs with fragments, query strings, and .git suffixes.
+    Returns None if the URL is not a valid GitHub repo URL.
+    """
+    if not url or 'github.com' not in url:
+        return None
+    
+    try:
+        parsed = urlparse(url)
+        if parsed.netloc != 'github.com':
+            return None
+        
+        # Get path and split into segments
+        path = parsed.path.strip('/')
+        if not path:
+            return None
+        
+        # Remove .git suffix if present
+        if path.endswith('.git'):
+            path = path[:-4]
+        
+        # Split path and get first two segments (owner/repo)
+        segments = path.split('/')
+        if len(segments) >= 2:
+            return f"{segments[0]}/{segments[1]}".lower()
+        
+        return None
+    except Exception:
+        return None
 
 def load_existing_repos():
     """Load existing GitHub repos from collection.json to avoid duplicates"""
@@ -15,20 +48,18 @@ def load_existing_repos():
                 for item in data:
                     # Check main URL
                     url = item.get('url', '')
-                    if 'github.com' in url:
-                        match = re.search(r'github\.com/([^/]+/[^/]+)', url)
-                        if match:
-                            existing.add(match.group(1).lower())
+                    repo = extract_github_repo(url)
+                    if repo:
+                        existing.add(repo)
                     
                     # Check references array for GitHub URLs
                     if 'references' in item and isinstance(item['references'], list):
                         for ref in item['references']:
                             if isinstance(ref, dict) and 'url' in ref:
                                 ref_url = ref['url']
-                                if 'github.com' in ref_url:
-                                    match = re.search(r'github\.com/([^/]+/[^/]+)', ref_url)
-                                    if match:
-                                        existing.add(match.group(1).lower())
+                                repo = extract_github_repo(ref_url)
+                                if repo:
+                                    existing.add(repo)
     except Exception as e:
         print(f"Warning: Could not load collection.json: {e}")
     return existing
