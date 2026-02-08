@@ -79,7 +79,7 @@ def main():
     
     # Check if we found any new repositories
     if len(found) == 0:
-        print(f"\nDone!")
+        print(f"Done!")
         print(f"  New repos found: {len(found)}")
         print(f"  Duplicates skipped: {skipped}")
         print(f"  Existing in collection: {len(existing)}")
