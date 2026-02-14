@@ -25,6 +25,10 @@ pr_number
 # GitHub stats cache
 .github_stats_cache.json
 
+# Update-stats workflow artifacts (archived repos issue)
+archived_repos.json
+archived-repos-issue-body.md
+
 # Misc
 sort_json.py
 .ruby-version

@@ -8,6 +8,11 @@ This script:
 3. Updates the JSON with stars and last_contributed fields
 4. Implements dynamic rate limiting with exponential backoff
 5. Uses local caching to minimize API calls
+6. Detects archived repositories: updates _data/archived_repos.json (url, name, date, notes) as
+   the persistent list of repos we're tracking for cleanup. Entries already in the list are
+   not re-added and don't get a new issue (retired); notes can record e.g. "keeping". New
+   entries are written to archived_repos.json for the workflow to create an issue. The
+   workflow commits _data/archived_repos.json when it changes.
 
 Features:
 - Dynamic rate limit handling with automatic retry
@@ -40,6 +45,7 @@ except ImportError:
 
 # Configuration
 COLLECTION_JSON_PATH = "_data/collection.json"
+ARCHIVED_REPOS_LIST_PATH = "_data/archived_repos.json"  # Persistent list (committed); retired/keeping lookup
 GITHUB_GRAPHQL_API = "https://api.github.com/graphql"
 REQUEST_TIMEOUT = 10  # Timeout for API requests in seconds
 MAX_RETRIES = int(os.environ.get('MAX_RETRIES', '3'))
@@ -88,6 +94,75 @@ def save_cache(cache: Dict[str, Dict[str, Any]]):
             debug_log(f"Saved cache with {len(cache)} entries")
     except IOError as e:
         print(f"Warning: Failed to save cache file: {e}")
+
+
+def _normalize_url(url: str) -> str:
+    """Normalize URL for comparison (lowercase, stripped)."""
+    return (url or "").strip().lower()
+
+
+def load_archived_repos_list() -> Tuple[List[Dict[str, Any]], set]:
+    """
+    Load the persistent archived-repos list from _data/archived_repos.json if it exists.
+    This is the list of repos we're tracking for cleanup (or have retired). If a repo is
+    already in the list we don't create another issue. Entries can have notes (e.g. "keeping").
+
+    Returns:
+        Tuple of (list of entry dicts with url, name, date, notes), set of normalized URLs
+    """
+    if not os.path.exists(ARCHIVED_REPOS_LIST_PATH):
+        debug_log(f"Archived repos list {ARCHIVED_REPOS_LIST_PATH} does not exist")
+        return [], set()
+    try:
+        with open(ARCHIVED_REPOS_LIST_PATH, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Warning: Failed to load {ARCHIVED_REPOS_LIST_PATH}: {e}")
+        return [], set()
+    if not isinstance(data, list):
+        print(f"Warning: {ARCHIVED_REPOS_LIST_PATH} should be a JSON array of objects")
+        return [], set()
+    entries = []
+    seen = set()
+    for item in data:
+        if not isinstance(item, dict) or not item.get('url'):
+            continue
+        url = (item.get('url') or '').strip()
+        entries.append({
+            "url": url,
+            "name": item.get("name", url),
+            "date": item.get("date", ""),
+            "notes": item.get("notes", ""),
+        })
+        seen.add(_normalize_url(url))
+    debug_log(f"Loaded archived repos list with {len(entries)} entries")
+    return entries, seen
+
+
+def save_archived_repos_list(existing_entries: List[Dict[str, Any]], new_entries: List[Dict[str, Any]]):
+    """
+    Merge new entries into the persistent list (by url) and write to _data/archived_repos.json.
+    Existing entries are kept as-is (preserves notes). New URLs are appended with date and notes "".
+    """
+    seen = {_normalize_url(e["url"]) for e in existing_entries}
+    merged = list(existing_entries)
+    for entry in new_entries:
+        url = entry.get("url", "").strip()
+        if url and _normalize_url(url) not in seen:
+            merged.append({
+                "url": url,
+                "name": entry.get("name", url),
+                "date": entry.get("date", ""),
+                "notes": entry.get("notes", ""),
+            })
+            seen.add(_normalize_url(url))
+    try:
+        with open(ARCHIVED_REPOS_LIST_PATH, 'w', encoding='utf-8') as f:
+            json.dump(merged, f, indent=2, ensure_ascii=False)
+            f.write('\n')
+        debug_log(f"Saved archived repos list with {len(merged)} entries")
+    except IOError as e:
+        print(f"Warning: Failed to write {ARCHIVED_REPOS_LIST_PATH}: {e}")
 
 
 def get_github_headers() -> Dict[str, str]:
@@ -424,7 +499,10 @@ def update_collection_stats(collection_path: str) -> bool:
         return False
 
     print(f"Processing {len(collection)} entries...")
-    
+
+    # Load persistent list of archived repos we're tracking (retired/keeping); avoid re-adding and duplicate issues
+    archived_list_entries, archived_list_urls = load_archived_repos_list()
+
     # Collect all repos to process
     repos_to_fetch = []
     repo_to_entry_map = {}
@@ -435,7 +513,8 @@ def update_collection_stats(collection_path: str) -> bool:
     skipped_count = 0
     error_count = 0
     archived_count = 0
-    archived_repos = []
+    archived_repos = []  # List of {"url": full URL, "name": "...", "date": "YYYY-MM-DD", "notes": ""}
+    run_date = datetime.utcnow().strftime("%Y-%m-%d")
 
     # Process each entry to collect repos
     for i, entry in enumerate(collection):
@@ -471,10 +550,19 @@ def update_collection_stats(collection_path: str) -> bool:
         for repo_key, stats in stats_results.items():
             entry = repo_to_entry_map.get(repo_key)
             if entry and stats:
-                # Track archived repos
+                # Track archived repos (full URL, name, date, notes); skip if already in list (retired)
                 if stats.get('is_archived', False):
                     archived_count += 1
-                    archived_repos.append(repo_key)
+                    repo_url = f"https://github.com/{repo_key}"
+                    if _normalize_url(repo_url) not in archived_list_urls:
+                        archived_repos.append({
+                            "url": repo_url,
+                            "name": entry.get("name", repo_key),
+                            "date": run_date,
+                            "notes": "",
+                        })
+                    else:
+                        debug_log(f"  {repo_key} already in archived list, skipping for issue")
                 
                 # Check if data in collection.json is actually changing
                 old_stars = entry.get('stars')
@@ -502,6 +590,12 @@ def update_collection_stats(collection_path: str) -> bool:
     # Save cache
     save_cache(cache)
 
+    # Update persistent archived-repos list (merge in new entries) and write to repo
+    save_archived_repos_list(archived_list_entries, archived_repos)
+
+    # Write archived repos artifact for workflow issue creation (new entries only; empty when none)
+    write_archived_repos_artifact(archived_repos)
+
     output_summary(processed_count, updated_count, unchanged_count, skipped_count, error_count, archived_count, archived_repos)
 
     # Write updated collection back to file
@@ -515,7 +609,57 @@ def update_collection_stats(collection_path: str) -> bool:
         print(f"Error: Failed to write {collection_path}: {e}")
         return False
 
-def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int, archived_repos: List[str]):
+ARCHIVED_REPOS_JSON = "archived_repos.json"
+ARCHIVED_REPOS_ISSUE_BODY = "archived-repos-issue-body.md"
+
+
+def write_archived_repos_artifact(archived_repos: List[Dict[str, Any]]):
+    """
+    Write archived repos to a JSON file and markdown issue body for the workflow.
+    Each entry has: url (full GitHub URL), name, date (YYYY-MM-DD), notes (string).
+    Called every run; when archived_repos is empty the workflow will not create an issue.
+    """
+    run_date = datetime.utcnow().strftime("%Y-%m-%d")
+    artifact = {
+        "archived_repos": archived_repos,
+        "run_date": run_date,
+    }
+    try:
+        with open(ARCHIVED_REPOS_JSON, "w", encoding="utf-8") as f:
+            json.dump(artifact, f, indent=2)
+    except IOError as e:
+        print(f"Warning: Failed to write {ARCHIVED_REPOS_JSON}: {e}")
+        return
+
+    if not archived_repos:
+        return
+
+    # Build issue body markdown (only when there are entries to report)
+    body_lines = [
+        "The following repositories in the directory are **archived** on GitHub:",
+        "",
+        "| Repository | Name |",
+        "|------------|------|",
+    ]
+    for item in archived_repos:
+        url = item.get("url", "")
+        name = item.get("name", url)
+        body_lines.append(f"| {url} | {name} |")
+    body_lines.extend([
+        "",
+        "Consider updating the directory entry or removing it if the project is no longer maintained.",
+        "",
+        "*🤖 This issue was created automatically by the Update GitHub Statistics workflow.*",
+    ])
+
+    try:
+        with open(ARCHIVED_REPOS_ISSUE_BODY, "w", encoding="utf-8") as f:
+            f.write("\n".join(body_lines))
+    except IOError as e:
+        print(f"Warning: Failed to write {ARCHIVED_REPOS_ISSUE_BODY}: {e}")
+
+
+def output_summary(processed_count: int, updated_count: int, unchanged_count: int, skipped_count: int, error_count: int, archived_count: int, archived_repos: List[Any]):
     summary =  f"""\nSummary:
 Processed: {processed_count}
 - Updated (changes detected): {updated_count}
@@ -523,8 +667,8 @@ Processed: {processed_count}
 - Archived repositories: {archived_count}"""
     
     if archived_repos:
-        for repo in archived_repos:
-            summary += f"\n    {repo}"
+        for item in archived_repos:
+            summary += f"\n    {item.get('url', item.get('repo', item)) if isinstance(item, dict) else item}"
     
     summary += f"""
 - Skipped: {skipped_count}

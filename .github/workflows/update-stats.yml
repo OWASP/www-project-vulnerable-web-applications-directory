@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update-stats:
@@ -18,10 +19,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
       
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6
         with:
           python-version: '3.11'
       
@@ -36,18 +37,45 @@ jobs:
       - name: Check for changes
         id: git-check
         run: |
-          git diff --exit-code _data/collection.json || echo "changed=true" >> $GITHUB_OUTPUT
+          if [ -n "$(git status --short _data/collection.json _data/archived_repos.json 2>/dev/null)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
       
       - name: Commit and push if changed
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add _data/collection.json
+          git add _data/collection.json _data/archived_repos.json
           git commit -m "Update GitHub statistics [automated]"
           git push
       
       - name: No changes detected
         if: steps.git-check.outputs.changed != 'true'
         run: |
-          echo "No changes to collection.json"
+          echo "No changes to collection.json or archived repos list"
+
+      - name: Create issue for archived repositories
+        if: success() && hashFiles('archived_repos.json') != ''
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('archived_repos.json')) {
+              console.log('No archived repositories');
+              return;
+            }
+            const data = JSON.parse(fs.readFileSync('archived_repos.json', 'utf8'));
+            if (!data.archived_repos || data.archived_repos.length === 0) {
+              console.log('No archived repositories');
+              return;
+            }
+            const issueBody = fs.readFileSync('archived-repos-issue-body.md', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📦 Archived repositories in directory (${data.run_date})`,
+              body: issueBody,
+              labels: ['archived-repo']
+            });
+            console.log(`Created issue for ${data.archived_repos.length} archived repository(ies)`);
