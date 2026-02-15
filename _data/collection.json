@@ -398,7 +398,7 @@
 		],
 		"author": "Rhino Security Labs",
 		"badge": "RhinoSecurityLabs/cloudgoat",
-		"stars": 3473,
+		"stars": 3474,
 		"last_contributed": "2026-02-12T23:05:15Z"
 	},
 	{
@@ -662,7 +662,7 @@
 		"author": "The Red Guild",
 		"badge": "theredguild/damn-vulnerable-defi",
 		"notes": "Perhaps the most sophisticated vulnerable set of Solidity smart contracts ever witnessed, it features flashloans, price oracles, governance, NFTs, DEXs, lending pools, smart contract wallets, timelocks, vaults, meta-transactions, token distributions, upgradeability and more.",
-		"stars": 1278,
+		"stars": 1279,
 		"last_contributed": "2025-03-21T11:25:21Z"
 	},
 	{
@@ -997,7 +997,7 @@
 		],
 		"author": "RandomStorm",
 		"badge": "ethicalhack3r/DVWA",
-		"stars": 12592,
+		"stars": 12593,
 		"last_contributed": "2026-02-13T19:27:10Z"
 	},
 	{
@@ -1910,7 +1910,7 @@
 			}
 		],
 		"badge": "rapid7/metasploitable3",
-		"stars": 5428,
+		"stars": 5429,
 		"last_contributed": "2025-02-13T14:49:36Z"
 	},
 	{
@@ -1921,7 +1921,7 @@
 		],
 		"author": "OWASP",
 		"badge": "OWASP/owasp-mstg",
-		"stars": 12719,
+		"stars": 12722,
 		"last_contributed": "2026-02-13T22:02:00Z"
 	},
 	{
@@ -2176,7 +2176,7 @@
 		],
 		"author": "OWASP",
 		"badge": "juice-shop/juice-shop",
-		"stars": 12503,
+		"stars": 12506,
 		"last_contributed": "2026-02-04T10:54:02Z"
 	},
 	{
@@ -2549,7 +2549,7 @@
 		"author": "GitHub Security Lab",
 		"notes": "A GitHub Security Lab initiative, providing an in-repo learning experience, where learners secure intentionally vulnerable code.",
 		"badge": "skills/secure-code-game",
-		"stars": 2592,
+		"stars": 2593,
 		"last_contributed": "2026-02-05T20:42:30Z"
 	},
 	{
@@ -2652,7 +2652,7 @@
 			}
 		],
 		"badge": "Audi-1/sqli-labs",
-		"stars": 5719,
+		"stars": 5718,
 		"last_contributed": "2014-10-31T19:10:23Z"
 	},
 	{
@@ -2802,7 +2802,7 @@
 		],
 		"author": "erev0s",
 		"badge": "erev0s/VAmPI",
-		"stars": 1166,
+		"stars": 1167,
 		"last_contributed": "2024-11-25T13:00:33Z"
 	},
 	{
@@ -3799,6 +3799,6 @@
 		"author": "Aliyu G. Yisa",
 		"badge": "aligorithm/Zero-Health",
 		"stars": 40,
-		"last_contributed": "2025-06-15T14:46:24Z"
+		"last_contributed": "2026-02-14T17:38:56Z"
 	}
 ]
