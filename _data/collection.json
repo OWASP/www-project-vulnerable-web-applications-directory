@@ -2080,6 +2080,35 @@
 		"last_contributed": "2022-11-21T09:47:20Z"
 	},
 	{
+		"url": "https://github.com/kOaDT/oss-oopssec-store",
+		"name": "OopsSec Store",
+		"collection": [
+			"offline"
+		],
+		"technology": [
+			"JavaScript",
+			"TypeScript",
+			"Node.js",
+			"React",
+			"Next.js"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/kOaDT/oss-oopssec-store"
+			},
+			{
+				"name": "guide",
+				"url": "https://kOaDT.github.io/oss-oopssec-store"
+			}
+		],
+		"author": "kOaDT",
+		"notes": "Intentionally vulnerable e-commerce application with CTF challenges. Covers OWASP Top 10, API security flaws, and modern frontend attack vectors. Quick setup via npx create-oss-store.",
+		"badge": "kOaDT/oss-oopssec-store",
+		"stars": 11,
+		"last_contributed": "2026-02-18T22:29:50Z"
+	},
+	{
 		"url": "https://github.com/OSTEsayed/OSTE-Vulnerable-Web-Application",
 		"name": "OSTE-Vulnerable-Web-Application",
 		"collection": [
