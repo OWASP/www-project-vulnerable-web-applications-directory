@@ -52,6 +52,29 @@ with open('_data/collection.json', 'w', encoding='utf-8') as file:
 3. Pull requests should include a clear and concise description of the changes you have made.
 3. If your change is related to a specific issue, please ensure your PR description includes a keyword to close the issue (as applicable). Per: <https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests#linking-a-pull-request-to-an-issue>
 
+## Maintaining the Collection Data
+
+These guidelines help keep `_data/collection.json` consistent and well-documented for future maintainers.
+
+### Descriptions, Notes, and Technology
+
+- **Description:** Short, user-facing summary of what the app is and its purpose. Prefer text from official project pages, READMEs, or the project’s own wording. Keep it concise.
+- **Notes:** Operational information only: URLs, credentials, run/deploy steps, warnings (e.g. “do not deploy publicly”), CVE references, or legacy repo links. Not for general marketing or feature lists.
+- **Technology:** Only add technologies (e.g. PHP, Docker, Vue) when clearly stated in an official source. Do not infer from URLs or guesses.
+
+### Collection Field (Online, Offline, Container, Mobile, Platform)
+
+- If an entry’s **description**, **notes**, or **technology** reasonably mention **Docker**, **ISO**, **Vagrant**, **virtual machine**, **VM image**, or similar, ensure the entry’s `collection` array includes **`"container"`** (in addition to any other values like `"offline"` or `"online"`). This allows users to filter for container/VM-based deployments.
+
+### Categories (Activity / Use-Case)
+
+- Entries have an optional **`categories`** array describing how the app is used. Allowed values are defined in [schema.json](schema.json): `ctf`, `code-review`, `single-player`, `multi-player`, `guided-lessons`, `free-form`, `scanner-test`.
+
+### Data Quality and Policies
+
+- **No tools-only entries:** The directory lists vulnerable applications or environments (including CTF platforms and labs). Do not add tools that only perform scanning or exploitation without providing a vulnerable target (e.g. a standalone race-condition testing tool with no vulnerable app was removed for this reason).
+- **Sorting:** Keep entries sorted case-insensitively by the `name` key. Use the sorting snippet in the Pull Request Guidelines above when making large changes.
+
 ## Code of Conduct
 
 We ask that all contributors to OWASP projects abide by our [Code of Conduct](https://owasp.org/www-policy/operational/code-of-conduct). This code outlines our expectations for behavior within the project community and helps us maintain a welcoming and inclusive environment for all contributors.

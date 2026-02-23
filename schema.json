@@ -10,6 +10,10 @@
 					"online",
 					"container"
 				],
+				"categories": [
+					"ctf",
+					"single-player"
+				],
 				"technology": [
 					"TypeScript",
 					"JavaScript",
@@ -34,6 +38,8 @@
 					}
 				],
 				"author": "Example Author",
+				"description": "An example vulnerable web application for testing security tools and learning.",
+				"notes": "Demo credentials: admin / example123. Old repo: https://gitplace.com/example/test-app-legacy.",
 				"badge": "example/test-app",
 				"stars": 1250,
 				"last_contributed": "2026-01-04T15:23:45Z"
@@ -70,6 +76,21 @@
 						]
 					}
 				},
+				"categories": {
+					"type": "array",
+					"items": {
+						"enum": [
+							"ctf",
+							"code-review",
+							"single-player",
+							"multi-player",
+							"guided-lessons",
+							"free-form",
+							"scanner-test"
+						]
+					},
+					"description": "Activity or use-case categories (e.g. CTF, code review, single/multi player, guided or free-form)."
+				},
 				"technology": {
 					"type": "array",
 					"items": {
@@ -85,8 +106,13 @@
 				"author": {
 					"type": "string"
 				},
+				"description": {
+					"type": "string",
+					"description": "Short summary of what the app is and its purpose."
+				},
 				"notes": {
-					"type": "string"
+					"type": "string",
+					"description": "Operational notes: e.g. old repo or project URLs, credentials, CVE refs, deployment or usage notes."
 				},
 				"badge": {
 					"type": "string"
