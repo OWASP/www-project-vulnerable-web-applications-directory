@@ -147,7 +147,7 @@ jobs:
         exit $overall_status
     - name: Upload validation results
       if: always()
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: artifact
         path: |
