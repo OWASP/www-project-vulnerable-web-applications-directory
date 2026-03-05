@@ -8,4 +8,4 @@
 
 ### Code Repository
 
-* [Repo](https://github.com/OWASP/www-project-vulnerable-web-applications-directory)
+* [Repo](https://github.com/owasp-vwad/owasp-vwad.github.io/)
