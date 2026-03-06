@@ -19,17 +19,20 @@ name: OWASP Vulnerable Web Applications Directory
 pitch: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable web applications
   currently available for legal security and vulnerability testing of various kinds.
 repositories:
-  - name: www-project-vulnerable-web-applications-directory
-    url: https://github.com/OWASP/www-project-vulnerable-web-applications-directory
+  - name: Vulnerable Web Application Directory (VWAD)
+    url: https://github.com/owasp-vwad/owasp-vwad.github.io
     description: The OWASP Vulnerable Web Applications Directory Project (VWAD) is a comprehensive and well maintained registry of all known vulnerable
       web applications currently available.
+  - name: www-project-vulnerable-web-applications-directory
+    url: https://github.com/OWASP/www-project-vulnerable-web-applications-directory
+    description: ':warning: This repo is no longer in use.'
   - name: OWASP-VWAD
     url: https://github.com/OWASP/OWASP-VWAD
-    description: ':warning: This repo is no longer in use. Please refer to https://github.com/OWASP/www-project-vulnerable-web-applications-directory'
+    description: ':warning: This repo is no longer in use.'
 tags:
   - vwad
   - learning
   - vulnerableapp
   - appsec
 type: documentation
-website: https://owasp.org/www-project-vulnerable-web-applications-directory
+website: https://vwad.owasp.org
