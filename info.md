@@ -1,6 +1,6 @@
 ### Project Classification
 
-* <i class="fas fa-flask" style="color:#FFA500;"></i> Lab Project
+* <i class="fas fa-city" style="color:#800080;"></i> Production Project
 * <i class="fas fa-book" style="color:#233e81;"></i> Documentation
 * <i class="fas fa-toolbox" style="color:#233e81;"></i> Builder
 * <i class="fas fa-hammer" style="color:#233e81;"></i> Breaker

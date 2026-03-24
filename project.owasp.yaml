@@ -12,7 +12,7 @@ leaders:
   - name: Raul Siles
     email: raul.siles@owasp.org
     github: raulsiles
-level: 3
+level: 3.5
 license:
   - Apache-2.0
 name: OWASP Vulnerable Web Applications Directory
