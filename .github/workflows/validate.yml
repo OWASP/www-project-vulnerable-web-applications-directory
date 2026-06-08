@@ -17,7 +17,7 @@ jobs:
     # Only data files from the PR will be checked out in the next step
     # For workflow_dispatch: validates current branch data with current branch scripts
     - name: Checkout base repository
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+      uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6
       with:
         ref: ${{ github.event.pull_request.base.ref || github.ref }}
     - name: Sparse checkout changed datafiles from PR
