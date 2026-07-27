@@ -1,0 +1,35 @@
+__pycache__
+env
+.vscode
+Gemfile.lock
+
+# Eclipse
+# -------
+*.project
+*.settings
+
+# IntelliJ
+# --------
+*.iml
+.idea/
+
+_site/
+
+# Workflow validation logs (generated during workflow runs)
+schema_log.txt
+ordering_log.txt
+editorconfig_log.txt
+artifact.txt
+pr_number
+
+# GitHub stats cache
+.github_stats_cache.json
+
+# Update-stats workflow artifacts (root only; _data/archived_repos.json is committed)
+/archived_repos.json
+/archived-repos-issue-body.md
+
+# Misc
+sort_json.py
+.ruby-version
+*.backup

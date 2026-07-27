@@ -1,0 +1,155 @@
+name: Validate JSON
+
+on: 
+  pull_request_target:
+    paths:
+    - '_data/collection.json'
+  workflow_dispatch:
+
+
+jobs:
+  schema-check:
+    permissions:
+       contents: read  
+    runs-on: ubuntu-latest
+    steps:
+    # Security: Checkout base repository first to use trusted validation scripts
+    # Only data files from the PR will be checked out in the next step
+    # For workflow_dispatch: validates current branch data with current branch scripts
+    - name: Checkout base repository
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      with:
+        ref: ${{ github.event.pull_request.base.ref || github.ref }}
+    - name: Sparse checkout changed datafiles from PR
+      if: github.event_name == 'pull_request_target'
+      run: |
+        # Fetch the PR branch
+        git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-branch
+        
+        # Checkout only _data directory from PR branch
+        # This ensures validation scripts come from base repo (trusted)
+        # while only datafiles come from PR (untrusted)
+        git checkout pr-branch -- _data/
+        echo "✓ Successfully checked out _data/ from PR"
+    - name: Save PR number
+      env:
+        PR_NUMBER: ${{ github.event.pull_request.number || 'manual-run' }}
+      run: echo $PR_NUMBER > pr_number
+    # Note: The following validation steps process untrusted data from the PR,
+    # but use trusted validation scripts from the base repository.
+    # This is safe because:
+    # 1. Scripts come from base repo (checked out in step 1)
+    # 2. Only data files come from PR (checked out in step 2)
+    # 3. Scripts validate data without executing it as code
+    - name: Run schema check
+      id: schema
+      continue-on-error: true
+      run: |
+        python3 .github/workflows/scripts/check_schema.py schema.json _data/collection.json > schema_log.txt 2>&1
+    - name: Run alphabetical ordering check
+      id: ordering
+      continue-on-error: true
+      run: |
+        python3 .github/workflows/scripts/check_ordering.py _data/collection.json > ordering_log.txt 2>&1
+    - name: Run .editorconfig compliance check
+      id: editorconfig
+      continue-on-error: true
+      run: |
+        python3 .github/workflows/scripts/check_editorconfig.py _data/collection.json > editorconfig_log.txt 2>&1
+    - name: Create unified artifact and summary
+      if: always()
+      run: |
+        # Initialize summary (shows all results)
+        echo "# Validation Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Initialize overall status
+        overall_status=0
+        
+        # Initialize artifact file with header (only failures will be added)
+        echo "**The following issues were identified:**" > artifact.txt
+        echo "" >> artifact.txt
+        
+        # Schema validation results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## Schema Validation" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.schema.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All entries conform to the schema." >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat schema_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Schema Validation" >> artifact.txt
+          echo "" >> artifact.txt
+          cat schema_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Alphabetical ordering results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## Alphabetical Ordering Check" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.ordering.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat ordering_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## Alphabetical Ordering Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat ordering_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # .editorconfig compliance results
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "## .editorconfig Compliance Check" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.editorconfig.outcome }}" == "success" ]; then
+          echo "**Status: PASS ✓**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Status: FAIL ✗**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat editorconfig_log.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Add to artifact (for PR comment)
+          echo "## .editorconfig Compliance Check" >> artifact.txt
+          echo "" >> artifact.txt
+          cat editorconfig_log.txt >> artifact.txt
+          echo "" >> artifact.txt
+          overall_status=1
+        fi
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        
+        # Exit with error if any check failed
+        exit $overall_status
+    - name: Upload validation results
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7
+      with:
+        name: artifact
+        path: |
+          artifact.txt
+          pr_number

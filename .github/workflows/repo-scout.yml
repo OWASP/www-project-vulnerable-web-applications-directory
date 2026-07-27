@@ -1,0 +1,65 @@
+name: Repository Scout - Discover Vulnerable Web Apps
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install PyGithub==2.1.1 requests==2.31.0 python-dateutil==2.8.2
+      
+      - name: Run Repository Scout
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python .github/workflows/scripts/scout.py
+      
+      - name: Create Issue with Findings
+        if: success()
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
+        with:
+          script: |
+            const fs = require('fs');
+            
+            if (!fs.existsSync('scout-results.json')) {
+              console.log('No new repositories found');
+              return;
+            }
+            
+            const results = JSON.parse(fs.readFileSync('scout-results.json', 'utf8'));
+            
+            if (results.repositories.length === 0) {
+              console.log('No new repositories found');
+              return;
+            }
+            
+            const issueBody = fs.readFileSync('scout-issue-body.md', 'utf8');
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔍 Scout Report - ${results.scan_date}`,
+              body: issueBody,
+              labels: ['new app']
+            });
+            
+            console.log(`Created issue with ${results.repositories.length} new repositories`);

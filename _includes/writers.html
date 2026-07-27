@@ -1,0 +1,8 @@
+<div style="font-size: 75%">
+{% if page.authors %}
+  <b>Author(s):</b> {{ page.authors  | join: ', '}} <br>
+{% endif %}
+{% if page.contributors %}
+  <b>Contributor(s):</b> {{ page.contributors | join: ', '}} <br>
+{% endif %}
+</div>

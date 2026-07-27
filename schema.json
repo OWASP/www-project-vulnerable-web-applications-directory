@@ -1,0 +1,171 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"description": "This schema defines the information related to test application/environment entries for OWASP's Vulnerable Web Applications Directory (VWAD) project",
+	"examples": [
+		[
+			{
+				"url": "https://example.com",
+				"name": "Example Test App",
+				"collection": [
+					"online",
+					"container"
+				],
+				"categories": [
+					"ctf",
+					"single-player"
+				],
+				"technology": [
+					"TypeScript",
+					"JavaScript",
+					"Node.js"
+				],
+				"references": [
+					{
+						"name": "download",
+						"url": "https://gitplace.com/example/test-app"
+					},
+					{
+						"name": "docker",
+						"url": "https://hub.docker.com/r/example/test-app/"
+					},
+					{
+						"name": "guide",
+						"url": "https://guide.example.com/"
+					},
+					{
+						"name": "live",
+						"url": "https://test-app.herokuapp.com"
+					}
+				],
+				"author": "Example Author",
+				"description": "An example vulnerable web application for testing security tools and learning.",
+				"notes": "Demo credentials: admin / example123. Old repo: https://gitplace.com/example/test-app-legacy.",
+				"badge": "example/test-app",
+				"stars": 1250,
+				"last_contributed": "2026-01-04T15:23:45Z"
+			}
+		]
+	],
+	"type": "array",
+	"items": {
+		"$ref": "#/$defs/VWADEntry"
+	},
+	"title": "OWASP VWAD Schema",
+	"$defs": {
+		"VWADEntry": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"url": {
+					"type": "string",
+					"format": "uri",
+					"pattern": "^https?://.*"
+				},
+				"name": {
+					"type": "string"
+				},
+				"collection": {
+					"type": "array",
+					"items": {
+						"enum": [
+							"container",
+							"mobile",
+							"online",
+							"offline",
+							"platform"
+						]
+					}
+				},
+				"categories": {
+					"type": "array",
+					"items": {
+						"enum": [
+							"ctf",
+							"code-review",
+							"single-player",
+							"multi-player",
+							"guided-lessons",
+							"free-form",
+							"scanner-test"
+						]
+					},
+					"description": "Activity or use-case categories (e.g. CTF, code review, single/multi player, guided or free-form)."
+				},
+				"technology": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"references": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/Reference"
+					}
+				},
+				"author": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string",
+					"description": "Short summary of what the app is and its purpose."
+				},
+				"notes": {
+					"type": "string",
+					"description": "Operational notes: e.g. old repo or project URLs, credentials, CVE refs, deployment or usage notes."
+				},
+				"badge": {
+					"type": "string"
+				},
+				"stars": {
+					"type": "integer",
+					"minimum": 0,
+					"description": "GitHub stargazers count"
+				},
+				"last_contributed": {
+					"type": "string",
+					"format": "date-time",
+					"description": "ISO 8601 date string of the most recent contribution"
+				}
+			},
+			"required": [
+				"collection",
+				"name",
+				"url"
+			],
+			"title": "VWADEntry"
+		},
+		"Reference": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Name"
+				},
+				"url": {
+					"type": "string",
+					"format": "uri",
+					"pattern": "^https?://.*"
+				}
+			},
+			"required": [
+				"name",
+				"url"
+			],
+			"title": "Reference"
+		},
+		"Name": {
+			"enum": [
+				"guide",
+				"download",
+				"docker",
+				"downloads",
+				"announcement",
+				"live",
+				"demo",
+				"preview"
+			],
+			"title": "Name"
+		}
+	}
+}

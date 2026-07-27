@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://github.com/mandiant/Azure_Workshop",
+    "name": "Azure Infrastructure Workshop",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/google/firing-range",
+    "name": "Firing Range",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/Hackademic/hackademic",
+    "name": "Hackademic Challenges Project",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/rapid7/hackazon",
+    "name": "Hackazon",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/defendtheweb/hackthis.co.uk",
+    "name": "HackThis",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/B3nac/InjuredAndroid",
+    "name": "InjuredAndroid",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/SpiderLabs/MCIR",
+    "name": "Magical Code Injection Rainbow - MCIR",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/sakti/twitterlike",
+    "name": "twitterlike",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  },
+  {
+    "url": "https://github.com/s4n7h0/xvwa",
+    "name": "Xtreme Vulnerable Web Application (XVWA)",
+    "date": "2026-02-14",
+    "notes": "Retired in PR #248"
+  }
+]
