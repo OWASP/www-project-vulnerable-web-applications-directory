@@ -2263,6 +2263,30 @@
 		]
 	},
 	{
+		"url": "https://hego.red/jackpot",
+		"name": "Jackpot",
+		"collection": [
+			"online"
+		],
+		"technology": [
+			"AI",
+			"LLM",
+			"Prompt Injection"
+		],
+		"references": [
+			{
+				"name": "live",
+				"url": "https://hego.red/jackpot"
+			}
+		],
+		"author": "hego",
+		"description": "A ten floor casino where every floor is a deliberately broken AI character, one per category of the OWASP Top 10 for LLM Applications. Covers prompt injection, system prompt leakage, RAG poisoning, excessive agency and improper output handling. Runs in the browser, no signup.",
+		"categories": [
+			"ctf",
+			"single-player"
+		]
+	},
+	{
 		"url": "https://github.com/Sjord/jwtdemo/",
 		"name": "jwtdemo",
 		"collection": [
