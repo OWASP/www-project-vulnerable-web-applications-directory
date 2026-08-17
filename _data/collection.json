@@ -2419,6 +2419,39 @@
 		]
 	},
 	{
+		"url": "https://github.com/SabyasachiDhal/MCPGoat",
+		"name": "MCPGoat",
+		"collection": [
+			"offline",
+			"container"
+		],
+		"categories": [
+			"ctf",
+			"single-player"
+		],
+		"technology": [
+			"TypeScript",
+			"Node.js",
+			"Docker"
+		],
+		"references": [
+			{
+				"name": "download",
+				"url": "https://github.com/SabyasachiDhal/MCPGoat"
+			},
+			{
+				"name": "guide",
+				"url": "https://sabyasachidhal.github.io/MCPGoat/"
+			}
+		],
+		"author": "Sabyasachi Dhal",
+		"description": "A deliberately vulnerable Model Context Protocol (MCP) server for hands-on MCP penetration-testing practice. 26 challenges cover MCP-specific attacks (tool poisoning, tool shadowing, rug-pulls, indirect prompt injection, sampling abuse) alongside classic web bugs (RCE, SSRF, SQLi, path traversal). Each challenge ships at Easy, Moderate and Difficult levels plus a Secure reference, for 78 capture-the-flag flags, and includes a victim-agent harness that shows a real LLM agent being exploited.",
+		"notes": "Authorized training use only; intentionally contains RCE, SSRF, SQLi and secret leakage. Keep it bound to 127.0.0.1 or run inside the provided container; never expose it to a network you do not own. Runs over Streamable HTTP; attack with the bundled client, MCP Inspector, curl or Burp. Quick start: docker compose up --build.",
+		"badge": "SabyasachiDhal/MCPGoat",
+		"stars": 1,
+		"last_contributed": "2026-08-17T14:11:28Z"
+	},
+	{
 		"url": "https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/",
 		"name": "Metasploitable 2",
 		"collection": [
