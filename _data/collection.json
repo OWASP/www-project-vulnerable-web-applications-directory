@@ -2216,6 +2216,41 @@
 		]
 	},
 	{
+		"url": "https://github.com/Croesus-K/InjectArena",
+		"name": "InjectArena (攻心)",
+		"collection": [
+			"offline",
+			"container"
+		],
+		"categories": [
+			"ctf",
+			"single-player",
+			"guided-lessons"
+		],
+		"technology": [
+			"Node.js",
+			"Fastify",
+			"SQLite",
+			"Docker",
+			"LLM"
+		],
+		"references": [
+			{
+				"name": "guide",
+				"url": "https://github.com/Croesus-K/InjectArena#readme"
+			},
+			{
+				"name": "download",
+				"url": "https://github.com/Croesus-K/InjectArena/releases"
+			}
+		],
+		"author": "Croesus-K",
+		"description": "Self-hostable Chinese-language LLM prompt injection CTF: five levels covering direct injection, data exfiltration, guarded prompts, indirect injection (RAG poisoning) and tool abuse, with dual attack/defense scoring, leaderboards and post-breach lessons mapped to the OWASP LLM Top 10 (2025). BYOK via any OpenAI-compatible API.",
+		"notes": "Run: docker compose up -d (or npm start; requires Node.js >= 22.13 for node:sqlite). BYOK: the operator supplies an OpenAI-compatible API key server-side. Warning: do not deploy publicly with a paid key. Judging is deterministic code — no LLM-as-judge.",
+		"badge": "Croesus-K/InjectArena",
+		"last_contributed": "2026-08-31T07:20:00Z"
+	},
+	{
 		"url": "https://github.com/omerlh/insecure-deserialisation-net-poc",
 		"name": "insecure-deserialisation-net-poc",
 		"collection": [
